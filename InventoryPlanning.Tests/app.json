@@ -1,0 +1,56 @@
+{
+  "id": "372ec610-8920-4fd0-9532-82a542268c45",
+  "name": "Inventory Planning Tests",
+  "publisher": "GMSOFT Limited",
+  "version": "1.0.0.0",
+  "brief": "Tests for the Inventory Planning app.",
+  "description": "Test suite for the consolidated Inventory Planning app: math helpers, demand statistics, and the four calculators.",
+  "privacyStatement": "https://insidebusinesscentral.com/privacy/",
+  "EULA": "https://github.com/GmsoftLtd/bc-inventory-planning/blob/main/LICENSE",
+  "help": "https://insidebusinesscentral.com/",
+  "url": "https://insidebusinesscentral.com/",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "16b338f4-22c0-4426-8d1b-946290d76d30",
+      "name": "Inventory Planning",
+      "publisher": "GMSOFT Limited",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
+      "name": "Library Assert",
+      "publisher": "Microsoft",
+      "version": "28.0.0.0"
+    },
+    {
+      "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
+      "name": "Any",
+      "publisher": "Microsoft",
+      "version": "28.0.0.0"
+    },
+    {
+      "id": "5d86850b-0d76-4eca-bd7b-951ad998e997",
+      "name": "Tests-TestLibraries",
+      "publisher": "Microsoft",
+      "version": "28.0.0.0"
+    }
+  ],
+  "platform": "1.0.0.0",
+  "application": "28.0.0.0",
+  "idRanges": [
+    {
+      "from": 50600,
+      "to": 50649
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "17.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
