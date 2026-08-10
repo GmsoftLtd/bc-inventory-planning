@@ -5,7 +5,7 @@
 /// Lead time comes from the shared ComputeLeadTime resolution, so safety stock
 /// and reorder point always agree on the lead time for an item.
 /// </summary>
-codeunit 70455012 "GSO Safety Stock"
+codeunit 73030587 "GSO Safety Stock"
 {
     Permissions = tabledata Item = rm,
                   tabledata "GSO Setup" = ri,

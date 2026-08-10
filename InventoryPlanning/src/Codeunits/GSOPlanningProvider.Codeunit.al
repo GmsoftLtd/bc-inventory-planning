@@ -25,7 +25,7 @@
 ///   telemetry event GSO0003.
 /// - Statistics are item-level (consistent with batch mode).
 /// </summary>
-codeunit 70455017 "GSO Planning Provider"
+codeunit 73030592 "GSO Planning Provider"
 {
     SingleInstance = true;
     Permissions = tabledata Item = r,

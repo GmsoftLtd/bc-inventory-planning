@@ -2,7 +2,7 @@
 /// Adds the per-item planning controls to the Planning tab, and the four
 /// calculators plus the run-all action to the Item Card.
 /// </summary>
-pageextension 70455000 "GSO Item Card Ext" extends "Item Card"
+pageextension 73030575 "GSO Item Card Ext" extends "Item Card"
 {
     layout
     {

@@ -18,8 +18,8 @@
   "applicationInsightsConnectionString": "InstrumentationKey=7b1cd944-6c7b-493a-9529-d39e6963b42f;IngestionEndpoint=https://uksouth-1.in.applicationinsights.azure.com/;LiveEndpoint=https://uksouth.livediagnostics.monitor.azure.com/",
   "idRanges": [
     {
-      "from": 70455000,
-      "to": 70455099
+      "from": 73030575,
+      "to": 73031574
     }
   ],
   "resourceExposurePolicy": {

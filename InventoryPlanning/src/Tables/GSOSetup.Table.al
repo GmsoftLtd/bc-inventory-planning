@@ -3,7 +3,7 @@
 /// separate setup tables of the standalone apps. Defaults follow the standalone
 /// apps' defaults so behaviour is unchanged after migration.
 /// </summary>
-table 70455000 "GSO Setup"
+table 73030575 "GSO Setup"
 {
     Caption = 'Inventory Planning Setup';
     DataClassification = CustomerContent;

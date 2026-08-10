@@ -3,7 +3,7 @@
 /// the setup singleton after a company first created it do not receive their
 /// InitValue, so each new setup field gets a defaulting step here.
 /// </summary>
-codeunit 70455020 "GSO Upgrade"
+codeunit 73030595 "GSO Upgrade"
 {
     Subtype = Upgrade;
     Permissions = tabledata "GSO Setup" = rm;

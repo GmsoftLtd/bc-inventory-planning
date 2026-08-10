@@ -1,7 +1,7 @@
 /// <summary>
 /// Identifies which calculator produced a calculation-log entry.
 /// </summary>
-enum 70455000 "GSO Calculation Type"
+enum 73030575 "GSO Calculation Type"
 {
     Extensible = true;
     Caption = 'Inventory Planning Calculation Type';

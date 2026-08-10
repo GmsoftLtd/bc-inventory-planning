@@ -157,11 +157,9 @@ Calculation behaviour is a faithful port, with deliberate changes:
 The app carries AppSourceCop configuration (`AppSourceCop.json`, affix `GSO`)
 and compiles clean under CodeCop, UICop and AppSourceCop. Before submitting:
 
-- [ ] **Object ID range**: objects use the placeholder range
-      **70455000–70455099**. Replace it with the range Microsoft assigned to
-      your publisher in Partner Center (find/replace `704550` consistently,
-      including the two Item field IDs in `GSOItemExt.TableExt.al` and
-      `idRanges` in `app.json`).
+- [x] **Object ID range**: objects use GMSOFT's assigned AppSource range
+      **73030575–73031574** (objects occupy 73030575–73030596; the rest of
+      the range is headroom for future objects).
 - [ ] **Register the `GSO` affix** with Microsoft (AppSourceISVs process).
 - [ ] **applicationInsightsConnectionString** in `app.json`: create an Azure
       Application Insights resource and paste its connection string —

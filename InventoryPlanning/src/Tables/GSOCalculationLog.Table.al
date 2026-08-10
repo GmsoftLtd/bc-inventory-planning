@@ -3,7 +3,7 @@
 /// including skips, so a bulk run is honest about its coverage. Fields that do
 /// not apply to a calculation type are left at their default value.
 /// </summary>
-table 70455001 "GSO Calculation Log"
+table 73030576 "GSO Calculation Log"
 {
     Caption = 'Inventory Planning Calculation Log';
     DataClassification = CustomerContent;

@@ -5,7 +5,7 @@
 /// Publisher-scope telemetry requires applicationInsightsConnectionString to
 /// be set in app.json.
 /// </summary>
-codeunit 70455021 "GSO Telemetry"
+codeunit 73030596 "GSO Telemetry"
 {
     var
         ScheduledRunMsg: Label 'Scheduled planning recalculation completed', Locked = true;

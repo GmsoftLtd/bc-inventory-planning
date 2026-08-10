@@ -1,7 +1,7 @@
 /// <summary>
 /// Setup card for all four calculators and the dynamic planning provider.
 /// </summary>
-page 70455000 "GSO Setup"
+page 73030575 "GSO Setup"
 {
     PageType = Card;
     SourceTable = "GSO Setup";

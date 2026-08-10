@@ -4,7 +4,7 @@
 /// conversion via the Acklam inverse-normal-CDF approximation, accurate to
 /// ~1.15e-9 across the whole range — no bucket table, no flooring.
 /// </summary>
-codeunit 70455011 "GSO Math"
+codeunit 73030586 "GSO Math"
 {
     var
         Math: Codeunit Math;

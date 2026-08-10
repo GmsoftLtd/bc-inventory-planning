@@ -2,7 +2,7 @@
 /// Buffer for the Planning Worksheet page: current vs proposed planning values
 /// per item. Used with SourceTableTemporary only — never persisted.
 /// </summary>
-table 70455002 "GSO Planning Proposal"
+table 73030577 "GSO Planning Proposal"
 {
     Caption = 'Inventory Planning Proposal';
     DataClassification = CustomerContent;

@@ -4,7 +4,7 @@
 /// and Maximum Order Quantity, Order Multiple) when writing Reorder Quantity.
 /// Port of the standalone BC EOQ Calculator onto the shared engine.
 /// </summary>
-codeunit 70455014 "GSO EOQ"
+codeunit 73030589 "GSO EOQ"
 {
     Permissions = tabledata Item = rm,
                   tabledata "GSO Setup" = ri,

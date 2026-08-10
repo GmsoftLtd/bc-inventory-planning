@@ -3,7 +3,7 @@
 /// the Job Queue Entry selects what runs: SAFETYSTOCK, REORDERPOINT, EOQ,
 /// ADVISOR, or ALL (default when empty). Results are applied and logged.
 /// </summary>
-codeunit 70455018 "GSO Job Queue"
+codeunit 73030593 "GSO Job Queue"
 {
     TableNo = "Job Queue Entry";
 

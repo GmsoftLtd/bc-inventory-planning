@@ -27,7 +27,7 @@
 /// - Purchase lead time averages receipts from the trailing two years: enough
 ///   samples for stability without scanning unbounded history.
 /// </summary>
-codeunit 70455010 "GSO Demand Statistics"
+codeunit 73030585 "GSO Demand Statistics"
 {
     SingleInstance = true;
     Permissions = tabledata "GSO Setup" = ri,

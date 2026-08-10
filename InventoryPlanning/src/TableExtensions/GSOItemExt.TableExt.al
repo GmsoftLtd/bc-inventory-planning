@@ -3,16 +3,16 @@
 /// are never overwritten by a bulk or scheduled run, and an optional per-item
 /// service level that overrides the company default (0 = use setup default).
 /// </summary>
-tableextension 70455000 "GSO Item Ext" extends Item
+tableextension 73030575 "GSO Item Ext" extends Item
 {
     fields
     {
-        field(70455000; "GSO Exclude From Planning"; Boolean)
+        field(73030575; "GSO Exclude From Planning"; Boolean)
         {
             Caption = 'Exclude from Inventory Planning';
             DataClassification = CustomerContent;
         }
-        field(70455001; "GSO Service Level %"; Decimal)
+        field(73030576; "GSO Service Level %"; Decimal)
         {
             Caption = 'Planning Service Level % (0 = default)';
             DataClassification = CustomerContent;

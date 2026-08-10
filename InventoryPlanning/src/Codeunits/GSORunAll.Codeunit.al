@@ -10,7 +10,7 @@
 /// applied, completing the min/max parameter pair the policy needs.
 /// Also builds and applies Planning Worksheet proposals.
 /// </summary>
-codeunit 70455016 "GSO Run All"
+codeunit 73030591 "GSO Run All"
 {
     Permissions = tabledata Item = rm,
                   tabledata "GSO Setup" = ri,

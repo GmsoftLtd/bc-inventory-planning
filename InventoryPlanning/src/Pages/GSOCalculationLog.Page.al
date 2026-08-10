@@ -1,7 +1,7 @@
 /// <summary>
 /// Read-only list of every calculation attempt across all four calculators.
 /// </summary>
-page 70455001 "GSO Calculation Log"
+page 73030576 "GSO Calculation Log"
 {
     PageType = List;
     SourceTable = "GSO Calculation Log";

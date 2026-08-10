@@ -3,7 +3,7 @@
 /// setup. Writes to Item and the log happen through the calculators' own
 /// Permissions elevation, so this set stays read-only on data.
 /// </summary>
-permissionset 70455001 "GSO - User"
+permissionset 73030576 "GSO - User"
 {
     Caption = 'Inventory Planning - User';
     Assignable = true;

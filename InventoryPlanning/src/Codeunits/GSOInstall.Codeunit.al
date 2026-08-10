@@ -4,7 +4,7 @@
 /// unbounded — admins choose the retention period), and lists the setup page
 /// under Manual Setup so administrators can find it.
 /// </summary>
-codeunit 70455019 "GSO Install"
+codeunit 73030594 "GSO Install"
 {
     Subtype = Install;
     Permissions = tabledata "GSO Setup" = ri;

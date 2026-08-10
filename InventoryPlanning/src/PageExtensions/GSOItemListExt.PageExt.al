@@ -4,7 +4,7 @@
 /// selected; otherwise they honour the filters applied to the list — matching
 /// what the captions promise.
 /// </summary>
-pageextension 70455001 "GSO Item List Ext" extends "Item List"
+pageextension 73030576 "GSO Item List Ext" extends "Item List"
 {
     actions
     {
