@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using System.Threading;
+
 /// <summary>
 /// Setup card for all four calculators and the dynamic planning provider.
 /// </summary>

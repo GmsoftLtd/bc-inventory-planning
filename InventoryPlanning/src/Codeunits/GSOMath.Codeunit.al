@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using System.Utilities;
+
 /// <summary>
 /// Pure math helpers shared by all calculators: square root (delegated to the
 /// System Application Math codeunit) and the service-level to Z-score

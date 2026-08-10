@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Single-record setup for all four planning calculators, replacing the four
 /// separate setup tables of the standalone apps. Defaults follow the standalone

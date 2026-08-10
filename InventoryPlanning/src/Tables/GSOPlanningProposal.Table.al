@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Buffer for the Planning Worksheet page: current vs proposed planning values
 /// per item. Used with SourceTableTemporary only — never persisted.

@@ -1,3 +1,8 @@
+namespace GMSoft.InventoryPlanning;
+
+using System.DataAdministration;
+using System.Environment.Configuration;
+
 /// <summary>
 /// First-install wiring: creates the setup record with defaults, registers the
 /// calculation log with the Retention Policy module (so the log cannot grow

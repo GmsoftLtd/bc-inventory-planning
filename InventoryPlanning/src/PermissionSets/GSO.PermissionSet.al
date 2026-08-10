@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Administrator access to Inventory Planning: everything the user set grants,
 /// plus editing setup and maintaining the calculation log.

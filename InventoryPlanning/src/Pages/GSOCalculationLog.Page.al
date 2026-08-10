@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Read-only list of every calculation attempt across all four calculators.
 /// </summary>

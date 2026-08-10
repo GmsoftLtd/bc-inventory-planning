@@ -1,3 +1,10 @@
+namespace GMSoft.InventoryPlanning.Test;
+
+using GMSoft.InventoryPlanning;
+using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Journal;
+using System.TestLibraries.Utilities;
+
 /// <summary>
 /// End-to-end calculator tests on crafted demand history. Items and postings
 /// are created through the standard test libraries; each test posts a known

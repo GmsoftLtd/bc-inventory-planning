@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Economic Order Quantity via the Wilson formula: EOQ = sqrt(2DS/H), with a
 /// months-of-demand cap and respect for the item's order modifiers (Minimum

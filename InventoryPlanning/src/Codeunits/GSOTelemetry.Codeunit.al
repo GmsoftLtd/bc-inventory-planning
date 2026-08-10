@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Central telemetry wrapper. Event IDs: GSO0001 scheduled run completed,
 /// GSO0002 bulk run completed, GSO0003 dynamic provider computed values for a

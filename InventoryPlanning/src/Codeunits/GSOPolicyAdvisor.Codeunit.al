@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Recommends a reordering policy from the Syntetos-Boylan-Croston demand
 /// classification (ADI vs CV²): Lot-for-Lot for intermittent/lumpy demand,

@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Adds the per-item planning controls to the Planning tab, and the four
 /// calculators plus the run-all action to the Item Card.

@@ -1,3 +1,8 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+using System.Threading;
+
 /// <summary>
 /// Job Queue entry point for scheduled recalculation. The Parameter String on
 /// the Job Queue Entry selects what runs: SAFETYSTOCK, REORDERPOINT, EOQ,

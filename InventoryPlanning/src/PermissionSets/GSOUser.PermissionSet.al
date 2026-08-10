@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Planner access: run the calculators, use the worksheet, read the log and
 /// setup. Writes to Item and the log happen through the calculators' own

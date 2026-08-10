@@ -1,3 +1,10 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Ledger;
+using Microsoft.Inventory.Location;
+using Microsoft.Purchases.History;
+
 /// <summary>
 /// The single demand-statistics engine behind all four calculators. One pass
 /// over Item Ledger Entries yields the full superset of statistics the four

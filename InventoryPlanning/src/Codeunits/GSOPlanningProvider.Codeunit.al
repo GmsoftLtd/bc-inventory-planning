@@ -1,3 +1,9 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Location;
+using Microsoft.Inventory.Planning;
+
 /// <summary>
 /// Supplies calculated planning parameters to the standard planning engine at
 /// planning time, via the Planning-Get Parameters integration events — so the

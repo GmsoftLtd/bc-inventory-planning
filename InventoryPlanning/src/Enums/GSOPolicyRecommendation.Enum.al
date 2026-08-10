@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// The reordering policy the advisor recommends for an item.
 /// </summary>

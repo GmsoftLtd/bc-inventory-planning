@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Identifies which calculator produced a calculation-log entry.
 /// </summary>

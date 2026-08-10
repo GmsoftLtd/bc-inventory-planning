@@ -1,3 +1,8 @@
+namespace GMSoft.InventoryPlanning.Test;
+
+using GMSoft.InventoryPlanning;
+using System.TestLibraries.Utilities;
+
 /// <summary>
 /// Pure-math tests: no data setup required, catch regressions in the
 /// numeric core every other calculator depends on.

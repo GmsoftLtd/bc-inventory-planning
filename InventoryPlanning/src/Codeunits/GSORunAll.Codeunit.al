@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Orchestrates the four calculators in dependency order for one item or a
 /// filtered set: policy advice first (classification), then safety stock, then

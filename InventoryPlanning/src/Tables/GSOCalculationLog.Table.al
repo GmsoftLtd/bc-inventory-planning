@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Unified audit log for all four calculators. One row per calculation attempt,
 /// including skips, so a bulk run is honest about its coverage. Fields that do

@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Safety stock from historical demand and lead-time variability using the
 /// Z-score method: SS = Z x sqrt(LT x sigmaD² + D² x sigmaLT²).

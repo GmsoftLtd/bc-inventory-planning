@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Reorder point = (average daily demand x lead time) + safety stock, capped
 /// at Maximum Inventory when one is set so the parameter pair stays valid for

@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// The consolidation feature none of the standalone apps had: current vs
 /// proposed planning values for a set of items, side by side, with selective

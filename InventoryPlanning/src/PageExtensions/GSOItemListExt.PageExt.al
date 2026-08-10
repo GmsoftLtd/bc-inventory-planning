@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Adds bulk calculation actions and the Planning Worksheet to the Item List.
 /// Bulk actions run on the rows the user selected when more than one row is

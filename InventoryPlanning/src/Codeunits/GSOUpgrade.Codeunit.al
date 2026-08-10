@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using System.Upgrade;
+
 /// <summary>
 /// Upgrade codeunit with tagged, idempotent per-version steps. Fields added to
 /// the setup singleton after a company first created it do not receive their

@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Outcome of a single calculation. OK and Cap Applied carry a usable result;
 /// everything else explains why the item was skipped and no value was produced.

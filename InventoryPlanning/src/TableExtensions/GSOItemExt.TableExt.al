@@ -1,3 +1,7 @@
+namespace GMSoft.InventoryPlanning;
+
+using Microsoft.Inventory.Item;
+
 /// <summary>
 /// Per-item planning controls: an exclusion flag so planner-maintained values
 /// are never overwritten by a bulk or scheduled run, and an optional per-item

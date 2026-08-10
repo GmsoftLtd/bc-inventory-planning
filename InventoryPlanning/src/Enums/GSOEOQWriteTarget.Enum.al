@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Which item field the EOQ calculator writes its result to.
 /// </summary>

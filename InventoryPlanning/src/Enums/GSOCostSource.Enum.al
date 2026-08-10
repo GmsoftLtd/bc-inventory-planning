@@ -1,3 +1,5 @@
+namespace GMSoft.InventoryPlanning;
+
 /// <summary>
 /// Which item cost field feeds the EOQ holding-cost calculation.
 /// </summary>
