@@ -1,10 +1,13 @@
 /// <summary>
-/// Reorder point = (average daily demand x lead time) + safety stock.
+/// Reorder point = (average daily demand x lead time) + safety stock, capped
+/// at Maximum Inventory when one is set so the parameter pair stays valid for
+/// the Maximum Qty. policy.
 /// Port of the standalone BC Reorder Point Calculator onto the shared engine.
 /// </summary>
-codeunit 50513 "IPL Reorder Point"
+codeunit 70455013 "IPL Reorder Point"
 {
     Permissions = tabledata Item = rm,
+                  tabledata "IPL Setup" = ri,
                   tabledata "IPL Calculation Log" = ri;
 
     var
@@ -12,11 +15,14 @@ codeunit 50513 "IPL Reorder Point"
         DemandStats: Codeunit "IPL Demand Statistics";
         SetupLoaded: Boolean;
         ItemBlockedLbl: Label 'Item is blocked.';
+        NotInventoryLbl: Label 'Not an inventory item: a reorder point does not apply.';
+        ExcludedLbl: Label 'Item is excluded from inventory planning.';
         MTOSkippedLbl: Label 'Make-to-order item. Reorder point does not apply: supply is created per demand.';
         InsufficientDataLbl: Label 'Only %1 demand observations found (minimum %2). No reliable demand rate.', Comment = '%1 = observations found, %2 = minimum required';
         NoLeadTimeLbl: Label 'No lead time available: no receipt history, no Lead Time Calculation, and the setup fallback is 0.';
         WithSSLbl: Label 'Covers expected demand during lead time, on top of the safety stock buffer.';
         WithoutSSLbl: Label 'Covers expected demand during lead time (no safety stock buffer).';
+        MaxInvCapLbl: Label 'Capped at Maximum Inventory (%1): the uncapped reorder point %2 would make the Maximum Qty. parameter pair invalid.', Comment = '%1 = maximum inventory, %2 = uncapped reorder point';
         FormulaLbl: Label 'ROP = (D %1/day x LT %2 d) + SS %3 = %4. Lead time from %5; n=%6 obs.', Comment = '%1 = avg daily demand, %2 = lead time days, %3 = safety stock, %4 = reorder point, %5 = lead time source, %6 = observations';
         ProgressLbl: Label 'Calculating Reorder Point...\#1######### / #2#########', Comment = '#1 = current item counter, #2 = total items';
 
@@ -26,7 +32,18 @@ codeunit 50513 "IPL Reorder Point"
     /// </summary>
     procedure CalculateForItem(ItemNo: Code[20]; Apply: Boolean; SafetyStockOverride: Decimal; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
     begin
-        exit(RunCalc(ItemNo, Apply, true, SafetyStockOverride, ResultCode, Note));
+        exit(RunCalc(ItemNo, Apply, true, SafetyStockOverride, true, ResultCode, Note));
+    end;
+
+    /// <summary>
+    /// As CalculateForItem, with control over the "Set Policy When None"
+    /// default: Run All passes false when the policy advisor has just
+    /// recommended something other than Fixed Reorder Qty., so a single run
+    /// never stamps a policy its own advice contradicts.
+    /// </summary>
+    procedure CalculateForItem(ItemNo: Code[20]; Apply: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    begin
+        exit(RunCalc(ItemNo, Apply, true, SafetyStockOverride, AllowPolicyDefault, ResultCode, Note));
     end;
 
     /// <summary>
@@ -34,10 +51,10 @@ codeunit 50513 "IPL Reorder Point"
     /// </summary>
     procedure CalculatePreview(ItemNo: Code[20]; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
     begin
-        exit(RunCalc(ItemNo, false, false, -1, ResultCode, Note));
+        exit(RunCalc(ItemNo, false, false, -1, true, ResultCode, Note));
     end;
 
-    local procedure RunCalc(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; SafetyStockOverride: Decimal; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    local procedure RunCalc(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
     var
         Item: Record Item;
         AvgDemand: Decimal;
@@ -50,17 +67,33 @@ codeunit 50513 "IPL Reorder Point"
         LeadTimeSource: Text[50];
         SafetyStock: Decimal;
         ReorderPoint: Decimal;
+        UncappedROP: Decimal;
         PreviousRP: Decimal;
         Applied: Boolean;
+        CapNote: Text;
     begin
         EnsureSetup();
 
         if not Item.Get(ItemNo) then
             exit(0);
 
+        if Item.Type <> Item.Type::Inventory then begin
+            ResultCode := ResultCode::"Not an Inventory Item";
+            Note := NotInventoryLbl;
+            LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
+            exit(0);
+        end;
+
         if Item.Blocked then begin
             ResultCode := ResultCode::"Item Blocked";
             Note := ItemBlockedLbl;
+            LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
+            exit(0);
+        end;
+
+        if Item."IPL Exclude From Planning" then begin
+            ResultCode := ResultCode::Excluded;
+            Note := ExcludedLbl;
             LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
             exit(0);
         end;
@@ -100,22 +133,30 @@ codeunit 50513 "IPL Reorder Point"
         if Setup."Round Up Results" then
             ReorderPoint := Round(ReorderPoint, 1, '>');
 
+        ResultCode := ResultCode::OK;
+        if (Item."Maximum Inventory" > 0) and (ReorderPoint > Item."Maximum Inventory") then begin
+            UncappedROP := ReorderPoint;
+            ReorderPoint := Item."Maximum Inventory";
+            ResultCode := ResultCode::"Cap Applied";
+            CapNote := ' ' + StrSubstNo(MaxInvCapLbl, Format(Item."Maximum Inventory", 0, 9), Format(UncappedROP, 0, 9));
+        end;
+
         PreviousRP := Item."Reorder Point";
         if Apply and Setup."Apply Reorder Point" then begin
             Item.Validate("Reorder Point", ReorderPoint);
-            if Setup."Set Policy When None" and (Item."Reordering Policy" = Item."Reordering Policy"::" ") then
+            if AllowPolicyDefault and Setup."Set Policy When None" and (Item."Reordering Policy" = Item."Reordering Policy"::" ") then
                 Item.Validate("Reordering Policy", Item."Reordering Policy"::"Fixed Reorder Qty.");
             Item.Modify(true);
             Applied := true;
         end;
 
-        ResultCode := ResultCode::OK;
         Note := CopyStr(
             BuildReason(SafetyStock) + ' ' +
             StrSubstNo(FormulaLbl,
                 Format(Round(AvgDemand, 0.01), 0, 9), Format(Round(LeadTimeDays, 0.01), 0, 9),
                 Format(Round(SafetyStock, 0.01), 0, 9), Format(ReorderPoint, 0, 9),
-                LeadTimeSource, Observations),
+                LeadTimeSource, Observations) + CapNote +
+            DemandStats.BuildAdvisoryText(ItemNo, Setup."History Window (Days)", Setup."Trend Warning Threshold %"),
             1, MaxStrLen(Note));
 
         LogResult(Item, AvgDemand, Observations, LeadTimeDays, LeadTimeSource, SafetyStock, ReorderPoint, PreviousRP, Applied, DoLog, ResultCode, Note);
@@ -124,6 +165,7 @@ codeunit 50513 "IPL Reorder Point"
 
     /// <summary>
     /// Bulk calculation for the items filtered on the record passed in.
+    /// Commits every 100 items, so callers must tolerate intermediate commits.
     /// </summary>
     procedure CalculateBulk(var ItemFilter: Record Item; Apply: Boolean): Integer
     var
@@ -138,6 +180,7 @@ codeunit 50513 "IPL Reorder Point"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
+        Item.SetRange("IPL Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -153,6 +196,8 @@ codeunit 50513 "IPL Reorder Point"
                 if GuiAllowed() then
                     ProgressDialog.Update(1, Format(Done));
                 CalculateForItem(Item."No.", Apply, -1, ResultCode, Note);
+                if Done mod 100 = 0 then
+                    Commit();
             until Item.Next() = 0;
 
         if GuiAllowed() then

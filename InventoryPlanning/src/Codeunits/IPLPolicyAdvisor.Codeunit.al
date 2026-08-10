@@ -6,9 +6,10 @@
 /// items are recommended Order and never auto-flipped.
 /// Port of the standalone BC Replenishment Policy Advisor onto the shared engine.
 /// </summary>
-codeunit 50515 "IPL Policy Advisor"
+codeunit 70455015 "IPL Policy Advisor"
 {
     Permissions = tabledata Item = rm,
+                  tabledata "IPL Setup" = ri,
                   tabledata "IPL Calculation Log" = ri;
 
     var
@@ -18,6 +19,7 @@ codeunit 50515 "IPL Policy Advisor"
         ItemNotFoundLbl: Label 'Item not found.';
         NotInventoryLbl: Label 'Not an inventory item: a reordering policy does not apply.';
         ItemBlockedLbl: Label 'Item is blocked.';
+        ExcludedLbl: Label 'Item is excluded from inventory planning.';
         MTOLbl: Label 'Make-to-order: keep Reordering Policy = Order so each supply pegs to one demand. Its components are make-to-stock and should be advised individually.';
         InsufficientLbl: Label 'Only %1 day(s) with demand (minimum %2). Not enough sales history to classify the demand pattern.', Comment = '%1 = demand days found, %2 = minimum required';
         LumpyLbl: Label '%1 demand: stock turns over infrequently (ADI %2 >= %3). Lot-for-Lot orders to each demand and holds no standing stock.', Comment = '%1 = pattern, %2 = ADI, %3 = threshold';
@@ -81,6 +83,13 @@ codeunit 50515 "IPL Policy Advisor"
             exit(Recommendation);
         end;
 
+        if Item."IPL Exclude From Planning" then begin
+            Recommendation := Recommendation::"Insufficient Data";
+            Note := ExcludedLbl;
+            LogAdvice(Item, 0, 0, 0, 0, 0, Pattern, Recommendation, false, DoLog, Note);
+            exit(Recommendation);
+        end;
+
         if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then begin
             Recommendation := Recommendation::Order;
             Note := MTOLbl;
@@ -130,6 +139,7 @@ codeunit 50515 "IPL Policy Advisor"
 
     /// <summary>
     /// Bulk advice for the items filtered on the record passed in.
+    /// Commits every 100 items, so callers must tolerate intermediate commits.
     /// </summary>
     procedure AdviseBulk(var ItemFilter: Record Item; Apply: Boolean): Integer
     var
@@ -144,6 +154,7 @@ codeunit 50515 "IPL Policy Advisor"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
+        Item.SetRange("IPL Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -159,6 +170,8 @@ codeunit 50515 "IPL Policy Advisor"
                 if GuiAllowed() then
                     ProgressDialog.Update(1, Format(Done));
                 AdviseForItem(Item."No.", Apply, Pattern, Note);
+                if Done mod 100 = 0 then
+                    Commit();
             until Item.Next() = 0;
 
         if GuiAllowed() then

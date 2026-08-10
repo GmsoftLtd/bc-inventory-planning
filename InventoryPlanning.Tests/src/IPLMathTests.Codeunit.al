@@ -24,6 +24,14 @@ codeunit 50600 "IPL Math Tests"
     end;
 
     [Test]
+    procedure Sqrt_LargeValue_StaysAccurate()
+    begin
+        // The old fixed-iteration Newton implementation lost accuracy on large
+        // arguments (reachable in the EOQ term 2DS/H for high-volume items).
+        Assert.AreNearlyEqual(1000000, IPLMath.Sqrt(1000000000000.0), 0.01, 'sqrt(1e12) must be 1e6');
+    end;
+
+    [Test]
     procedure Sqrt_ZeroAndNegative_ReturnZero()
     begin
         Assert.AreEqual(0, IPLMath.Sqrt(0), 'sqrt(0) must be 0');
@@ -31,24 +39,29 @@ codeunit 50600 "IPL Math Tests"
     end;
 
     [Test]
-    procedure ZScore_StandardBuckets_ReturnTableValues()
+    procedure ZScore_StandardLevels_MatchNormalTable()
     begin
-        Assert.AreEqual(1.6449, IPLMath.ZScore(95), 'Z(95) must be 1.6449');
-        Assert.AreEqual(2.3263, IPLMath.ZScore(99), 'Z(99) must be 2.3263');
-        Assert.AreEqual(1.2816, IPLMath.ZScore(90), 'Z(90) must be 1.2816');
+        Assert.AreNearlyEqual(1.6449, IPLMath.ZScore(95), 0.001, 'Z(95) must be ~1.6449');
+        Assert.AreNearlyEqual(2.3263, IPLMath.ZScore(99), 0.001, 'Z(99) must be ~2.3263');
+        Assert.AreNearlyEqual(1.2816, IPLMath.ZScore(90), 0.001, 'Z(90) must be ~1.2816');
+        Assert.AreNearlyEqual(0.5244, IPLMath.ZScore(70), 0.001, 'Z(70) must be ~0.5244');
+        Assert.AreNearlyEqual(3.7190, IPLMath.ZScore(99.99), 0.002, 'Z(99.99) must be ~3.7190');
     end;
 
     [Test]
-    procedure ZScore_BetweenBuckets_FloorsToLowerBucket()
+    procedure ZScore_BetweenTableValues_IsContinuous()
     begin
-        // 94.9 floors to the 90% bucket — documented conservative behaviour.
-        Assert.AreEqual(1.2816, IPLMath.ZScore(94.9), 'Z(94.9) must floor to the 90%% bucket');
-        Assert.AreEqual(1.6449, IPLMath.ZScore(95.5), 'Z(95.5) must floor to the 95%% bucket');
+        // The old bucket table floored 94.9 to the 90% Z (22% less buffer than
+        // requested). The continuous inverse CDF must sit just below Z(95).
+        Assert.IsTrue(IPLMath.ZScore(94.9) > 1.62, 'Z(94.9) must not collapse to the 90% value');
+        Assert.IsTrue(IPLMath.ZScore(94.9) < IPLMath.ZScore(95), 'Z(94.9) must stay below Z(95)');
+        Assert.IsTrue(IPLMath.ZScore(95) < IPLMath.ZScore(95.5), 'Z must be strictly increasing');
     end;
 
     [Test]
-    procedure ZScore_BelowLowestBucket_ReturnsFloorValue()
+    procedure ZScore_AtOrBelowFiftyPercent_ReturnsZero()
     begin
-        Assert.AreEqual(0.5244, IPLMath.ZScore(70), 'Z(70) must be the lowest bucket');
+        Assert.AreEqual(0, IPLMath.ZScore(50), 'Z(50) must be 0');
+        Assert.AreEqual(0, IPLMath.ZScore(0), 'Z(0) must be 0, not an error');
     end;
 }

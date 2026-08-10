@@ -1,7 +1,7 @@
 /// <summary>
 /// Which item cost field feeds the EOQ holding-cost calculation.
 /// </summary>
-enum 50504 "IPL Cost Source"
+enum 70455004 "IPL Cost Source"
 {
     Extensible = false;
     Caption = 'Inventory Planning Cost Source';

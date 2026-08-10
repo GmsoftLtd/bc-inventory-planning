@@ -1,7 +1,7 @@
 /// <summary>
 /// Which item field the EOQ calculator writes its result to.
 /// </summary>
-enum 50503 "IPL EOQ Write Target"
+enum 70455003 "IPL EOQ Write Target"
 {
     Extensible = false;
     Caption = 'Inventory Planning EOQ Write Target';

@@ -5,3 +5,4 @@
 *.app
 launch.json
 rad.json
+.altestrunner/

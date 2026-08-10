@@ -2,9 +2,10 @@
 /// The consolidation feature none of the standalone apps had: current vs
 /// proposed planning values for a set of items, side by side, with selective
 /// apply. Loading computes previews only; nothing is written until Apply, and
-/// applies run through the calculators' validated, logged path.
+/// applies run through the calculators' validated, logged path. After an
+/// apply, the affected lines refresh their "current" values in place.
 /// </summary>
-page 50502 "IPL Planning Worksheet"
+page 70455002 "IPL Planning Worksheet"
 {
     PageType = Worksheet;
     SourceTable = "IPL Planning Proposal";
@@ -92,6 +93,18 @@ page 50502 "IPL Planning Worksheet"
                     Editable = false;
                     ToolTip = 'Specifies the calculated economic order quantity proposal.';
                 }
+                field("Current Maximum Inventory"; Rec."Current Maximum Inventory")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the maximum inventory currently on the item.';
+                }
+                field("Proposed Maximum Inventory"; Rec."Proposed Maximum Inventory")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the proposed order-up-to level (reorder point + EOQ) for items on the Maximum Qty. policy.';
+                }
                 field("SS Result Code"; Rec."SS Result Code")
                 {
                     ApplicationArea = All;
@@ -149,6 +162,7 @@ page 50502 "IPL Planning Worksheet"
                     RunAll.BuildProposals(Rec, Item);
                     if Rec.FindFirst() then;
                     CurrPage.Update(false);
+                    ShowVarianceSummary();
                 end;
             }
             action(ApplySelected)
@@ -160,11 +174,12 @@ page 50502 "IPL Planning Worksheet"
 
                 trigger OnAction()
                 var
+                    TempProposal: Record "IPL Planning Proposal" temporary;
                     RunAll: Codeunit "IPL Run All";
                     ConfirmQst: Label 'Apply calculated planning values to %1 selected item(s)?', Comment = '%1 = number of selected items';
-                    AppliedMsg: Label '%1 item(s) updated. Reload to see the new current values.', Comment = '%1 = number of items applied';
+                    AppliedMsg: Label '%1 item(s) updated.', Comment = '%1 = number of items applied';
                     SelectedCount: Integer;
-                    TempProposal: Record "IPL Planning Proposal" temporary;
+                    AppliedCount: Integer;
                 begin
                     TempProposal.Copy(Rec, true);
                     TempProposal.Reset();
@@ -174,7 +189,10 @@ page 50502 "IPL Planning Worksheet"
                         exit;
                     if not Confirm(ConfirmQst, false, SelectedCount) then
                         exit;
-                    Message(AppliedMsg, RunAll.ApplySelected(TempProposal));
+                    AppliedCount := RunAll.ApplySelected(TempProposal);
+                    RefreshCurrentValues(TempProposal);
+                    CurrPage.Update(false);
+                    Message(AppliedMsg, AppliedCount);
                 end;
             }
             action(SelectAll)
@@ -241,5 +259,61 @@ page 50502 "IPL Planning Worksheet"
                 TempProposal.Modify();
             until TempProposal.Next() = 0;
         CurrPage.Update(false);
+    end;
+
+    /// <summary>
+    /// After an apply, re-read the items and refresh the "current" columns on
+    /// the applied lines, then deselect them — no full reload needed.
+    /// </summary>
+    local procedure RefreshCurrentValues(var TempProposal: Record "IPL Planning Proposal" temporary)
+    var
+        Item: Record Item;
+    begin
+        // The passed record is filtered to Selected = true, and deselecting
+        // removes a line from that set — so drain with FindFirst instead of
+        // FindSet/Next, which would skip lines when the filter field changes.
+        while TempProposal.FindFirst() do begin
+            if Item.Get(TempProposal."Item No.") then begin
+                TempProposal."Current Safety Stock" := Item."Safety Stock Quantity";
+                TempProposal."Current Reorder Point" := Item."Reorder Point";
+                TempProposal."Current Reorder Quantity" := Item."Reorder Quantity";
+                TempProposal."Current Maximum Inventory" := Item."Maximum Inventory";
+                TempProposal."Current Policy" := CopyStr(Format(Item."Reordering Policy"), 1, MaxStrLen(TempProposal."Current Policy"));
+            end;
+            TempProposal.Selected := false;
+            TempProposal.Modify();
+        end;
+    end;
+
+    /// <summary>
+    /// After a load, tell the planner how many lines change the reorder point
+    /// materially, so a large worksheet can be triaged instead of read.
+    /// </summary>
+    local procedure ShowVarianceSummary()
+    var
+        TempProposal: Record "IPL Planning Proposal" temporary;
+        VarianceMsg: Label '%1 of %2 line(s) change the reorder point by more than 25%.', Comment = '%1 = lines with significant variance, %2 = total lines';
+        Total: Integer;
+        VarianceCount: Integer;
+    begin
+        TempProposal.Copy(Rec, true);
+        TempProposal.Reset();
+        if TempProposal.FindSet() then
+            repeat
+                Total += 1;
+                if HasSignificantVariance(TempProposal) then
+                    VarianceCount += 1;
+            until TempProposal.Next() = 0;
+        if VarianceCount > 0 then
+            Message(VarianceMsg, VarianceCount, Total);
+    end;
+
+    local procedure HasSignificantVariance(var TempProposal: Record "IPL Planning Proposal" temporary): Boolean
+    begin
+        if not (TempProposal."ROP Result Code" in [TempProposal."ROP Result Code"::OK, TempProposal."ROP Result Code"::"Cap Applied"]) then
+            exit(false);
+        if TempProposal."Current Reorder Point" = 0 then
+            exit(TempProposal."Proposed Reorder Point" > 0);
+        exit(Abs(TempProposal."Proposed Reorder Point" - TempProposal."Current Reorder Point") / TempProposal."Current Reorder Point" > 0.25);
     end;
 }

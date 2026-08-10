@@ -1,61 +1,61 @@
 /// <summary>
-/// Pure math helpers shared by all calculators: square root (Newton-Raphson,
-/// since AL has no Sqrt) and the service-level to Z-score lookup.
+/// Pure math helpers shared by all calculators: square root (delegated to the
+/// System Application Math codeunit) and the service-level to Z-score
+/// conversion via the Acklam inverse-normal-CDF approximation, accurate to
+/// ~1.15e-9 across the whole range — no bucket table, no flooring.
 /// </summary>
-codeunit 50511 "IPL Math"
+codeunit 70455011 "IPL Math"
 {
+    var
+        Math: Codeunit Math;
+
     /// <summary>
-    /// Square root via Newton-Raphson. 20 iterations is ample for decimal precision.
+    /// Square root. Zero for zero or negative input (calculators treat a
+    /// negative variance as "no variability", never as an error).
     /// </summary>
     procedure Sqrt(Value: Decimal): Decimal
-    var
-        Guess: Decimal;
-        i: Integer;
     begin
         if Value <= 0 then
             exit(0);
-        Guess := Value / 2;
-        for i := 1 to 20 do
-            Guess := (Guess + Value / Guess) / 2;
-        exit(Guess);
+        exit(Math.Sqrt(Value));
     end;
 
     /// <summary>
-    /// Z-score for a target cycle service level. Floors to the nearest lower
-    /// bucket — conservative for unusual values; setup enforces a 70% minimum
-    /// so the floor never drops below the lowest defined bucket.
+    /// Z-score for a target cycle service level, via the Acklam rational
+    /// approximation of the inverse normal CDF. Continuous: Z(94.9) sits just
+    /// below Z(95) instead of dropping to the 90% bucket. Service levels at or
+    /// below 50% return 0; input is clamped at 99.999%.
     /// </summary>
     procedure ZScore(ServiceLevelPct: Decimal): Decimal
+    var
+        p: Decimal;
     begin
-        case true of
-            ServiceLevelPct >= 99.99:
-                exit(3.7190);
-            ServiceLevelPct >= 99.90:
-                exit(3.0902);
-            ServiceLevelPct >= 99.50:
-                exit(2.5758);
-            ServiceLevelPct >= 99.00:
-                exit(2.3263);
-            ServiceLevelPct >= 98.00:
-                exit(2.0537);
-            ServiceLevelPct >= 97.50:
-                exit(1.9600);
-            ServiceLevelPct >= 97.00:
-                exit(1.8808);
-            ServiceLevelPct >= 96.00:
-                exit(1.7507);
-            ServiceLevelPct >= 95.00:
-                exit(1.6449);
-            ServiceLevelPct >= 90.00:
-                exit(1.2816);
-            ServiceLevelPct >= 85.00:
-                exit(1.0364);
-            ServiceLevelPct >= 80.00:
-                exit(0.8416);
-            ServiceLevelPct >= 75.00:
-                exit(0.6745);
-            else
-                exit(0.5244); // 70%
+        p := ServiceLevelPct / 100;
+        if p <= 0.5 then
+            exit(0);
+        if p > 0.99999 then
+            p := 0.99999;
+        exit(InverseNormalCdf(p));
+    end;
+
+    local procedure InverseNormalCdf(p: Decimal): Decimal
+    var
+        q: Decimal;
+        r: Decimal;
+    begin
+        // Acklam's algorithm, upper half only (p > 0.5 is guaranteed by caller).
+        if p <= 0.97575 then begin
+            // Central region: rational approximation in q = p - 0.5.
+            q := p - 0.5;
+            r := q * q;
+            exit(
+                (((((-39.69683028665376 * r + 220.9460984245205) * r - 275.9285104469687) * r + 138.357751867269) * r - 30.66479806614716) * r + 2.506628277459239) * q /
+                (((((-54.47609879822406 * r + 161.5858368580409) * r - 155.6989798598866) * r + 66.80131188771972) * r - 13.28068155288572) * r + 1));
         end;
+        // Upper tail: rational approximation in q = sqrt(-2 ln(1 - p)).
+        q := Math.Sqrt(-2 * Math.Log(1 - p));
+        exit(
+            -(((((-0.007784894002430293 * q - 0.3223964580411365) * q - 2.400758277161838) * q - 2.549732539343734) * q + 4.374664141464968) * q + 2.938163982698783) /
+            ((((0.007784695709041462 * q + 0.3224671290700398) * q + 2.445134137142996) * q + 3.754408661907416) * q + 1));
     end;
 }

@@ -1,0 +1,1524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="Inventory Planning">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 3867404324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Calculation Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2681905906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Annual Demand</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Annual Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 508884519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applied</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Applied - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 482287890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avg. Daily Demand</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Avg Daily Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 4277238639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avg. Demand Interval (ADI)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Avg Demand Interval (ADI) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2316251556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Date/Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Calculation DateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 772194043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Calculation Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 162571681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand CV²</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Demand CV Squared - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 1904292362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Observations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Demand Observations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2785693217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Pattern</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Demand Pattern - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 3060945597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Std. Deviation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Demand Std Dev - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2619750096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Holding Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 4122288609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time (Days)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Lead Time (Days) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 1226191712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time Source</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Lead Time Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 1142282943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time Std. Deviation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Lead Time Std Dev - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2898143332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 1321691815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordering Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Ordering Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2033857254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Previous Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Previous Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2318591743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Raw Result</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Raw Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 681395287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recommended Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Recommended Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 472338107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Result</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2893504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Result Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 1269799554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Level %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Service Level % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867404324 - Field 3650359382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Z-Score</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Calculation Log - Field Z Score - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Proposal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 4233181637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Maximum Inventory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Current Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 3414567291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Reordering Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Current Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 3176444128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Reorder Point</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Current Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 341230349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Reorder Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Current Reorder Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 2679405511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Safety Stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Current Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 2785693217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Pattern</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Demand Pattern - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 1361363641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ Result</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field EOQ Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 2898143332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 2649799797 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed EOQ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Proposed EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 1935442638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed Maximum Inventory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Proposed Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 3483907111 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed Reorder Point</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Proposed Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 4178540216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed Safety Stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Proposed Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 681395287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recommended Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Recommended Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 806068139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Point Result</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field ROP Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 90423963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field Selected - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 88252848 - Field 1373223232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Safety Stock Result</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Planning Proposal - Field SS Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 3576601697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write EOQ to Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Apply EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 929867162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write Maximum Inventory (ROP + EOQ) for Maximum Qty. Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Apply Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1696263963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write Reorder Point to Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Apply Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2194643276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write Safety Stock to Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Apply Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 545084853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Auto-Update Item Reordering Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Auto-Update Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1340177402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost Source</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Cost Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 314481736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallback Lead Time (Days)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Default Lead Time (Days) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 3168170047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Service Level %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Default Service Level % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 4099559675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Supply Values at Planning Time (Dynamic)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Dynamic Provider Enabled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 3036267241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ Write Target</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field EOQ Write Target - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1758183902 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Erratic CV-Squared Threshold</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Erratic CV2 Threshold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 658164308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand History Window (Days)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field History Window (Days) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2026703871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding Rate (fraction of unit cost/year)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Holding Rate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 3413076906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Count Consumption as Demand</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Include Consumption Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2944416884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add Safety Stock to Reorder Point</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Include Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2877734794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Calculation History</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Log History - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2303263114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intermittent ADI Threshold</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Lumpy ADI Threshold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1987516760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum EOQ (Months of Demand)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Max EOQ Months - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 3573055592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Min Demand Observations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Min Demand Observations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1321691815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordering Cost (S)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Ordering Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2665507231 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Treat Shelf Life as Maximum Qty.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Perishable Means Max Qty. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1552810735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Round Up Results to Whole Units</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Round Up Results - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 2546652520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Policy to Fixed Reorder Qty. when None</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Set Policy When None - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 1589467346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Skip Make-to-Order Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Skip Make-to-Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2321321310 - Field 3584598915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trend Warning Threshold % (0 = off)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IPL Setup - Field Trend Warning Threshold % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - NamedType 2181750929" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note: %1 stockkeeping unit(s) exist for this item; standard planning reads SKU values at those locations, not these item-card values.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of stockkeeping units</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - NamedType SKUNoteLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - NamedType 1031707219" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning: trailing %1-day demand runs %2%% below the full-window average — history may overstate future demand (phase-out?).</source>
+          <note from="Developer" annotates="general" priority="2">%1 = recent window days, %2 = deviation percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - NamedType TrendDownLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - NamedType 2976511010" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning: trailing %1-day demand runs %2%% above the full-window average — history-based values lag an upward trend.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = recent window days, %2 = deviation percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - NamedType TrendUpLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - Method 1754870424 - NamedType 1224066885" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase receipt history</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - Method ComputeLeadTime - NamedType PurchaseHistoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - Method 1754870424 - NamedType 3428281682" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Lead Time Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - Method ComputeLeadTime - NamedType ItemLeadTimeLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - Method 1754870424 - NamedType 1221404638" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Lead Time Calculation (manufacturing)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - Method ComputeLeadTime - NamedType ManufacturingLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - Method 1754870424 - NamedType 1211671992" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Lead Time Calculation (assembly)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - Method ComputeLeadTime - NamedType AssemblyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439917921 - Method 1754870424 - NamedType 2151851155" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup fallback</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Demand Statistics - Method ComputeLeadTime - NamedType SetupFallbackLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 668283511" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Raw EOQ %1 capped to %2 (%3 months of demand).</source>
+          <note from="Developer" annotates="general" priority="2">%1 = raw EOQ, %2 = capped EOQ, %3 = months cap</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType CapAppliedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 3052465211" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Found %1 observations, need %2.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = observations found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType InsufficientObsLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 404221584" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reduced to Maximum Order Quantity %1.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = maximum order quantity</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType MaxOrderQtyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 2087848654" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Raised to Minimum Order Quantity %1.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = minimum order quantity</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType MinOrderQtyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: an order quantity does not apply.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating EOQ...\#1######### / #2#########</source>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 3129907217" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Annual demand is zero or negative.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ZeroDemandLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 898210847" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordering cost is zero in Setup.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ZeroOrderingCostLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 3019020571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculated EOQ is zero after capping and rounding. Nothing was written.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ZeroResultLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4158048330 - NamedType 2194820063" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit cost is zero. Cannot compute holding cost.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL EOQ - NamedType ZeroUnitCostLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1818360488 - NamedType 858110245" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Configure the safety stock, reorder point, EOQ and policy advisor calculators: history window, service level, ordering cost, holding rate, and how results are applied.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Install - NamedType SetupDescriptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1818360488 - NamedType 3802263609" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Install - NamedType SetupShortTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1818360488 - NamedType 701938711" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Install - NamedType SetupTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4011904467 - NamedType 1634871408" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Supplied at planning time: SS=%1, ROP=%2, RQ=%3.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = safety stock, %2 = reorder point, %3 = reorder quantity (0 = not supplied)</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Planning Provider - NamedType DynamicSupplyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 776512038" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Erratic</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType ErraticTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 2735714560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand, no inventory cap. Fixed Reorder Qty. orders a fixed economic quantity (EOQ) at the reorder point. Set Reorder Point and Reorder Quantity.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType FixedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 4082552577" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only %1 day(s) with demand (minimum %2). Not enough sales history to classify the demand pattern.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = demand days found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType InsufficientLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 2665664329" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intermittent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType IntermittentTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 1121648" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item not found.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType ItemNotFoundLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 164200945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand: stock turns over infrequently (ADI %2 &gt;= %3). Lot-for-Lot orders to each demand and holds no standing stock.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern, %2 = ADI, %3 = threshold</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType LumpyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 2888957319" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lumpy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType LumpyTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 226457201" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand with a Maximum Inventory cap already set. Maximum Qty. refills up to that ceiling at the reorder point.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType MaxInvLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 3238184624" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-order: keep Reordering Policy = Order so each supply pegs to one demand. Its components are make-to-stock and should be advised individually.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType MTOLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: a reordering policy does not apply.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 4277486991" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand with a shelf life set. Maximum Qty. caps standing stock so nothing expires. Set Reorder Point and Maximum Inventory.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType PerishableLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Advising replenishment policy...\#1######### / #2#########</source>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 1269321878" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Smooth</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType SmoothTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 604639211 - NamedType 1808847724" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Policy Advisor - NamedType UnknownTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 2116224744" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ROP = (D %1/day x LT %2 d) + SS %3 = %4. Lead time from %5; n=%6 obs.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = avg daily demand, %2 = lead time days, %3 = safety stock, %4 = reorder point, %5 = lead time source, %6 = observations</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType FormulaLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 184241153" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only %1 demand observations found (minimum %2). No reliable demand rate.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = observations found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType InsufficientDataLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 1974996647" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Capped at Maximum Inventory (%1): the uncapped reorder point %2 would make the Maximum Qty. parameter pair invalid.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = maximum inventory, %2 = uncapped reorder point</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType MaxInvCapLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 3742739144" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-order item. Reorder point does not apply: supply is created per demand.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType MTOSkippedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 2246190550" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No lead time available: no receipt history, no Lead Time Calculation, and the setup fallback is 0.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType NoLeadTimeLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: a reorder point does not apply.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating Reorder Point...\#1######### / #2#########</source>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 3376554930" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Covers expected demand during lead time (no safety stock buffer).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType WithoutSSLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2423284932 - NamedType 3008349020" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Covers expected demand during lead time, on top of the safety stock buffer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Reorder Point - NamedType WithSSLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 885301183 - NamedType 1879987899" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum Inventory = ROP %1 + EOQ %2 = %3. Order-up-to level for the Maximum Qty. policy.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = reorder point, %2 = EOQ, %3 = maximum inventory</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Run All - NamedType MaxInvFormulaLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 885301183 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating planning parameters...\#1######### / #2#########</source>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Run All - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 3712530721" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffer covers demand and lead-time variability at %1%% service level.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = service level percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType BothVaryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 186580641" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffer covers demand variability over a stable lead time at %1%% service level.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = service level percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType DemandVariesLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 184241153" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only %1 demand observations found (minimum %2).</source>
+          <note from="Developer" annotates="general" priority="2">%1 = observations found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType InsufficientDataLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 3372613361" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning: intermittent demand (ADI %1) — the Z-score method assumes roughly normal demand and may be unreliable here.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = average demand interval</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType IntermittentWarnLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 1497909880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffer covers lead-time variability over stable demand at %1%% service level.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = service level percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType LeadVariesLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 3742739144" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-order item. Safety stock does not apply: supply is created per demand.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType MTOSkippedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 2267599237" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No buffer needed: demand and lead time are perfectly stable over the history window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType NoBufferLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 2246190550" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No lead time available: no receipt history, no Lead Time Calculation, and the setup fallback is 0.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType NoLeadTimeLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: stock-level planning does not apply.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating Safety Stock...\#1######### / #2#########</source>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3102328907 - NamedType 4161323925" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Z=%1; LT=%2 d (s=%3); D=%4/d (s=%5); n=%6 obs.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = Z-score, %2 = lead time days, %3 = lead time std dev, %4 = avg daily demand, %5 = demand std dev, %6 = observations</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit IPL Safety Stock - NamedType StatsLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Calculation Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 508884519 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the result was written to the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Applied - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 482287890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the mean daily demand over the history window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Avg Daily Demand - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 2316251556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies when the calculation ran.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Calculation DateTime - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 772194043 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which calculator produced this entry.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Calculation Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 1904292362 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of days with demand in the history window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Demand Observations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 2785693217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the demand classification: Smooth, Erratic, Intermittent or Lumpy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Demand Pattern - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the sequential number of the log entry.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item the calculation ran for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 4122288609 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the lead time used, in days.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Lead Time (Days) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 1226191712 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies where the lead time came from: receipt history, the item, or the setup fallback.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Lead Time Source - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 2898143332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the explanation of the result — the formula inputs, or why the item was skipped.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Note - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 2033857254 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value on the item before this calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Previous Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 681395287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the recommended reordering policy (policy advice entries only).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Recommended Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 472338107 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated value.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Result - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 2893504 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the outcome: OK, or the reason the item was skipped.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 1269799554 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the service level used (safety stock entries only).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control Service Level % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3867404324 - Control 2708250016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the user who ran the calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Calculation Log - Control User ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Worksheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Method 568138502 - NamedType 39884288" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 of %2 line(s) change the reorder point by more than 25%.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = lines with significant variance, %2 = total lines</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Method ShowVarianceSummary - NamedType VarianceMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 4233181637 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the maximum inventory currently on the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Current Maximum Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 3414567291 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item's current reordering policy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Current Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 3176444128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reorder point currently on the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Current Reorder Point - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 341230349 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reorder quantity currently on the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Current Reorder Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 2679405511 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the safety stock currently on the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Current Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 2785693217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the demand classification: Smooth, Erratic, Intermittent or Lumpy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Demand Pattern - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item description.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 1361363641 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the EOQ calculation outcome.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control EOQ Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 2898143332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the advisor's reasoning for this item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Note - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 2649799797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated economic order quantity proposal.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Proposed EOQ - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 1935442638 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the proposed order-up-to level (reorder point + EOQ) for items on the Maximum Qty. policy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Proposed Maximum Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 3483907111 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated reorder point proposal.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Proposed Reorder Point - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 4178540216 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated safety stock proposal.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Proposed Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 681395287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reordering policy the advisor recommends.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Recommended Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 806068139 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reorder point calculation outcome.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control ROP Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 90423963 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether this item is included when you choose Apply Selected.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control Selected - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Control 1373223232 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the safety stock calculation outcome.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Control SS Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 3673560479 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run the calculators with apply for every selected line. Values are recalculated, validated and logged — not copied from the preview.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action ApplySelected - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 3673560479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply Selected</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action ApplySelected - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 3673560479 - Method 1377591017 - NamedType 750120336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply calculated planning values to %1 selected item(s)?</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of selected items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action ApplySelected - Method OnAction - NamedType ConfirmQst</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 3673560479 - Method 1377591017 - NamedType 2045047760" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 item(s) updated.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items applied</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action ApplySelected - Method OnAction - NamedType AppliedMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 698062523 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deselect every loaded line.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action ClearSelection - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 698062523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clear Selection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action ClearSelection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 3669109468 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Choose an item filter and compute a proposal preview for every matching inventory item. Nothing is written to items.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action LoadItems - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 3669109468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Load Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action LoadItems - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 455269300 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the calculation log.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action OpenLog - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 455269300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action OpenLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 4007289061 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Inventory Planning Setup.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action OpenSetup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 4007289061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action OpenSetup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 2223207931 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select every loaded line.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action SelectAll - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2456394330 - Action 2223207931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select All</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Planning Worksheet - Action SelectAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - NamedType 2290365638" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning: recalculate planning parameters</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - NamedType JobQueueDescriptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1937357221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3576601697 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied calculation writes the result to the configured EOQ target field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Apply EOQ - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1340177402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which item cost field feeds the holding-cost calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Cost Source - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3036267241 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which item field an applied EOQ is written to: Reorder Quantity or Order Multiple.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control EOQ Write Target - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2026703871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the annual holding cost as a fraction of unit cost. 0.25 means holding one unit for a year costs 25% of its unit cost.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Holding Rate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1987516760 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a cap on the calculated EOQ, expressed as months of demand, to stop erratic history producing an extreme order quantity.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Max EOQ Months - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1321691815 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the fixed cost of placing one order (S in the Wilson formula) in local currency.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Ordering Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 314481736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the fallback lead time in days, used when an item has no receipt history and no Lead Time Calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Default Lead Time (Days) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 658164308 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of calendar days of demand history, ending on the work date, that every calculator analyses.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control History Window (Days) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3413076906 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether production and assembly consumption count as demand alongside sales. Enable this in manufacturing companies so purchased components are planned from their real usage.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Include Consumption Demand - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2877734794 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether every calculation attempt, including skips and dynamic planning-time supplies, is written to the calculation log.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Log History - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3573055592 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the minimum number of days with demand required before a calculation is trusted. Items below this are skipped rather than given an unreliable number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Min Demand Observations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1552810735 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether calculated quantities are rounded up to whole units.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Round Up Results - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1589467346 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether make-to-order items (Make-to-Order manufacturing policy or Order reordering policy) are skipped. Their supply pegs to demand, so stock-level parameters do not apply.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Skip Make-to-Order - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3584598915 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the deviation between recent demand and the full-window average above which calculations carry a trend warning in their notes, because history-based values lag ramps and phase-outs. 0 disables the warning.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Trend Warning Threshold % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2782249122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Planning Engine Integration</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Integration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 4099559675 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether calculated values are supplied directly to the planning engine at planning time via the Planning-Get Parameters events, instead of relying on values stored on the item. Items with a Stockkeeping Unit or that cannot be calculated fall back to their stored values.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Dynamic Provider Enabled - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2120414752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Policy Advisor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control PolicyAdvisor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 545084853 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied advice run writes the recommended Reordering Policy to the item. Off by default; recommendations are logged either way.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Auto-Update Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1758183902 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the squared coefficient of variation above which demand sizes count as erratic or lumpy (Syntetos-Boylan default 0.49).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Erratic CV2 Threshold - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2303263114 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Average Demand Interval above which demand counts as intermittent or lumpy (Syntetos-Boylan default 1.32).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Lumpy ADI Threshold - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2665507231 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether items with an Expiration Calculation are steered to the Maximum Qty. policy so standing stock is capped.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Perishable Means Max Qty. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 26218711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Point</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control ReorderPoint - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 929867162 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether a Run All writes Maximum Inventory (reorder point + EOQ, the order-up-to level) for items on the Maximum Qty. policy, completing the min/max parameter pair.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Apply Maximum Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 1696263963 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied calculation writes the result to the item's Reorder Point field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Apply Reorder Point - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2944416884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the safety stock quantity is added on top of demand-during-lead-time when calculating the reorder point.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Include Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2546652520 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the Reordering Policy is set to Fixed Reorder Qty. when a value is applied to an item that has no policy. In a Run All, this is suppressed when the policy advisor recommends a different policy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Set Policy When None - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3977797248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Safety Stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control SafetyStock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 2194643276 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied calculation writes the result to the item's Safety Stock Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Apply Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Control 3168170047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the target cycle service level used to derive the Z-score. 95% means accepting a stockout on roughly one replenishment cycle in twenty. Items can override this individually on the item card.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Control Default Service Level % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 2296796142 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This free app calculates at item level. Learn about per-location (SKU) planning, ABC service levels and the exception workbench in the GMSoft manufacturing suite.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action GMSoftSuite - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 2296796142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>About SKU-Level Planning</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action GMSoftSuite - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 3994974970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create a recurring Job Queue Entry that runs all calculators nightly. The entry is created on hold so you can review the schedule before setting it to Ready.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action CreateJobQueueEntry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 3994974970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Job Queue Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action CreateJobQueueEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 455269300 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the calculation log.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action OpenLog - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 455269300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action OpenLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 3746883742 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the planning worksheet to preview and selectively apply calculated values.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action OpenWorksheet - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2321321310 - Action 3746883742 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Planning Worksheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IPL Setup - Action OpenWorksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 4091958236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Inventory Planning</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLPlanning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2134454931 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Classify this item's demand pattern and recommend a reordering policy. Writes the policy only if auto-update is enabled in setup.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLAdvisePolicy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2134454931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Advise Reordering Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLAdvisePolicy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2134454931 - Method 1377591017 - NamedType 3664906983" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2433097399">
+          <source>Recommended policy: %1 (%2 demand). %3</source>
+          <note from="Developer" annotates="general" priority="2">%1 = recommended policy, %2 = demand pattern, %3 = reasoning</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLAdvisePolicy - Method OnAction - NamedType AdviceMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 510436394 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate the economic order quantity via the Wilson formula and apply it to the configured target field (subject to setup).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLEOQ - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 510436394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate EOQ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLEOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 510436394 - Method 1377591017 - NamedType 1007908279" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2433097399">
+          <source>EOQ: %1.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = calculated quantity</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLEOQ - Method OnAction - NamedType OkMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 510436394 - Method 1377591017 - NamedType 4032607691" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2433097399">
+          <source>EOQ not calculated: %1.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = result code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLEOQ - Method OnAction - NamedType SkippedMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2695662604 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate the reorder point from demand during lead time plus safety stock, and apply it (subject to setup).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLReorderPoint - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2695662604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate Reorder Point</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLReorderPoint - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2695662604 - Method 1377591017 - NamedType 1000503204" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2433097399">
+          <source>Reorder point: %1. %2</source>
+          <note from="Developer" annotates="general" priority="2">%1 = calculated value, %2 = explanation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLReorderPoint - Method OnAction - NamedType ResultMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2744846359 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Run policy advice, safety stock, reorder point and EOQ for this item in dependency order, and apply the results (subject to setup).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLRunAll - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2744846359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate All Planning Values</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLRunAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2744846359 - Method 1377591017 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2433097399">
+          <source>Planning values calculated. See the calculation log for details.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLRunAll - Method OnAction - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2146895211 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate safety stock from demand and lead-time variability and apply it (subject to setup).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLSafetyStock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2146895211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate Safety Stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLSafetyStock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 2146895211 - Method 1377591017 - NamedType 1000503204" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2433097399">
+          <source>Safety stock: %1. %2</source>
+          <note from="Developer" annotates="general" priority="2">%1 = calculated value, %2 = explanation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLSafetyStock - Method OnAction - NamedType ResultMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 917210312 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Open the calculation log filtered to this item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLViewLog - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Action 917210312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculation Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Action IPLViewLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Control 1238452500 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies whether this item is skipped by all Inventory Planning calculators, so manually maintained planning values are never overwritten.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Control IPL Exclude From Planning - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2433097399 - Control 2797532829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies a service level for this item's safety stock calculation, overriding the default in Inventory Planning Setup. 0 means use the default.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item Card Ext - Control IPL Service Level % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 4091958236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Inventory Planning</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLPlanning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 558840683 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Classify demand and log a policy recommendation for the selected rows, or for every inventory item in the current filter when no multi-selection is made. Policies are written only if auto-update is enabled in setup.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLAdviseBulk - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 558840683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Advise Policy (Selected/Filtered Items)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLAdviseBulk - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 558840683 - Method 1377591017 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2730431773">
+          <source>%1 item(s) advised. See the calculation log for recommendations.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items processed</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLAdviseBulk - Method OnAction - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 3522545911 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Run policy advice, safety stock, reorder point and EOQ for the selected rows, or for every inventory item in the current filter when no multi-selection is made, and apply the results (subject to setup).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLRunAllBulk - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 3522545911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Calculate All (Selected/Filtered Items)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLRunAllBulk - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 3522545911 - Method 1377591017 - NamedType 750120336" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2730431773">
+          <source>Calculate and apply planning values for %1 item(s)?</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items in scope</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLRunAllBulk - Method OnAction - NamedType ConfirmQst</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 3522545911 - Method 1377591017 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2730431773">
+          <source>%1 item(s) processed. See the calculation log for details.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items processed</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLRunAllBulk - Method OnAction - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 96485733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Open the planning worksheet to preview and selectively apply calculated values for a set of items.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLWorksheet - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 96485733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Planning Worksheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action IPLWorksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2730431773 - Action 1929153286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Inventory Planning</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension IPL Item List Ext - Action Category_IPL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2020980395 - Field 1238452500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Exclude from Inventory Planning</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension IPL Item Ext - Field IPL Exclude From Planning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2020980395 - Field 2797532829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Planning Service Level % (0 = default)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension IPL Item Ext - Field IPL Service Level % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Calculation Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - EnumValue 4277369802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dynamic Supply</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - EnumValue Dynamic Supply - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - EnumValue 1937357221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - EnumValue EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - EnumValue 1356249118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum Inventory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - EnumValue Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - EnumValue 1166850056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Policy Advice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - EnumValue Policy Advice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - EnumValue 3345871191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Point</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - EnumValue Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 852810472 - EnumValue 2152328616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Safety Stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Calculation Type - EnumValue Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3427453893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Cost Source</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Cost Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3427453893 - EnumValue 2885544704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Direct Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Cost Source - EnumValue Last Direct Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3427453893 - EnumValue 2838254244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Standard Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Cost Source - EnumValue Standard Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3427453893 - EnumValue 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Cost Source - EnumValue Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 544812190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning EOQ Write Target</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL EOQ Write Target - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 544812190 - EnumValue 3674469202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Multiple</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL EOQ Write Target - EnumValue Order Multiple - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 544812190 - EnumValue 1141850366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL EOQ Write Target - EnumValue Reorder Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2886448728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Policy Recommendation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Policy Recommendation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2886448728 - EnumValue 3944631703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fixed Reorder Qty.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Policy Recommendation - EnumValue Fixed Reorder Qty. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2886448728 - EnumValue 1206275391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insufficient Data</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Policy Recommendation - EnumValue Insufficient Data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2886448728 - EnumValue 140935925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot-for-Lot</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Policy Recommendation - EnumValue Lot-for-Lot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2886448728 - EnumValue 2173882422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum Qty.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Policy Recommendation - EnumValue Maximum Qty. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2886448728 - EnumValue 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Policy Recommendation - EnumValue Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Result Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 3429287649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cap Applied</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Cap Applied - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 2248886284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Error - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 963147798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excluded by Item Setting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Excluded - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 2073639854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insufficient Demand Data</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Insufficient Demand Data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 4278434639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Blocked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Item Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 799054929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-Order Skipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Make-to-Order Skipped - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 3883276324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Lead Time Data</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue No Lead Time Data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 2200678191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an Inventory Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Not an Inventory Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 2079045816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue OK - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 2226277383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Demand</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Zero Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 3105158753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Ordering Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Zero Ordering Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 3027107253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Result</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Zero Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1570173835 - EnumValue 1520781489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IPL Result Code - EnumValue Zero Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 2156419919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning - Admin</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet IPL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 2349384099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning - User</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet IPL - User - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

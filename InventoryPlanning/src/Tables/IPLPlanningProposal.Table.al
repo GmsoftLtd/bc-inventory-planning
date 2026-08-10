@@ -2,7 +2,7 @@
 /// Buffer for the Planning Worksheet page: current vs proposed planning values
 /// per item. Used with SourceTableTemporary only — never persisted.
 /// </summary>
-table 50502 "IPL Planning Proposal"
+table 70455002 "IPL Planning Proposal"
 {
     Caption = 'Inventory Planning Proposal';
     DataClassification = CustomerContent;
@@ -50,6 +50,12 @@ table 50502 "IPL Planning Proposal"
             Caption = 'Current Reordering Policy';
             DataClassification = CustomerContent;
         }
+        field(14; "Current Maximum Inventory"; Decimal)
+        {
+            Caption = 'Current Maximum Inventory';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+        }
         // ---- Proposed values ----
         field(20; "Proposed Safety Stock"; Decimal)
         {
@@ -66,6 +72,12 @@ table 50502 "IPL Planning Proposal"
         field(22; "Proposed EOQ"; Decimal)
         {
             Caption = 'Proposed EOQ';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+        }
+        field(25; "Proposed Maximum Inventory"; Decimal)
+        {
+            Caption = 'Proposed Maximum Inventory';
             DataClassification = CustomerContent;
             DecimalPlaces = 0 : 5;
         }

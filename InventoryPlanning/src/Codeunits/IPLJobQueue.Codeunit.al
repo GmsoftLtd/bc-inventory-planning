@@ -3,7 +3,7 @@
 /// the Job Queue Entry selects what runs: SAFETYSTOCK, REORDERPOINT, EOQ,
 /// ADVISOR, or ALL (default when empty). Results are applied and logged.
 /// </summary>
-codeunit 50518 "IPL Job Queue"
+codeunit 70455018 "IPL Job Queue"
 {
     TableNo = "Job Queue Entry";
 

@@ -1,7 +1,7 @@
 /// <summary>
 /// Read-only list of every calculation attempt across all four calculators.
 /// </summary>
-page 50501 "IPL Calculation Log"
+page 70455001 "IPL Calculation Log"
 {
     PageType = List;
     SourceTable = "IPL Calculation Log";

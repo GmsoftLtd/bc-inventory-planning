@@ -1,14 +1,16 @@
 /// <summary>
 /// Central telemetry wrapper. Event IDs: IPL0001 scheduled run completed,
-/// IPL0002 bulk run completed, IPL0003 dynamic provider served a planning run.
-/// All dimensions are counts and codes — never customer data.
+/// IPL0002 bulk run completed, IPL0003 dynamic provider computed values for a
+/// planning run. All dimensions are counts and codes — never customer data.
+/// Publisher-scope telemetry requires applicationInsightsConnectionString to
+/// be set in app.json.
 /// </summary>
-codeunit 50521 "IPL Telemetry"
+codeunit 70455021 "IPL Telemetry"
 {
     var
-        CategoryTxt: Label 'Inventory Planning', Locked = true;
         ScheduledRunMsg: Label 'Scheduled planning recalculation completed', Locked = true;
         BulkRunMsg: Label 'Bulk planning calculation completed', Locked = true;
+        DynamicSupplyMsg: Label 'Dynamic provider computed planning values', Locked = true;
 
     /// <summary>
     /// Logs completion of a Job Queue run.
@@ -33,6 +35,18 @@ codeunit 50521 "IPL Telemetry"
         Dimensions.Add('calcType', CalcType);
         Dimensions.Add('itemsProcessed', Format(ItemsProcessed));
         Session.LogMessage('IPL0002', BulkRunMsg, Verbosity::Normal,
+            DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher, Dimensions);
+    end;
+
+    /// <summary>
+    /// Logs one fresh dynamic-provider computation (at most one per item per
+    /// cache lifetime). No dimensions: the event count is the measure.
+    /// </summary>
+    procedure LogDynamicSupply()
+    var
+        Dimensions: Dictionary of [Text, Text];
+    begin
+        Session.LogMessage('IPL0003', DynamicSupplyMsg, Verbosity::Normal,
             DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher, Dimensions);
     end;
 }

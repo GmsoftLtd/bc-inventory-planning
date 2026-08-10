@@ -9,15 +9,17 @@
   "EULA": "https://github.com/GmsoftLtd/bc-inventory-planning/blob/main/LICENSE",
   "help": "https://insidebusinesscentral.com/",
   "url": "https://insidebusinesscentral.com/",
-  "logo": "",
+  "contextSensitiveHelpUrl": "https://insidebusinesscentral.com/help/",
+  "logo": "logo/icon.png",
   "dependencies": [],
   "screenshots": [],
-  "platform": "1.0.0.0",
+  "platform": "28.0.0.0",
   "application": "28.0.0.0",
+  "applicationInsightsConnectionString": "",
   "idRanges": [
     {
-      "from": 50500,
-      "to": 50599
+      "from": 70455000,
+      "to": 70455099
     }
   ],
   "resourceExposurePolicy": {

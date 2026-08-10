@@ -1,8 +1,26 @@
 /// <summary>
-/// Adds the four calculators and the run-all action to the Item Card.
+/// Adds the per-item planning controls to the Planning tab, and the four
+/// calculators plus the run-all action to the Item Card.
 /// </summary>
-pageextension 50500 "IPL Item Card Ext" extends "Item Card"
+pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 {
+    layout
+    {
+        addlast(Planning)
+        {
+            field("IPL Exclude From Planning"; Rec."IPL Exclude From Planning")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies whether this item is skipped by all Inventory Planning calculators, so manually maintained planning values are never overwritten.';
+            }
+            field("IPL Service Level %"; Rec."IPL Service Level %")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies a service level for this item''s safety stock calculation, overriding the default in Inventory Planning Setup. 0 means use the default.';
+            }
+        }
+    }
+
     actions
     {
         addlast(processing)

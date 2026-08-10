@@ -3,7 +3,7 @@
 /// separate setup tables of the standalone apps. Defaults follow the standalone
 /// apps' defaults so behaviour is unchanged after migration.
 /// </summary>
-table 50500 "IPL Setup"
+table 70455000 "IPL Setup"
 {
     Caption = 'Inventory Planning Setup';
     DataClassification = CustomerContent;
@@ -56,6 +56,20 @@ table 50500 "IPL Setup"
             MinValue = 0;
             InitValue = 7;
         }
+        field(16; "Include Consumption Demand"; Boolean)
+        {
+            Caption = 'Count Consumption as Demand';
+            DataClassification = CustomerContent;
+            InitValue = false;
+        }
+        field(17; "Trend Warning Threshold %"; Decimal)
+        {
+            Caption = 'Trend Warning Threshold % (0 = off)';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 2;
+            MinValue = 0;
+            InitValue = 30;
+        }
         // ---- Safety Stock ----
         field(20; "Default Service Level %"; Decimal)
         {
@@ -88,6 +102,12 @@ table 50500 "IPL Setup"
         field(32; "Set Policy When None"; Boolean)
         {
             Caption = 'Set Policy to Fixed Reorder Qty. when None';
+            DataClassification = CustomerContent;
+            InitValue = true;
+        }
+        field(33; "Apply Maximum Inventory"; Boolean)
+        {
+            Caption = 'Write Maximum Inventory (ROP + EOQ) for Maximum Qty. Items';
             DataClassification = CustomerContent;
             InitValue = true;
         }
@@ -180,12 +200,15 @@ table 50500 "IPL Setup"
 
     /// <summary>
     /// Gets the singleton setup record, creating it with defaults on first use.
+    /// Safe against two sessions racing to create it: if the insert loses the
+    /// race, the winner's record is read instead of surfacing a PK error.
     /// </summary>
     procedure GetSetup()
     begin
         if not Get() then begin
             Init();
-            Insert();
+            if not Insert() then
+                Get();
         end;
     end;
 }

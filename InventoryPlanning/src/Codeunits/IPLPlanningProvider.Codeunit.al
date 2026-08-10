@@ -8,19 +8,30 @@
 /// - Subscribes to OnAtSKUOnAfterCopyFromItem on codeunit 99000855
 ///   "Planning-Get Parameters" (verified against BC 28 symbols), which passes
 ///   the Stockkeeping Unit buffer the planning run consumes.
+/// - Real Stockkeeping Units are never touched: if a SKU record exists for the
+///   item/location/variant, its per-location parameters stand. The provider
+///   only fills the buffer that planning copied from the item card — the same
+///   values batch mode would have written there.
 /// - SingleInstance with a per-run cache: the event fires once per planned
 ///   item/SKU, and a cold ILE aggregation per call would make a large planning
 ///   run crawl. The cache invalidates after 5 minutes.
 /// - Fails open: if the item can't be calculated (insufficient data, blocked,
-///   make-to-order), the stored values are left untouched.
+///   excluded, make-to-order), the stored values are left untouched.
 /// - Never touches order modifiers (Minimum/Maximum Order Qty, Order Multiple):
 ///   the engine applies those after this point and stays authoritative.
-/// - Statistics are item-level (consistent with batch mode); location/variant
-///   granularity is a future enhancement.
+/// - Every fresh computation is written to the calculation log (subject to the
+///   Log History setting) as a Dynamic Supply entry, so a planner can always
+///   trace where a requisition line's parameters came from, and emits
+///   telemetry event IPL0003.
+/// - Statistics are item-level (consistent with batch mode).
 /// </summary>
-codeunit 50517 "IPL Planning Provider"
+codeunit 70455017 "IPL Planning Provider"
 {
     SingleInstance = true;
+    Permissions = tabledata Item = r,
+                  tabledata "Stockkeeping Unit" = r,
+                  tabledata "IPL Setup" = ri,
+                  tabledata "IPL Calculation Log" = ri;
 
     var
         CachedSS: Dictionary of [Code[20], Decimal];
@@ -29,14 +40,20 @@ codeunit 50517 "IPL Planning Provider"
         CachedMiss: List of [Code[20]];
         CacheCreatedAt: DateTime;
         CacheTTLMinutes: Integer;
+        DynamicSupplyLbl: Label 'Supplied at planning time: SS=%1, ROP=%2, RQ=%3.', Comment = '%1 = safety stock, %2 = reorder point, %3 = reorder quantity (0 = not supplied)';
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Planning-Get Parameters", 'OnAtSKUOnAfterCopyFromItem', '', false, false)]
     local procedure SupplyCalculatedParametersOnAtSKU(var GlobalSKU: Record "Stockkeeping Unit"; var Item: Record Item; ItemNo: Code[20]; VariantCode: Code[10]; LocationCode: Code[10])
     var
+        StockkeepingUnit: Record "Stockkeeping Unit";
         SafetyStock: Decimal;
         ReorderPoint: Decimal;
         ReorderQty: Decimal;
     begin
+        // A real SKU carries deliberate per-location parameters; leave it alone.
+        if StockkeepingUnit.Get(LocationCode, ItemNo, VariantCode) then
+            exit;
+
         if not TryGetPlanningValues(ItemNo, SafetyStock, ReorderPoint, ReorderQty) then
             exit; // fail open — stored values stand
 
@@ -59,6 +76,7 @@ codeunit 50517 "IPL Planning Provider"
         ReorderPointCalc: Codeunit "IPL Reorder Point";
         EOQCalc: Codeunit "IPL EOQ";
         DemandStats: Codeunit "IPL Demand Statistics";
+        Telemetry: Codeunit "IPL Telemetry";
         SSCode: Enum "IPL Result Code";
         ROPCode: Enum "IPL Result Code";
         EOQCode: Enum "IPL Result Code";
@@ -84,6 +102,8 @@ codeunit 50517 "IPL Planning Provider"
             exit(RememberMiss(ItemNo));
         if Item.Blocked or (Item.Type <> Item.Type::Inventory) then
             exit(RememberMiss(ItemNo));
+        if Item."IPL Exclude From Planning" then
+            exit(RememberMiss(ItemNo));
         if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then
             exit(RememberMiss(ItemNo));
 
@@ -104,6 +124,9 @@ codeunit 50517 "IPL Planning Provider"
         CachedSS.Set(ItemNo, SafetyStock);
         CachedROP.Set(ItemNo, ReorderPoint);
         CachedRQ.Set(ItemNo, ReorderQty);
+
+        LogDynamicSupply(Setup, ItemNo, SafetyStock, ReorderPoint, ReorderQty);
+        Telemetry.LogDynamicSupply();
         exit(true);
     end;
 
@@ -133,5 +156,31 @@ codeunit 50517 "IPL Planning Provider"
         if not CachedMiss.Contains(ItemNo) then
             CachedMiss.Add(ItemNo);
         exit(false);
+    end;
+
+    /// <summary>
+    /// One audit row per fresh dynamic computation (at most one per item per
+    /// cache lifetime), so planning-time values are as traceable as batch ones.
+    /// </summary>
+    local procedure LogDynamicSupply(Setup: Record "IPL Setup"; ItemNo: Code[20]; SafetyStock: Decimal; ReorderPoint: Decimal; ReorderQty: Decimal)
+    var
+        LogEntry: Record "IPL Calculation Log";
+    begin
+        if not Setup."Log History" then
+            exit;
+        LogEntry.Init();
+        LogEntry."Calculation Type" := LogEntry."Calculation Type"::"Dynamic Supply";
+        LogEntry."Item No." := ItemNo;
+        LogEntry."Calculation DateTime" := CurrentDateTime();
+        LogEntry."User ID" := CopyStr(UserId(), 1, MaxStrLen(LogEntry."User ID"));
+        LogEntry."Raw Result" := SafetyStock;
+        LogEntry.Result := ReorderPoint;
+        LogEntry.Applied := false;
+        LogEntry."Result Code" := LogEntry."Result Code"::OK;
+        LogEntry.Note := CopyStr(
+            StrSubstNo(DynamicSupplyLbl,
+                Format(SafetyStock, 0, 9), Format(ReorderPoint, 0, 9), Format(ReorderQty, 0, 9)),
+            1, MaxStrLen(LogEntry.Note));
+        LogEntry.Insert(true);
     end;
 }

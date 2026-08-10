@@ -1,7 +1,7 @@
 /// <summary>
 /// Identifies which calculator produced a calculation-log entry.
 /// </summary>
-enum 50500 "IPL Calculation Type"
+enum 70455000 "IPL Calculation Type"
 {
     Extensible = true;
     Caption = 'Inventory Planning Calculation Type';
@@ -21,5 +21,13 @@ enum 50500 "IPL Calculation Type"
     value(3; "Policy Advice")
     {
         Caption = 'Policy Advice';
+    }
+    value(4; "Dynamic Supply")
+    {
+        Caption = 'Dynamic Supply';
+    }
+    value(5; "Maximum Inventory")
+    {
+        Caption = 'Maximum Inventory';
     }
 }

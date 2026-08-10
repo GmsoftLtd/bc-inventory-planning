@@ -2,7 +2,7 @@
 /// Outcome of a single calculation. OK and Cap Applied carry a usable result;
 /// everything else explains why the item was skipped and no value was produced.
 /// </summary>
-enum 50501 "IPL Result Code"
+enum 70455001 "IPL Result Code"
 {
     Extensible = true;
     Caption = 'Inventory Planning Result Code';
@@ -46,6 +46,14 @@ enum 50501 "IPL Result Code"
     value(9; "Not an Inventory Item")
     {
         Caption = 'Not an Inventory Item';
+    }
+    value(10; Excluded)
+    {
+        Caption = 'Excluded by Item Setting';
+    }
+    value(11; "Zero Result")
+    {
+        Caption = 'Zero Result';
     }
     value(99; Error)
     {

@@ -2,10 +2,13 @@
 /// Safety stock from historical demand and lead-time variability using the
 /// Z-score method: SS = Z x sqrt(LT x sigmaD² + D² x sigmaLT²).
 /// Port of the standalone BC Safety Stock Calculator onto the shared engine.
+/// Lead time comes from the shared ComputeLeadTime resolution, so safety stock
+/// and reorder point always agree on the lead time for an item.
 /// </summary>
-codeunit 50512 "IPL Safety Stock"
+codeunit 70455012 "IPL Safety Stock"
 {
     Permissions = tabledata Item = rm,
+                  tabledata "IPL Setup" = ri,
                   tabledata "IPL Calculation Log" = ri;
 
     var
@@ -14,19 +17,22 @@ codeunit 50512 "IPL Safety Stock"
         IPLMath: Codeunit "IPL Math";
         SetupLoaded: Boolean;
         ItemBlockedLbl: Label 'Item is blocked.';
+        NotInventoryLbl: Label 'Not an inventory item: stock-level planning does not apply.';
+        ExcludedLbl: Label 'Item is excluded from inventory planning.';
+        MTOSkippedLbl: Label 'Make-to-order item. Safety stock does not apply: supply is created per demand.';
         InsufficientDataLbl: Label 'Only %1 demand observations found (minimum %2).', Comment = '%1 = observations found, %2 = minimum required';
-        NoLeadTimeLbl: Label 'No historical lead time and no Lead Time Calculation on item.';
+        NoLeadTimeLbl: Label 'No lead time available: no receipt history, no Lead Time Calculation, and the setup fallback is 0.';
         NoBufferLbl: Label 'No buffer needed: demand and lead time are perfectly stable over the history window.';
         BothVaryLbl: Label 'Buffer covers demand and lead-time variability at %1%% service level.', Comment = '%1 = service level percent';
         DemandVariesLbl: Label 'Buffer covers demand variability over a stable lead time at %1%% service level.', Comment = '%1 = service level percent';
         LeadVariesLbl: Label 'Buffer covers lead-time variability over stable demand at %1%% service level.', Comment = '%1 = service level percent';
+        IntermittentWarnLbl: Label 'Warning: intermittent demand (ADI %1) — the Z-score method assumes roughly normal demand and may be unreliable here.', Comment = '%1 = average demand interval';
         StatsLbl: Label 'Z=%1; LT=%2 d (s=%3); D=%4/d (s=%5); n=%6 obs.', Comment = '%1 = Z-score, %2 = lead time days, %3 = lead time std dev, %4 = avg daily demand, %5 = demand std dev, %6 = observations';
-        PurchaseHistorySrcLbl: Label 'Purchase receipt history';
-        ItemLeadTimeSrcLbl: Label 'Item Lead Time Calculation';
         ProgressLbl: Label 'Calculating Safety Stock...\#1######### / #2#########', Comment = '#1 = current item counter, #2 = total items';
 
     /// <summary>
     /// Calculates safety stock for one item; optionally writes it to the item.
+    /// Service level priority: explicit parameter > item-level override > setup default.
     /// </summary>
     procedure CalculateForItem(ItemNo: Code[20]; ServiceLevelPct: Decimal; Apply: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
     begin
@@ -58,15 +64,40 @@ codeunit 50512 "IPL Safety Stock"
         Applied: Boolean;
     begin
         EnsureSetup();
-        if (ServiceLevelPct <= 0) or (ServiceLevelPct > 100) then
-            ServiceLevelPct := Setup."Default Service Level %";
 
         if not Item.Get(ItemNo) then
             exit(0);
 
+        if (ServiceLevelPct <= 0) or (ServiceLevelPct > 100) then
+            if Item."IPL Service Level %" > 0 then
+                ServiceLevelPct := Item."IPL Service Level %"
+            else
+                ServiceLevelPct := Setup."Default Service Level %";
+
+        if Item.Type <> Item.Type::Inventory then begin
+            ResultCode := ResultCode::"Not an Inventory Item";
+            Note := NotInventoryLbl;
+            LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
+            exit(0);
+        end;
+
         if Item.Blocked then begin
             ResultCode := ResultCode::"Item Blocked";
             Note := ItemBlockedLbl;
+            LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
+            exit(0);
+        end;
+
+        if Item."IPL Exclude From Planning" then begin
+            ResultCode := ResultCode::Excluded;
+            Note := ExcludedLbl;
+            LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
+            exit(0);
+        end;
+
+        if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then begin
+            ResultCode := ResultCode::"Make-to-Order Skipped";
+            Note := MTOSkippedLbl;
             LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
             exit(0);
         end;
@@ -79,15 +110,7 @@ codeunit 50512 "IPL Safety Stock"
             exit(0);
         end;
 
-        DemandStats.ComputePurchaseLeadTime(ItemNo, AvgLeadTime, LeadTimeStdDev);
-        if AvgLeadTime > 0 then
-            LeadTimeSource := PurchaseHistorySrcLbl
-        else begin
-            AvgLeadTime := DemandStats.DaysFromDateFormula(Item."Lead Time Calculation");
-            LeadTimeStdDev := 0;
-            if AvgLeadTime > 0 then
-                LeadTimeSource := ItemLeadTimeSrcLbl;
-        end;
+        DemandStats.ComputeLeadTime(Item, Setup."Default Lead Time (Days)", AvgLeadTime, LeadTimeStdDev, LeadTimeSource);
         if AvgLeadTime <= 0 then begin
             ResultCode := ResultCode::"No Lead Time Data";
             Note := NoLeadTimeLbl;
@@ -112,11 +135,12 @@ codeunit 50512 "IPL Safety Stock"
 
         ResultCode := ResultCode::OK;
         Note := CopyStr(
-            BuildReason(SafetyStock, ServiceLevelPct, DemandStdDev, LeadTimeStdDev) + ' ' +
+            BuildReason(SafetyStock, ServiceLevelPct, DemandStdDev, LeadTimeStdDev, ADI) + ' ' +
             StrSubstNo(StatsLbl,
                 Format(Round(ZScore, 0.0001), 0, 9), Format(Round(AvgLeadTime, 0.01), 0, 9),
                 Format(Round(LeadTimeStdDev, 0.01), 0, 9), Format(Round(AvgDemand, 0.01), 0, 9),
-                Format(Round(DemandStdDev, 0.01), 0, 9), Observations),
+                Format(Round(DemandStdDev, 0.01), 0, 9), Observations) +
+            DemandStats.BuildAdvisoryText(ItemNo, Setup."History Window (Days)", Setup."Trend Warning Threshold %"),
             1, MaxStrLen(Note));
 
         LogResult(Item, ServiceLevelPct, ZScore, AvgDemand, DemandStdDev, Observations, AvgLeadTime, LeadTimeStdDev, LeadTimeSource, SafetyStock, PreviousSS, Applied, DoLog, ResultCode, Note);
@@ -125,6 +149,7 @@ codeunit 50512 "IPL Safety Stock"
 
     /// <summary>
     /// Bulk calculation for the items filtered on the record passed in.
+    /// Commits every 100 items, so callers must tolerate intermediate commits.
     /// </summary>
     procedure CalculateBulk(var ItemFilter: Record Item; ServiceLevelPct: Decimal; Apply: Boolean): Integer
     var
@@ -139,6 +164,7 @@ codeunit 50512 "IPL Safety Stock"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
+        Item.SetRange("IPL Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -154,6 +180,8 @@ codeunit 50512 "IPL Safety Stock"
                 if GuiAllowed() then
                     ProgressDialog.Update(1, Format(Done));
                 CalculateForItem(Item."No.", ServiceLevelPct, Apply, ResultCode, Note);
+                if Done mod 100 = 0 then
+                    Commit();
             until Item.Next() = 0;
 
         if GuiAllowed() then
@@ -161,20 +189,25 @@ codeunit 50512 "IPL Safety Stock"
         exit(Done);
     end;
 
-    local procedure BuildReason(SafetyStock: Decimal; ServiceLevelPct: Decimal; DemandStdDev: Decimal; LeadTimeStdDev: Decimal): Text
+    local procedure BuildReason(SafetyStock: Decimal; ServiceLevelPct: Decimal; DemandStdDev: Decimal; LeadTimeStdDev: Decimal; ADI: Decimal): Text
+    var
+        Reason: Text;
     begin
         if SafetyStock <= 0 then
             exit(NoBufferLbl);
         case true of
             (DemandStdDev > 0) and (LeadTimeStdDev > 0):
-                exit(StrSubstNo(BothVaryLbl, Format(ServiceLevelPct, 0, 9)));
+                Reason := StrSubstNo(BothVaryLbl, Format(ServiceLevelPct, 0, 9));
             DemandStdDev > 0:
-                exit(StrSubstNo(DemandVariesLbl, Format(ServiceLevelPct, 0, 9)));
+                Reason := StrSubstNo(DemandVariesLbl, Format(ServiceLevelPct, 0, 9));
             LeadTimeStdDev > 0:
-                exit(StrSubstNo(LeadVariesLbl, Format(ServiceLevelPct, 0, 9)));
-            else
-                exit('');
+                Reason := StrSubstNo(LeadVariesLbl, Format(ServiceLevelPct, 0, 9));
         end;
+        // The advisor's own threshold marks where the normal approximation
+        // stops being trustworthy; say so instead of pretending precision.
+        if ADI >= Setup."Lumpy ADI Threshold" then
+            Reason := Reason + ' ' + StrSubstNo(IntermittentWarnLbl, Format(Round(ADI, 0.01), 0, 9));
+        exit(Reason);
     end;
 
     local procedure LogResult(Item: Record Item; SLPct: Decimal; Z: Decimal; AvgD: Decimal; SDD: Decimal; Obs: Integer; AvgLT: Decimal; SDL: Decimal; LTSource: Text[50]; Result: Decimal; PrevResult: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "IPL Result Code"; Note: Text[250])

@@ -1,7 +1,7 @@
 /// <summary>
 /// Setup card for all four calculators and the dynamic planning provider.
 /// </summary>
-page 50500 "IPL Setup"
+page 70455000 "IPL Setup"
 {
     PageType = Card;
     SourceTable = "IPL Setup";
@@ -21,12 +21,22 @@ page 50500 "IPL Setup"
                 field("History Window (Days)"; Rec."History Window (Days)")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the number of calendar days of demand history, ending today, that every calculator analyses.';
+                    ToolTip = 'Specifies the number of calendar days of demand history, ending on the work date, that every calculator analyses.';
                 }
                 field("Min Demand Observations"; Rec."Min Demand Observations")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the minimum number of days with demand required before a calculation is trusted. Items below this are skipped rather than given an unreliable number.';
+                }
+                field("Include Consumption Demand"; Rec."Include Consumption Demand")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether production and assembly consumption count as demand alongside sales. Enable this in manufacturing companies so purchased components are planned from their real usage.';
+                }
+                field("Trend Warning Threshold %"; Rec."Trend Warning Threshold %")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the deviation between recent demand and the full-window average above which calculations carry a trend warning in their notes, because history-based values lag ramps and phase-outs. 0 disables the warning.';
                 }
                 field("Round Up Results"; Rec."Round Up Results")
                 {
@@ -46,7 +56,7 @@ page 50500 "IPL Setup"
                 field("Log History"; Rec."Log History")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies whether every calculation attempt, including skips, is written to the calculation log.';
+                    ToolTip = 'Specifies whether every calculation attempt, including skips and dynamic planning-time supplies, is written to the calculation log.';
                 }
             }
             group(SafetyStock)
@@ -55,7 +65,7 @@ page 50500 "IPL Setup"
                 field("Default Service Level %"; Rec."Default Service Level %")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the target cycle service level used to derive the Z-score. 95% means accepting a stockout on roughly one replenishment cycle in twenty.';
+                    ToolTip = 'Specifies the target cycle service level used to derive the Z-score. 95% means accepting a stockout on roughly one replenishment cycle in twenty. Items can override this individually on the item card.';
                 }
                 field("Apply Safety Stock"; Rec."Apply Safety Stock")
                 {
@@ -79,7 +89,12 @@ page 50500 "IPL Setup"
                 field("Set Policy When None"; Rec."Set Policy When None")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies whether the Reordering Policy is set to Fixed Reorder Qty. when a value is applied to an item that has no policy.';
+                    ToolTip = 'Specifies whether the Reordering Policy is set to Fixed Reorder Qty. when a value is applied to an item that has no policy. In a Run All, this is suppressed when the policy advisor recommends a different policy.';
+                }
+                field("Apply Maximum Inventory"; Rec."Apply Maximum Inventory")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether a Run All writes Maximum Inventory (reorder point + EOQ, the order-up-to level) for items on the Maximum Qty. policy, completing the min/max parameter pair.';
                 }
             }
             group(EOQ)
@@ -146,11 +161,92 @@ page 50500 "IPL Setup"
                 field("Dynamic Provider Enabled"; Rec."Dynamic Provider Enabled")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies whether calculated values are supplied directly to the planning engine at planning time via the Planning-Get Parameters events, instead of relying on values stored on the item. Items that cannot be calculated fall back to their stored values.';
+                    ToolTip = 'Specifies whether calculated values are supplied directly to the planning engine at planning time via the Planning-Get Parameters events, instead of relying on values stored on the item. Items with a Stockkeeping Unit or that cannot be calculated fall back to their stored values.';
                 }
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(CreateJobQueueEntry)
+            {
+                ApplicationArea = All;
+                Caption = 'Create Job Queue Entry';
+                Image = Calendar;
+                ToolTip = 'Create a recurring Job Queue Entry that runs all calculators nightly. The entry is created on hold so you can review the schedule before setting it to Ready.';
+
+                trigger OnAction()
+                var
+                    JobQueueEntry: Record "Job Queue Entry";
+                begin
+                    JobQueueEntry.Init();
+                    JobQueueEntry.ID := CreateGuid();
+                    JobQueueEntry."Object Type to Run" := JobQueueEntry."Object Type to Run"::Codeunit;
+                    JobQueueEntry."Object ID to Run" := Codeunit::"IPL Job Queue";
+                    JobQueueEntry."Parameter String" := 'ALL';
+                    JobQueueEntry.Description := CopyStr(JobQueueDescriptionLbl, 1, MaxStrLen(JobQueueEntry.Description));
+                    JobQueueEntry."Recurring Job" := true;
+                    JobQueueEntry."Run on Mondays" := true;
+                    JobQueueEntry."Run on Tuesdays" := true;
+                    JobQueueEntry."Run on Wednesdays" := true;
+                    JobQueueEntry."Run on Thursdays" := true;
+                    JobQueueEntry."Run on Fridays" := true;
+                    JobQueueEntry."Run on Saturdays" := true;
+                    JobQueueEntry."Run on Sundays" := true;
+                    JobQueueEntry."Starting Time" := 030000T;
+                    JobQueueEntry.Status := JobQueueEntry.Status::"On Hold";
+                    JobQueueEntry.Insert(true);
+                    Page.Run(Page::"Job Queue Entry Card", JobQueueEntry);
+                end;
+            }
+            action(OpenWorksheet)
+            {
+                ApplicationArea = All;
+                Caption = 'Planning Worksheet';
+                Image = Worksheet;
+                RunObject = page "IPL Planning Worksheet";
+                ToolTip = 'Open the planning worksheet to preview and selectively apply calculated values.';
+            }
+            action(OpenLog)
+            {
+                ApplicationArea = All;
+                Caption = 'Calculation Log';
+                Image = History;
+                RunObject = page "IPL Calculation Log";
+                ToolTip = 'Open the calculation log.';
+            }
+        }
+        area(Navigation)
+        {
+            action(GMSoftSuite)
+            {
+                ApplicationArea = All;
+                Caption = 'About SKU-Level Planning';
+                Image = Info;
+                ToolTip = 'This free app calculates at item level. Learn about per-location (SKU) planning, ABC service levels and the exception workbench in the GMSoft manufacturing suite.';
+
+                trigger OnAction()
+                begin
+                    Hyperlink('https://insidebusinesscentral.com/');
+                end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                actionref(CreateJobQueueEntry_Promoted; CreateJobQueueEntry) { }
+                actionref(OpenWorksheet_Promoted; OpenWorksheet) { }
+                actionref(OpenLog_Promoted; OpenLog) { }
+            }
+        }
+    }
+
+    var
+        JobQueueDescriptionLbl: Label 'Inventory Planning: recalculate planning parameters';
 
     trigger OnOpenPage()
     begin
