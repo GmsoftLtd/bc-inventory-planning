@@ -14,6 +14,7 @@
         }
     ],
     "settings": {
+        "cSpell.enabled": false,
         "search.exclude": {
             "**/.alpackages": true,
             "**/.alcache": true,
