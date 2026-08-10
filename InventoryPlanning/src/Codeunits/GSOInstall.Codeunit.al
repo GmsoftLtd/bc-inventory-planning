@@ -21,16 +21,14 @@ codeunit 73030594 "GSO Install"
     begin
         Setup.GetSetup();
         GSOUpgrade.RegisterFreshInstallTags();
-    end;
-
-    trigger OnInstallAppPerDatabase()
-    begin
         AddLogToAllowedRetentionTables();
     end;
 
     /// <summary>
-    /// Registers the calculation log as retention-policy capable. Also invoked
-    /// by the platform's refresh event so the registration survives upgrades.
+    /// Registers the calculation log as retention-policy capable. The allowed
+    /// tables list is company-scoped, so this must run per company, never per
+    /// database. Also invoked by the platform's refresh event so the
+    /// registration survives upgrades.
     /// </summary>
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Reten. Pol. Allowed Tables", 'OnRefreshAllowedTables', '', false, false)]
     local procedure OnRefreshAllowedRetentionTables()
