@@ -22,16 +22,16 @@
 /// - Every fresh computation is written to the calculation log (subject to the
 ///   Log History setting) as a Dynamic Supply entry, so a planner can always
 ///   trace where a requisition line's parameters came from, and emits
-///   telemetry event IPL0003.
+///   telemetry event GSO0003.
 /// - Statistics are item-level (consistent with batch mode).
 /// </summary>
-codeunit 70455017 "IPL Planning Provider"
+codeunit 70455017 "GSO Planning Provider"
 {
     SingleInstance = true;
     Permissions = tabledata Item = r,
                   tabledata "Stockkeeping Unit" = r,
-                  tabledata "IPL Setup" = ri,
-                  tabledata "IPL Calculation Log" = ri;
+                  tabledata "GSO Setup" = ri,
+                  tabledata "GSO Calculation Log" = ri;
 
     var
         CachedSS: Dictionary of [Code[20], Decimal];
@@ -70,16 +70,16 @@ codeunit 70455017 "IPL Planning Provider"
     /// </summary>
     procedure TryGetPlanningValues(ItemNo: Code[20]; var SafetyStock: Decimal; var ReorderPoint: Decimal; var ReorderQty: Decimal): Boolean
     var
-        Setup: Record "IPL Setup";
+        Setup: Record "GSO Setup";
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        EOQCalc: Codeunit "IPL EOQ";
-        DemandStats: Codeunit "IPL Demand Statistics";
-        Telemetry: Codeunit "IPL Telemetry";
-        SSCode: Enum "IPL Result Code";
-        ROPCode: Enum "IPL Result Code";
-        EOQCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        EOQCalc: Codeunit "GSO EOQ";
+        DemandStats: Codeunit "GSO Demand Statistics";
+        Telemetry: Codeunit "GSO Telemetry";
+        SSCode: Enum "GSO Result Code";
+        ROPCode: Enum "GSO Result Code";
+        EOQCode: Enum "GSO Result Code";
         Note: Text[250];
         EOQQty: Decimal;
     begin
@@ -102,7 +102,7 @@ codeunit 70455017 "IPL Planning Provider"
             exit(RememberMiss(ItemNo));
         if Item.Blocked or (Item.Type <> Item.Type::Inventory) then
             exit(RememberMiss(ItemNo));
-        if Item."IPL Exclude From Planning" then
+        if Item."GSO Exclude From Planning" then
             exit(RememberMiss(ItemNo));
         if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then
             exit(RememberMiss(ItemNo));
@@ -162,9 +162,9 @@ codeunit 70455017 "IPL Planning Provider"
     /// One audit row per fresh dynamic computation (at most one per item per
     /// cache lifetime), so planning-time values are as traceable as batch ones.
     /// </summary>
-    local procedure LogDynamicSupply(Setup: Record "IPL Setup"; ItemNo: Code[20]; SafetyStock: Decimal; ReorderPoint: Decimal; ReorderQty: Decimal)
+    local procedure LogDynamicSupply(Setup: Record "GSO Setup"; ItemNo: Code[20]; SafetyStock: Decimal; ReorderPoint: Decimal; ReorderQty: Decimal)
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
     begin
         if not Setup."Log History" then
             exit;

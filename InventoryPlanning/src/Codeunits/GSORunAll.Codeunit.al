@@ -10,14 +10,14 @@
 /// applied, completing the min/max parameter pair the policy needs.
 /// Also builds and applies Planning Worksheet proposals.
 /// </summary>
-codeunit 70455016 "IPL Run All"
+codeunit 70455016 "GSO Run All"
 {
     Permissions = tabledata Item = rm,
-                  tabledata "IPL Setup" = ri,
-                  tabledata "IPL Calculation Log" = ri;
+                  tabledata "GSO Setup" = ri,
+                  tabledata "GSO Calculation Log" = ri;
 
     var
-        Setup: Record "IPL Setup";
+        Setup: Record "GSO Setup";
         SetupLoaded: Boolean;
         ProgressLbl: Label 'Calculating planning parameters...\#1######### / #2#########', Comment = '#1 = current item counter, #2 = total items';
         MaxInvFormulaLbl: Label 'Maximum Inventory = ROP %1 + EOQ %2 = %3. Order-up-to level for the Maximum Qty. policy.', Comment = '%1 = reorder point, %2 = EOQ, %3 = maximum inventory';
@@ -28,14 +28,14 @@ codeunit 70455016 "IPL Run All"
     procedure RunForItem(ItemNo: Code[20]; Apply: Boolean)
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        EOQCalc: Codeunit "IPL EOQ";
-        PolicyAdvisor: Codeunit "IPL Policy Advisor";
-        Recommendation: Enum "IPL Policy Recommendation";
-        SSCode: Enum "IPL Result Code";
-        ROPCode: Enum "IPL Result Code";
-        EOQCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        EOQCalc: Codeunit "GSO EOQ";
+        PolicyAdvisor: Codeunit "GSO Policy Advisor";
+        Recommendation: Enum "GSO Policy Recommendation";
+        SSCode: Enum "GSO Result Code";
+        ROPCode: Enum "GSO Result Code";
+        EOQCode: Enum "GSO Result Code";
         Pattern: Text[30];
         Note: Text[250];
         SafetyStock: Decimal;
@@ -80,7 +80,7 @@ codeunit 70455016 "IPL Run All"
     /// policy when both components are usable. Returns true when a new value
     /// was written.
     /// </summary>
-    local procedure TryApplyMaxInventory(ItemNo: Code[20]; ROPValue: Decimal; ROPCode: Enum "IPL Result Code"; EOQOk: Boolean; EOQQty: Decimal): Boolean
+    local procedure TryApplyMaxInventory(ItemNo: Code[20]; ROPValue: Decimal; ROPCode: Enum "GSO Result Code"; EOQOk: Boolean; EOQQty: Decimal): Boolean
     var
         Item: Record Item;
         NewMax: Decimal;
@@ -110,7 +110,7 @@ codeunit 70455016 "IPL Run All"
 
     local procedure LogMaxInventory(ItemNo: Code[20]; ROPValue: Decimal; EOQQty: Decimal; NewMax: Decimal; PreviousMax: Decimal)
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
     begin
         if not Setup."Log History" then
             exit;
@@ -152,7 +152,7 @@ codeunit 70455016 "IPL Run All"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
-        Item.SetRange("IPL Exclude From Planning", false);
+        Item.SetRange("GSO Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -181,16 +181,16 @@ codeunit 70455016 "IPL Run All"
     /// Fills the worksheet buffer with a preview proposal for every item in the
     /// filter. Nothing is written to items and nothing is logged.
     /// </summary>
-    procedure BuildProposals(var Proposal: Record "IPL Planning Proposal"; var ItemFilter: Record Item)
+    procedure BuildProposals(var Proposal: Record "GSO Planning Proposal"; var ItemFilter: Record Item)
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        EOQCalc: Codeunit "IPL EOQ";
-        PolicyAdvisor: Codeunit "IPL Policy Advisor";
-        SSCode: Enum "IPL Result Code";
-        ROPCode: Enum "IPL Result Code";
-        EOQCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        EOQCalc: Codeunit "GSO EOQ";
+        PolicyAdvisor: Codeunit "GSO Policy Advisor";
+        SSCode: Enum "GSO Result Code";
+        ROPCode: Enum "GSO Result Code";
+        EOQCode: Enum "GSO Result Code";
         Pattern: Text[30];
         Note: Text[250];
         DummyNote: Text[250];
@@ -205,7 +205,7 @@ codeunit 70455016 "IPL Run All"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
-        Item.SetRange("IPL Exclude From Planning", false);
+        Item.SetRange("GSO Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit;
@@ -269,7 +269,7 @@ codeunit 70455016 "IPL Run All"
     /// selected item, so writes go through the same validated, logged path as a
     /// direct run (never copied blindly from the preview).
     /// </summary>
-    procedure ApplySelected(var Proposal: Record "IPL Planning Proposal"): Integer
+    procedure ApplySelected(var Proposal: Record "GSO Planning Proposal"): Integer
     var
         Applied: Integer;
     begin

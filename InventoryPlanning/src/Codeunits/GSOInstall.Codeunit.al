@@ -4,10 +4,10 @@
 /// unbounded — admins choose the retention period), and lists the setup page
 /// under Manual Setup so administrators can find it.
 /// </summary>
-codeunit 70455019 "IPL Install"
+codeunit 70455019 "GSO Install"
 {
     Subtype = Install;
-    Permissions = tabledata "IPL Setup" = ri;
+    Permissions = tabledata "GSO Setup" = ri;
 
     var
         SetupTitleLbl: Label 'Inventory Planning Setup';
@@ -16,11 +16,11 @@ codeunit 70455019 "IPL Install"
 
     trigger OnInstallAppPerCompany()
     var
-        Setup: Record "IPL Setup";
-        IPLUpgrade: Codeunit "IPL Upgrade";
+        Setup: Record "GSO Setup";
+        GSOUpgrade: Codeunit "GSO Upgrade";
     begin
         Setup.GetSetup();
-        IPLUpgrade.RegisterFreshInstallTags();
+        GSOUpgrade.RegisterFreshInstallTags();
     end;
 
     trigger OnInstallAppPerDatabase()
@@ -40,10 +40,10 @@ codeunit 70455019 "IPL Install"
 
     local procedure AddLogToAllowedRetentionTables()
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
         RetenPolAllowedTables: Codeunit "Reten. Pol. Allowed Tables";
     begin
-        RetenPolAllowedTables.AddAllowedTable(Database::"IPL Calculation Log", LogEntry.FieldNo("Calculation DateTime"));
+        RetenPolAllowedTables.AddAllowedTable(Database::"GSO Calculation Log", LogEntry.FieldNo("Calculation DateTime"));
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Guided Experience", 'OnRegisterManualSetup', '', false, false)]
@@ -51,6 +51,6 @@ codeunit 70455019 "IPL Install"
     begin
         Sender.InsertManualSetup(
             SetupTitleLbl, SetupShortTitleLbl, SetupDescriptionLbl, 5,
-            ObjectType::Page, Page::"IPL Setup", Enum::"Manual Setup Category"::Inventory, '');
+            ObjectType::Page, Page::"GSO Setup", Enum::"Manual Setup Category"::Inventory, '');
     end;
 }

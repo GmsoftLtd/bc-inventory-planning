@@ -2,7 +2,7 @@
 /// Buffer for the Planning Worksheet page: current vs proposed planning values
 /// per item. Used with SourceTableTemporary only — never persisted.
 /// </summary>
-table 70455002 "IPL Planning Proposal"
+table 70455002 "GSO Planning Proposal"
 {
     Caption = 'Inventory Planning Proposal';
     DataClassification = CustomerContent;
@@ -81,7 +81,7 @@ table 70455002 "IPL Planning Proposal"
             DataClassification = CustomerContent;
             DecimalPlaces = 0 : 5;
         }
-        field(23; "Recommended Policy"; Enum "IPL Policy Recommendation")
+        field(23; "Recommended Policy"; Enum "GSO Policy Recommendation")
         {
             Caption = 'Recommended Policy';
             DataClassification = CustomerContent;
@@ -92,17 +92,17 @@ table 70455002 "IPL Planning Proposal"
             DataClassification = CustomerContent;
         }
         // ---- Result codes ----
-        field(30; "SS Result Code"; Enum "IPL Result Code")
+        field(30; "SS Result Code"; Enum "GSO Result Code")
         {
             Caption = 'Safety Stock Result';
             DataClassification = CustomerContent;
         }
-        field(31; "ROP Result Code"; Enum "IPL Result Code")
+        field(31; "ROP Result Code"; Enum "GSO Result Code")
         {
             Caption = 'Reorder Point Result';
             DataClassification = CustomerContent;
         }
-        field(32; "EOQ Result Code"; Enum "IPL Result Code")
+        field(32; "EOQ Result Code"; Enum "GSO Result Code")
         {
             Caption = 'EOQ Result';
             DataClassification = CustomerContent;

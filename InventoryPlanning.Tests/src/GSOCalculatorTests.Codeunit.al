@@ -3,7 +3,7 @@
 /// are created through the standard test libraries; each test posts a known
 /// pattern of sales and asserts the calculator's behaviour and guard rails.
 /// </summary>
-codeunit 50601 "IPL Calculator Tests"
+codeunit 50601 "GSO Calculator Tests"
 {
     Subtype = Test;
     TestPermissions = Disabled;
@@ -14,7 +14,7 @@ codeunit 50601 "IPL Calculator Tests"
 
     local procedure Initialize()
     var
-        Setup: Record "IPL Setup";
+        Setup: Record "GSO Setup";
     begin
         // Runs for every test (no IsInitialized guard): per-test rollback
         // reverts the setup record, so a one-shot flag would leave later
@@ -63,7 +63,7 @@ codeunit 50601 "IPL Calculator Tests"
 
     local procedure ClearStatsCache()
     var
-        DemandStats: Codeunit "IPL Demand Statistics";
+        DemandStats: Codeunit "GSO Demand Statistics";
     begin
         DemandStats.ClearCache();
     end;
@@ -72,7 +72,7 @@ codeunit 50601 "IPL Calculator Tests"
     procedure DemandStats_SteadyDailySales_YieldsExpectedAverage()
     var
         Item: Record Item;
-        DemandStats: Codeunit "IPL Demand Statistics";
+        DemandStats: Codeunit "GSO Demand Statistics";
         AvgDemand: Decimal;
         StdDev: Decimal;
         Observations: Integer;
@@ -96,10 +96,10 @@ codeunit 50601 "IPL Calculator Tests"
     procedure SafetyStock_SteadyDemandKnownLeadTime_MatchesFormula()
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        DemandStats: Codeunit "IPL Demand Statistics";
-        IPLMath: Codeunit "IPL Math";
-        ResultCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        DemandStats: Codeunit "GSO Demand Statistics";
+        GSOMath: Codeunit "GSO Math";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         LeadTimeFormula: DateFormula;
         AvgDemand: Decimal;
@@ -121,7 +121,7 @@ codeunit 50601 "IPL Calculator Tests"
         DemandStats.ComputeDemandStats(Item."No.", 90, AvgDemand, StdDev, Observations, ADI, CV2);
         // No purchase receipts exist, so lead time = 7 days with zero
         // variability: SS = Z x sqrt(LT x sigmaD^2), rounded up.
-        Expected := Round(IPLMath.ZScore(95) * IPLMath.Sqrt(7 * Power(StdDev, 2)), 1, '>');
+        Expected := Round(GSOMath.ZScore(95) * GSOMath.Sqrt(7 * Power(StdDev, 2)), 1, '>');
 
         Result := SafetyStockCalc.CalculateForItem(Item."No.", 95, true, ResultCode, Note);
 
@@ -135,8 +135,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure SafetyStock_InsufficientHistory_SkipsWithResultCode()
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ResultCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         Result: Decimal;
     begin
@@ -155,8 +155,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure SafetyStock_BlockedItem_SkipsWithResultCode()
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ResultCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
     begin
         Initialize();
@@ -173,8 +173,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure SafetyStock_ExcludedItem_SkipsAndLeavesItemUntouched()
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ResultCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         Result: Decimal;
     begin
@@ -182,7 +182,7 @@ codeunit 50601 "IPL Calculator Tests"
         CreateItemWithSalesHistory(Item, 20, 10);
         Item.Get(Item."No.");
         Item."Safety Stock Quantity" := 42; // planner-maintained value
-        Item."IPL Exclude From Planning" := true;
+        Item."GSO Exclude From Planning" := true;
         Item.Modify();
 
         Result := SafetyStockCalc.CalculateForItem(Item."No.", 95, true, ResultCode, Note);
@@ -197,8 +197,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure SafetyStock_NonInventoryItem_SkipsWithResultCode()
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ResultCode: Enum "IPL Result Code";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
     begin
         Initialize();
@@ -215,8 +215,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure ReorderPoint_MakeToOrderItem_Skipped()
     var
         Item: Record Item;
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        ResultCode: Enum "IPL Result Code";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         Result: Decimal;
     begin
@@ -236,8 +236,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure ReorderPoint_WithHistory_AppliesToItem()
     var
         Item: Record Item;
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        ResultCode: Enum "IPL Result Code";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         Result: Decimal;
     begin
@@ -257,8 +257,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure ReorderPoint_ExceedsMaximumInventory_IsCapped()
     var
         Item: Record Item;
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        ResultCode: Enum "IPL Result Code";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         Result: Decimal;
     begin
@@ -281,9 +281,9 @@ codeunit 50601 "IPL Calculator Tests"
     procedure EOQ_ZeroOrderingCost_SkipsWithResultCode()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        EOQCalc: Codeunit "IPL EOQ";
-        ResultCode: Enum "IPL Result Code";
+        Setup: Record "GSO Setup";
+        EOQCalc: Codeunit "GSO EOQ";
+        ResultCode: Enum "GSO Result Code";
         AppliedQty: Decimal;
         SavedOrderingCost: Decimal;
     begin
@@ -309,9 +309,9 @@ codeunit 50601 "IPL Calculator Tests"
     procedure EOQ_WithCostAndDemand_ProducesWilsonQuantity()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        EOQCalc: Codeunit "IPL EOQ";
-        ResultCode: Enum "IPL Result Code";
+        Setup: Record "GSO Setup";
+        EOQCalc: Codeunit "GSO EOQ";
+        ResultCode: Enum "GSO Result Code";
         AppliedQty: Decimal;
     begin
         Initialize();
@@ -335,9 +335,9 @@ codeunit 50601 "IPL Calculator Tests"
     procedure EOQ_TinyDemandWithRoundUp_NeverWritesZero()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        EOQCalc: Codeunit "IPL EOQ";
-        ResultCode: Enum "IPL Result Code";
+        Setup: Record "GSO Setup";
+        EOQCalc: Codeunit "GSO EOQ";
+        ResultCode: Enum "GSO Result Code";
         AppliedQty: Decimal;
     begin
         Initialize();
@@ -368,9 +368,9 @@ codeunit 50601 "IPL Calculator Tests"
     procedure EOQ_BelowMinimumOrderQty_IsRaisedToMinimum()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        EOQCalc: Codeunit "IPL EOQ";
-        ResultCode: Enum "IPL Result Code";
+        Setup: Record "GSO Setup";
+        EOQCalc: Codeunit "GSO EOQ";
+        ResultCode: Enum "GSO Result Code";
         AppliedQty: Decimal;
     begin
         Initialize();
@@ -396,8 +396,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure RunAll_MaximumQtyItem_WritesMaxInventoryAsROPPlusEOQ()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        RunAll: Codeunit "IPL Run All";
+        Setup: Record "GSO Setup";
+        RunAll: Codeunit "GSO Run All";
     begin
         Initialize();
         CreateItemWithSalesHistory(Item, 30, 10);
@@ -428,7 +428,7 @@ codeunit 50601 "IPL Calculator Tests"
     procedure DemandStats_RecentOnlyDemand_TrendsUp()
     var
         Item: Record Item;
-        DemandStats: Codeunit "IPL Demand Statistics";
+        DemandStats: Codeunit "GSO Demand Statistics";
     begin
         Initialize();
         // All demand inside the trailing 30-day sub-window of a 90-day window:
@@ -443,7 +443,7 @@ codeunit 50601 "IPL Calculator Tests"
     procedure DemandStats_OldOnlyDemand_TrendsDown()
     var
         Item: Record Item;
-        DemandStats: Codeunit "IPL Demand Statistics";
+        DemandStats: Codeunit "GSO Demand Statistics";
     begin
         Initialize();
         // All demand 45-64 days ago, none in the trailing 30 days: recent
@@ -458,8 +458,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure PolicyAdvisor_SmoothDemand_RecommendsFixedReorderQty()
     var
         Item: Record Item;
-        PolicyAdvisor: Codeunit "IPL Policy Advisor";
-        Recommendation: Enum "IPL Policy Recommendation";
+        PolicyAdvisor: Codeunit "GSO Policy Advisor";
+        Recommendation: Enum "GSO Policy Recommendation";
         Pattern: Text[30];
         Note: Text[250];
     begin
@@ -478,8 +478,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure PlanningProvider_Disabled_ReturnsFalse()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        Provider: Codeunit "IPL Planning Provider";
+        Setup: Record "GSO Setup";
+        Provider: Codeunit "GSO Planning Provider";
         SS: Decimal;
         ROP: Decimal;
         RQ: Decimal;
@@ -497,8 +497,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure PlanningProvider_Enabled_ServesAndCaches()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        Provider: Codeunit "IPL Planning Provider";
+        Setup: Record "GSO Setup";
+        Provider: Codeunit "GSO Planning Provider";
         SS: Decimal;
         ROP: Decimal;
         RQ: Decimal;
@@ -529,8 +529,8 @@ codeunit 50601 "IPL Calculator Tests"
     procedure PlanningProvider_ExcludedItem_FailsOpen()
     var
         Item: Record Item;
-        Setup: Record "IPL Setup";
-        Provider: Codeunit "IPL Planning Provider";
+        Setup: Record "GSO Setup";
+        Provider: Codeunit "GSO Planning Provider";
         SS: Decimal;
         ROP: Decimal;
         RQ: Decimal;
@@ -538,7 +538,7 @@ codeunit 50601 "IPL Calculator Tests"
         Initialize();
         CreateItemWithSalesHistory(Item, 30, 10);
         Item.Get(Item."No.");
-        Item."IPL Exclude From Planning" := true;
+        Item."GSO Exclude From Planning" := true;
         Item.Modify();
         Setup.GetSetup();
         Setup."Dynamic Provider Enabled" := true;

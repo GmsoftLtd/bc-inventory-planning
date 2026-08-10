@@ -3,19 +3,19 @@
 /// the Job Queue Entry selects what runs: SAFETYSTOCK, REORDERPOINT, EOQ,
 /// ADVISOR, or ALL (default when empty). Results are applied and logged.
 /// </summary>
-codeunit 70455018 "IPL Job Queue"
+codeunit 70455018 "GSO Job Queue"
 {
     TableNo = "Job Queue Entry";
 
     trigger OnRun()
     var
         Item: Record Item;
-        SafetyStockCalc: Codeunit "IPL Safety Stock";
-        ReorderPointCalc: Codeunit "IPL Reorder Point";
-        EOQCalc: Codeunit "IPL EOQ";
-        PolicyAdvisor: Codeunit "IPL Policy Advisor";
-        RunAll: Codeunit "IPL Run All";
-        Telemetry: Codeunit "IPL Telemetry";
+        SafetyStockCalc: Codeunit "GSO Safety Stock";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        EOQCalc: Codeunit "GSO EOQ";
+        PolicyAdvisor: Codeunit "GSO Policy Advisor";
+        RunAll: Codeunit "GSO Run All";
+        Telemetry: Codeunit "GSO Telemetry";
         Param: Text;
         Processed: Integer;
     begin

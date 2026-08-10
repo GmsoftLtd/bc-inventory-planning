@@ -3,10 +3,10 @@
 /// the setup singleton after a company first created it do not receive their
 /// InitValue, so each new setup field gets a defaulting step here.
 /// </summary>
-codeunit 70455020 "IPL Upgrade"
+codeunit 70455020 "GSO Upgrade"
 {
     Subtype = Upgrade;
-    Permissions = tabledata "IPL Setup" = rm;
+    Permissions = tabledata "GSO Setup" = rm;
 
     trigger OnUpgradePerCompany()
     begin
@@ -15,7 +15,7 @@ codeunit 70455020 "IPL Upgrade"
 
     local procedure UpgradeMaxInvTrendDefaults()
     var
-        Setup: Record "IPL Setup";
+        Setup: Record "GSO Setup";
         UpgradeTag: Codeunit "Upgrade Tag";
     begin
         if UpgradeTag.HasUpgradeTag(GetMaxInvTrendTag()) then
@@ -43,6 +43,6 @@ codeunit 70455020 "IPL Upgrade"
 
     local procedure GetMaxInvTrendTag(): Code[250]
     begin
-        exit('IPL-UPG-MaxInvTrend-20260810');
+        exit('GSO-UPG-MaxInvTrend-20260810');
     end;
 }

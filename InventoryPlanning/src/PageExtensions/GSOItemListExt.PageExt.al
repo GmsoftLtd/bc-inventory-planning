@@ -4,26 +4,26 @@
 /// selected; otherwise they honour the filters applied to the list — matching
 /// what the captions promise.
 /// </summary>
-pageextension 70455001 "IPL Item List Ext" extends "Item List"
+pageextension 70455001 "GSO Item List Ext" extends "Item List"
 {
     actions
     {
         addlast(processing)
         {
-            group(IPLPlanning)
+            group(GSOPlanning)
             {
                 Caption = 'Inventory Planning';
                 Image = Planning;
 
-                action(IPLWorksheet)
+                action(GSOWorksheet)
                 {
                     ApplicationArea = All;
                     Caption = 'Planning Worksheet';
                     Image = Worksheet;
-                    RunObject = page "IPL Planning Worksheet";
+                    RunObject = page "GSO Planning Worksheet";
                     ToolTip = 'Open the planning worksheet to preview and selectively apply calculated values for a set of items.';
                 }
-                action(IPLRunAllBulk)
+                action(GSORunAllBulk)
                 {
                     ApplicationArea = All;
                     Caption = 'Calculate All (Selected/Filtered Items)';
@@ -33,8 +33,8 @@ pageextension 70455001 "IPL Item List Ext" extends "Item List"
                     trigger OnAction()
                     var
                         Item: Record Item;
-                        RunAll: Codeunit "IPL Run All";
-                        Telemetry: Codeunit "IPL Telemetry";
+                        RunAll: Codeunit "GSO Run All";
+                        Telemetry: Codeunit "GSO Telemetry";
                         ConfirmQst: Label 'Calculate and apply planning values for %1 item(s)?', Comment = '%1 = number of items in scope';
                         DoneMsg: Label '%1 item(s) processed. See the calculation log for details.', Comment = '%1 = number of items processed';
                         Processed: Integer;
@@ -47,7 +47,7 @@ pageextension 70455001 "IPL Item List Ext" extends "Item List"
                         Message(DoneMsg, Processed);
                     end;
                 }
-                action(IPLAdviseBulk)
+                action(GSOAdviseBulk)
                 {
                     ApplicationArea = All;
                     Caption = 'Advise Policy (Selected/Filtered Items)';
@@ -57,8 +57,8 @@ pageextension 70455001 "IPL Item List Ext" extends "Item List"
                     trigger OnAction()
                     var
                         Item: Record Item;
-                        PolicyAdvisor: Codeunit "IPL Policy Advisor";
-                        Telemetry: Codeunit "IPL Telemetry";
+                        PolicyAdvisor: Codeunit "GSO Policy Advisor";
+                        Telemetry: Codeunit "GSO Telemetry";
                         DoneMsg: Label '%1 item(s) advised. See the calculation log for recommendations.', Comment = '%1 = number of items processed';
                         Processed: Integer;
                     begin
@@ -72,12 +72,12 @@ pageextension 70455001 "IPL Item List Ext" extends "Item List"
         }
         addlast(Promoted)
         {
-            group(Category_IPL)
+            group(Category_GSO)
             {
                 Caption = 'Inventory Planning';
-                actionref(IPLWorksheet_Promoted; IPLWorksheet) { }
-                actionref(IPLRunAllBulk_Promoted; IPLRunAllBulk) { }
-                actionref(IPLAdviseBulk_Promoted; IPLAdviseBulk) { }
+                actionref(GSOWorksheet_Promoted; GSOWorksheet) { }
+                actionref(GSORunAllBulk_Promoted; GSORunAllBulk) { }
+                actionref(GSOAdviseBulk_Promoted; GSOAdviseBulk) { }
             }
         }
     }

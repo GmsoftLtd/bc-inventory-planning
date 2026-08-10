@@ -1,7 +1,7 @@
 /// <summary>
 /// The reordering policy the advisor recommends for an item.
 /// </summary>
-enum 70455002 "IPL Policy Recommendation"
+enum 70455002 "GSO Policy Recommendation"
 {
     Extensible = true;
     Caption = 'Inventory Planning Policy Recommendation';

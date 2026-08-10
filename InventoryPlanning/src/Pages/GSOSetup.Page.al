@@ -1,10 +1,10 @@
 /// <summary>
 /// Setup card for all four calculators and the dynamic planning provider.
 /// </summary>
-page 70455000 "IPL Setup"
+page 70455000 "GSO Setup"
 {
     PageType = Card;
-    SourceTable = "IPL Setup";
+    SourceTable = "GSO Setup";
     Caption = 'Inventory Planning Setup';
     ApplicationArea = All;
     UsageCategory = Administration;
@@ -185,7 +185,7 @@ page 70455000 "IPL Setup"
                     JobQueueEntry.Init();
                     JobQueueEntry.ID := CreateGuid();
                     JobQueueEntry."Object Type to Run" := JobQueueEntry."Object Type to Run"::Codeunit;
-                    JobQueueEntry."Object ID to Run" := Codeunit::"IPL Job Queue";
+                    JobQueueEntry."Object ID to Run" := Codeunit::"GSO Job Queue";
                     JobQueueEntry."Parameter String" := 'ALL';
                     JobQueueEntry.Description := CopyStr(JobQueueDescriptionLbl, 1, MaxStrLen(JobQueueEntry.Description));
                     JobQueueEntry."Recurring Job" := true;
@@ -207,7 +207,7 @@ page 70455000 "IPL Setup"
                 ApplicationArea = All;
                 Caption = 'Planning Worksheet';
                 Image = Worksheet;
-                RunObject = page "IPL Planning Worksheet";
+                RunObject = page "GSO Planning Worksheet";
                 ToolTip = 'Open the planning worksheet to preview and selectively apply calculated values.';
             }
             action(OpenLog)
@@ -215,7 +215,7 @@ page 70455000 "IPL Setup"
                 ApplicationArea = All;
                 Caption = 'Calculation Log';
                 Image = History;
-                RunObject = page "IPL Calculation Log";
+                RunObject = page "GSO Calculation Log";
                 ToolTip = 'Open the calculation log.';
             }
         }

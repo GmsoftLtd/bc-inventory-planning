@@ -4,16 +4,16 @@
 /// and Maximum Order Quantity, Order Multiple) when writing Reorder Quantity.
 /// Port of the standalone BC EOQ Calculator onto the shared engine.
 /// </summary>
-codeunit 70455014 "IPL EOQ"
+codeunit 70455014 "GSO EOQ"
 {
     Permissions = tabledata Item = rm,
-                  tabledata "IPL Setup" = ri,
-                  tabledata "IPL Calculation Log" = ri;
+                  tabledata "GSO Setup" = ri,
+                  tabledata "GSO Calculation Log" = ri;
 
     var
-        Setup: Record "IPL Setup";
-        DemandStats: Codeunit "IPL Demand Statistics";
-        IPLMath: Codeunit "IPL Math";
+        Setup: Record "GSO Setup";
+        DemandStats: Codeunit "GSO Demand Statistics";
+        GSOMath: Codeunit "GSO Math";
         SetupLoaded: Boolean;
         ItemBlockedLbl: Label 'Item is blocked.';
         NotInventoryLbl: Label 'Not an inventory item: an order quantity does not apply.';
@@ -32,7 +32,7 @@ codeunit 70455014 "IPL EOQ"
     /// Calculates EOQ for one item; optionally writes it to the configured target field.
     /// Returns true when a usable quantity was produced.
     /// </summary>
-    procedure Calculate(var Item: Record Item; Apply: Boolean; var ResultCode: Enum "IPL Result Code"; var AppliedQty: Decimal): Boolean
+    procedure Calculate(var Item: Record Item; Apply: Boolean; var ResultCode: Enum "GSO Result Code"; var AppliedQty: Decimal): Boolean
     begin
         exit(RunCalc(Item, Apply, true, true, ResultCode, AppliedQty));
     end;
@@ -42,7 +42,7 @@ codeunit 70455014 "IPL EOQ"
     /// Run All passes false when the policy advisor has just recommended
     /// something other than Fixed Reorder Qty.
     /// </summary>
-    procedure Calculate(var Item: Record Item; Apply: Boolean; AllowPolicyDefault: Boolean; var ResultCode: Enum "IPL Result Code"; var AppliedQty: Decimal): Boolean
+    procedure Calculate(var Item: Record Item; Apply: Boolean; AllowPolicyDefault: Boolean; var ResultCode: Enum "GSO Result Code"; var AppliedQty: Decimal): Boolean
     begin
         exit(RunCalc(Item, Apply, true, AllowPolicyDefault, ResultCode, AppliedQty));
     end;
@@ -50,12 +50,12 @@ codeunit 70455014 "IPL EOQ"
     /// <summary>
     /// Preview: calculates without applying and without logging.
     /// </summary>
-    procedure CalculatePreview(var Item: Record Item; var ResultCode: Enum "IPL Result Code"; var AppliedQty: Decimal): Boolean
+    procedure CalculatePreview(var Item: Record Item; var ResultCode: Enum "GSO Result Code"; var AppliedQty: Decimal): Boolean
     begin
         exit(RunCalc(Item, false, false, true, ResultCode, AppliedQty));
     end;
 
-    local procedure RunCalc(var Item: Record Item; Apply: Boolean; DoLog: Boolean; AllowPolicyDefault: Boolean; var ResultCode: Enum "IPL Result Code"; var AppliedQty: Decimal): Boolean
+    local procedure RunCalc(var Item: Record Item; Apply: Boolean; DoLog: Boolean; AllowPolicyDefault: Boolean; var ResultCode: Enum "GSO Result Code"; var AppliedQty: Decimal): Boolean
     var
         AnnualDemand: Decimal;
         ObsCount: Integer;
@@ -83,7 +83,7 @@ codeunit 70455014 "IPL EOQ"
             exit(false);
         end;
 
-        if Item."IPL Exclude From Planning" then begin
+        if Item."GSO Exclude From Planning" then begin
             ResultCode := ResultCode::Excluded;
             LogResult(Item."No.", 0, 0, 0, 0, 0, 0, 0, 0, false, DoLog, ResultCode, ExcludedLbl);
             exit(false);
@@ -119,7 +119,7 @@ codeunit 70455014 "IPL EOQ"
             exit(false);
         end;
 
-        RawEOQ := IPLMath.Sqrt((2 * AnnualDemand * OrderingCost) / HoldingCost);
+        RawEOQ := GSOMath.Sqrt((2 * AnnualDemand * OrderingCost) / HoldingCost);
 
         CappedEOQ := RawEOQ;
         ResultCode := ResultCode::OK;
@@ -164,7 +164,7 @@ codeunit 70455014 "IPL EOQ"
     procedure CalculateBulk(var ItemFilter: Record Item; Apply: Boolean): Integer
     var
         Item: Record Item;
-        ResultCode: Enum "IPL Result Code";
+        ResultCode: Enum "GSO Result Code";
         AppliedQty: Decimal;
         ProgressDialog: Dialog;
         Total: Integer;
@@ -174,7 +174,7 @@ codeunit 70455014 "IPL EOQ"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
-        Item.SetRange("IPL Exclude From Planning", false);
+        Item.SetRange("GSO Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -205,7 +205,7 @@ codeunit 70455014 "IPL EOQ"
     /// to the Order Multiple, then reduce to Maximum Order Quantity (rounded
     /// down to the multiple so the result stays orderable).
     /// </summary>
-    local procedure ApplyOrderModifiers(Item: Record Item; Qty: Decimal; var ResultCode: Enum "IPL Result Code"; var Notes: Text[250]): Decimal
+    local procedure ApplyOrderModifiers(Item: Record Item; Qty: Decimal; var ResultCode: Enum "GSO Result Code"; var Notes: Text[250]): Decimal
     begin
         if (Item."Minimum Order Quantity" > 0) and (Qty < Item."Minimum Order Quantity") then begin
             Qty := Item."Minimum Order Quantity";
@@ -276,9 +276,9 @@ codeunit 70455014 "IPL EOQ"
         end;
     end;
 
-    local procedure LogResult(ItemNo: Code[20]; ObsCount: Integer; AnnualDemand: Decimal; UnitCost: Decimal; HoldingCost: Decimal; OrderingCost: Decimal; RawEOQ: Decimal; AppliedQty: Decimal; PreviousValue: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "IPL Result Code"; Notes: Text[250])
+    local procedure LogResult(ItemNo: Code[20]; ObsCount: Integer; AnnualDemand: Decimal; UnitCost: Decimal; HoldingCost: Decimal; OrderingCost: Decimal; RawEOQ: Decimal; AppliedQty: Decimal; PreviousValue: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "GSO Result Code"; Notes: Text[250])
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
     begin
         if not DoLog then
             exit;

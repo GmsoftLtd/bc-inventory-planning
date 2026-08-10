@@ -3,7 +3,7 @@
 /// separate setup tables of the standalone apps. Defaults follow the standalone
 /// apps' defaults so behaviour is unchanged after migration.
 /// </summary>
-table 70455000 "IPL Setup"
+table 70455000 "GSO Setup"
 {
     Caption = 'Inventory Planning Setup';
     DataClassification = CustomerContent;
@@ -136,12 +136,12 @@ table 70455000 "IPL Setup"
             MinValue = 0.5;
             InitValue = 6;
         }
-        field(43; "EOQ Write Target"; Enum "IPL EOQ Write Target")
+        field(43; "EOQ Write Target"; Enum "GSO EOQ Write Target")
         {
             Caption = 'EOQ Write Target';
             DataClassification = CustomerContent;
         }
-        field(44; "Cost Source"; Enum "IPL Cost Source")
+        field(44; "Cost Source"; Enum "GSO Cost Source")
         {
             Caption = 'Unit Cost Source';
             DataClassification = CustomerContent;

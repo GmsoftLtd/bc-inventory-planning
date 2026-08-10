@@ -2,18 +2,18 @@
 /// Adds the per-item planning controls to the Planning tab, and the four
 /// calculators plus the run-all action to the Item Card.
 /// </summary>
-pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
+pageextension 70455000 "GSO Item Card Ext" extends "Item Card"
 {
     layout
     {
         addlast(Planning)
         {
-            field("IPL Exclude From Planning"; Rec."IPL Exclude From Planning")
+            field("GSO Exclude From Planning"; Rec."GSO Exclude From Planning")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies whether this item is skipped by all Inventory Planning calculators, so manually maintained planning values are never overwritten.';
             }
-            field("IPL Service Level %"; Rec."IPL Service Level %")
+            field("GSO Service Level %"; Rec."GSO Service Level %")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies a service level for this item''s safety stock calculation, overriding the default in Inventory Planning Setup. 0 means use the default.';
@@ -25,12 +25,12 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
     {
         addlast(processing)
         {
-            group(IPLPlanning)
+            group(GSOPlanning)
             {
                 Caption = 'Inventory Planning';
                 Image = Planning;
 
-                action(IPLRunAll)
+                action(GSORunAll)
                 {
                     ApplicationArea = All;
                     Caption = 'Calculate All Planning Values';
@@ -39,7 +39,7 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 
                     trigger OnAction()
                     var
-                        RunAll: Codeunit "IPL Run All";
+                        RunAll: Codeunit "GSO Run All";
                         DoneMsg: Label 'Planning values calculated. See the calculation log for details.';
                     begin
                         RunAll.RunForItem(Rec."No.", true);
@@ -47,7 +47,7 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
                         Message(DoneMsg);
                     end;
                 }
-                action(IPLSafetyStock)
+                action(GSOSafetyStock)
                 {
                     ApplicationArea = All;
                     Caption = 'Calculate Safety Stock';
@@ -56,8 +56,8 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 
                     trigger OnAction()
                     var
-                        SafetyStockCalc: Codeunit "IPL Safety Stock";
-                        ResultCode: Enum "IPL Result Code";
+                        SafetyStockCalc: Codeunit "GSO Safety Stock";
+                        ResultCode: Enum "GSO Result Code";
                         Note: Text[250];
                         ResultMsg: Label 'Safety stock: %1. %2', Comment = '%1 = calculated value, %2 = explanation';
                         Result: Decimal;
@@ -67,7 +67,7 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
                         Message(ResultMsg, Result, Note);
                     end;
                 }
-                action(IPLReorderPoint)
+                action(GSOReorderPoint)
                 {
                     ApplicationArea = All;
                     Caption = 'Calculate Reorder Point';
@@ -76,8 +76,8 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 
                     trigger OnAction()
                     var
-                        ReorderPointCalc: Codeunit "IPL Reorder Point";
-                        ResultCode: Enum "IPL Result Code";
+                        ReorderPointCalc: Codeunit "GSO Reorder Point";
+                        ResultCode: Enum "GSO Result Code";
                         Note: Text[250];
                         ResultMsg: Label 'Reorder point: %1. %2', Comment = '%1 = calculated value, %2 = explanation';
                         Result: Decimal;
@@ -87,7 +87,7 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
                         Message(ResultMsg, Result, Note);
                     end;
                 }
-                action(IPLEOQ)
+                action(GSOEOQ)
                 {
                     ApplicationArea = All;
                     Caption = 'Calculate EOQ';
@@ -96,8 +96,8 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 
                     trigger OnAction()
                     var
-                        EOQCalc: Codeunit "IPL EOQ";
-                        ResultCode: Enum "IPL Result Code";
+                        EOQCalc: Codeunit "GSO EOQ";
+                        ResultCode: Enum "GSO Result Code";
                         AppliedQty: Decimal;
                         OkMsg: Label 'EOQ: %1.', Comment = '%1 = calculated quantity';
                         SkippedMsg: Label 'EOQ not calculated: %1.', Comment = '%1 = result code';
@@ -109,7 +109,7 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
                         CurrPage.Update(false);
                     end;
                 }
-                action(IPLAdvisePolicy)
+                action(GSOAdvisePolicy)
                 {
                     ApplicationArea = All;
                     Caption = 'Advise Reordering Policy';
@@ -118,8 +118,8 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 
                     trigger OnAction()
                     var
-                        PolicyAdvisor: Codeunit "IPL Policy Advisor";
-                        Recommendation: Enum "IPL Policy Recommendation";
+                        PolicyAdvisor: Codeunit "GSO Policy Advisor";
+                        Recommendation: Enum "GSO Policy Recommendation";
                         Pattern: Text[30];
                         Note: Text[250];
                         AdviceMsg: Label 'Recommended policy: %1 (%2 demand). %3', Comment = '%1 = recommended policy, %2 = demand pattern, %3 = reasoning';
@@ -129,7 +129,7 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
                         Message(AdviceMsg, Recommendation, Pattern, Note);
                     end;
                 }
-                action(IPLViewLog)
+                action(GSOViewLog)
                 {
                     ApplicationArea = All;
                     Caption = 'Calculation Log';
@@ -138,8 +138,8 @@ pageextension 70455000 "IPL Item Card Ext" extends "Item Card"
 
                     trigger OnAction()
                     var
-                        LogEntry: Record "IPL Calculation Log";
-                        LogPage: Page "IPL Calculation Log";
+                        LogEntry: Record "GSO Calculation Log";
+                        LogPage: Page "GSO Calculation Log";
                     begin
                         LogEntry.SetRange("Item No.", Rec."No.");
                         LogPage.SetTableView(LogEntry);

@@ -6,15 +6,15 @@
 /// items are recommended Order and never auto-flipped.
 /// Port of the standalone BC Replenishment Policy Advisor onto the shared engine.
 /// </summary>
-codeunit 70455015 "IPL Policy Advisor"
+codeunit 70455015 "GSO Policy Advisor"
 {
     Permissions = tabledata Item = rm,
-                  tabledata "IPL Setup" = ri,
-                  tabledata "IPL Calculation Log" = ri;
+                  tabledata "GSO Setup" = ri,
+                  tabledata "GSO Calculation Log" = ri;
 
     var
-        Setup: Record "IPL Setup";
-        DemandStats: Codeunit "IPL Demand Statistics";
+        Setup: Record "GSO Setup";
+        DemandStats: Codeunit "GSO Demand Statistics";
         SetupLoaded: Boolean;
         ItemNotFoundLbl: Label 'Item not found.';
         NotInventoryLbl: Label 'Not an inventory item: a reordering policy does not apply.';
@@ -36,7 +36,7 @@ codeunit 70455015 "IPL Policy Advisor"
     /// <summary>
     /// Advises a policy for one item; optionally writes it back (subject to setup).
     /// </summary>
-    procedure AdviseForItem(ItemNo: Code[20]; Apply: Boolean; var Pattern: Text[30]; var Note: Text[250]): Enum "IPL Policy Recommendation"
+    procedure AdviseForItem(ItemNo: Code[20]; Apply: Boolean; var Pattern: Text[30]; var Note: Text[250]): Enum "GSO Policy Recommendation"
     begin
         exit(RunAdvice(ItemNo, Apply, true, Pattern, Note));
     end;
@@ -44,15 +44,15 @@ codeunit 70455015 "IPL Policy Advisor"
     /// <summary>
     /// Preview: advises without applying and without logging.
     /// </summary>
-    procedure AdvisePreview(ItemNo: Code[20]; var Pattern: Text[30]; var Note: Text[250]): Enum "IPL Policy Recommendation"
+    procedure AdvisePreview(ItemNo: Code[20]; var Pattern: Text[30]; var Note: Text[250]): Enum "GSO Policy Recommendation"
     begin
         exit(RunAdvice(ItemNo, false, false, Pattern, Note));
     end;
 
-    local procedure RunAdvice(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; var Pattern: Text[30]; var Note: Text[250]): Enum "IPL Policy Recommendation"
+    local procedure RunAdvice(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; var Pattern: Text[30]; var Note: Text[250]): Enum "GSO Policy Recommendation"
     var
         Item: Record Item;
-        Recommendation: Enum "IPL Policy Recommendation";
+        Recommendation: Enum "GSO Policy Recommendation";
         AvgDemand: Decimal;
         StdDev: Decimal;
         Observations: Integer;
@@ -83,7 +83,7 @@ codeunit 70455015 "IPL Policy Advisor"
             exit(Recommendation);
         end;
 
-        if Item."IPL Exclude From Planning" then begin
+        if Item."GSO Exclude From Planning" then begin
             Recommendation := Recommendation::"Insufficient Data";
             Note := ExcludedLbl;
             LogAdvice(Item, 0, 0, 0, 0, 0, Pattern, Recommendation, false, DoLog, Note);
@@ -154,7 +154,7 @@ codeunit 70455015 "IPL Policy Advisor"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
-        Item.SetRange("IPL Exclude From Planning", false);
+        Item.SetRange("GSO Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -191,9 +191,9 @@ codeunit 70455015 "IPL Policy Advisor"
         exit(LumpyTxt);
     end;
 
-    local procedure Recommend(Item: Record Item; ADI: Decimal; Pattern: Text[30]; var Note: Text[250]): Enum "IPL Policy Recommendation"
+    local procedure Recommend(Item: Record Item; ADI: Decimal; Pattern: Text[30]; var Note: Text[250]): Enum "GSO Policy Recommendation"
     var
-        Recommendation: Enum "IPL Policy Recommendation";
+        Recommendation: Enum "GSO Policy Recommendation";
     begin
         if ADI >= Setup."Lumpy ADI Threshold" then begin
             Note := CopyStr(StrSubstNo(LumpyLbl, Pattern, Format(Round(ADI, 0.01), 0, 9), Format(Setup."Lumpy ADI Threshold", 0, 9)), 1, MaxStrLen(Note));
@@ -220,9 +220,9 @@ codeunit 70455015 "IPL Policy Advisor"
         exit(Format(Item."Expiration Calculation") <> '');
     end;
 
-    local procedure LogAdvice(Item: Record Item; AvgD: Decimal; Obs: Integer; ADI: Decimal; CV2: Decimal; StdDev: Decimal; Pattern: Text[30]; Recommendation: Enum "IPL Policy Recommendation"; Applied: Boolean; DoLog: Boolean; Note: Text[250])
+    local procedure LogAdvice(Item: Record Item; AvgD: Decimal; Obs: Integer; ADI: Decimal; CV2: Decimal; StdDev: Decimal; Pattern: Text[30]; Recommendation: Enum "GSO Policy Recommendation"; Applied: Boolean; DoLog: Boolean; Note: Text[250])
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
     begin
         if not DoLog then
             exit;

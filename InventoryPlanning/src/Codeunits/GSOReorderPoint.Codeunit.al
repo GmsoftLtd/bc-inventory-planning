@@ -4,15 +4,15 @@
 /// the Maximum Qty. policy.
 /// Port of the standalone BC Reorder Point Calculator onto the shared engine.
 /// </summary>
-codeunit 70455013 "IPL Reorder Point"
+codeunit 70455013 "GSO Reorder Point"
 {
     Permissions = tabledata Item = rm,
-                  tabledata "IPL Setup" = ri,
-                  tabledata "IPL Calculation Log" = ri;
+                  tabledata "GSO Setup" = ri,
+                  tabledata "GSO Calculation Log" = ri;
 
     var
-        Setup: Record "IPL Setup";
-        DemandStats: Codeunit "IPL Demand Statistics";
+        Setup: Record "GSO Setup";
+        DemandStats: Codeunit "GSO Demand Statistics";
         SetupLoaded: Boolean;
         ItemBlockedLbl: Label 'Item is blocked.';
         NotInventoryLbl: Label 'Not an inventory item: a reorder point does not apply.';
@@ -30,7 +30,7 @@ codeunit 70455013 "IPL Reorder Point"
     /// Calculates the reorder point for one item; optionally writes it to the item.
     /// Pass SafetyStockOverride less than 0 to use the item's stored safety stock.
     /// </summary>
-    procedure CalculateForItem(ItemNo: Code[20]; Apply: Boolean; SafetyStockOverride: Decimal; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    procedure CalculateForItem(ItemNo: Code[20]; Apply: Boolean; SafetyStockOverride: Decimal; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     begin
         exit(RunCalc(ItemNo, Apply, true, SafetyStockOverride, true, ResultCode, Note));
     end;
@@ -41,7 +41,7 @@ codeunit 70455013 "IPL Reorder Point"
     /// recommended something other than Fixed Reorder Qty., so a single run
     /// never stamps a policy its own advice contradicts.
     /// </summary>
-    procedure CalculateForItem(ItemNo: Code[20]; Apply: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    procedure CalculateForItem(ItemNo: Code[20]; Apply: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     begin
         exit(RunCalc(ItemNo, Apply, true, SafetyStockOverride, AllowPolicyDefault, ResultCode, Note));
     end;
@@ -49,12 +49,12 @@ codeunit 70455013 "IPL Reorder Point"
     /// <summary>
     /// Preview: calculates without applying and without logging.
     /// </summary>
-    procedure CalculatePreview(ItemNo: Code[20]; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    procedure CalculatePreview(ItemNo: Code[20]; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     begin
         exit(RunCalc(ItemNo, false, false, -1, true, ResultCode, Note));
     end;
 
-    local procedure RunCalc(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    local procedure RunCalc(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     var
         Item: Record Item;
         AvgDemand: Decimal;
@@ -91,7 +91,7 @@ codeunit 70455013 "IPL Reorder Point"
             exit(0);
         end;
 
-        if Item."IPL Exclude From Planning" then begin
+        if Item."GSO Exclude From Planning" then begin
             ResultCode := ResultCode::Excluded;
             Note := ExcludedLbl;
             LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
@@ -170,7 +170,7 @@ codeunit 70455013 "IPL Reorder Point"
     procedure CalculateBulk(var ItemFilter: Record Item; Apply: Boolean): Integer
     var
         Item: Record Item;
-        ResultCode: Enum "IPL Result Code";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         ProgressDialog: Dialog;
         Total: Integer;
@@ -180,7 +180,7 @@ codeunit 70455013 "IPL Reorder Point"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
-        Item.SetRange("IPL Exclude From Planning", false);
+        Item.SetRange("GSO Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -212,9 +212,9 @@ codeunit 70455013 "IPL Reorder Point"
         exit(WithoutSSLbl);
     end;
 
-    local procedure LogResult(Item: Record Item; AvgD: Decimal; Obs: Integer; LeadTime: Decimal; LeadTimeSource: Text[50]; SafetyStock: Decimal; Result: Decimal; PrevResult: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "IPL Result Code"; Note: Text[250])
+    local procedure LogResult(Item: Record Item; AvgD: Decimal; Obs: Integer; LeadTime: Decimal; LeadTimeSource: Text[50]; SafetyStock: Decimal; Result: Decimal; PrevResult: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "GSO Result Code"; Note: Text[250])
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
     begin
         if not DoLog then
             exit;

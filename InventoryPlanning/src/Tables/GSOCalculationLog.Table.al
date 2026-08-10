@@ -3,7 +3,7 @@
 /// including skips, so a bulk run is honest about its coverage. Fields that do
 /// not apply to a calculation type are left at their default value.
 /// </summary>
-table 70455001 "IPL Calculation Log"
+table 70455001 "GSO Calculation Log"
 {
     Caption = 'Inventory Planning Calculation Log';
     DataClassification = CustomerContent;
@@ -16,7 +16,7 @@ table 70455001 "IPL Calculation Log"
             DataClassification = SystemMetadata;
             AutoIncrement = true;
         }
-        field(2; "Calculation Type"; Enum "IPL Calculation Type")
+        field(2; "Calculation Type"; Enum "GSO Calculation Type")
         {
             Caption = 'Calculation Type';
             DataClassification = CustomerContent;
@@ -152,12 +152,12 @@ table 70455001 "IPL Calculation Log"
             Caption = 'Applied';
             DataClassification = CustomerContent;
         }
-        field(54; "Result Code"; Enum "IPL Result Code")
+        field(54; "Result Code"; Enum "GSO Result Code")
         {
             Caption = 'Result Code';
             DataClassification = CustomerContent;
         }
-        field(55; "Recommended Policy"; Enum "IPL Policy Recommendation")
+        field(55; "Recommended Policy"; Enum "GSO Policy Recommendation")
         {
             Caption = 'Recommended Policy';
             DataClassification = CustomerContent;

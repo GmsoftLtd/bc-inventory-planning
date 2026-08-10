@@ -27,10 +27,10 @@
 /// - Purchase lead time averages receipts from the trailing two years: enough
 ///   samples for stability without scanning unbounded history.
 /// </summary>
-codeunit 70455010 "IPL Demand Statistics"
+codeunit 70455010 "GSO Demand Statistics"
 {
     SingleInstance = true;
-    Permissions = tabledata "IPL Setup" = ri,
+    Permissions = tabledata "GSO Setup" = ri,
                   tabledata "Stockkeeping Unit" = r;
 
     var
@@ -65,9 +65,9 @@ codeunit 70455010 "IPL Demand Statistics"
     /// <param name="CV2">Out: squared coefficient of variation of per-day demand sizes.</param>
     procedure ComputeDemandStats(ItemNo: Code[20]; WindowDays: Integer; var AvgDemand: Decimal; var StdDev: Decimal; var Observations: Integer; var ADI: Decimal; var CV2: Decimal)
     var
-        Setup: Record "IPL Setup";
+        Setup: Record "GSO Setup";
         ItemLedgerEntry: Record "Item Ledger Entry";
-        IPLMath: Codeunit "IPL Math";
+        GSOMath: Codeunit "GSO Math";
         DailyDemand: Dictionary of [Date, Decimal];
         WindowStart: Date;
         RecentStart: Date;
@@ -156,7 +156,7 @@ codeunit 70455010 "IPL Demand Statistics"
             if Variance < 0 then
                 Variance := 0;
             AvgDemand := Mean;
-            StdDev := IPLMath.Sqrt(Variance);
+            StdDev := GSOMath.Sqrt(Variance);
 
             // ADI: mean calendar days between demand days.
             ADI := CalendarDays / SellingDays;
@@ -247,7 +247,7 @@ codeunit 70455010 "IPL Demand Statistics"
     procedure ComputePurchaseLeadTime(ItemNo: Code[20]; var AvgLeadTime: Decimal; var StdDev: Decimal)
     var
         PurchRcptLine: Record "Purch. Rcpt. Line";
-        IPLMath: Codeunit "IPL Math";
+        GSOMath: Codeunit "GSO Math";
         SumLT: Decimal;
         SumSqLT: Decimal;
         n: Integer;
@@ -290,7 +290,7 @@ codeunit 70455010 "IPL Demand Statistics"
                 Variance := 0;
 
             AvgLeadTime := Mean;
-            StdDev := IPLMath.Sqrt(Variance);
+            StdDev := GSOMath.Sqrt(Variance);
         end;
 
         CachedLTAvg.Set(ItemNo, AvgLeadTime);

@@ -21,7 +21,7 @@ Methodology write-ups: [insidebusinesscentral.com](https://insidebusinesscentral
 | Maximum Inventory | order-up-to: `reorder point + EOQ` (Maximum Qty. items, via Run All) | Item **Maximum Inventory** |
 | Policy Advisor | Syntetos-Boylan ADI/CV² classification | Item **Reordering Policy** (opt-in) |
 
-All demand statistics come from one engine (`IPL Demand Statistics`) reading
+All demand statistics come from one engine (`GSO Demand Statistics`) reading
 Item Ledger Entries — one definition of "demand" across all four, computed in
 a single cached pass per item (mean, σ, observations, ADI, CV²).
 
@@ -70,7 +70,7 @@ Two fields on the Item Card (Planning tab):
 
 ## What's new versus the four standalone apps
 
-- **One setup, one log, one prefix (`IPL`)** — the old apps' duplicated
+- **One setup, one log, one prefix (`GSO`)** — the old apps' duplicated
   statistics code (3 slightly different copies) is gone.
 - **Planning Worksheet** — current vs proposed values side by side for a
   filtered item set, selective apply. Applies re-run the calculators through
@@ -82,7 +82,7 @@ Two fields on the Item Card (Planning tab):
   the advisor recommends something other than Fixed Reorder Qty., the "Set
   Policy When None" default is suppressed for that item so a single run never
   stamps a policy its own advice contradicts.
-- **Dynamic planning provider** (`IPL Planning Provider`) — opt-in. Subscribes
+- **Dynamic planning provider** (`GSO Planning Provider`) — opt-in. Subscribes
   to `OnAtSKUOnAfterCopyFromItem` on codeunit **99000855 "Planning-Get
   Parameters"** and supplies calculated values to the planning engine *at
   planning time*, so a regenerative plan consumes numbers computed from live
@@ -111,15 +111,15 @@ Two fields on the Item Card (Planning tab):
 2. **Inventory Planning Setup**: review history window (365 d), minimum
    observations (20), service level (95%), ordering cost (50), holding rate
    (0.25). Manufacturing companies: enable **Count Consumption as Demand**.
-3. Assign permission sets: **IPL - User** for planners, **IPL** (admin) for
+3. Assign permission sets: **GSO - User** for planners, **GSO** (admin) for
    whoever maintains the setup. Users running standard planning runs with the
-   dynamic provider enabled need at least IPL - User.
+   dynamic provider enabled need at least GSO - User.
 4. Per item: **Item Card → Inventory Planning → Calculate All Planning Values**.
 5. Per set: **Item List → Inventory Planning → Planning Worksheet** → Load
    Items → review → Apply Selected. The bulk actions on the Item List honour
    your multi-selection when you make one, otherwise the current filter.
 6. Scheduled: **Inventory Planning Setup → Create Job Queue Entry** creates a
-   nightly recurring entry (on hold) for codeunit **"IPL Job Queue"**;
+   nightly recurring entry (on hold) for codeunit **"GSO Job Queue"**;
    Parameter String `ALL` (default), `SAFETYSTOCK`, `REORDERPOINT`, `EOQ` or
    `ADVISOR`. Review and set it to Ready.
 7. Optional: enable **Supply Values at Planning Time (Dynamic)** in setup.
@@ -134,7 +134,7 @@ Recommended path:
 
 1. Install Inventory Planning alongside the old apps.
 2. Copy your setup values into Inventory Planning Setup (one page now).
-3. Retire the old apps' Job Queue entries; create one for `IPL Job Queue`.
+3. Retire the old apps' Job Queue entries; create one for `GSO Job Queue`.
 4. Uninstall the four standalone apps when comfortable. Their logs live in
    their own tables — export before uninstall if you delete the apps' data.
 
@@ -154,18 +154,18 @@ Calculation behaviour is a faithful port, with deliberate changes:
 
 ## AppSource submission checklist
 
-The app carries AppSourceCop configuration (`AppSourceCop.json`, affix `IPL`)
+The app carries AppSourceCop configuration (`AppSourceCop.json`, affix `GSO`)
 and compiles clean under CodeCop, UICop and AppSourceCop. Before submitting:
 
 - [ ] **Object ID range**: objects use the placeholder range
       **70455000–70455099**. Replace it with the range Microsoft assigned to
       your publisher in Partner Center (find/replace `704550` consistently,
-      including the two Item field IDs in `IPLItemExt.TableExt.al` and
+      including the two Item field IDs in `GSOItemExt.TableExt.al` and
       `idRanges` in `app.json`).
-- [ ] **Register the `IPL` affix** with Microsoft (AppSourceISVs process).
+- [ ] **Register the `GSO` affix** with Microsoft (AppSourceISVs process).
 - [ ] **applicationInsightsConnectionString** in `app.json`: create an Azure
       Application Insights resource and paste its connection string —
-      without it the IPL0001–IPL0003 telemetry events go nowhere (AS0092).
+      without it the GSO0001–GSO0003 telemetry events go nowhere (AS0092).
 - [ ] **logo/icon.png** is a generated placeholder — replace with your brand
       asset (240×240).
 - [ ] Add **screenshots** to `app.json` and the Partner Center listing.

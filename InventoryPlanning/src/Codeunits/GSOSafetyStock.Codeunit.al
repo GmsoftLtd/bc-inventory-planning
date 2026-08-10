@@ -5,16 +5,16 @@
 /// Lead time comes from the shared ComputeLeadTime resolution, so safety stock
 /// and reorder point always agree on the lead time for an item.
 /// </summary>
-codeunit 70455012 "IPL Safety Stock"
+codeunit 70455012 "GSO Safety Stock"
 {
     Permissions = tabledata Item = rm,
-                  tabledata "IPL Setup" = ri,
-                  tabledata "IPL Calculation Log" = ri;
+                  tabledata "GSO Setup" = ri,
+                  tabledata "GSO Calculation Log" = ri;
 
     var
-        Setup: Record "IPL Setup";
-        DemandStats: Codeunit "IPL Demand Statistics";
-        IPLMath: Codeunit "IPL Math";
+        Setup: Record "GSO Setup";
+        DemandStats: Codeunit "GSO Demand Statistics";
+        GSOMath: Codeunit "GSO Math";
         SetupLoaded: Boolean;
         ItemBlockedLbl: Label 'Item is blocked.';
         NotInventoryLbl: Label 'Not an inventory item: stock-level planning does not apply.';
@@ -34,7 +34,7 @@ codeunit 70455012 "IPL Safety Stock"
     /// Calculates safety stock for one item; optionally writes it to the item.
     /// Service level priority: explicit parameter > item-level override > setup default.
     /// </summary>
-    procedure CalculateForItem(ItemNo: Code[20]; ServiceLevelPct: Decimal; Apply: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    procedure CalculateForItem(ItemNo: Code[20]; ServiceLevelPct: Decimal; Apply: Boolean; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     begin
         exit(RunCalc(ItemNo, ServiceLevelPct, Apply, true, ResultCode, Note));
     end;
@@ -42,12 +42,12 @@ codeunit 70455012 "IPL Safety Stock"
     /// <summary>
     /// Preview: calculates without applying and without logging.
     /// </summary>
-    procedure CalculatePreview(ItemNo: Code[20]; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    procedure CalculatePreview(ItemNo: Code[20]; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     begin
         exit(RunCalc(ItemNo, 0, false, false, ResultCode, Note));
     end;
 
-    local procedure RunCalc(ItemNo: Code[20]; ServiceLevelPct: Decimal; Apply: Boolean; DoLog: Boolean; var ResultCode: Enum "IPL Result Code"; var Note: Text[250]): Decimal
+    local procedure RunCalc(ItemNo: Code[20]; ServiceLevelPct: Decimal; Apply: Boolean; DoLog: Boolean; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     var
         Item: Record Item;
         AvgDemand: Decimal;
@@ -69,8 +69,8 @@ codeunit 70455012 "IPL Safety Stock"
             exit(0);
 
         if (ServiceLevelPct <= 0) or (ServiceLevelPct > 100) then
-            if Item."IPL Service Level %" > 0 then
-                ServiceLevelPct := Item."IPL Service Level %"
+            if Item."GSO Service Level %" > 0 then
+                ServiceLevelPct := Item."GSO Service Level %"
             else
                 ServiceLevelPct := Setup."Default Service Level %";
 
@@ -88,7 +88,7 @@ codeunit 70455012 "IPL Safety Stock"
             exit(0);
         end;
 
-        if Item."IPL Exclude From Planning" then begin
+        if Item."GSO Exclude From Planning" then begin
             ResultCode := ResultCode::Excluded;
             Note := ExcludedLbl;
             LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
@@ -118,8 +118,8 @@ codeunit 70455012 "IPL Safety Stock"
             exit(0);
         end;
 
-        ZScore := IPLMath.ZScore(ServiceLevelPct);
-        SafetyStock := ZScore * IPLMath.Sqrt(
+        ZScore := GSOMath.ZScore(ServiceLevelPct);
+        SafetyStock := ZScore * GSOMath.Sqrt(
             (AvgLeadTime * Power(DemandStdDev, 2)) +
             (Power(AvgDemand, 2) * Power(LeadTimeStdDev, 2)));
 
@@ -154,7 +154,7 @@ codeunit 70455012 "IPL Safety Stock"
     procedure CalculateBulk(var ItemFilter: Record Item; ServiceLevelPct: Decimal; Apply: Boolean): Integer
     var
         Item: Record Item;
-        ResultCode: Enum "IPL Result Code";
+        ResultCode: Enum "GSO Result Code";
         Note: Text[250];
         ProgressDialog: Dialog;
         Total: Integer;
@@ -164,7 +164,7 @@ codeunit 70455012 "IPL Safety Stock"
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
         Item.SetRange(Blocked, false);
-        Item.SetRange("IPL Exclude From Planning", false);
+        Item.SetRange("GSO Exclude From Planning", false);
         Total := Item.Count();
         if Total = 0 then
             exit(0);
@@ -210,9 +210,9 @@ codeunit 70455012 "IPL Safety Stock"
         exit(Reason);
     end;
 
-    local procedure LogResult(Item: Record Item; SLPct: Decimal; Z: Decimal; AvgD: Decimal; SDD: Decimal; Obs: Integer; AvgLT: Decimal; SDL: Decimal; LTSource: Text[50]; Result: Decimal; PrevResult: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "IPL Result Code"; Note: Text[250])
+    local procedure LogResult(Item: Record Item; SLPct: Decimal; Z: Decimal; AvgD: Decimal; SDD: Decimal; Obs: Integer; AvgLT: Decimal; SDL: Decimal; LTSource: Text[50]; Result: Decimal; PrevResult: Decimal; Applied: Boolean; DoLog: Boolean; ResultCode: Enum "GSO Result Code"; Note: Text[250])
     var
-        LogEntry: Record "IPL Calculation Log";
+        LogEntry: Record "GSO Calculation Log";
     begin
         if not DoLog then
             exit;

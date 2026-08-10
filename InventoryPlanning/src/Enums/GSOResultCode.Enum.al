@@ -2,7 +2,7 @@
 /// Outcome of a single calculation. OK and Cap Applied carry a usable result;
 /// everything else explains why the item was skipped and no value was produced.
 /// </summary>
-enum 70455001 "IPL Result Code"
+enum 70455001 "GSO Result Code"
 {
     Extensible = true;
     Caption = 'Inventory Planning Result Code';

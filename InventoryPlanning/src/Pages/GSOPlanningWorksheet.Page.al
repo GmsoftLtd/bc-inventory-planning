@@ -5,10 +5,10 @@
 /// applies run through the calculators' validated, logged path. After an
 /// apply, the affected lines refresh their "current" values in place.
 /// </summary>
-page 70455002 "IPL Planning Worksheet"
+page 70455002 "GSO Planning Worksheet"
 {
     PageType = Worksheet;
-    SourceTable = "IPL Planning Proposal";
+    SourceTable = "GSO Planning Proposal";
     SourceTableTemporary = true;
     Caption = 'Inventory Planning Worksheet';
     ApplicationArea = All;
@@ -147,7 +147,7 @@ page 70455002 "IPL Planning Worksheet"
                 trigger OnAction()
                 var
                     Item: Record Item;
-                    RunAll: Codeunit "IPL Run All";
+                    RunAll: Codeunit "GSO Run All";
                     FilterPage: FilterPageBuilder;
                     ItemFilterTxt: Text;
                 begin
@@ -174,8 +174,8 @@ page 70455002 "IPL Planning Worksheet"
 
                 trigger OnAction()
                 var
-                    TempProposal: Record "IPL Planning Proposal" temporary;
-                    RunAll: Codeunit "IPL Run All";
+                    TempProposal: Record "GSO Planning Proposal" temporary;
+                    RunAll: Codeunit "GSO Run All";
                     ConfirmQst: Label 'Apply calculated planning values to %1 selected item(s)?', Comment = '%1 = number of selected items';
                     AppliedMsg: Label '%1 item(s) updated.', Comment = '%1 = number of items applied';
                     SelectedCount: Integer;
@@ -224,7 +224,7 @@ page 70455002 "IPL Planning Worksheet"
                 ApplicationArea = All;
                 Caption = 'Calculation Log';
                 Image = History;
-                RunObject = page "IPL Calculation Log";
+                RunObject = page "GSO Calculation Log";
                 ToolTip = 'Open the calculation log.';
             }
             action(OpenSetup)
@@ -232,7 +232,7 @@ page 70455002 "IPL Planning Worksheet"
                 ApplicationArea = All;
                 Caption = 'Setup';
                 Image = Setup;
-                RunObject = page "IPL Setup";
+                RunObject = page "GSO Setup";
                 ToolTip = 'Open Inventory Planning Setup.';
             }
         }
@@ -249,7 +249,7 @@ page 70455002 "IPL Planning Worksheet"
 
     local procedure SetSelection(NewValue: Boolean)
     var
-        TempProposal: Record "IPL Planning Proposal" temporary;
+        TempProposal: Record "GSO Planning Proposal" temporary;
     begin
         TempProposal.Copy(Rec, true);
         TempProposal.Reset();
@@ -265,7 +265,7 @@ page 70455002 "IPL Planning Worksheet"
     /// After an apply, re-read the items and refresh the "current" columns on
     /// the applied lines, then deselect them — no full reload needed.
     /// </summary>
-    local procedure RefreshCurrentValues(var TempProposal: Record "IPL Planning Proposal" temporary)
+    local procedure RefreshCurrentValues(var TempProposal: Record "GSO Planning Proposal" temporary)
     var
         Item: Record Item;
     begin
@@ -291,7 +291,7 @@ page 70455002 "IPL Planning Worksheet"
     /// </summary>
     local procedure ShowVarianceSummary()
     var
-        TempProposal: Record "IPL Planning Proposal" temporary;
+        TempProposal: Record "GSO Planning Proposal" temporary;
         VarianceMsg: Label '%1 of %2 line(s) change the reorder point by more than 25%.', Comment = '%1 = lines with significant variance, %2 = total lines';
         Total: Integer;
         VarianceCount: Integer;
@@ -308,7 +308,7 @@ page 70455002 "IPL Planning Worksheet"
             Message(VarianceMsg, VarianceCount, Total);
     end;
 
-    local procedure HasSignificantVariance(var TempProposal: Record "IPL Planning Proposal" temporary): Boolean
+    local procedure HasSignificantVariance(var TempProposal: Record "GSO Planning Proposal" temporary): Boolean
     begin
         if not (TempProposal."ROP Result Code" in [TempProposal."ROP Result Code"::OK, TempProposal."ROP Result Code"::"Cap Applied"]) then
             exit(false);

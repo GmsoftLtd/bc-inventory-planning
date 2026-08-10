@@ -1,10 +1,10 @@
 /// <summary>
 /// Read-only list of every calculation attempt across all four calculators.
 /// </summary>
-page 70455001 "IPL Calculation Log"
+page 70455001 "GSO Calculation Log"
 {
     PageType = List;
-    SourceTable = "IPL Calculation Log";
+    SourceTable = "GSO Calculation Log";
     Caption = 'Inventory Planning Calculation Log';
     ApplicationArea = All;
     UsageCategory = History;

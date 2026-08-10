@@ -1,11 +1,11 @@
 /// <summary>
-/// Central telemetry wrapper. Event IDs: IPL0001 scheduled run completed,
-/// IPL0002 bulk run completed, IPL0003 dynamic provider computed values for a
+/// Central telemetry wrapper. Event IDs: GSO0001 scheduled run completed,
+/// GSO0002 bulk run completed, GSO0003 dynamic provider computed values for a
 /// planning run. All dimensions are counts and codes — never customer data.
 /// Publisher-scope telemetry requires applicationInsightsConnectionString to
 /// be set in app.json.
 /// </summary>
-codeunit 70455021 "IPL Telemetry"
+codeunit 70455021 "GSO Telemetry"
 {
     var
         ScheduledRunMsg: Label 'Scheduled planning recalculation completed', Locked = true;
@@ -21,7 +21,7 @@ codeunit 70455021 "IPL Telemetry"
     begin
         Dimensions.Add('mode', Mode);
         Dimensions.Add('itemsProcessed', Format(ItemsProcessed));
-        Session.LogMessage('IPL0001', ScheduledRunMsg, Verbosity::Normal,
+        Session.LogMessage('GSO0001', ScheduledRunMsg, Verbosity::Normal,
             DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher, Dimensions);
     end;
 
@@ -34,7 +34,7 @@ codeunit 70455021 "IPL Telemetry"
     begin
         Dimensions.Add('calcType', CalcType);
         Dimensions.Add('itemsProcessed', Format(ItemsProcessed));
-        Session.LogMessage('IPL0002', BulkRunMsg, Verbosity::Normal,
+        Session.LogMessage('GSO0002', BulkRunMsg, Verbosity::Normal,
             DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher, Dimensions);
     end;
 
@@ -46,7 +46,7 @@ codeunit 70455021 "IPL Telemetry"
     var
         Dimensions: Dictionary of [Text, Text];
     begin
-        Session.LogMessage('IPL0003', DynamicSupplyMsg, Verbosity::Normal,
+        Session.LogMessage('GSO0003', DynamicSupplyMsg, Verbosity::Normal,
             DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher, Dimensions);
     end;
 }
