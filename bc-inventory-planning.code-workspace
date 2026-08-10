@@ -1,0 +1,23 @@
+{
+    "folders": [
+        {
+            "name": "Inventory Planning (app)",
+            "path": "InventoryPlanning"
+        },
+        {
+            "name": "Inventory Planning (tests)",
+            "path": "InventoryPlanning.Tests"
+        },
+        {
+            "name": "repo (docs)",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "search.exclude": {
+            "**/.alpackages": true,
+            "**/.alcache": true,
+            "**/.altestrunner": true
+        }
+    }
+}
