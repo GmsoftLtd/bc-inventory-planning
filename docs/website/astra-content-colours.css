@@ -1,0 +1,89 @@
+/* Readable content on the dark Astra background.
+   Scoped to plain WordPress pages (ast-plain-container), so Elementor-built
+   pages keep their own per-section colours and are unaffected.
+   Paste into Appearance > Customize > Additional CSS. */
+
+.ast-plain-container .entry-content {
+    color: #d8dde5;
+}
+
+.ast-plain-container .entry-content :where(h1, h2, h3, h4, h5, h6) {
+    color: #ffffff;
+}
+
+.ast-plain-container .entry-content a {
+    color: #ff8c5f;
+    text-decoration: underline;
+}
+
+.ast-plain-container .entry-content a:hover {
+    color: #ffa77f;
+}
+
+.ast-plain-container .entry-content strong {
+    color: #ffffff;
+}
+
+/* Tables: the docs lean on these heavily */
+.ast-plain-container .entry-content table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.ast-plain-container .entry-content th {
+    color: #ffffff;
+    text-align: left;
+    font-weight: 600;
+}
+
+.ast-plain-container .entry-content th,
+.ast-plain-container .entry-content td {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 0.55rem 0.75rem;
+    vertical-align: top;
+}
+
+/* Wide tables scroll rather than pushing the page sideways on mobile */
+.ast-plain-container .entry-content table {
+    display: block;
+    overflow-x: auto;
+}
+
+/* Callouts - these are plain blockquotes in the imported content */
+.ast-plain-container .entry-content blockquote {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #ff6b35;
+    padding: 1rem 1.25rem;
+    margin: 0 0 1.5rem;
+}
+
+.ast-plain-container .entry-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Formulas and code */
+.ast-plain-container .entry-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.12em 0.4em;
+    border-radius: 4px;
+}
+
+.ast-plain-container .entry-content pre {
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+}
+
+.ast-plain-container .entry-content pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Horizontal rules between sections */
+.ast-plain-container .entry-content hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    margin: 2.5rem 0;
+}
