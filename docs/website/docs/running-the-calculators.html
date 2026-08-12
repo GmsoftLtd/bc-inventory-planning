@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running the calculators — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Run the Business Central planning calculators for one item, for a filtered set from the Item List, or on a nightly Job Queue schedule.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Running the calculators</p>
+  <h1>Running the calculators</h1>
+  <p class="lede">Four ways to run: one item, a filtered set, a reviewed
+  worksheet, or unattended on a schedule.</p>
+
+  <h2>One item — from the Item Card</h2>
+  <p><strong>Item Card → Inventory Planning</strong></p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Action</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Calculate All Planning Values</td><td>Everything, in dependency order</td></tr>
+      <tr><td>Calculate Safety Stock</td><td>Safety stock only</td></tr>
+      <tr><td>Calculate Reorder Point</td><td>Reorder point only</td></tr>
+      <tr><td>Calculate EOQ</td><td>EOQ only</td></tr>
+      <tr><td>Advise Reordering Policy</td><td>Classifies demand and recommends a policy</td></tr>
+      <tr><td>Calculation Log</td><td>Opens the log filtered to this item</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Each action reports its result and its reasoning. Whether the value reaches
+  the item depends on the matching <em>Write … to Item</em> switch in
+  <a href="inventory-planning-setup">setup</a>.</p>
+
+  <div class="note">
+    <strong>Why “Calculate All” is not just the four actions in a row.</strong>
+    <p>It runs them in dependency order — policy advice, safety stock, reorder
+    point, EOQ, maximum inventory — and feeds the reorder point the
+    <em>freshly calculated</em> safety stock rather than whatever is stored on the
+    item. Running the individual actions out of order can build a reorder point
+    on a stale safety stock.</p>
+    <p>It also suppresses the “Set Policy to Fixed Reorder Qty. when None”
+    default for an item whose advice recommends something else, so one run never
+    stamps a policy its own advice contradicts.</p>
+  </div>
+
+  <h2>A filtered set — from the Item List</h2>
+  <p><strong>Item List → Inventory Planning</strong></p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Action</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Planning Worksheet</td><td>Opens the <a href="inventory-planning-worksheet">preview worksheet</a></td></tr>
+      <tr><td>Calculate All (Selected/Filtered Items)</td><td>Runs everything and applies, after confirming the item count</td></tr>
+      <tr><td>Advise Policy (Selected/Filtered Items)</td><td>Classifies demand and logs recommendations</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>Scope:</strong> if you have selected more than one row, the selected
+  rows win. Otherwise the current filter on the list defines the scope.
+  Non-inventory, blocked and excluded items are skipped automatically.</p>
+
+  <p>Long runs commit every 100 items, so an interrupted run keeps the work
+  already done.</p>
+
+  <div class="warn">
+    <strong>Bulk actions apply immediately.</strong>
+    <p>They write to items after a single confirmation. If you want to see the
+    numbers before they land, use the
+    <a href="inventory-planning-worksheet">Planning Worksheet</a> instead — that is
+    what it exists for.</p>
+  </div>
+
+  <h2>Unattended — Job Queue</h2>
+  <p><strong>Inventory Planning Setup → Create Job Queue Entry</strong> creates a
+  recurring entry that runs every day at 03:00, created <strong>on hold</strong>.
+  Review the schedule, then set it to <strong>Ready</strong>.</p>
+
+  <p>The <strong>Parameter String</strong> on the entry selects what runs:</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Value</th><th>Runs</th></tr></thead>
+    <tbody>
+      <tr><td><code>ALL</code> <span class="meta">(default, also used when empty)</span></td><td>Everything, in dependency order</td></tr>
+      <tr><td><code>SAFETYSTOCK</code></td><td>Safety stock only</td></tr>
+      <tr><td><code>REORDERPOINT</code></td><td>Reorder point only</td></tr>
+      <tr><td><code>EOQ</code></td><td>EOQ only</td></tr>
+      <tr><td><code>ADVISOR</code></td><td>Policy advice only</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Create several entries with different parameters and schedules if that suits
+  you — for example policy advice weekly, safety stock nightly.</p>
+
+  <div class="note">
+    <strong>Scheduled runs apply to every eligible item.</strong>
+    <p>Protect any item whose planning values a person maintains by hand: tick
+    <a href="inventory-planning-item-fields">Exclude from Inventory Planning</a> on
+    the item card.</p>
+  </div>
+
+  <h2>At planning time — the dynamic provider</h2>
+  <p>Optionally, the app can supply freshly calculated values to the planning
+  engine <em>during</em> a planning run, instead of relying on whatever the last
+  batch run wrote. Off by default; see
+  <a href="inventory-planning-setup">Setup reference</a> before enabling it.</p>
+
+  <hr>
+  <p class="meta">Next: <a href="inventory-planning-worksheet">Planning Worksheet</a> ·
+  <a href="troubleshooting">Troubleshooting</a></p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculation log — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Read the Inventory Planning calculation log in Business Central and set a retention policy so it does not grow unbounded.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Calculation log</p>
+  <h1>Calculation log</h1>
+  <p class="lede">Every calculation records its full basis, not just its answer.
+  This is what makes a planning number defensible months after it was
+  produced.</p>
+
+  <p>Open it by searching for <strong>Inventory Planning Calculation Log</strong>,
+  or from the setup page, the worksheet, or
+  <strong>Item Card → Inventory Planning → Calculation Log</strong> — which
+  filters it to that item.</p>
+
+  <h2>What each entry records</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Group</th><th>Fields</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Identity</td>
+        <td>Calculation type, item, date and time, user</td>
+      </tr>
+      <tr>
+        <td>Demand</td>
+        <td>Average daily demand, standard deviation, observations, ADI, CV², demand pattern</td>
+      </tr>
+      <tr>
+        <td>Lead time</td>
+        <td>Days, standard deviation, and the <strong>source</strong> the value came from</td>
+      </tr>
+      <tr>
+        <td>Safety stock inputs</td>
+        <td>Service level applied, and the Z-score derived from it</td>
+      </tr>
+      <tr>
+        <td>EOQ inputs</td>
+        <td>Annual demand, unit cost, holding cost, ordering cost</td>
+      </tr>
+      <tr>
+        <td>Outcome</td>
+        <td>Raw result, final result, <strong>previous value</strong>, whether it was applied, result code, recommended policy, note</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Calculation types</h2>
+  <ul>
+    <li><strong>Safety Stock</strong>, <strong>Reorder Point</strong>,
+      <strong>EOQ</strong>, <strong>Maximum Inventory</strong> — the four value
+      calculators</li>
+    <li><strong>Policy Advice</strong> — a demand classification and
+      recommendation</li>
+    <li><strong>Dynamic Supply</strong> — a value computed during a planning run
+      by the optional dynamic provider, so planning-time values are as traceable
+      as batch ones</li>
+  </ul>
+
+  <h2>Three questions it answers</h2>
+
+  <h3>“Why is this item's reorder point this number?”</h3>
+  <p>Filter to the item, open the most recent Reorder Point entry. Average daily
+  demand times lead time, plus safety stock — with every input listed, including
+  which source the lead time came from.</p>
+
+  <h3>“What was it before?”</h3>
+  <p>The <strong>Previous Value</strong> field on every entry. You can reconstruct
+  an item's whole planning history from the log.</p>
+
+  <h3>“Why did nothing happen for this item?”</h3>
+  <p>Entries are written even when no value is produced. The
+  <strong>Result Code</strong> says which check stopped it and the
+  <strong>Note</strong> explains — see <a href="troubleshooting">Troubleshooting</a>.</p>
+
+  <h2>Set a retention policy</h2>
+  <div class="warn">
+    <strong>The log grows by one row per item per calculator per run.</strong>
+    <p>A nightly run across 5,000 items writes roughly 25,000 rows a night. Set a
+    retention policy.</p>
+  </div>
+
+  <p>The log is registered with the standard Business Central
+  <strong>Retention Policy</strong> module, so this takes a minute:</p>
+  <ol>
+    <li>Search for <strong>Retention Policies</strong></li>
+    <li><strong>New</strong>, and choose the table <strong>GSO Calculation
+      Log</strong></li>
+    <li>Set a retention period — <strong>90 days</strong> is a sensible start</li>
+    <li>Enable the policy</li>
+  </ol>
+  <p>Without a policy, nothing is ever deleted. Turning off
+  <em>Log Calculation History</em> in setup stops the writes entirely, but you
+  lose the audit trail — a retention policy is almost always the better
+  answer.</p>
+
+  <hr>
+  <p class="meta">Next: <a href="troubleshooting">Troubleshooting</a> ·
+  <a href="faq">FAQ</a></p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

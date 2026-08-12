@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Result codes, warnings and common problems in the Inventory Planning app for Business Central, and what to do about each.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Troubleshooting</p>
+  <h1>Troubleshooting</h1>
+  <p class="lede">Every calculation carries a result code and a note. Start
+  there — the app almost always tells you what stopped it.</p>
+
+  <h2>Result codes</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Code</th><th>Meaning</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td><strong>OK</strong></td><td>Calculated and usable</td><td>Nothing</td></tr>
+      <tr><td><strong>Cap Applied</strong></td><td>Usable, but a configured cap limited the result</td><td>Check <em>Maximum EOQ (Months of Demand)</em>, or the item's Maximum Inventory for a capped reorder point</td></tr>
+      <tr><td><strong>Insufficient Demand Data</strong></td><td>Fewer days with demand than <em>Min Demand Observations</em></td><td>Lengthen the history window, lower the minimum, or accept the item is too sporadic to model</td></tr>
+      <tr><td><strong>Zero Demand</strong></td><td>No demand at all in the window</td><td>New item, dead item — or a manufacturing component with <em>Count Consumption as Demand</em> off</td></tr>
+      <tr><td><strong>No Lead Time Data</strong></td><td>No lead time from any source</td><td>Set the item's Lead Time Calculation, or a fallback in setup</td></tr>
+      <tr><td><strong>Item Blocked</strong></td><td>The item is blocked</td><td>Expected</td></tr>
+      <tr><td><strong>Make-to-Order Skipped</strong></td><td>Make-to-order item, and skipping is on</td><td>Expected — turn the setting off to include them</td></tr>
+      <tr><td><strong>Not an Inventory Item</strong></td><td>Type is Service or Non-Inventory</td><td>Expected</td></tr>
+      <tr><td><strong>Excluded by Item Setting</strong></td><td><em>Exclude from Inventory Planning</em> is ticked</td><td>Expected — <a href="inventory-planning-item-fields">untick it</a> to include the item</td></tr>
+      <tr><td><strong>Zero Unit Cost</strong></td><td>EOQ needs a unit cost</td><td>Populate the chosen cost source, or switch <em>Unit Cost Source</em></td></tr>
+      <tr><td><strong>Zero Ordering Cost</strong></td><td>EOQ needs an ordering cost</td><td>Set <em>Ordering Cost (S)</em> in setup</td></tr>
+      <tr><td><strong>Zero Result</strong></td><td>The formula produced zero</td><td>Reported rather than written, so a real value is never replaced with nothing</td></tr>
+      <tr><td><strong>Error</strong></td><td>Unexpected failure</td><td>Read the note on the log entry, then <a href="/apps/inventory-planning/support/">contact support</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Warnings in the note</h2>
+
+  <h3>Trend warning</h3>
+  <p>Recent demand — the last quarter of the window, minimum 30 days — deviates
+  from the full-window average by more than your threshold. History-based planning
+  lags a ramp-up and overstates a phase-out. Consider a shorter window for
+  fast-moving ranges, or set the values by hand and exclude the item.</p>
+
+  <h3>Stockkeeping Unit notice</h3>
+  <p>The item has Stockkeeping Units. Standard planning reads SKU values at a
+  location, <strong>not</strong> the item card — so a value calculated here may
+  appear to have no effect. This app calculates at item level by design.</p>
+
+  <h3>Intermittent or lumpy demand warning</h3>
+  <p>Safety stock rests on a normal approximation that does not really hold for
+  this demand shape. The number is still the best available estimate, but it
+  deserves review rather than trust.</p>
+
+  <h2>Common situations</h2>
+
+  <h3>Every item reports Zero Demand</h3>
+  <p>You manufacture, and <em>Count Consumption as Demand</em> is off. Components
+  are consumed, never sold, so there is no sales history to find. Turn it on in
+  <a href="inventory-planning-setup">setup</a>.</p>
+
+  <h3>Every item reports Insufficient Demand Data</h3>
+  <p>Observations count <strong>days with demand</strong>, not transaction lines.
+  An item with 200 sales lines across 12 busy days has 12 observations, and the
+  default minimum is 20.</p>
+  <p>Lengthen the window or lower the minimum — but understand what you are
+  agreeing to: a statistic from five days of demand is a statistic from five days
+  of demand.</p>
+
+  <h3>The calculated values are ignored by planning</h3>
+  <p>Check for Stockkeeping Units on the item. Standard planning reads the SKU at
+  a location rather than the item card. The calculation note says so whenever SKUs
+  exist.</p>
+  <p>Also check the item's <strong>Reordering Policy</strong>. A reorder point on
+  an item with no policy, or on Lot-for-Lot, does nothing.</p>
+
+  <h3>The reorder point looks too low for a growing product</h3>
+  <p>Read the note — there will be a trend warning. History-based planning lags
+  growth by design.</p>
+
+  <h3>EOQ returns Zero Unit Cost</h3>
+  <p>The <em>Unit Cost Source</em> you chose is empty on that item. Populate it, or
+  switch the source in setup to one your items actually carry.</p>
+
+  <h3>Values changed and nobody knows why</h3>
+  <p>Open the <a href="inventory-planning-log">calculation log</a> for the item.
+  Every run records the previous value, the new value, the user, and every input
+  that produced it.</p>
+
+  <h3>A scheduled run overwrote values somebody had tuned</h3>
+  <p>Tick <a href="inventory-planning-item-fields">Exclude from Inventory
+  Planning</a> on those items. Restore the old values from the
+  <strong>Previous Value</strong> field in the log.</p>
+
+  <h3>The results moved a lot after a setup change</h3>
+  <p>Expected — the history window, service level, ordering cost and holding rate
+  all feed the formulas directly. Use the
+  <a href="inventory-planning-worksheet">Planning Worksheet</a> to see the effect
+  of a change before applying it anywhere.</p>
+
+  <h2>Still stuck?</h2>
+  <p><a href="/apps/inventory-planning/support/">Contact support</a> — we reply
+  within 2 business days. Include the item number and a screenshot of the
+  calculation log entry; that usually contains the whole answer.</p>
+  <p>The app is open source, so you can also read the calculation code or raise an
+  issue at
+  <a href="https://github.com/GmsoftLtd/bc-inventory-planning">github.com/GmsoftLtd/bc-inventory-planning</a>.</p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

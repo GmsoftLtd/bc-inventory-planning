@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+  xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.2/">
+<channel>
+  <title>Inventory Planning - app pages</title>
+  <link>https://gmsoftdynamics.com</link>
+  <description>Product, documentation and support pages for the Inventory Planning app</description>
+  <language>en-GB</language>
+  <wp:wxr_version>1.2</wp:wxr_version>
+  <wp:base_site_url>https://gmsoftdynamics.com</wp:base_site_url>
+  <wp:base_blog_url>https://gmsoftdynamics.com</wp:base_blog_url>
+  <item>
+    <title><![CDATA[Inventory Planning]]></title>
+    <link>https://gmsoftdynamics.com/inventory-planning/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1001</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Safety stock, reorder point, EOQ and a recommended reordering
+policy, computed from your posted item ledger entries and written to the
+standard Business Central fields. Free and open source.</p>
+<div>
+<a href="/apps/inventory-planning/docs/">Read the documentation</a>
+<a href="https://github.com/GmsoftLtd/bc-inventory-planning">View the source</a>
+<!-- Once the AppSource offer is live, add:
+<a href="APPSOURCE_URL">Get it on AppSource</a> -->
+</div>
+<h2>The problem it solves</h2>
+<p>Business Central's planning engine is capable and correct. It also does
+exactly what your item cards tell it to — and on most systems that means
+<strong>Safety Stock Quantity</strong> is empty, <strong>Reorder Point</strong>
+was typed in at go-live by somebody estimating, and <strong>Reorder
+Quantity</strong> is a round number nobody has revisited since.</p>
+<p>The engine executes those guesses faithfully. The business absorbs the
+result as stockouts on the items that matter and dead stock on the ones that
+don't.</p>
+<h2>What it calculates</h2>
+<table>
+<thead>
+<tr><th>Calculator</th><th>Produces</th><th>Writes to</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Safety stock</td>
+<td>Buffer covering demand and lead-time variability at your service level</td>
+<td>Item <strong>Safety Stock Quantity</strong></td>
+</tr>
+<tr>
+<td>Reorder point</td>
+<td>Demand during lead time, plus safety stock</td>
+<td>Item <strong>Reorder Point</strong></td>
+</tr>
+<tr>
+<td>EOQ</td>
+<td>Wilson economic order quantity, capped and order-modifier aware</td>
+<td>Item <strong>Reorder Quantity</strong> or <strong>Order Multiple</strong></td>
+</tr>
+<tr>
+<td>Maximum inventory</td>
+<td>Order-up-to level for Maximum Qty. items</td>
+<td>Item <strong>Maximum Inventory</strong></td>
+</tr>
+<tr>
+<td>Policy advisor</td>
+<td>Demand classification and a recommended reordering policy</td>
+<td>Item <strong>Reordering Policy</strong> (opt-in)</td>
+</tr>
+</tbody>
+</table>
+<h2>Why this one</h2>
+<h3>It writes standard fields</h3>
+<p>There is no parallel data model. Standard planning, requisition worksheets
+and MRP consume the results immediately with nothing to reconfigure — and if
+you ever uninstall the app, the values stay on your items.</p>
+<h3>It shows its working</h3>
+<p>Every calculation records the demand statistics behind it, the lead time and
+where that lead time came from, the service level and Z-score, the costs, the
+previous value and the reasoning. When somebody asks why an item's reorder
+point is what it is, the answer is one click away — months later.</p>
+<h3>It tells you when to doubt it</h3>
+<p>Very few planning tools admit their own limits. This one warns you when
+recent demand has diverged from the historical window, when Stockkeeping Units
+mean the planning engine reads a different value than the item card, and when
+an item's demand is too intermittent for the underlying statistics to be
+trusted.</p>
+<h3>You review before you commit</h3>
+<p>The Planning Worksheet shows current versus proposed values side by side for
+any filtered set of items, tells you how many lines change the reorder point by
+more than 25%, and applies only the lines you tick. Applying re-runs the
+calculators through their validated, logged path — nothing is blind-copied from
+the preview.</p>
+<h2>How your team uses it</h2>
+<ul>
+<li><strong>One item</strong> — from the Item Card, while you are looking at it</li>
+<li><strong>A category or a vendor's range</strong> — from the Item List, on your current filter or selection</li>
+<li><strong>A reviewed rollout</strong> — through the Planning Worksheet</li>
+<li><strong>Unattended</strong> — a nightly Job Queue entry, created for you from the setup page</li>
+<li><strong>At planning time</strong> — optionally, values computed live during a planning run rather than read from the item</li>
+</ul>
+<h2>What it does not do</h2>
+<p>It calculates at item level. Per-location planning through Stockkeeping
+Units, ABC-driven service levels and exception workbenches are outside its
+scope — and the app tells you, in the calculation note, when an item has SKUs
+so you are never left wondering why a value "isn't working".</p>
+<p>It is descriptive statistics over posted history, not forecasting and not
+machine learning. That is a deliberate choice: every number it produces can be
+traced back to transactions you can open.</p>
+<h2>Requirements and licence</h2>
+<ul>
+<li>Business Central 2026 release wave 1 (v28) or later, cloud</li>
+<li>Free. MIT licensed. Source at
+<a href="https://github.com/GmsoftLtd/bc-inventory-planning">github.com/GmsoftLtd/bc-inventory-planning</a></li>
+<li>Two permission sets ship with the app: one for planners, one for administrators</li>
+</ul>
+<div>
+<a href="/apps/inventory-planning/support/">Talk to us</a>
+<a href="/apps/inventory-planning/docs/getting-started">Getting started</a>
+</div>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1001</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[inventory-planning]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>0</wp:post_parent>
+    <wp:menu_order>0</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Documentation]]></title>
+    <link>https://gmsoftdynamics.com/docs/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1002</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Everything you need to configure and run the safety stock,
+reorder point, EOQ and reordering policy calculators for Microsoft Dynamics 365
+Business Central.</p>
+<blockquote>
+<strong>New here?</strong>
+<p>Start with <a href="/apps/inventory-planning/docs/getting-started/">Getting started</a> — install,
+permissions, the five setup values that matter, and calculating your first
+item.</p>
+</blockquote>
+<h2>Guides</h2>
+<ul>
+<li><a href="/apps/inventory-planning/docs/getting-started/">
+<strong>Getting started</strong>
+Install, assign permissions, review the defaults and calculate your first item.
+</a></li>
+<li><a href="/apps/inventory-planning/docs/inventory-planning-setup/">
+<strong>Setup reference</strong>
+Every setup field, its default, and what changing it does.
+</a></li>
+<li><a href="/apps/inventory-planning/docs/running-the-calculators/">
+<strong>Running the calculators</strong>
+Per item, in bulk from the Item List, and on a nightly schedule.
+</a></li>
+<li><a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">
+<strong>Planning Worksheet</strong>
+Preview current versus proposed values and apply only what you select.
+</a></li>
+<li><a href="/apps/inventory-planning/docs/inventory-planning-log/">
+<strong>Calculation log</strong>
+Read the audit trail and set a retention policy.
+</a></li>
+<li><a href="/apps/inventory-planning/docs/inventory-planning-item-fields/">
+<strong>Per-item controls</strong>
+Exclude items from planning and override the service level per item.
+</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="/apps/inventory-planning/docs/troubleshooting/">
+<strong>Troubleshooting</strong>
+Result codes, warnings, and what to do about each one.
+</a></li>
+<li><a href="/apps/inventory-planning/docs/faq/">
+<strong>FAQ</strong>
+Formulas, methodology, data handling and scope.
+</a></li>
+</ul>
+<h2>How the app works, briefly</h2>
+<p>All four calculators read one shared statistics engine, so they agree on
+what "demand" and "lead time" mean for a given item.</p>
+<p><strong>Demand</strong> is sales, netted against same-day returns, measured
+across every calendar day in the history window. In manufacturing companies you
+can also count production and assembly consumption, so purchased components are
+planned from real usage rather than from sales they never appear in.</p>
+<p><strong>Lead time</strong> is resolved from purchase receipt history where it
+exists — the only source that also yields variability — then from the item's
+Lead Time Calculation, then from a fallback you set. Safety stock and reorder
+point always use the same resolution, so the two can never disagree.</p>
+<p>Results are written to the standard item planning fields. There is no
+parallel data model, and standard planning consumes them with no further
+configuration.</p>
+<h2>Formulas</h2>
+<p>Safety stock, covering variability in both demand and lead time:</p>
+<pre><code>SS = Z × √( LT × σD² + D² × σLT² )</code></pre>
+<p>Reorder point:</p>
+<pre><code>ROP = (average daily demand × lead time) + safety stock</code></pre>
+<p>Economic order quantity, the Wilson formula:</p>
+<pre><code>EOQ = √( 2 × D × S / H )</code></pre>
+<p>Where <code>D</code> is annual demand, <code>S</code> the ordering cost and
+<code>H</code> the annual holding cost per unit. Full derivations and the
+reasoning behind the defaults are in the <a href="/apps/inventory-planning/docs/faq/">FAQ</a>.</p>
+<h2>Still stuck?</h2>
+<p><a href="/apps/inventory-planning/support/">Contact support</a> — we answer
+within 2 business days. The app is open source, so you can also read the
+calculation code or raise an issue on
+<a href="https://github.com/GmsoftLtd/bc-inventory-planning">GitHub</a>.</p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1002</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[docs]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1001</wp:post_parent>
+    <wp:menu_order>1</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Support]]></title>
+    <link>https://gmsoftdynamics.com/support/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1003</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Talk to the people who build the app. No ticket portal login,
+no account manager in between.</p>
+<blockquote>
+<strong>We reply within 2 business days.</strong>
+<p>Support hours are Monday to Friday, 09:00-18:00 UK time. Questions received outside those hours
+are answered on the next working day.</p>
+</blockquote>
+<h2>How to reach us</h2>
+<table>
+<thead><tr><th>Channel</th><th>Details</th><th>Best for</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Email</strong></td>
+<td><a href="mailto:support@gmsoft.co.uk">support@gmsoft.co.uk</a></td>
+<td>Most questions. Attach a screenshot and we can usually answer in one reply.</td>
+</tr>
+<tr>
+<td><strong>Telephone</strong></td>
+<td><a href="tel:+447771313713">+44 7771 313713</a></td>
+<td>Urgent problems, or anything easier to explain out loud.</td>
+</tr>
+<tr>
+<td><strong>Contact form</strong></td>
+<td><a href="https://gmsoftdynamics.com/contact/">Send us a message</a></td>
+<td>If you would rather not use email directly.</td>
+</tr>
+<tr>
+<td><strong>Issue tracker</strong></td>
+<td><a href="https://github.com/GmsoftLtd/bc-inventory-planning/issues">GitHub issues</a></td>
+<td>Bug reports and feature requests you are happy to have in public.</td>
+</tr>
+</tbody>
+</table>
+<h2>Before you contact us</h2>
+<p>Two things answer most questions faster than we can:</p>
+<ul>
+<li><a href="/apps/inventory-planning/docs/troubleshooting">Troubleshooting</a>
+— every result code and warning, and what to do about each</li>
+<li><a href="/apps/inventory-planning/docs/faq">FAQ</a> — formulas,
+methodology, data handling and scope</li>
+</ul>
+<h2>What to include</h2>
+<p>For anything about a calculated value, these four things usually contain the
+whole answer:</p>
+<ol>
+<li>The <strong>item number</strong></li>
+<li>A screenshot of the <strong>calculation log entry</strong> for that item —
+it carries every input that produced the result</li>
+<li>Your <strong>Inventory Planning Setup</strong> page</li>
+<li>What you expected the value to be, and why</li>
+</ol>
+<p>For an error, add the full message text and roughly when it happened.</p>
+<h2>What we support</h2>
+<p>The app is free and MIT licensed, and we support it properly: questions about
+how it works, help interpreting results, bug reports, and guidance on
+configuring it for your range.</p>
+<p>Advice on your wider planning setup, per-location planning, data cleanup or
+custom development sits outside app support — but we do that work too. Ask, and
+we will tell you which side of the line your question falls on.</p>
+<h2>Reporting a security issue</h2>
+<p>Email <a href="mailto:support@gmsoft.co.uk">support@gmsoft.co.uk</a> with the
+details rather than opening a public issue, and we will respond directly.</p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1003</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[support]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1001</wp:post_parent>
+    <wp:menu_order>2</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Getting started]]></title>
+    <link>https://gmsoftdynamics.com/getting-started/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1004</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>From install to your first calculated item in about ten
+minutes.</p>
+<h2>1. Install</h2>
+<p>Install from AppSource. On installation the app creates its setup record
+with working defaults, registers itself under <strong>Manual Setup</strong>, and
+registers its calculation log with the standard Retention Policy module.</p>
+<p>Nothing is calculated and no item is touched until you ask for it.</p>
+<h2>2. Assign permissions</h2>
+<table>
+<thead><tr><th>Permission set</th><th>Give it to</th><th>Grants</th></tr></thead>
+<tbody>
+<tr>
+<td><code>GSO - User</code><br><span>Inventory Planning - User</span></td>
+<td>Planners, buyers</td>
+<td>Run the calculators, use the worksheet, read the log and setup</td>
+</tr>
+<tr>
+<td><code>GSO</code><br><span>Inventory Planning</span></td>
+<td>Administrators</td>
+<td>The above, plus editing setup and maintaining the log</td>
+</tr>
+</tbody>
+</table>
+<p>Anyone who runs standard planning while the optional dynamic provider is
+enabled needs at least <code>GSO - User</code>.</p>
+<h2>3. Review the setup</h2>
+<p>Search for <strong>Inventory Planning Setup</strong>. The defaults suit a
+distributor with a year of clean history:</p>
+<table>
+<thead><tr><th>Setting</th><th>Default</th><th>Change it if…</th></tr></thead>
+<tbody>
+<tr><td>Demand History Window (Days)</td><td>365</td><td>Your range turns over much faster, or you have less than a year of data</td></tr>
+<tr><td>Min Demand Observations</td><td>20</td><td>Your items sell on fewer than 20 distinct days a year</td></tr>
+<tr><td>Default Service Level %</td><td>95</td><td>Your business targets a different availability level</td></tr>
+<tr><td>Ordering Cost (S)</td><td>50</td><td>You know your real cost of raising and receiving one order</td></tr>
+<tr><td>Holding Rate</td><td>0.25</td><td>Your cost of capital and storage differs from 25% a year</td></tr>
+</tbody>
+</table>
+<blockquote>
+<strong>If you manufacture or assemble, turn on “Count Consumption as Demand”.</strong>
+<p>Without it, a component consumed by production shows no demand at all,
+because it is never sold. Every purchased component will report
+<em>Zero Demand</em> and no values will be produced.</p>
+</blockquote>
+<p>The full field-by-field reference is in
+<a href="/apps/inventory-planning/docs/inventory-planning-setup/">Setup reference</a>.</p>
+<h2>4. Calculate one item you know well</h2>
+<p>Open an item whose demand you could describe from memory — that is what makes
+the first result meaningful.</p>
+<p><strong>Item Card → Inventory Planning → Calculate All Planning Values.</strong></p>
+<p>The app runs everything in dependency order: policy advice, then safety
+stock, then reorder point (fed the fresh safety stock, not the stored one),
+then EOQ, then maximum inventory. It reports what it found and why.</p>
+<p>Now open <strong>Item Card → Inventory Planning → Calculation Log</strong> and
+read the entry. It shows the demand statistics, the lead time and its source,
+the Z-score, and the previous value. If the numbers look wrong, this is where
+you find out why — usually the history window or the demand definition, not the
+arithmetic.</p>
+<h2>5. Roll out to a range</h2>
+<p>Do not start with a bulk apply. Use the
+<a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">Planning Worksheet</a>:</p>
+<ol>
+<li><strong>Item List → Inventory Planning → Planning Worksheet</strong></li>
+<li><strong>Load Items</strong>, filtered to one item category or one vendor</li>
+<li>Read the variance message — it tells you how many lines move the reorder
+point by more than 25%. Check those first.</li>
+<li>Tick the lines you accept, then <strong>Apply Selected</strong></li>
+</ol>
+<h2>6. Schedule it</h2>
+<p><strong>Inventory Planning Setup → Create Job Queue Entry</strong> creates a
+daily 03:00 recurring entry, <em>on hold</em> so you can review it. Set it to
+<strong>Ready</strong> when you are satisfied.</p>
+<p>See <a href="/apps/inventory-planning/docs/running-the-calculators/">Running the calculators</a> for the
+parameter values that control what each scheduled run does.</p>
+<h2>7. Set a log retention policy</h2>
+<p>The log grows by one row per item per calculator per run. Search for
+<strong>Retention Policies</strong>, add one for the
+<strong>GSO Calculation Log</strong> table, and set a period — 90 days is a
+sensible start. Without a policy, nothing is ever deleted.</p>
+<hr>
+<p>Next: <a href="/apps/inventory-planning/docs/inventory-planning-setup/">Setup reference</a> ·
+<a href="/apps/inventory-planning/docs/troubleshooting/">Troubleshooting</a></p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1004</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[getting-started]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>1</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Setup reference]]></title>
+    <link>https://gmsoftdynamics.com/inventory-planning-setup/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1005</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Search for <strong>Inventory Planning Setup</strong>, or find it
+under Manual Setup. One page configures all four calculators.</p>
+<h2>General</h2>
+<p>These settings apply to every calculator.</p>
+<table>
+<thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr>
+<td>Demand History Window (Days)</td><td>365</td>
+<td>Calendar days of history to analyse, ending on the work date. Range 30–1095. A shorter window reacts faster to change but is noisier; a longer one is stabler but lags.</td>
+</tr>
+<tr>
+<td>Min Demand Observations</td><td>20</td>
+<td>Minimum number of <strong>days with demand</strong> before a result is produced. Below this the item reports <em>Insufficient Demand Data</em>. Minimum 3. This counts days, not transaction lines.</td>
+</tr>
+<tr>
+<td>Round Up Results to Whole Units</td><td>Yes</td>
+<td>Round results up to whole units. Turn off for items measured in kilograms, litres or metres.</td>
+</tr>
+<tr>
+<td>Log Calculation History</td><td>Yes</td>
+<td>Write an entry to the calculation log for every calculation. Leaving this on is what makes results auditable.</td>
+</tr>
+<tr>
+<td>Skip Make-to-Order Items</td><td>Yes</td>
+<td>Skip items whose replenishment is make-to-order. Their supply is driven by the order that demands them, not by a reorder point.</td>
+</tr>
+<tr>
+<td>Fallback Lead Time (Days)</td><td>7</td>
+<td>Used when neither receipt history nor the item's Lead Time Calculation yields a lead time.</td>
+</tr>
+<tr>
+<td>Count Consumption as Demand</td><td>No</td>
+<td>Count production and assembly consumption as demand alongside sales. <strong>Turn this on in manufacturing companies</strong>, or purchased components will report zero demand.</td>
+</tr>
+<tr>
+<td>Trend Warning Threshold % (0 = off)</td><td>30</td>
+<td>Warn in the calculation note when recent demand deviates from the window average by more than this. Set 0 to disable.</td>
+</tr>
+</tbody>
+</table>
+<h2>Safety stock</h2>
+<table>
+<thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr>
+<td>Default Service Level %</td><td>95</td>
+<td>Probability of not stocking out during a replenishment cycle. Range 70–99.99. Can be overridden per item.</td>
+</tr>
+<tr>
+<td>Write Safety Stock to Item</td><td>Yes</td>
+<td>Turn off to calculate and log without writing anything to items — useful while you are evaluating.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<strong>Service level is not linear in cost.</strong>
+<p>Moving from 95% to 99% roughly doubles the buffer. Raise it for the items
+where a stockout is expensive, not across the board — that is what the
+per-item override is for.</p>
+</blockquote>
+<h2>Reorder point</h2>
+<table>
+<thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr>
+<td>Add Safety Stock to Reorder Point</td><td>Yes</td>
+<td>Include the freshly calculated safety stock in the reorder point, rather than the value stored on the item.</td>
+</tr>
+<tr><td>Write Reorder Point to Item</td><td>Yes</td><td>Turn off to preview only.</td></tr>
+<tr>
+<td>Set Policy to Fixed Reorder Qty. when None</td><td>Yes</td>
+<td>Give items with no reordering policy one, so the calculated reorder point actually does something. Suppressed for an item when the advisor recommends a different policy.</td>
+</tr>
+<tr>
+<td>Write Maximum Inventory (ROP + EOQ) for Maximum Qty. Items</td><td>Yes</td>
+<td>Set the order-up-to level for items on the Maximum Qty. policy.</td>
+</tr>
+</tbody>
+</table>
+<h2>EOQ</h2>
+<table>
+<thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr>
+<td>Ordering Cost (S)</td><td>50</td>
+<td>Cost of placing one order — administration, receiving, inspection — in your local currency. This is the single input most worth getting right.</td>
+</tr>
+<tr>
+<td>Holding Rate</td><td>0.25</td>
+<td>Annual cost of holding one unit as a fraction of unit cost. 0.25 means 25% a year, covering capital, storage, insurance and obsolescence. Range 0–1.</td>
+</tr>
+<tr>
+<td>Maximum EOQ (Months of Demand)</td><td>6</td>
+<td>Cap on the result. Stops a cheap, high-volume item from ordering two years of stock. Minimum 0.5. When the cap binds, the result code is <em>Cap Applied</em>.</td>
+</tr>
+<tr>
+<td>EOQ Write Target</td><td>Reorder Quantity</td>
+<td>Or <strong>Order Multiple</strong>, if you would rather the planning engine round order sizes than fix them.</td>
+</tr>
+<tr>
+<td>Unit Cost Source</td><td>Last Direct Cost</td>
+<td>Or <strong>Standard Cost</strong> or <strong>Unit Cost</strong>. Pick the one your items actually populate.</td>
+</tr>
+<tr><td>Write EOQ to Item</td><td>Yes</td><td>Turn off to preview only.</td></tr>
+</tbody>
+</table>
+<h2>Policy advisor</h2>
+<table>
+<thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr>
+<td>Intermittent ADI Threshold</td><td>1.32</td>
+<td>Average Demand Interval above which demand counts as intermittent. The standard Syntetos–Boylan value.</td>
+</tr>
+<tr>
+<td>Erratic CV-Squared Threshold</td><td>0.49</td>
+<td>Squared coefficient of variation above which demand size counts as erratic. Also Syntetos–Boylan.</td>
+</tr>
+<tr>
+<td>Treat Shelf Life as Maximum Qty.</td><td>Yes</td>
+<td>Items with an Expiration Calculation are steered to the Maximum Qty. policy so standing stock is capped.</td>
+</tr>
+<tr>
+<td>Auto-Update Item Reordering Policy</td><td><strong>No</strong></td>
+<td>Whether an applied advice run writes the recommended policy to the item. Off by default. Recommendations are logged either way — turn this on only once you trust the advice.</td>
+</tr>
+</tbody>
+</table>
+<p>Auto-update only ever writes Fixed Reorder Qty., Maximum Qty. or
+Lot-for-Lot. It never flips an item to <strong>Order</strong> automatically:
+that is a sourcing decision, not a statistical one.</p>
+<h2>Planning engine integration</h2>
+<table>
+<thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr>
+<td>Supply Values at Planning Time (Dynamic)</td><td>No</td>
+<td>Supplies freshly calculated values to the planning engine during a planning run, instead of relying on whatever the last batch run wrote to the item.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<strong>Verify the dynamic provider on a sandbox first.</strong>
+<p>Run a regenerative plan for one item, confirm the requisition line reflects
+the calculated values, and check that a <em>Dynamic Supply</em> entry appears
+in the calculation log. Real Stockkeeping Units are never modified, items that
+cannot be calculated fall back to their stored values, and order modifiers
+stay under the planning engine's control.</p>
+</blockquote>
+<h2>Actions on this page</h2>
+<ul>
+<li><strong>Create Job Queue Entry</strong> — a daily 03:00 recurring entry,
+created on hold for you to review</li>
+<li><strong>Planning Worksheet</strong> — opens the
+<a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">worksheet</a></li>
+<li><strong>Calculation Log</strong> — opens the
+<a href="/apps/inventory-planning/docs/inventory-planning-log/">log</a></li>
+</ul>
+<hr>
+<p>Next: <a href="/apps/inventory-planning/docs/running-the-calculators/">Running the calculators</a> ·
+<a href="/apps/inventory-planning/docs/inventory-planning-item-fields/">Per-item controls</a></p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1005</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[inventory-planning-setup]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>2</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Running the calculators]]></title>
+    <link>https://gmsoftdynamics.com/running-the-calculators/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1006</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Four ways to run: one item, a filtered set, a reviewed
+worksheet, or unattended on a schedule.</p>
+<h2>One item — from the Item Card</h2>
+<p><strong>Item Card → Inventory Planning</strong></p>
+<table>
+<thead><tr><th>Action</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Calculate All Planning Values</td><td>Everything, in dependency order</td></tr>
+<tr><td>Calculate Safety Stock</td><td>Safety stock only</td></tr>
+<tr><td>Calculate Reorder Point</td><td>Reorder point only</td></tr>
+<tr><td>Calculate EOQ</td><td>EOQ only</td></tr>
+<tr><td>Advise Reordering Policy</td><td>Classifies demand and recommends a policy</td></tr>
+<tr><td>Calculation Log</td><td>Opens the log filtered to this item</td></tr>
+</tbody>
+</table>
+<p>Each action reports its result and its reasoning. Whether the value reaches
+the item depends on the matching <em>Write … to Item</em> switch in
+<a href="/apps/inventory-planning/docs/inventory-planning-setup/">setup</a>.</p>
+<blockquote>
+<strong>Why “Calculate All” is not just the four actions in a row.</strong>
+<p>It runs them in dependency order — policy advice, safety stock, reorder
+point, EOQ, maximum inventory — and feeds the reorder point the
+<em>freshly calculated</em> safety stock rather than whatever is stored on the
+item. Running the individual actions out of order can build a reorder point
+on a stale safety stock.</p>
+<p>It also suppresses the “Set Policy to Fixed Reorder Qty. when None”
+default for an item whose advice recommends something else, so one run never
+stamps a policy its own advice contradicts.</p>
+</blockquote>
+<h2>A filtered set — from the Item List</h2>
+<p><strong>Item List → Inventory Planning</strong></p>
+<table>
+<thead><tr><th>Action</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Planning Worksheet</td><td>Opens the <a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">preview worksheet</a></td></tr>
+<tr><td>Calculate All (Selected/Filtered Items)</td><td>Runs everything and applies, after confirming the item count</td></tr>
+<tr><td>Advise Policy (Selected/Filtered Items)</td><td>Classifies demand and logs recommendations</td></tr>
+</tbody>
+</table>
+<p><strong>Scope:</strong> if you have selected more than one row, the selected
+rows win. Otherwise the current filter on the list defines the scope.
+Non-inventory, blocked and excluded items are skipped automatically.</p>
+<p>Long runs commit every 100 items, so an interrupted run keeps the work
+already done.</p>
+<blockquote>
+<strong>Bulk actions apply immediately.</strong>
+<p>They write to items after a single confirmation. If you want to see the
+numbers before they land, use the
+<a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">Planning Worksheet</a> instead — that is
+what it exists for.</p>
+</blockquote>
+<h2>Unattended — Job Queue</h2>
+<p><strong>Inventory Planning Setup → Create Job Queue Entry</strong> creates a
+recurring entry that runs every day at 03:00, created <strong>on hold</strong>.
+Review the schedule, then set it to <strong>Ready</strong>.</p>
+<p>The <strong>Parameter String</strong> on the entry selects what runs:</p>
+<table>
+<thead><tr><th>Value</th><th>Runs</th></tr></thead>
+<tbody>
+<tr><td><code>ALL</code> <span>(default, also used when empty)</span></td><td>Everything, in dependency order</td></tr>
+<tr><td><code>SAFETYSTOCK</code></td><td>Safety stock only</td></tr>
+<tr><td><code>REORDERPOINT</code></td><td>Reorder point only</td></tr>
+<tr><td><code>EOQ</code></td><td>EOQ only</td></tr>
+<tr><td><code>ADVISOR</code></td><td>Policy advice only</td></tr>
+</tbody>
+</table>
+<p>Create several entries with different parameters and schedules if that suits
+you — for example policy advice weekly, safety stock nightly.</p>
+<blockquote>
+<strong>Scheduled runs apply to every eligible item.</strong>
+<p>Protect any item whose planning values a person maintains by hand: tick
+<a href="/apps/inventory-planning/docs/inventory-planning-item-fields/">Exclude from Inventory Planning</a> on
+the item card.</p>
+</blockquote>
+<h2>At planning time — the dynamic provider</h2>
+<p>Optionally, the app can supply freshly calculated values to the planning
+engine <em>during</em> a planning run, instead of relying on whatever the last
+batch run wrote. Off by default; see
+<a href="/apps/inventory-planning/docs/inventory-planning-setup/">Setup reference</a> before enabling it.</p>
+<hr>
+<p>Next: <a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">Planning Worksheet</a> ·
+<a href="/apps/inventory-planning/docs/troubleshooting/">Troubleshooting</a></p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1006</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[running-the-calculators]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>3</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Planning Worksheet]]></title>
+    <link>https://gmsoftdynamics.com/inventory-planning-worksheet/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1007</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Current versus proposed values, side by side, for any filtered
+set of items — with selective apply. The safest way to roll the app out.</p>
+<p>Open it from <strong>Item List → Inventory Planning → Planning
+Worksheet</strong>, from the setup page, or by searching for
+<strong>Inventory Planning Worksheet</strong>.</p>
+<h2>How to use it</h2>
+<ol>
+<li><strong>Load Items</strong> — choose a filter on item number, item
+category or vendor. Every matching inventory item is calculated as a
+<strong>preview</strong>. Nothing is written.</li>
+<li>Read the variance message. It reports how many lines change the reorder
+point by <strong>more than 25%</strong>, so a large worksheet can be triaged
+instead of read line by line.</li>
+<li>Review the columns, starting with those large movers.</li>
+<li>Tick the lines you accept. <strong>Select All</strong> and
+<strong>Clear Selection</strong> help with big sets.</li>
+<li><strong>Apply Selected</strong> — confirms the count, then applies.</li>
+</ol>
+<blockquote>
+<strong>Applying is not a copy of the preview.</strong>
+<p>The calculators re-run through their validated, logged path, so an apply is
+exactly equivalent to running each item individually. Applied lines refresh
+their “current” columns in place and are deselected, so you can see the effect
+without reloading.</p>
+</blockquote>
+<h2>Reading the columns</h2>
+<table>
+<thead><tr><th>Column</th><th>Shows</th></tr></thead>
+<tbody>
+<tr><td>Demand Pattern</td><td>Smooth, Erratic, Intermittent or Lumpy — see <a href="/apps/inventory-planning/docs/faq/">how patterns are classified</a></td></tr>
+<tr><td>Current / Recommended Policy</td><td>The item's reordering policy today, and what the advisor suggests</td></tr>
+<tr><td>Current / Proposed Safety Stock</td><td>Safety Stock Quantity, before and after</td></tr>
+<tr><td>Current / Proposed Reorder Point</td><td>Reorder Point, before and after</td></tr>
+<tr><td>Current Reorder Quantity / Proposed EOQ</td><td>Reorder Quantity today, and the calculated economic order quantity</td></tr>
+<tr><td>Current / Proposed Maximum Inventory</td><td>The order-up-to level for Maximum Qty. items</td></tr>
+<tr><td>SS / ROP / EOQ Result Code</td><td>The outcome of each calculator — see <a href="/apps/inventory-planning/docs/troubleshooting/">Troubleshooting</a></td></tr>
+<tr><td>Note</td><td>The advisor's reasoning, plus any trend, SKU or lumpy-demand warning</td></tr>
+</tbody>
+</table>
+<h2>What to look at first</h2>
+<ul>
+<li><strong>Lines the variance message flagged.</strong> A reorder point that
+moves more than 25% is either a real correction or a data problem. Both are
+worth ten seconds.</li>
+<li><strong>Result codes that are not OK.</strong> An <em>Insufficient Demand
+Data</em> or <em>Zero Demand</em> line produced no value, so ticking it
+achieves nothing.</li>
+<li><strong>Notes containing warnings.</strong> Trend warnings mean the
+history is not describing the present. SKU notices mean planning reads a
+different value than the item card.</li>
+<li><strong>Policy changes.</strong> A recommended policy that differs from
+the current one changes how the planning engine behaves, not just by how
+much — review these before anything else.</li>
+</ul>
+<blockquote>
+<strong>Nothing on this page writes to items until you choose Apply Selected.</strong>
+<p>Loading, sorting, filtering and selecting are all safe. You can close the
+worksheet at any point and nothing will have changed.</p>
+</blockquote>
+<h2>A sensible rollout</h2>
+<p>Work through one item category or one vendor's range at a time rather than
+the whole catalogue. Each pass gives you a feel for whether the setup values —
+particularly the history window, the service level and the ordering cost — suit
+that part of your range, and you can adjust before the next pass.</p>
+<hr>
+<p>Next: <a href="/apps/inventory-planning/docs/inventory-planning-log/">Calculation log</a> ·
+<a href="/apps/inventory-planning/docs/troubleshooting/">Troubleshooting</a></p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1007</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[inventory-planning-worksheet]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>4</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Calculation log]]></title>
+    <link>https://gmsoftdynamics.com/inventory-planning-log/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1008</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Every calculation records its full basis, not just its answer.
+This is what makes a planning number defensible months after it was
+produced.</p>
+<p>Open it by searching for <strong>Inventory Planning Calculation Log</strong>,
+or from the setup page, the worksheet, or
+<strong>Item Card → Inventory Planning → Calculation Log</strong> — which
+filters it to that item.</p>
+<h2>What each entry records</h2>
+<table>
+<thead><tr><th>Group</th><th>Fields</th></tr></thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td>Calculation type, item, date and time, user</td>
+</tr>
+<tr>
+<td>Demand</td>
+<td>Average daily demand, standard deviation, observations, ADI, CV², demand pattern</td>
+</tr>
+<tr>
+<td>Lead time</td>
+<td>Days, standard deviation, and the <strong>source</strong> the value came from</td>
+</tr>
+<tr>
+<td>Safety stock inputs</td>
+<td>Service level applied, and the Z-score derived from it</td>
+</tr>
+<tr>
+<td>EOQ inputs</td>
+<td>Annual demand, unit cost, holding cost, ordering cost</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>Raw result, final result, <strong>previous value</strong>, whether it was applied, result code, recommended policy, note</td>
+</tr>
+</tbody>
+</table>
+<h2>Calculation types</h2>
+<ul>
+<li><strong>Safety Stock</strong>, <strong>Reorder Point</strong>,
+<strong>EOQ</strong>, <strong>Maximum Inventory</strong> — the four value
+calculators</li>
+<li><strong>Policy Advice</strong> — a demand classification and
+recommendation</li>
+<li><strong>Dynamic Supply</strong> — a value computed during a planning run
+by the optional dynamic provider, so planning-time values are as traceable
+as batch ones</li>
+</ul>
+<h2>Three questions it answers</h2>
+<h3>“Why is this item's reorder point this number?”</h3>
+<p>Filter to the item, open the most recent Reorder Point entry. Average daily
+demand times lead time, plus safety stock — with every input listed, including
+which source the lead time came from.</p>
+<h3>“What was it before?”</h3>
+<p>The <strong>Previous Value</strong> field on every entry. You can reconstruct
+an item's whole planning history from the log.</p>
+<h3>“Why did nothing happen for this item?”</h3>
+<p>Entries are written even when no value is produced. The
+<strong>Result Code</strong> says which check stopped it and the
+<strong>Note</strong> explains — see <a href="/apps/inventory-planning/docs/troubleshooting/">Troubleshooting</a>.</p>
+<h2>Set a retention policy</h2>
+<blockquote>
+<strong>The log grows by one row per item per calculator per run.</strong>
+<p>A nightly run across 5,000 items writes roughly 25,000 rows a night. Set a
+retention policy.</p>
+</blockquote>
+<p>The log is registered with the standard Business Central
+<strong>Retention Policy</strong> module, so this takes a minute:</p>
+<ol>
+<li>Search for <strong>Retention Policies</strong></li>
+<li><strong>New</strong>, and choose the table <strong>GSO Calculation
+Log</strong></li>
+<li>Set a retention period — <strong>90 days</strong> is a sensible start</li>
+<li>Enable the policy</li>
+</ol>
+<p>Without a policy, nothing is ever deleted. Turning off
+<em>Log Calculation History</em> in setup stops the writes entirely, but you
+lose the audit trail — a retention policy is almost always the better
+answer.</p>
+<hr>
+<p>Next: <a href="/apps/inventory-planning/docs/troubleshooting/">Troubleshooting</a> ·
+<a href="/apps/inventory-planning/docs/faq/">FAQ</a></p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1008</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[inventory-planning-log]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>5</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Per-item controls]]></title>
+    <link>https://gmsoftdynamics.com/inventory-planning-item-fields/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1009</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Two fields on the Item Card <strong>Planning</strong> tab, for
+the items that need to differ from your company defaults.</p>
+<h2>Exclude from Inventory Planning</h2>
+<p>When ticked, the item is skipped by <strong>every</strong> calculator, every
+bulk run, every scheduled job and the dynamic provider. Nothing the app does
+will ever touch its planning values.</p>
+<p>Use it for:</p>
+<ul>
+<li>Items whose planning values a planner maintains deliberately, from
+knowledge the ledger does not contain</li>
+<li>Items under a supplier agreement that fixes order quantities</li>
+<li>Items in a launch or phase-out where history is actively
+misleading</li>
+<li>Anything you have tuned by hand and do not want a nightly job to
+overwrite</li>
+</ul>
+<blockquote>
+<strong>This is the safety catch for scheduled runs.</strong>
+<p>A nightly job applies to every eligible item. If a value on an item matters
+to someone, tick this box rather than relying on nobody scheduling a run.</p>
+</blockquote>
+<h2>Planning Service Level % (0 = default)</h2>
+<p>A per-item service level for the safety stock calculation, overriding the
+company default in <a href="/apps/inventory-planning/docs/inventory-planning-setup/">setup</a>. Leave it at
+<strong>0</strong> to use the default. Range 70–99.99 when set.</p>
+<p>This is how you do ABC-style differentiation without an ABC module:</p>
+<table>
+<thead><tr><th>Item</th><th>Typical level</th><th>Reasoning</th></tr></thead>
+<tbody>
+<tr>
+<td>Critical lines — a stockout loses the order or stops production</td>
+<td>98–99%</td>
+<td>The buffer is cheap relative to the consequence</td>
+</tr>
+<tr>
+<td>Ordinary stock</td>
+<td>Company default (95%)</td>
+<td>Leave at 0</td>
+</tr>
+<tr>
+<td>Low-value, easily substituted, or short shelf life</td>
+<td>85–90%</td>
+<td>Carrying cost and obsolescence outweigh the odd stockout</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<strong>Service level is not linear in cost.</strong>
+<p>Moving an item from 95% to 99% roughly doubles its safety stock. Raise it
+where a stockout is genuinely expensive, not across the board — otherwise you
+have simply bought more inventory.</p>
+</blockquote>
+<h2>Actions on the Item Card</h2>
+<p>The same tab carries the per-item calculator actions — Calculate All Planning
+Values, the four individual calculators, and a filtered view of the calculation
+log. See <a href="/apps/inventory-planning/docs/running-the-calculators/">Running the calculators</a>.</p>
+<h2>Bulk maintenance</h2>
+<p>Both fields are ordinary item fields, so they can be set for many items at
+once with the standard <strong>Edit in Excel</strong> action on the Item List,
+or through a configuration package.</p>
+<hr>
+<p>Next: <a href="/apps/inventory-planning/docs/running-the-calculators/">Running the calculators</a> ·
+<a href="/apps/inventory-planning/docs/inventory-planning-setup/">Setup reference</a></p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1009</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[inventory-planning-item-fields]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>6</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[Troubleshooting]]></title>
+    <link>https://gmsoftdynamics.com/troubleshooting/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1010</guid>
+    <description></description>
+    <content:encoded><![CDATA[<p>Every calculation carries a result code and a note. Start
+there — the app almost always tells you what stopped it.</p>
+<h2>Result codes</h2>
+<table>
+<thead><tr><th>Code</th><th>Meaning</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>OK</strong></td><td>Calculated and usable</td><td>Nothing</td></tr>
+<tr><td><strong>Cap Applied</strong></td><td>Usable, but a configured cap limited the result</td><td>Check <em>Maximum EOQ (Months of Demand)</em>, or the item's Maximum Inventory for a capped reorder point</td></tr>
+<tr><td><strong>Insufficient Demand Data</strong></td><td>Fewer days with demand than <em>Min Demand Observations</em></td><td>Lengthen the history window, lower the minimum, or accept the item is too sporadic to model</td></tr>
+<tr><td><strong>Zero Demand</strong></td><td>No demand at all in the window</td><td>New item, dead item — or a manufacturing component with <em>Count Consumption as Demand</em> off</td></tr>
+<tr><td><strong>No Lead Time Data</strong></td><td>No lead time from any source</td><td>Set the item's Lead Time Calculation, or a fallback in setup</td></tr>
+<tr><td><strong>Item Blocked</strong></td><td>The item is blocked</td><td>Expected</td></tr>
+<tr><td><strong>Make-to-Order Skipped</strong></td><td>Make-to-order item, and skipping is on</td><td>Expected — turn the setting off to include them</td></tr>
+<tr><td><strong>Not an Inventory Item</strong></td><td>Type is Service or Non-Inventory</td><td>Expected</td></tr>
+<tr><td><strong>Excluded by Item Setting</strong></td><td><em>Exclude from Inventory Planning</em> is ticked</td><td>Expected — <a href="/apps/inventory-planning/docs/inventory-planning-item-fields/">untick it</a> to include the item</td></tr>
+<tr><td><strong>Zero Unit Cost</strong></td><td>EOQ needs a unit cost</td><td>Populate the chosen cost source, or switch <em>Unit Cost Source</em></td></tr>
+<tr><td><strong>Zero Ordering Cost</strong></td><td>EOQ needs an ordering cost</td><td>Set <em>Ordering Cost (S)</em> in setup</td></tr>
+<tr><td><strong>Zero Result</strong></td><td>The formula produced zero</td><td>Reported rather than written, so a real value is never replaced with nothing</td></tr>
+<tr><td><strong>Error</strong></td><td>Unexpected failure</td><td>Read the note on the log entry, then <a href="/apps/inventory-planning/support/">contact support</a></td></tr>
+</tbody>
+</table>
+<h2>Warnings in the note</h2>
+<h3>Trend warning</h3>
+<p>Recent demand — the last quarter of the window, minimum 30 days — deviates
+from the full-window average by more than your threshold. History-based planning
+lags a ramp-up and overstates a phase-out. Consider a shorter window for
+fast-moving ranges, or set the values by hand and exclude the item.</p>
+<h3>Stockkeeping Unit notice</h3>
+<p>The item has Stockkeeping Units. Standard planning reads SKU values at a
+location, <strong>not</strong> the item card — so a value calculated here may
+appear to have no effect. This app calculates at item level by design.</p>
+<h3>Intermittent or lumpy demand warning</h3>
+<p>Safety stock rests on a normal approximation that does not really hold for
+this demand shape. The number is still the best available estimate, but it
+deserves review rather than trust.</p>
+<h2>Common situations</h2>
+<h3>Every item reports Zero Demand</h3>
+<p>You manufacture, and <em>Count Consumption as Demand</em> is off. Components
+are consumed, never sold, so there is no sales history to find. Turn it on in
+<a href="/apps/inventory-planning/docs/inventory-planning-setup/">setup</a>.</p>
+<h3>Every item reports Insufficient Demand Data</h3>
+<p>Observations count <strong>days with demand</strong>, not transaction lines.
+An item with 200 sales lines across 12 busy days has 12 observations, and the
+default minimum is 20.</p>
+<p>Lengthen the window or lower the minimum — but understand what you are
+agreeing to: a statistic from five days of demand is a statistic from five days
+of demand.</p>
+<h3>The calculated values are ignored by planning</h3>
+<p>Check for Stockkeeping Units on the item. Standard planning reads the SKU at
+a location rather than the item card. The calculation note says so whenever SKUs
+exist.</p>
+<p>Also check the item's <strong>Reordering Policy</strong>. A reorder point on
+an item with no policy, or on Lot-for-Lot, does nothing.</p>
+<h3>The reorder point looks too low for a growing product</h3>
+<p>Read the note — there will be a trend warning. History-based planning lags
+growth by design.</p>
+<h3>EOQ returns Zero Unit Cost</h3>
+<p>The <em>Unit Cost Source</em> you chose is empty on that item. Populate it, or
+switch the source in setup to one your items actually carry.</p>
+<h3>Values changed and nobody knows why</h3>
+<p>Open the <a href="/apps/inventory-planning/docs/inventory-planning-log/">calculation log</a> for the item.
+Every run records the previous value, the new value, the user, and every input
+that produced it.</p>
+<h3>A scheduled run overwrote values somebody had tuned</h3>
+<p>Tick <a href="/apps/inventory-planning/docs/inventory-planning-item-fields/">Exclude from Inventory
+Planning</a> on those items. Restore the old values from the
+<strong>Previous Value</strong> field in the log.</p>
+<h3>The results moved a lot after a setup change</h3>
+<p>Expected — the history window, service level, ordering cost and holding rate
+all feed the formulas directly. Use the
+<a href="/apps/inventory-planning/docs/inventory-planning-worksheet/">Planning Worksheet</a> to see the effect
+of a change before applying it anywhere.</p>
+<h2>Still stuck?</h2>
+<p><a href="/apps/inventory-planning/support/">Contact support</a> — we reply
+within 2 business days. Include the item number and a screenshot of the
+calculation log entry; that usually contains the whole answer.</p>
+<p>The app is open source, so you can also read the calculation code or raise an
+issue at
+<a href="https://github.com/GmsoftLtd/bc-inventory-planning">github.com/GmsoftLtd/bc-inventory-planning</a>.</p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1010</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[troubleshooting]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>7</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+  <item>
+    <title><![CDATA[FAQ]]></title>
+    <link>https://gmsoftdynamics.com/faq/</link>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <dc:creator><![CDATA[admin]]></dc:creator>
+    <guid isPermaLink="false">https://gmsoftdynamics.com/?page_id=1011</guid>
+    <description></description>
+    <content:encoded><![CDATA[<h2>Formulas and methodology</h2>
+<h3>What formula does safety stock use?</h3>
+<pre><code>SS = Z × √( LT × σD² + D² × σLT² )</code></pre>
+<p>Where <code>Z</code> is the inverse normal at your service level,
+<code>LT</code> the lead time in days, <code>σD</code> the standard deviation of
+daily demand, <code>D</code> the average daily demand and <code>σLT</code> the
+standard deviation of lead time.</p>
+<p>It covers variability in <em>both</em> demand and lead time. A simpler
+demand-only formula understates the buffer for items whose supplier is
+unreliable.</p>
+<h3>Where do the Z-scores come from?</h3>
+<p>A continuous inverse-normal approximation (Acklam), not a lookup table. A
+94.9% service level gets a 94.9% buffer rather than being rounded down to the
+nearest tabulated bucket.</p>
+<h3>How is the reorder point calculated?</h3>
+<pre><code>ROP = (average daily demand × lead time) + safety stock</code></pre>
+<p>Capped at the item's Maximum Inventory when one is set. The safety stock used
+is the freshly calculated one, not the value stored on the item.</p>
+<h3>How is EOQ calculated?</h3>
+<pre><code>EOQ = √( 2 × D × S / H )</code></pre>
+<p>The Wilson formula, where <code>D</code> is annual demand, <code>S</code> the
+ordering cost, and <code>H</code> the annual holding cost per unit — unit cost
+multiplied by your holding rate. The result is capped at a configurable number
+of months of demand and reconciled with the item's Minimum Order Quantity,
+Maximum Order Quantity and Order Multiple.</p>
+<h3>How are demand patterns classified?</h3>
+<p>By the Syntetos–Boylan scheme, using ADI (how <em>often</em> demand occurs)
+and CV² (how <em>variable</em> the quantities are):</p>
+<table>
+<thead><tr><th>Pattern</th><th>ADI</th><th>CV²</th><th>Recommended policy</th></tr></thead>
+<tbody>
+<tr><td>Smooth</td><td>&lt; 1.32</td><td>&lt; 0.49</td><td>Fixed Reorder Qty.</td></tr>
+<tr><td>Erratic</td><td>&lt; 1.32</td><td>≥ 0.49</td><td>Fixed Reorder Qty.</td></tr>
+<tr><td>Intermittent</td><td>≥ 1.32</td><td>&lt; 0.49</td><td>Lot-for-Lot</td></tr>
+<tr><td>Lumpy</td><td>≥ 1.32</td><td>≥ 0.49</td><td>Lot-for-Lot</td></tr>
+</tbody>
+</table>
+<p>Two overrides come first: an item with an Expiration Calculation, or one that
+already has a Maximum Inventory, is steered to <strong>Maximum Qty.</strong>
+instead. Make-to-order items are recommended <strong>Order</strong>.</p>
+<p>Both thresholds are configurable.</p>
+<h3>What counts as demand?</h3>
+<p>Sales, netted against same-day returns, measured across every calendar day in
+the history window. Days with no demand count toward the average, which is what
+makes the daily rate comparable with a lead time expressed in calendar days.</p>
+<p>With <em>Count Consumption as Demand</em> enabled, production and assembly
+consumption count too.</p>
+<h3>How is lead time determined?</h3>
+<ol>
+<li><strong>Purchase receipt history</strong> — mean and standard deviation of
+order-to-receipt days from the trailing two years. The only source that also
+yields variability.</li>
+<li><strong>The item's Lead Time Calculation</strong> — also used for produced
+and assembled items.</li>
+<li><strong>The fallback</strong> you set in setup.</li>
+</ol>
+<p>The source used is recorded on every log entry. Safety stock and reorder
+point share this resolution, so they cannot disagree.</p>
+<h3>Is this forecasting or AI?</h3>
+<p>No. It is descriptive statistics over posted history. That is deliberate:
+every number can be traced back to transactions you can open and check. The app
+tells you when history is a poor guide to the present — see the trend warning —
+rather than predicting around it.</p>
+<h2>Behaviour</h2>
+<h3>Will it overwrite values my planners maintain?</h3>
+<p>Only if you let it. Tick
+<a href="/apps/inventory-planning/docs/inventory-planning-item-fields/">Exclude from Inventory Planning</a> on
+those items and no calculator, bulk run or scheduled job will touch them. You
+can also turn off any individual <em>Write … to Item</em> switch to calculate
+and log without writing at all.</p>
+<h3>Does it change my reordering policies?</h3>
+<p>Only with two separate opt-ins. <em>Auto-Update Item Reordering Policy</em> is
+off by default; recommendations are logged either way. And even when enabled, it
+never sets a policy of <strong>Order</strong> automatically.</p>
+<p>Separately, <em>Set Policy to Fixed Reorder Qty. when None</em> gives a policy
+to items that have none, so a calculated reorder point does something. It is
+suppressed for any item whose advice recommends a different policy.</p>
+<h3>What happens if I uninstall the app?</h3>
+<p>The values it calculated stay on your items, because they live in standard
+Business Central fields. You lose the setup, the calculation log and the
+per-item controls.</p>
+<h3>Does it work per location?</h3>
+<p>No. It calculates at item level. When an item has Stockkeeping Units, standard
+planning reads the SKU values at a location rather than the item card — and the
+app says so explicitly in the calculation note, rather than leaving you to
+discover it.</p>
+<h3>Does it work in a demo or evaluation company?</h3>
+<p>Yes. History windows anchor to the <strong>work date</strong>, not the system
+date, so a company whose demo data sits in the past still produces real results.
+In production the two are the same.</p>
+<h3>Can I run different calculators on different schedules?</h3>
+<p>Yes. Create several Job Queue entries with different Parameter Strings — see
+<a href="/apps/inventory-planning/docs/running-the-calculators/">Running the calculators</a>.</p>
+<h2>Data and privacy</h2>
+<h3>Does my data leave my tenant?</h3>
+<p>No. The app reads item ledger entries, purchase receipt lines and item master
+data, and writes to standard item planning fields plus its own setup and log
+tables. All of it stays in your environment.</p>
+<h3>What telemetry does the app collect?</h3>
+<p>Diagnostic events on the standard Business Central telemetry channel, sent to
+the publisher's Application Insights resource:</p>
+<table>
+<thead><tr><th>Event</th><th>Raised when</th><th>Data</th></tr></thead>
+<tbody>
+<tr><td><code>GSO0001</code></td><td>A scheduled run completes</td><td>Mode, item count</td></tr>
+<tr><td><code>GSO0002</code></td><td>An interactive bulk run completes</td><td>Calculation type, item count</td></tr>
+<tr><td><code>GSO0003</code></td><td>The dynamic provider computes values</td><td>Event count only</td></tr>
+</tbody>
+</table>
+<p>These carry counts and codes only — never item numbers, quantities, costs,
+customer names or any other business data. Telemetry also flows to your own
+environment's Application Insights resource if you have configured one. See the
+<a href="/privacy/">privacy statement</a>.</p>
+<h2>Licensing and support</h2>
+<h3>What does it cost?</h3>
+<p>Nothing. It is free and MIT licensed, source at
+<a href="https://github.com/GmsoftLtd/bc-inventory-planning">github.com/GmsoftLtd/bc-inventory-planning</a>.</p>
+<h3>Which Business Central versions are supported?</h3>
+<p>Business Central 2026 release wave 1 (v28) or later, cloud.</p>
+<h3>How do I get help?</h3>
+<p><a href="/apps/inventory-planning/support/">Contact support</a> — we reply
+within 2 business days. You can also raise an issue on GitHub.</p>]]></content:encoded>
+    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+    <wp:post_id>1011</wp:post_id>
+    <wp:post_date><![CDATA[2026-08-12 09:00:00]]></wp:post_date>
+    <wp:post_date_gmt><![CDATA[2026-08-12 09:00:00]]></wp:post_date_gmt>
+    <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+    <wp:post_name><![CDATA[faq]]></wp:post_name>
+    <wp:status><![CDATA[publish]]></wp:status>
+    <wp:post_parent>1002</wp:post_parent>
+    <wp:menu_order>8</wp:menu_order>
+    <wp:post_type><![CDATA[page]]></wp:post_type>
+    <wp:post_password><![CDATA[]]></wp:post_password>
+    <wp:is_sticky>0</wp:is_sticky>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Per-item controls — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Exclude individual Business Central items from Inventory Planning, and override the safety stock service level per item.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Per-item controls</p>
+  <h1>Per-item controls</h1>
+  <p class="lede">Two fields on the Item Card <strong>Planning</strong> tab, for
+  the items that need to differ from your company defaults.</p>
+
+  <h2>Exclude from Inventory Planning</h2>
+  <p>When ticked, the item is skipped by <strong>every</strong> calculator, every
+  bulk run, every scheduled job and the dynamic provider. Nothing the app does
+  will ever touch its planning values.</p>
+
+  <p>Use it for:</p>
+  <ul>
+    <li>Items whose planning values a planner maintains deliberately, from
+      knowledge the ledger does not contain</li>
+    <li>Items under a supplier agreement that fixes order quantities</li>
+    <li>Items in a launch or phase-out where history is actively
+      misleading</li>
+    <li>Anything you have tuned by hand and do not want a nightly job to
+      overwrite</li>
+  </ul>
+
+  <div class="note">
+    <strong>This is the safety catch for scheduled runs.</strong>
+    <p>A nightly job applies to every eligible item. If a value on an item matters
+    to someone, tick this box rather than relying on nobody scheduling a run.</p>
+  </div>
+
+  <h2>Planning Service Level % (0 = default)</h2>
+  <p>A per-item service level for the safety stock calculation, overriding the
+  company default in <a href="inventory-planning-setup">setup</a>. Leave it at
+  <strong>0</strong> to use the default. Range 70–99.99 when set.</p>
+
+  <p>This is how you do ABC-style differentiation without an ABC module:</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Item</th><th>Typical level</th><th>Reasoning</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Critical lines — a stockout loses the order or stops production</td>
+        <td>98–99%</td>
+        <td>The buffer is cheap relative to the consequence</td>
+      </tr>
+      <tr>
+        <td>Ordinary stock</td>
+        <td>Company default (95%)</td>
+        <td>Leave at 0</td>
+      </tr>
+      <tr>
+        <td>Low-value, easily substituted, or short shelf life</td>
+        <td>85–90%</td>
+        <td>Carrying cost and obsolescence outweigh the odd stockout</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="warn">
+    <strong>Service level is not linear in cost.</strong>
+    <p>Moving an item from 95% to 99% roughly doubles its safety stock. Raise it
+    where a stockout is genuinely expensive, not across the board — otherwise you
+    have simply bought more inventory.</p>
+  </div>
+
+  <h2>Actions on the Item Card</h2>
+  <p>The same tab carries the per-item calculator actions — Calculate All Planning
+  Values, the four individual calculators, and a filtered view of the calculation
+  log. See <a href="running-the-calculators">Running the calculators</a>.</p>
+
+  <h2>Bulk maintenance</h2>
+  <p>Both fields are ordinary item fields, so they can be set for many items at
+  once with the standard <strong>Edit in Excel</strong> action on the Item List,
+  or through a configuration package.</p>
+
+  <hr>
+  <p class="meta">Next: <a href="running-the-calculators">Running the calculators</a> ·
+  <a href="inventory-planning-setup">Setup reference</a></p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

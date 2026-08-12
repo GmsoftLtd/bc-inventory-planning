@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory Planning — Documentation | GMSoft Dynamics</title>
+<meta name="description" content="Documentation, setup guide, FAQ and troubleshooting for the Inventory Planning app for Microsoft Dynamics 365 Business Central.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h1>Inventory Planning documentation</h1>
+  <p class="lede">Everything you need to configure and run the safety stock,
+  reorder point, EOQ and reordering policy calculators for Microsoft Dynamics 365
+  Business Central.</p>
+
+  <div class="note">
+    <strong>New here?</strong>
+    <p>Start with <a href="getting-started">Getting started</a> — install,
+    permissions, the five setup values that matter, and calculating your first
+    item.</p>
+  </div>
+
+  <h2>Guides</h2>
+  <ul class="cards">
+    <li><a href="getting-started">
+      <span class="t">Getting started</span>
+      <span class="d">Install, assign permissions, review the defaults and calculate your first item.</span>
+    </a></li>
+    <li><a href="inventory-planning-setup">
+      <span class="t">Setup reference</span>
+      <span class="d">Every setup field, its default, and what changing it does.</span>
+    </a></li>
+    <li><a href="running-the-calculators">
+      <span class="t">Running the calculators</span>
+      <span class="d">Per item, in bulk from the Item List, and on a nightly schedule.</span>
+    </a></li>
+    <li><a href="inventory-planning-worksheet">
+      <span class="t">Planning Worksheet</span>
+      <span class="d">Preview current versus proposed values and apply only what you select.</span>
+    </a></li>
+    <li><a href="inventory-planning-log">
+      <span class="t">Calculation log</span>
+      <span class="d">Read the audit trail and set a retention policy.</span>
+    </a></li>
+    <li><a href="inventory-planning-item-fields">
+      <span class="t">Per-item controls</span>
+      <span class="d">Exclude items from planning and override the service level per item.</span>
+    </a></li>
+  </ul>
+
+  <h2>Reference</h2>
+  <ul class="cards">
+    <li><a href="troubleshooting">
+      <span class="t">Troubleshooting</span>
+      <span class="d">Result codes, warnings, and what to do about each one.</span>
+    </a></li>
+    <li><a href="faq">
+      <span class="t">FAQ</span>
+      <span class="d">Formulas, methodology, data handling and scope.</span>
+    </a></li>
+  </ul>
+
+  <h2>How the app works, briefly</h2>
+  <p>All four calculators read one shared statistics engine, so they agree on
+  what "demand" and "lead time" mean for a given item.</p>
+
+  <p><strong>Demand</strong> is sales, netted against same-day returns, measured
+  across every calendar day in the history window. In manufacturing companies you
+  can also count production and assembly consumption, so purchased components are
+  planned from real usage rather than from sales they never appear in.</p>
+
+  <p><strong>Lead time</strong> is resolved from purchase receipt history where it
+  exists — the only source that also yields variability — then from the item's
+  Lead Time Calculation, then from a fallback you set. Safety stock and reorder
+  point always use the same resolution, so the two can never disagree.</p>
+
+  <p>Results are written to the standard item planning fields. There is no
+  parallel data model, and standard planning consumes them with no further
+  configuration.</p>
+
+  <h2>Formulas</h2>
+  <p>Safety stock, covering variability in both demand and lead time:</p>
+  <pre><code>SS = Z × √( LT × σD² + D² × σLT² )</code></pre>
+  <p>Reorder point:</p>
+  <pre><code>ROP = (average daily demand × lead time) + safety stock</code></pre>
+  <p>Economic order quantity, the Wilson formula:</p>
+  <pre><code>EOQ = √( 2 × D × S / H )</code></pre>
+  <p>Where <code>D</code> is annual demand, <code>S</code> the ordering cost and
+  <code>H</code> the annual holding cost per unit. Full derivations and the
+  reasoning behind the defaults are in the <a href="faq">FAQ</a>.</p>
+
+  <h2>Still stuck?</h2>
+  <p><a href="/apps/inventory-planning/support/">Contact support</a> — we answer
+  within 2 business days. The app is open source, so you can also read the
+  calculation code or raise an issue on
+  <a href="https://github.com/GmsoftLtd/bc-inventory-planning">GitHub</a>.</p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/">Overview</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

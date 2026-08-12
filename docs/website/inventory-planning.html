@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory Planning for Business Central | GMSoft Dynamics</title>
+<meta name="description" content="Free Business Central app that calculates safety stock, reorder point, EOQ and reordering policy from your posted demand history and writes them to the standard planning fields.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/">All apps</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h1>Planning parameters calculated from history you already have</h1>
+  <p class="lede">Safety stock, reorder point, EOQ and a recommended reordering
+  policy, computed from your posted item ledger entries and written to the
+  standard Business Central fields. Free and open source.</p>
+
+  <div class="actions">
+    <a class="btn" href="/apps/inventory-planning/docs/">Read the documentation</a>
+    <a class="btn secondary" href="https://github.com/GmsoftLtd/bc-inventory-planning">View the source</a>
+    <!-- Once the AppSource offer is live, add:
+         <a class="btn" href="APPSOURCE_URL">Get it on AppSource</a> -->
+  </div>
+
+  <h2>The problem it solves</h2>
+  <p>Business Central's planning engine is capable and correct. It also does
+  exactly what your item cards tell it to — and on most systems that means
+  <strong>Safety Stock Quantity</strong> is empty, <strong>Reorder Point</strong>
+  was typed in at go-live by somebody estimating, and <strong>Reorder
+  Quantity</strong> is a round number nobody has revisited since.</p>
+
+  <p>The engine executes those guesses faithfully. The business absorbs the
+  result as stockouts on the items that matter and dead stock on the ones that
+  don't.</p>
+
+  <h2>What it calculates</h2>
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Calculator</th><th>Produces</th><th>Writes to</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Safety stock</td>
+        <td>Buffer covering demand and lead-time variability at your service level</td>
+        <td>Item <strong>Safety Stock Quantity</strong></td>
+      </tr>
+      <tr>
+        <td>Reorder point</td>
+        <td>Demand during lead time, plus safety stock</td>
+        <td>Item <strong>Reorder Point</strong></td>
+      </tr>
+      <tr>
+        <td>EOQ</td>
+        <td>Wilson economic order quantity, capped and order-modifier aware</td>
+        <td>Item <strong>Reorder Quantity</strong> or <strong>Order Multiple</strong></td>
+      </tr>
+      <tr>
+        <td>Maximum inventory</td>
+        <td>Order-up-to level for Maximum Qty. items</td>
+        <td>Item <strong>Maximum Inventory</strong></td>
+      </tr>
+      <tr>
+        <td>Policy advisor</td>
+        <td>Demand classification and a recommended reordering policy</td>
+        <td>Item <strong>Reordering Policy</strong> (opt-in)</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Why this one</h2>
+
+  <h3>It writes standard fields</h3>
+  <p>There is no parallel data model. Standard planning, requisition worksheets
+  and MRP consume the results immediately with nothing to reconfigure — and if
+  you ever uninstall the app, the values stay on your items.</p>
+
+  <h3>It shows its working</h3>
+  <p>Every calculation records the demand statistics behind it, the lead time and
+  where that lead time came from, the service level and Z-score, the costs, the
+  previous value and the reasoning. When somebody asks why an item's reorder
+  point is what it is, the answer is one click away — months later.</p>
+
+  <h3>It tells you when to doubt it</h3>
+  <p>Very few planning tools admit their own limits. This one warns you when
+  recent demand has diverged from the historical window, when Stockkeeping Units
+  mean the planning engine reads a different value than the item card, and when
+  an item's demand is too intermittent for the underlying statistics to be
+  trusted.</p>
+
+  <h3>You review before you commit</h3>
+  <p>The Planning Worksheet shows current versus proposed values side by side for
+  any filtered set of items, tells you how many lines change the reorder point by
+  more than 25%, and applies only the lines you tick. Applying re-runs the
+  calculators through their validated, logged path — nothing is blind-copied from
+  the preview.</p>
+
+  <h2>How your team uses it</h2>
+  <ul>
+    <li><strong>One item</strong> — from the Item Card, while you are looking at it</li>
+    <li><strong>A category or a vendor's range</strong> — from the Item List, on your current filter or selection</li>
+    <li><strong>A reviewed rollout</strong> — through the Planning Worksheet</li>
+    <li><strong>Unattended</strong> — a nightly Job Queue entry, created for you from the setup page</li>
+    <li><strong>At planning time</strong> — optionally, values computed live during a planning run rather than read from the item</li>
+  </ul>
+
+  <h2>What it does not do</h2>
+  <p>It calculates at item level. Per-location planning through Stockkeeping
+  Units, ABC-driven service levels and exception workbenches are outside its
+  scope — and the app tells you, in the calculation note, when an item has SKUs
+  so you are never left wondering why a value "isn't working".</p>
+  <p>It is descriptive statistics over posted history, not forecasting and not
+  machine learning. That is a deliberate choice: every number it produces can be
+  traced back to transactions you can open.</p>
+
+  <h2>Requirements and licence</h2>
+  <ul>
+    <li>Business Central 2026 release wave 1 (v28) or later, cloud</li>
+    <li>Free. MIT licensed. Source at
+      <a href="https://github.com/GmsoftLtd/bc-inventory-planning">github.com/GmsoftLtd/bc-inventory-planning</a></li>
+    <li>Two permission sets ship with the app: one for planners, one for administrators</li>
+  </ul>
+
+  <div class="actions">
+    <a class="btn" href="/apps/inventory-planning/support/">Talk to us</a>
+    <a class="btn secondary" href="/apps/inventory-planning/docs/getting-started">Getting started</a>
+  </div>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Install Inventory Planning for Business Central, assign permissions, review the setup defaults and calculate your first item.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Getting started</p>
+  <h1>Getting started</h1>
+  <p class="lede">From install to your first calculated item in about ten
+  minutes.</p>
+
+  <h2>1. Install</h2>
+  <p>Install from AppSource. On installation the app creates its setup record
+  with working defaults, registers itself under <strong>Manual Setup</strong>, and
+  registers its calculation log with the standard Retention Policy module.</p>
+  <p>Nothing is calculated and no item is touched until you ask for it.</p>
+
+  <h2>2. Assign permissions</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Permission set</th><th>Give it to</th><th>Grants</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>GSO - User</code><br><span class="meta">Inventory Planning - User</span></td>
+        <td>Planners, buyers</td>
+        <td>Run the calculators, use the worksheet, read the log and setup</td>
+      </tr>
+      <tr>
+        <td><code>GSO</code><br><span class="meta">Inventory Planning</span></td>
+        <td>Administrators</td>
+        <td>The above, plus editing setup and maintaining the log</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Anyone who runs standard planning while the optional dynamic provider is
+  enabled needs at least <code>GSO - User</code>.</p>
+
+  <h2>3. Review the setup</h2>
+  <p>Search for <strong>Inventory Planning Setup</strong>. The defaults suit a
+  distributor with a year of clean history:</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>Default</th><th>Change it if…</th></tr></thead>
+    <tbody>
+      <tr><td>Demand History Window (Days)</td><td>365</td><td>Your range turns over much faster, or you have less than a year of data</td></tr>
+      <tr><td>Min Demand Observations</td><td>20</td><td>Your items sell on fewer than 20 distinct days a year</td></tr>
+      <tr><td>Default Service Level %</td><td>95</td><td>Your business targets a different availability level</td></tr>
+      <tr><td>Ordering Cost (S)</td><td>50</td><td>You know your real cost of raising and receiving one order</td></tr>
+      <tr><td>Holding Rate</td><td>0.25</td><td>Your cost of capital and storage differs from 25% a year</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="warn">
+    <strong>If you manufacture or assemble, turn on “Count Consumption as Demand”.</strong>
+    <p>Without it, a component consumed by production shows no demand at all,
+    because it is never sold. Every purchased component will report
+    <em>Zero Demand</em> and no values will be produced.</p>
+  </div>
+
+  <p>The full field-by-field reference is in
+  <a href="inventory-planning-setup">Setup reference</a>.</p>
+
+  <h2>4. Calculate one item you know well</h2>
+  <p>Open an item whose demand you could describe from memory — that is what makes
+  the first result meaningful.</p>
+  <p><strong>Item Card → Inventory Planning → Calculate All Planning Values.</strong></p>
+  <p>The app runs everything in dependency order: policy advice, then safety
+  stock, then reorder point (fed the fresh safety stock, not the stored one),
+  then EOQ, then maximum inventory. It reports what it found and why.</p>
+  <p>Now open <strong>Item Card → Inventory Planning → Calculation Log</strong> and
+  read the entry. It shows the demand statistics, the lead time and its source,
+  the Z-score, and the previous value. If the numbers look wrong, this is where
+  you find out why — usually the history window or the demand definition, not the
+  arithmetic.</p>
+
+  <h2>5. Roll out to a range</h2>
+  <p>Do not start with a bulk apply. Use the
+  <a href="inventory-planning-worksheet">Planning Worksheet</a>:</p>
+  <ol>
+    <li><strong>Item List → Inventory Planning → Planning Worksheet</strong></li>
+    <li><strong>Load Items</strong>, filtered to one item category or one vendor</li>
+    <li>Read the variance message — it tells you how many lines move the reorder
+      point by more than 25%. Check those first.</li>
+    <li>Tick the lines you accept, then <strong>Apply Selected</strong></li>
+  </ol>
+
+  <h2>6. Schedule it</h2>
+  <p><strong>Inventory Planning Setup → Create Job Queue Entry</strong> creates a
+  daily 03:00 recurring entry, <em>on hold</em> so you can review it. Set it to
+  <strong>Ready</strong> when you are satisfied.</p>
+  <p>See <a href="running-the-calculators">Running the calculators</a> for the
+  parameter values that control what each scheduled run does.</p>
+
+  <h2>7. Set a log retention policy</h2>
+  <p>The log grows by one row per item per calculator per run. Search for
+  <strong>Retention Policies</strong>, add one for the
+  <strong>GSO Calculation Log</strong> table, and set a period — 90 days is a
+  sensible start. Without a policy, nothing is ever deleted.</p>
+
+  <hr>
+  <p class="meta">Next: <a href="inventory-planning-setup">Setup reference</a> ·
+  <a href="troubleshooting">Troubleshooting</a></p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

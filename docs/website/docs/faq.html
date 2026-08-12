@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Formulas, methodology, data handling and scope for the Inventory Planning app for Microsoft Dynamics 365 Business Central.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / FAQ</p>
+  <h1>Frequently asked questions</h1>
+
+  <h2>Formulas and methodology</h2>
+
+  <h3>What formula does safety stock use?</h3>
+  <pre><code>SS = Z × √( LT × σD² + D² × σLT² )</code></pre>
+  <p>Where <code>Z</code> is the inverse normal at your service level,
+  <code>LT</code> the lead time in days, <code>σD</code> the standard deviation of
+  daily demand, <code>D</code> the average daily demand and <code>σLT</code> the
+  standard deviation of lead time.</p>
+  <p>It covers variability in <em>both</em> demand and lead time. A simpler
+  demand-only formula understates the buffer for items whose supplier is
+  unreliable.</p>
+
+  <h3>Where do the Z-scores come from?</h3>
+  <p>A continuous inverse-normal approximation (Acklam), not a lookup table. A
+  94.9% service level gets a 94.9% buffer rather than being rounded down to the
+  nearest tabulated bucket.</p>
+
+  <h3>How is the reorder point calculated?</h3>
+  <pre><code>ROP = (average daily demand × lead time) + safety stock</code></pre>
+  <p>Capped at the item's Maximum Inventory when one is set. The safety stock used
+  is the freshly calculated one, not the value stored on the item.</p>
+
+  <h3>How is EOQ calculated?</h3>
+  <pre><code>EOQ = √( 2 × D × S / H )</code></pre>
+  <p>The Wilson formula, where <code>D</code> is annual demand, <code>S</code> the
+  ordering cost, and <code>H</code> the annual holding cost per unit — unit cost
+  multiplied by your holding rate. The result is capped at a configurable number
+  of months of demand and reconciled with the item's Minimum Order Quantity,
+  Maximum Order Quantity and Order Multiple.</p>
+
+  <h3>How are demand patterns classified?</h3>
+  <p>By the Syntetos–Boylan scheme, using ADI (how <em>often</em> demand occurs)
+  and CV² (how <em>variable</em> the quantities are):</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Pattern</th><th>ADI</th><th>CV²</th><th>Recommended policy</th></tr></thead>
+    <tbody>
+      <tr><td>Smooth</td><td>&lt; 1.32</td><td>&lt; 0.49</td><td>Fixed Reorder Qty.</td></tr>
+      <tr><td>Erratic</td><td>&lt; 1.32</td><td>≥ 0.49</td><td>Fixed Reorder Qty.</td></tr>
+      <tr><td>Intermittent</td><td>≥ 1.32</td><td>&lt; 0.49</td><td>Lot-for-Lot</td></tr>
+      <tr><td>Lumpy</td><td>≥ 1.32</td><td>≥ 0.49</td><td>Lot-for-Lot</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Two overrides come first: an item with an Expiration Calculation, or one that
+  already has a Maximum Inventory, is steered to <strong>Maximum Qty.</strong>
+  instead. Make-to-order items are recommended <strong>Order</strong>.</p>
+  <p>Both thresholds are configurable.</p>
+
+  <h3>What counts as demand?</h3>
+  <p>Sales, netted against same-day returns, measured across every calendar day in
+  the history window. Days with no demand count toward the average, which is what
+  makes the daily rate comparable with a lead time expressed in calendar days.</p>
+  <p>With <em>Count Consumption as Demand</em> enabled, production and assembly
+  consumption count too.</p>
+
+  <h3>How is lead time determined?</h3>
+  <ol>
+    <li><strong>Purchase receipt history</strong> — mean and standard deviation of
+      order-to-receipt days from the trailing two years. The only source that also
+      yields variability.</li>
+    <li><strong>The item's Lead Time Calculation</strong> — also used for produced
+      and assembled items.</li>
+    <li><strong>The fallback</strong> you set in setup.</li>
+  </ol>
+  <p>The source used is recorded on every log entry. Safety stock and reorder
+  point share this resolution, so they cannot disagree.</p>
+
+  <h3>Is this forecasting or AI?</h3>
+  <p>No. It is descriptive statistics over posted history. That is deliberate:
+  every number can be traced back to transactions you can open and check. The app
+  tells you when history is a poor guide to the present — see the trend warning —
+  rather than predicting around it.</p>
+
+  <h2>Behaviour</h2>
+
+  <h3>Will it overwrite values my planners maintain?</h3>
+  <p>Only if you let it. Tick
+  <a href="inventory-planning-item-fields">Exclude from Inventory Planning</a> on
+  those items and no calculator, bulk run or scheduled job will touch them. You
+  can also turn off any individual <em>Write … to Item</em> switch to calculate
+  and log without writing at all.</p>
+
+  <h3>Does it change my reordering policies?</h3>
+  <p>Only with two separate opt-ins. <em>Auto-Update Item Reordering Policy</em> is
+  off by default; recommendations are logged either way. And even when enabled, it
+  never sets a policy of <strong>Order</strong> automatically.</p>
+  <p>Separately, <em>Set Policy to Fixed Reorder Qty. when None</em> gives a policy
+  to items that have none, so a calculated reorder point does something. It is
+  suppressed for any item whose advice recommends a different policy.</p>
+
+  <h3>What happens if I uninstall the app?</h3>
+  <p>The values it calculated stay on your items, because they live in standard
+  Business Central fields. You lose the setup, the calculation log and the
+  per-item controls.</p>
+
+  <h3>Does it work per location?</h3>
+  <p>No. It calculates at item level. When an item has Stockkeeping Units, standard
+  planning reads the SKU values at a location rather than the item card — and the
+  app says so explicitly in the calculation note, rather than leaving you to
+  discover it.</p>
+
+  <h3>Does it work in a demo or evaluation company?</h3>
+  <p>Yes. History windows anchor to the <strong>work date</strong>, not the system
+  date, so a company whose demo data sits in the past still produces real results.
+  In production the two are the same.</p>
+
+  <h3>Can I run different calculators on different schedules?</h3>
+  <p>Yes. Create several Job Queue entries with different Parameter Strings — see
+  <a href="running-the-calculators">Running the calculators</a>.</p>
+
+  <h2>Data and privacy</h2>
+
+  <h3>Does my data leave my tenant?</h3>
+  <p>No. The app reads item ledger entries, purchase receipt lines and item master
+  data, and writes to standard item planning fields plus its own setup and log
+  tables. All of it stays in your environment.</p>
+
+  <h3>What telemetry does the app collect?</h3>
+  <p>Diagnostic events on the standard Business Central telemetry channel, sent to
+  the publisher's Application Insights resource:</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Event</th><th>Raised when</th><th>Data</th></tr></thead>
+    <tbody>
+      <tr><td><code>GSO0001</code></td><td>A scheduled run completes</td><td>Mode, item count</td></tr>
+      <tr><td><code>GSO0002</code></td><td>An interactive bulk run completes</td><td>Calculation type, item count</td></tr>
+      <tr><td><code>GSO0003</code></td><td>The dynamic provider computes values</td><td>Event count only</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>These carry counts and codes only — never item numbers, quantities, costs,
+  customer names or any other business data. Telemetry also flows to your own
+  environment's Application Insights resource if you have configured one. See the
+  <a href="/privacy/">privacy statement</a>.</p>
+
+  <h2>Licensing and support</h2>
+
+  <h3>What does it cost?</h3>
+  <p>Nothing. It is free and MIT licensed, source at
+  <a href="https://github.com/GmsoftLtd/bc-inventory-planning">github.com/GmsoftLtd/bc-inventory-planning</a>.</p>
+
+  <h3>Which Business Central versions are supported?</h3>
+  <p>Business Central 2026 release wave 1 (v28) or later, cloud.</p>
+
+  <h3>How do I get help?</h3>
+  <p><a href="/apps/inventory-planning/support/">Contact support</a> — we reply
+  within 2 business days. You can also raise an issue on GitHub.</p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planning Worksheet — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Preview current versus proposed planning values for a filtered set of Business Central items and apply only the lines you select.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Planning Worksheet</p>
+  <h1>Planning Worksheet</h1>
+  <p class="lede">Current versus proposed values, side by side, for any filtered
+  set of items — with selective apply. The safest way to roll the app out.</p>
+
+  <p>Open it from <strong>Item List → Inventory Planning → Planning
+  Worksheet</strong>, from the setup page, or by searching for
+  <strong>Inventory Planning Worksheet</strong>.</p>
+
+  <h2>How to use it</h2>
+  <ol>
+    <li><strong>Load Items</strong> — choose a filter on item number, item
+      category or vendor. Every matching inventory item is calculated as a
+      <strong>preview</strong>. Nothing is written.</li>
+    <li>Read the variance message. It reports how many lines change the reorder
+      point by <strong>more than 25%</strong>, so a large worksheet can be triaged
+      instead of read line by line.</li>
+    <li>Review the columns, starting with those large movers.</li>
+    <li>Tick the lines you accept. <strong>Select All</strong> and
+      <strong>Clear Selection</strong> help with big sets.</li>
+    <li><strong>Apply Selected</strong> — confirms the count, then applies.</li>
+  </ol>
+
+  <div class="note">
+    <strong>Applying is not a copy of the preview.</strong>
+    <p>The calculators re-run through their validated, logged path, so an apply is
+    exactly equivalent to running each item individually. Applied lines refresh
+    their “current” columns in place and are deselected, so you can see the effect
+    without reloading.</p>
+  </div>
+
+  <h2>Reading the columns</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Column</th><th>Shows</th></tr></thead>
+    <tbody>
+      <tr><td>Demand Pattern</td><td>Smooth, Erratic, Intermittent or Lumpy — see <a href="faq">how patterns are classified</a></td></tr>
+      <tr><td>Current / Recommended Policy</td><td>The item's reordering policy today, and what the advisor suggests</td></tr>
+      <tr><td>Current / Proposed Safety Stock</td><td>Safety Stock Quantity, before and after</td></tr>
+      <tr><td>Current / Proposed Reorder Point</td><td>Reorder Point, before and after</td></tr>
+      <tr><td>Current Reorder Quantity / Proposed EOQ</td><td>Reorder Quantity today, and the calculated economic order quantity</td></tr>
+      <tr><td>Current / Proposed Maximum Inventory</td><td>The order-up-to level for Maximum Qty. items</td></tr>
+      <tr><td>SS / ROP / EOQ Result Code</td><td>The outcome of each calculator — see <a href="troubleshooting">Troubleshooting</a></td></tr>
+      <tr><td>Note</td><td>The advisor's reasoning, plus any trend, SKU or lumpy-demand warning</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>What to look at first</h2>
+  <ul>
+    <li><strong>Lines the variance message flagged.</strong> A reorder point that
+      moves more than 25% is either a real correction or a data problem. Both are
+      worth ten seconds.</li>
+    <li><strong>Result codes that are not OK.</strong> An <em>Insufficient Demand
+      Data</em> or <em>Zero Demand</em> line produced no value, so ticking it
+      achieves nothing.</li>
+    <li><strong>Notes containing warnings.</strong> Trend warnings mean the
+      history is not describing the present. SKU notices mean planning reads a
+      different value than the item card.</li>
+    <li><strong>Policy changes.</strong> A recommended policy that differs from
+      the current one changes how the planning engine behaves, not just by how
+      much — review these before anything else.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Nothing on this page writes to items until you choose Apply Selected.</strong>
+    <p>Loading, sorting, filtering and selecting are all safe. You can close the
+    worksheet at any point and nothing will have changed.</p>
+  </div>
+
+  <h2>A sensible rollout</h2>
+  <p>Work through one item category or one vendor's range at a time rather than
+  the whole catalogue. Each pass gives you a feel for whether the setup values —
+  particularly the history window, the service level and the ordering cost — suit
+  that part of your range, and you can adjust before the next pass.</p>
+
+  <hr>
+  <p class="meta">Next: <a href="inventory-planning-log">Calculation log</a> ·
+  <a href="troubleshooting">Troubleshooting</a></p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

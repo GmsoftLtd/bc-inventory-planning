@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup reference — Inventory Planning | GMSoft Dynamics</title>
+<meta name="description" content="Every field on the Inventory Planning Setup page for Business Central: defaults, ranges and what changing each one does.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">Inventory Planning</span>
+    <nav>
+      <a href="/apps/inventory-planning/">Overview</a>
+      <a href="/apps/inventory-planning/docs/">Documentation</a>
+      <a href="/apps/inventory-planning/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="meta"><a href="/apps/inventory-planning/docs/">Documentation</a> / Setup reference</p>
+  <h1>Setup reference</h1>
+  <p class="lede">Search for <strong>Inventory Planning Setup</strong>, or find it
+  under Manual Setup. One page configures all four calculators.</p>
+
+  <h2>General</h2>
+  <p>These settings apply to every calculator.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Demand History Window (Days)</td><td>365</td>
+        <td>Calendar days of history to analyse, ending on the work date. Range 30–1095. A shorter window reacts faster to change but is noisier; a longer one is stabler but lags.</td>
+      </tr>
+      <tr>
+        <td>Min Demand Observations</td><td>20</td>
+        <td>Minimum number of <strong>days with demand</strong> before a result is produced. Below this the item reports <em>Insufficient Demand Data</em>. Minimum 3. This counts days, not transaction lines.</td>
+      </tr>
+      <tr>
+        <td>Round Up Results to Whole Units</td><td>Yes</td>
+        <td>Round results up to whole units. Turn off for items measured in kilograms, litres or metres.</td>
+      </tr>
+      <tr>
+        <td>Log Calculation History</td><td>Yes</td>
+        <td>Write an entry to the calculation log for every calculation. Leaving this on is what makes results auditable.</td>
+      </tr>
+      <tr>
+        <td>Skip Make-to-Order Items</td><td>Yes</td>
+        <td>Skip items whose replenishment is make-to-order. Their supply is driven by the order that demands them, not by a reorder point.</td>
+      </tr>
+      <tr>
+        <td>Fallback Lead Time (Days)</td><td>7</td>
+        <td>Used when neither receipt history nor the item's Lead Time Calculation yields a lead time.</td>
+      </tr>
+      <tr>
+        <td>Count Consumption as Demand</td><td>No</td>
+        <td>Count production and assembly consumption as demand alongside sales. <strong>Turn this on in manufacturing companies</strong>, or purchased components will report zero demand.</td>
+      </tr>
+      <tr>
+        <td>Trend Warning Threshold % (0 = off)</td><td>30</td>
+        <td>Warn in the calculation note when recent demand deviates from the window average by more than this. Set 0 to disable.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Safety stock</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Default Service Level %</td><td>95</td>
+        <td>Probability of not stocking out during a replenishment cycle. Range 70–99.99. Can be overridden per item.</td>
+      </tr>
+      <tr>
+        <td>Write Safety Stock to Item</td><td>Yes</td>
+        <td>Turn off to calculate and log without writing anything to items — useful while you are evaluating.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">
+    <strong>Service level is not linear in cost.</strong>
+    <p>Moving from 95% to 99% roughly doubles the buffer. Raise it for the items
+    where a stockout is expensive, not across the board — that is what the
+    per-item override is for.</p>
+  </div>
+
+  <h2>Reorder point</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Add Safety Stock to Reorder Point</td><td>Yes</td>
+        <td>Include the freshly calculated safety stock in the reorder point, rather than the value stored on the item.</td>
+      </tr>
+      <tr><td>Write Reorder Point to Item</td><td>Yes</td><td>Turn off to preview only.</td></tr>
+      <tr>
+        <td>Set Policy to Fixed Reorder Qty. when None</td><td>Yes</td>
+        <td>Give items with no reordering policy one, so the calculated reorder point actually does something. Suppressed for an item when the advisor recommends a different policy.</td>
+      </tr>
+      <tr>
+        <td>Write Maximum Inventory (ROP + EOQ) for Maximum Qty. Items</td><td>Yes</td>
+        <td>Set the order-up-to level for items on the Maximum Qty. policy.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>EOQ</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Ordering Cost (S)</td><td>50</td>
+        <td>Cost of placing one order — administration, receiving, inspection — in your local currency. This is the single input most worth getting right.</td>
+      </tr>
+      <tr>
+        <td>Holding Rate</td><td>0.25</td>
+        <td>Annual cost of holding one unit as a fraction of unit cost. 0.25 means 25% a year, covering capital, storage, insurance and obsolescence. Range 0–1.</td>
+      </tr>
+      <tr>
+        <td>Maximum EOQ (Months of Demand)</td><td>6</td>
+        <td>Cap on the result. Stops a cheap, high-volume item from ordering two years of stock. Minimum 0.5. When the cap binds, the result code is <em>Cap Applied</em>.</td>
+      </tr>
+      <tr>
+        <td>EOQ Write Target</td><td>Reorder Quantity</td>
+        <td>Or <strong>Order Multiple</strong>, if you would rather the planning engine round order sizes than fix them.</td>
+      </tr>
+      <tr>
+        <td>Unit Cost Source</td><td>Last Direct Cost</td>
+        <td>Or <strong>Standard Cost</strong> or <strong>Unit Cost</strong>. Pick the one your items actually populate.</td>
+      </tr>
+      <tr><td>Write EOQ to Item</td><td>Yes</td><td>Turn off to preview only.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Policy advisor</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Intermittent ADI Threshold</td><td>1.32</td>
+        <td>Average Demand Interval above which demand counts as intermittent. The standard Syntetos–Boylan value.</td>
+      </tr>
+      <tr>
+        <td>Erratic CV-Squared Threshold</td><td>0.49</td>
+        <td>Squared coefficient of variation above which demand size counts as erratic. Also Syntetos–Boylan.</td>
+      </tr>
+      <tr>
+        <td>Treat Shelf Life as Maximum Qty.</td><td>Yes</td>
+        <td>Items with an Expiration Calculation are steered to the Maximum Qty. policy so standing stock is capped.</td>
+      </tr>
+      <tr>
+        <td>Auto-Update Item Reordering Policy</td><td><strong>No</strong></td>
+        <td>Whether an applied advice run writes the recommended policy to the item. Off by default. Recommendations are logged either way — turn this on only once you trust the advice.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Auto-update only ever writes Fixed Reorder Qty., Maximum Qty. or
+  Lot-for-Lot. It never flips an item to <strong>Order</strong> automatically:
+  that is a sourcing decision, not a statistical one.</p>
+
+  <h2>Planning engine integration</h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Supply Values at Planning Time (Dynamic)</td><td>No</td>
+        <td>Supplies freshly calculated values to the planning engine during a planning run, instead of relying on whatever the last batch run wrote to the item.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="warn">
+    <strong>Verify the dynamic provider on a sandbox first.</strong>
+    <p>Run a regenerative plan for one item, confirm the requisition line reflects
+    the calculated values, and check that a <em>Dynamic Supply</em> entry appears
+    in the calculation log. Real Stockkeeping Units are never modified, items that
+    cannot be calculated fall back to their stored values, and order modifiers
+    stay under the planning engine's control.</p>
+  </div>
+
+  <h2>Actions on this page</h2>
+  <ul>
+    <li><strong>Create Job Queue Entry</strong> — a daily 03:00 recurring entry,
+      created on hold for you to review</li>
+    <li><strong>Planning Worksheet</strong> — opens the
+      <a href="inventory-planning-worksheet">worksheet</a></li>
+    <li><strong>Calculation Log</strong> — opens the
+      <a href="inventory-planning-log">log</a></li>
+  </ul>
+
+  <hr>
+  <p class="meta">Next: <a href="running-the-calculators">Running the calculators</a> ·
+  <a href="inventory-planning-item-fields">Per-item controls</a></p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/inventory-planning/docs/">Documentation</a></span>
+    <span><a href="/apps/inventory-planning/support/">Support</a></span>
+    <span><a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
