@@ -1,0 +1,83 @@
+/* Styling the theme does not provide for the documentation pages.
+   Paste into Appearance > Customize > Additional CSS.
+
+   Colours are NOT set here - they come from the Astra global palette, which is
+   already correct (#d8dde5 text and headings, #ff8c5f links on the #0b1f3a
+   background). Everything below uses rgba, so it adapts if you ever change the
+   palette or move to a light background.
+
+   Scoped to .ast-plain-container so Elementor-built pages are untouched. */
+
+/* ---- Tables ----------------------------------------------------------
+   The docs use these heavily - the setup reference alone has five. Astra
+   applies no borders or padding, so without this they read as loose columns
+   of text. */
+
+.ast-plain-container .entry-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    /* wide tables scroll instead of pushing the page sideways on mobile */
+    display: block;
+    overflow-x: auto;
+}
+
+.ast-plain-container .entry-content th,
+.ast-plain-container .entry-content td {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.ast-plain-container .entry-content th {
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* ---- Callouts --------------------------------------------------------
+   The "note" and "warning" boxes are plain blockquotes in the imported
+   content. The accent bar uses your brand orange. */
+
+.ast-plain-container .entry-content blockquote {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #ff6b35;
+    padding: 1rem 1.25rem;
+    margin: 0 0 1.5rem;
+}
+
+.ast-plain-container .entry-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- Code and formulas ----------------------------------------------
+   Used for the safety stock, reorder point and EOQ formulas, and for the
+   Job Queue parameter values. */
+
+.ast-plain-container .entry-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.12em 0.4em;
+    border-radius: 4px;
+    font-size: 0.92em;
+}
+
+.ast-plain-container .entry-content pre {
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+}
+
+.ast-plain-container .entry-content pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ---- Section rules --------------------------------------------------- */
+
+.ast-plain-container .entry-content hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    margin: 2.5rem 0;
+}
