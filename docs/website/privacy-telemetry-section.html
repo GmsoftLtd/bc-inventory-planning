@@ -1,0 +1,88 @@
+<h2>Business Central extensions — data processing</h2>
+
+<p>This section applies to the Microsoft Dynamics 365 Business Central apps
+published by <strong>GMSOFT Limited</strong> (registered in England and Wales,
+company number 12275621), including <strong>Inventory Planning</strong>.</p>
+
+<h3>Data the app processes inside your environment</h3>
+
+<p>Inventory Planning runs entirely inside your own Business Central
+environment. It reads:</p>
+
+<ul>
+<li>Item ledger entries</li>
+<li>Posted purchase receipt lines</li>
+<li>Item master data, including cost, planning and unit-of-measure fields</li>
+</ul>
+
+<p>It writes to:</p>
+
+<ul>
+<li>Standard item planning fields — Safety Stock Quantity, Reorder Point,
+Reorder Quantity, Order Multiple, Maximum Inventory and, where you have enabled
+it, Reordering Policy</li>
+<li>Its own setup table and calculation log, within your environment</li>
+</ul>
+
+<p><strong>None of this data is transmitted outside your Business Central
+environment.</strong> GMSOFT Limited has no access to it. We are not a data
+processor for this content; it never reaches our systems.</p>
+
+<h3>Diagnostic telemetry</h3>
+
+<p>The app emits diagnostic telemetry over the standard Business Central
+telemetry channel to an Azure Application Insights resource operated by GMSOFT
+Limited. This is limited to the following events:</p>
+
+<table>
+<thead>
+<tr><th>Event ID</th><th>Raised when</th><th>Data included</th></tr>
+</thead>
+<tbody>
+<tr><td>GSO0001</td><td>A scheduled calculation run completes</td><td>Run mode, number of items processed</td></tr>
+<tr><td>GSO0002</td><td>An interactive bulk calculation completes</td><td>Calculation type, number of items processed</td></tr>
+<tr><td>GSO0003</td><td>Values are computed during a planning run</td><td>Event occurrence only</td></tr>
+</tbody>
+</table>
+
+<p>These events contain <strong>counts and codes only</strong>. They do not
+include item numbers, item descriptions, quantities, costs, prices, customer or
+vendor names, or any other business data.</p>
+
+<p>Microsoft's telemetry platform attaches standard environment context to these
+events, such as an anonymised environment identifier, Business Central version,
+country and the extension version. We use this solely to:</p>
+
+<ul>
+<li>Understand which features are used, so we know what to improve</li>
+<li>Detect errors and performance problems across installations</li>
+<li>Confirm compatibility with new Business Central releases</li>
+</ul>
+
+<p>We do not use telemetry for marketing, we do not sell or share it, and we do
+not attempt to re-identify individual users or organisations from it.</p>
+
+<p>Telemetry is retained for <strong>90 days</strong> and is stored in
+<strong>UK South</strong>.</p>
+
+<p>If you have configured your own Application Insights resource on your
+Business Central environment, the same events are also sent there, under your
+control.</p>
+
+<h3>Legal basis and your rights</h3>
+
+<p>Where this processing involves personal data, we rely on our legitimate
+interest in maintaining, securing and improving software we publish. Because the
+telemetry described above contains no directly identifying information, we are
+generally unable to link it to an individual.</p>
+
+<p>For questions about this section, or to exercise any right you have under
+applicable data protection law, contact
+<a href="mailto:info@gmsoft.co.uk">info@gmsoft.co.uk</a>.</p>
+
+<h3>Support communications</h3>
+
+<p>When you contact support we process the contact details and any information
+you choose to send us — screenshots, log entries, configuration details — for
+the purpose of answering you. We retain support correspondence for
+<strong>24 months</strong>.</p>
