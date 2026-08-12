@@ -258,9 +258,9 @@ mapping discussion in the repo before filling them in.
 
 | Partner Center field | Value |
 |---|---|
-| Landing / product page | `https://www.gmsoftdynamics.com/apps/inventory-planning/` |
-| Help / documentation | `https://www.gmsoftdynamics.com/apps/inventory-planning/docs/` |
-| Support | `https://www.gmsoftdynamics.com/apps/inventory-planning/support/` |
+| Landing / product page | `https://gmsoftdynamics.com/apps/inventory-planning/` |
+| Help / documentation | `https://gmsoftdynamics.com/apps/inventory-planning/docs/` |
+| Support | `https://gmsoftdynamics.com/apps/inventory-planning/support/` |
 | Privacy policy | GMSoft Dynamics privacy statement |
 | Licence terms | `https://github.com/GmsoftLtd/bc-inventory-planning/blob/main/LICENSE` (MIT) |
 

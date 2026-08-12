@@ -66,24 +66,29 @@ context-help slugs exactly. Most static hosts do this automatically; on Apache
 use `MultiViews`, on nginx `try_files $uri $uri.html $uri/ =404`.
 
 **`contextSensitiveHelpUrl` must keep its trailing slash:**
-`https://www.gmsoftdynamics.com/apps/inventory-planning/docs/`
+`https://gmsoftdynamics.com/apps/inventory-planning/docs/`
 
 ---
 
-## Placeholders to replace
+## Values baked into these pages
 
-Search all files for `[[` and replace:
-
-| Placeholder | Meaning |
+| Field | Value |
 |---|---|
-| `support@gmsoft.co.uk` | Support mailbox, e.g. `support@gmsoftdynamics.com` |
-| `+44 7771 313713` | Support telephone number in international format |
-| `Monday to Friday, 09:00-18:00 UK time` | e.g. `Monday–Friday, 09:00–17:00 EET` |
-| `2 business days` | e.g. `1–2 business days` — Microsoft recommends stating this |
-| `https://gmsoftdynamics.com/contact/` | URL of your contact form |
-| `GMSOFT Limited` | The entity publishing the app on AppSource |
-| `[[APPSOURCE_URL]]` | AppSource listing URL, once the offer is live |
-| `[[BASE_URL]]` | `https://www.gmsoftdynamics.com` |
+| Support mailbox | `support@gmsoft.co.uk` |
+| Support telephone | `+44 7771 313713` |
+| Support hours | Monday to Friday, 09:00–18:00 UK time |
+| Response time | 2 business days |
+| Contact form | `https://gmsoftdynamics.com/contact/` |
+| Legal entity | GMSOFT Limited |
+
+Change any of them by editing the HTML, or the page directly in WordPress if it
+has already been imported.
+
+**Still outstanding:** the product page has no AppSource button, because the
+offer is not live yet. `inventory-planning.html` carries a commented-out marker
+showing where it goes once you have the listing URL. The privacy telemetry
+section also has three values left to decide — see
+`privacy-telemetry-section.md`.
 
 ---
 
@@ -104,11 +109,11 @@ the placeholders and it satisfies the requirement.
 Update [`InventoryPlanning/app.json`](../../InventoryPlanning/app.json):
 
 ```json
-"privacyStatement": "https://www.gmsoftdynamics.com/privacy/",
+"privacyStatement": "https://gmsoftdynamics.com/privacy/",
 "EULA": "https://github.com/GmsoftLtd/bc-inventory-planning/blob/main/LICENSE",
-"help": "https://www.gmsoftdynamics.com/apps/inventory-planning/docs/",
-"url": "https://www.gmsoftdynamics.com/apps/inventory-planning/",
-"contextSensitiveHelpUrl": "https://www.gmsoftdynamics.com/apps/inventory-planning/docs/",
+"help": "https://gmsoftdynamics.com/apps/inventory-planning/docs/",
+"url": "https://gmsoftdynamics.com/apps/inventory-planning/",
+"contextSensitiveHelpUrl": "https://gmsoftdynamics.com/apps/inventory-planning/docs/",
 ```
 
 Then verify every URL returns 200 in a private browser window with no session.
