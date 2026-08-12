@@ -261,7 +261,7 @@ mapping discussion in the repo before filling them in.
 | Landing / product page | `https://gmsoftdynamics.com/apps/inventory-planning/` |
 | Help / documentation | `https://gmsoftdynamics.com/apps/inventory-planning/docs/` |
 | Support | `https://gmsoftdynamics.com/apps/inventory-planning/support/` |
-| Privacy policy | GMSoft Dynamics privacy statement |
+| Privacy policy | `https://gmsoft.co.uk/privacy-statement-uk/` — names GMSOFT Limited, matching `publisher` |
 | Licence terms | `https://github.com/GmsoftLtd/bc-inventory-planning/blob/main/LICENSE` (MIT) |
 
 These must match `app.json` (`url`, `help`, `privacyStatement`, `EULA`,

@@ -1,12 +1,16 @@
 # Privacy statement — extension telemetry section
 
-Your current privacy statement is a website policy: cookies, visitors, marketing
-consent. AppSource links `privacyStatement` from the app manifest, so it also has
-to describe what **the extension** does with data once it is installed in a
-customer's Business Central environment.
+**Add this to <https://gmsoft.co.uk/privacy-statement-uk/>** — the page
+`privacyStatement` in the manifest now points at, and the one that names GMSOFT
+Limited (company 12275621) as data controller.
 
-Add the section below to your existing privacy statement, or publish it as a
-sub-page and link to it prominently. Replace the placeholders first.
+That statement is currently a website policy: cookies, visitors, analytics.
+AppSource links it from the app manifest, so it also has to describe what **the
+extension** does with data once it is installed in a customer's Business Central
+environment. Nothing below applies to the website.
+
+Paste it as a new section, or publish it as a sub-page and link to it
+prominently from the statement.
 
 > Have your usual legal reviewer check the wording against the entity that
 > publishes the offer. This is drafted to be accurate about what the app actually
@@ -66,7 +70,7 @@ country and the extension version. We use this solely to:
 We do not use telemetry for marketing, we do not sell or share it, and we do not
 attempt to re-identify individual users or organisations from it.
 
-Telemetry is retained for **[[TELEMETRY_RETENTION]]** and is stored in
+Telemetry is retained for **90 days** and is stored in
 **UK South**.
 
 If you have configured your own Application Insights resource on your Business
@@ -81,22 +85,23 @@ unable to link it to an individual.
 
 For questions about this section, or to exercise any right you have under
 applicable data protection law, contact
-**[[PRIVACY_CONTACT_EMAIL]]**.
+**info@gmsoft.co.uk**.
 
 ### Support communications
 
 When you contact support we process the contact details and any information you
 choose to send us — screenshots, log entries, configuration details — for the
 purpose of answering you. We retain support correspondence for
-**[[SUPPORT_RETENTION]]**.
+**24 months**.
 
 ---
 
-## Additional placeholders for this file
+## Values used, and the ones worth checking
 
-| Placeholder | Suggested value |
-|---|---|
-| `[[TELEMETRY_RETENTION]]` | e.g. `90 days` — set this to match your Application Insights retention setting |
-| Azure region | Already filled in as **UK South**, from your Application Insights connection string. Change it if you move the resource. |
-| `[[PRIVACY_CONTACT_EMAIL]]` | The address in your existing privacy statement |
-| `[[SUPPORT_RETENTION]]` | e.g. `24 months` |
+| Value | Source | Check it |
+|---|---|---|
+| GMSOFT Limited | `publisher` in app.json, and the data controller named at gmsoft.co.uk/privacy-statement-uk/ | Confirmed |
+| info@gmsoft.co.uk | The contact address on your imprint and UK privacy statement | Confirmed |
+| UK South | The region in your Application Insights connection string | Confirmed |
+| **90 days** | **Assumed** — the Application Insights default | Check the retention setting on the resource and correct if it differs |
+| **24 months** | **Assumed** — matches the retention period your existing statement already declares | Adjust if support mail is kept for a different period |
