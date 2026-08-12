@@ -43,6 +43,22 @@ IDs on import and remaps the parent relationships automatically.
 
 ---
 
+## The free apps landing page
+
+`free-apps.html` is a separate page listing everything GMSOFT publishes free —
+Inventory Planning, the Value Entry ↔ G/L Audit extension, and the four
+standalone calculators Inventory Planning superseded.
+
+Import `free-apps-wordpress-import.xml` the same way, then set its
+**Parent** to **Apps** so it lands at `/apps/free/`. It is a single page, so
+creating it by hand and pasting the content of `<main>` works equally well.
+
+Worth doing afterwards: add a card for it, and one for Inventory Planning, to
+the existing `/apps/` grid. That page is built in Elementor, so it has to be
+edited there rather than imported.
+
+---
+
 ## What goes where
 
 | File | Publish at | Referenced by |

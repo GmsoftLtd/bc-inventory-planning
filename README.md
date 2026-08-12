@@ -1,7 +1,7 @@
 # Inventory Planning for Business Central
 
 One free app consolidating the four standalone GMSoft planning calculators —
-[Safety Stock](https://github.com/GmsoftLtd/Lexon-SafetyStockCalculator),
+[Safety Stock](https://github.com/GmsoftLtd/bc-safety-stock),
 [Reorder Point](https://github.com/GmsoftLtd/bc-reorder-point),
 [EOQ](https://github.com/GmsoftLtd/bc-eoq-calculator) and
 [Replenishment Policy Advisor](https://github.com/GmsoftLtd/bc-replenishment-policy) —

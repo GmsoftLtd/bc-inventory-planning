@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free apps for Business Central | GMSoft Dynamics</title>
+<meta name="description" content="Free, MIT-licensed Microsoft Dynamics 365 Business Central extensions from GMSOFT Limited. No trial, no licence key, source on GitHub.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="product">GMSoft Dynamics</span>
+    <nav>
+      <a href="/apps/">All apps</a>
+      <a href="/apps/free/">Free apps</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h1>Free apps</h1>
+  <p class="lede">Working Business Central extensions we give away. MIT licensed,
+  source on GitHub, no trial period, no licence key, nothing to expire.</p>
+
+  <div class="note">
+    <strong>Free means free, not a trial.</strong>
+    <p>These are not feature-limited previews of a paid product. They do one job
+    properly, the source is public, and you can read exactly what they do to your
+    data before installing.</p>
+  </div>
+
+  <h2>Inventory Planning</h2>
+  <p><strong>Safety stock, reorder point, EOQ and reordering policy, calculated
+  from your posted demand history.</strong></p>
+
+  <p>Business Central's planning engine does exactly what your item cards tell it
+  to — and on most systems Safety Stock Quantity is empty, Reorder Point was
+  estimated at go-live, and Reorder Quantity is a round number nobody has
+  revisited. This calculates all of them from posted Item Ledger Entries and
+  writes them to the standard fields, so standard planning picks them up with no
+  reconfiguration.</p>
+
+  <ul>
+    <li>Safety stock covering demand <em>and</em> lead-time variability, at a
+      service level you set per item</li>
+    <li>Reorder point, EOQ and the order-up-to level for Maximum Qty. items</li>
+    <li>A recommended reordering policy from a Syntetos–Boylan classification of
+      each item's demand pattern</li>
+    <li>A Planning Worksheet showing current versus proposed values before you
+      apply anything</li>
+    <li>A calculation log recording every input behind every number</li>
+  </ul>
+
+  <p>
+    <a href="/apps/inventory-planning/">Product page</a> ·
+    <a href="/apps/inventory-planning/docs/">Documentation</a> ·
+    <a href="/apps/inventory-planning/support/">Support</a> ·
+    <a href="https://github.com/GmsoftLtd/bc-inventory-planning">Source</a>
+  </p>
+
+  <h2>Value Entry ↔ G/L Audit</h2>
+  <p><strong>Finds inventory postings that do not match your posting setup.</strong></p>
+
+  <p>Audits Value Entries against the General Ledger and flags entries that were
+  posted to accounts other than the ones the inventory posting setup specifies.
+  Ships as a report, a list page and a scheduled email, so the discrepancies come
+  to you rather than waiting to be discovered at year end.</p>
+
+  <p><a href="https://github.com/GmsoftLtd/bc-ValueEntryGL-Audit">Source on GitHub</a></p>
+
+  <h2>The standalone planning calculators</h2>
+
+  <div class="note">
+    <strong>Superseded by Inventory Planning.</strong>
+    <p>These four came first, each doing one calculation. Inventory Planning
+    replaces all of them with one shared statistics engine, one setup page, one
+    log and a worksheet — so the four no longer disagree with each other about
+    what "demand" or "lead time" means for an item. Use Inventory Planning for
+    new installations. These remain available and MIT licensed.</p>
+  </div>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>App</th><th>What it calculates</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Safety Stock</td>
+        <td>Statistical safety stock by the Z-score method, from real demand and lead-time history</td>
+        <td><a href="https://github.com/GmsoftLtd/bc-safety-stock">bc-safety-stock</a></td>
+      </tr>
+      <tr>
+        <td>Reorder Point</td>
+        <td>Demand during lead time plus safety stock, make-to-stock aware</td>
+        <td><a href="https://github.com/GmsoftLtd/bc-reorder-point">bc-reorder-point</a></td>
+      </tr>
+      <tr>
+        <td>EOQ Calculator</td>
+        <td>Economic order quantity by the Wilson formula, from Item Ledger Entries</td>
+        <td><a href="https://github.com/GmsoftLtd/bc-eoq-calculator">bc-eoq-calculator</a></td>
+      </tr>
+      <tr>
+        <td>Replenishment Policy Advisor</td>
+        <td>Classifies an item's demand pattern and recommends a reordering policy</td>
+        <td><a href="https://github.com/GmsoftLtd/bc-replenishment-policy">bc-replenishment-policy</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Why we give these away</h2>
+  <p>They solve problems we kept meeting on client sites, and they are small
+  enough that charging for them would cost more in administration than it earned.
+  Publishing the source also means you can check exactly what an extension does
+  to your data before you let it near your production environment — which is a
+  reasonable thing to want, and rarer than it should be.</p>
+
+  <p>If you need the same rigour applied to something larger, that is what our
+  <a href="/apps/">paid apps</a> and our consultancy work are for.</p>
+
+  <h2>Support</h2>
+  <p>Free does not mean unsupported. Questions about how these work, help
+  interpreting results and bug reports all get answered — see the
+  <a href="/apps/inventory-planning/support/">support page</a>, or raise an issue
+  on the relevant GitHub repository.</p>
+
+  <p>All of these are licensed under the MIT licence by GMSOFT Limited. You can
+  use, modify and redistribute them, including commercially. They come with no
+  warranty.</p>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>&copy; GMSOFT Limited</span>
+    <span class="spacer"><a href="/apps/">All apps</a></span>
+    <span><a href="/contact/">Contact</a></span>
+    <span><a href="https://gmsoft.co.uk/privacy-statement-uk/">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
