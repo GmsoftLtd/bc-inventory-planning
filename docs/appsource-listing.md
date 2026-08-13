@@ -55,12 +55,25 @@ the system, write them to the standard fields, and show your working.
 
 ## Listing copy
 
-### Offer name — 50 char limit
+### Offer name — must match the manifest exactly
 
 ```
-Inventory Planning: Safety Stock, ROP, EOQ
+Inventory Planning
 ```
-*42 characters*
+
+**Not a free choice.** Automated validation compares the offer name against
+`name` in `app.json` and fails the submission if they differ:
+
+> The manifest property 'name' of the extension 'Inventory Planning' … specifies
+> 'Inventory Planning' while the offer description specifies '…'. Update the
+> extension's manifest (app.json) or the offer description.
+
+Do not resolve it by editing the manifest instead. `name` is part of app
+identity — changing it forces dependent extensions to recompile, and it is the
+label shown in Extension Management, where a long keyword string reads badly.
+
+Keywords belong in the search summary, the description and the keyword fields,
+none of which carry this constraint.
 
 ### Search results summary — 100 char limit
 
