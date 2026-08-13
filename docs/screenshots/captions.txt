@@ -1,0 +1,37 @@
+Partner Center screenshot captions
+Offer listing > Marketplace media. Upload in filename order - AppSource shows
+image one largest and most visitors never scroll past it.
+
+Two versions of each: the full caption, and a short one under 100 characters in
+case the field is capped. Use the full version wherever it fits.
+
+
+01-planning-worksheet.png
+  full  (104)  Review current versus proposed values for a filtered set of items, then apply only the lines you select.
+  short  (74)  Compare current and proposed values, then apply only the lines you select.
+
+02-setup.png
+  full   (97)  One setup page for all four calculators - history window, service level, costs and write targets.
+  short  (78)  One setup page for all four calculators - costs, thresholds and write targets.
+
+03-calculation-log.png
+  full   (81)  Every calculation records the statistics, lead time and previous value behind it.
+  short  (81)  Every calculation records the statistics, lead time and previous value behind it.
+
+04-item-card.png
+  full   (47)  Every calculator, per item, from the Item Card.
+  short  (47)  Every calculator, per item, from the Item Card.
+
+05-result-message.png
+  full  (106)  The app flags when a result deserves review - here, demand too intermittent for the method to be reliable.
+  short  (92)  The app flags results that deserve review - here, demand too intermittent to model reliably.
+
+
+Notes
+
+Hyphens rather than em dashes throughout - some Partner Center fields mangle
+non-ASCII punctuation, and a caption is not worth the risk.
+
+Each caption says why the screen matters rather than restating what is on it.
+The column headers already say "Proposed Safety Stock"; the caption's job is to
+explain that you review before applying.
