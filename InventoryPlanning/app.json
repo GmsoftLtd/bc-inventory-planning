@@ -15,7 +15,7 @@
   "screenshots": [],
   "platform": "28.0.0.0",
   "application": "28.0.0.0",
-  "applicationInsightsConnectionString": "InstrumentationKey=7b1cd944-6c7b-493a-9529-d39e6963b42f;IngestionEndpoint=https://uksouth-1.in.applicationinsights.azure.com/;LiveEndpoint=https://uksouth.livediagnostics.monitor.azure.com/",
+  "applicationInsightsConnectionString": "InstrumentationKey=a46c32ec-b1ff-4165-a3c0-c422b3baf32c;IngestionEndpoint=https://uksouth-1.in.applicationinsights.azure.com/;LiveEndpoint=https://uksouth.livediagnostics.monitor.azure.com/;ApplicationId=9349f3ff-11ab-4e86-95f5-b4e9383be443",
   "idRanges": [
     {
       "from": 73030575,
