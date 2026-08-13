@@ -77,18 +77,14 @@ Write-Step "Found $navSip"
 
 # --- install and register ------------------------------------------------
 
-foreach ($dir in @("$env:SystemRoot\System32", "$env:SystemRoot\SysWOW64")) {
-    if (Test-Path $dir) {
-        Copy-Item $navSip -Destination $dir -Force
-        Write-Step "Copied to $dir"
-    }
-}
+# Business Central ships an x64 NavSip only - there is no 32-bit build in the
+# artifacts, so System32 is the only target. Copying it to SysWOW64 would put a
+# 64-bit DLL where a 32-bit one belongs and regsvr32 would reject it.
+Copy-Item $navSip -Destination "$env:SystemRoot\System32" -Force
+Write-Step "Copied to $env:SystemRoot\System32"
 
 Write-Step 'Registering with regsvr32'
 Start-Process regsvr32.exe -ArgumentList '/s', "$env:SystemRoot\System32\NavSip.dll" -Wait -NoNewWindow
-if (Test-Path "$env:SystemRoot\SysWOW64\NavSip.dll") {
-    Start-Process "$env:SystemRoot\SysWOW64\regsvr32.exe" -ArgumentList '/s', "$env:SystemRoot\SysWOW64\NavSip.dll" -Wait -NoNewWindow
-}
 
 # --- confirm -------------------------------------------------------------
 
