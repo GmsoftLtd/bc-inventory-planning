@@ -182,7 +182,13 @@ economic order quantity
 5. Optional: Inventory Planning Setup > Create Job Queue Entry for a nightly
    recalculation, and set a Retention Policy on the calculation log.
 
-Full guide: <user guide URL>
+EVALUATING ON DEMO DATA: on CRONUS or any demo company, first set Min Demand
+Observations to 3 and Demand History Window to 1095 in Inventory Planning Setup.
+Demo companies contain far fewer posting days than the production defaults
+expect, so with the shipped settings every item correctly reports "Insufficient
+Demand Data" and no values are produced.
+
+Full guide: https://gmsoftdynamics.com/apps/inventory-planning/docs/
 ```
 
 ### Categories and industries
