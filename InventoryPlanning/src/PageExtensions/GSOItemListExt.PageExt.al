@@ -10,6 +10,8 @@ using Microsoft.Inventory.Item;
 /// </summary>
 pageextension 73030576 "GSO Item List Ext" extends "Item List"
 {
+    ContextSensitiveHelpPage = 'running-the-calculators';
+
     actions
     {
         addlast(processing)

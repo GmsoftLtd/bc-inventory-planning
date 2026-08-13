@@ -12,6 +12,7 @@ page 73030575 "GSO Setup"
     Caption = 'Inventory Planning Setup';
     ApplicationArea = All;
     UsageCategory = Administration;
+    ContextSensitiveHelpPage = 'inventory-planning-setup';
     InsertAllowed = false;
     DeleteAllowed = false;
 

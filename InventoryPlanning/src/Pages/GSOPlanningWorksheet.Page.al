@@ -19,6 +19,7 @@ page 73030577 "GSO Planning Worksheet"
     UsageCategory = Tasks;
     InsertAllowed = false;
     DeleteAllowed = false;
+    ContextSensitiveHelpPage = 'inventory-planning-worksheet';
 
     layout
     {

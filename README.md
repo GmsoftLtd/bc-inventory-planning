@@ -155,20 +155,36 @@ Calculation behaviour is a faithful port, with deliberate changes:
 ## AppSource submission checklist
 
 The app carries AppSourceCop configuration (`AppSourceCop.json`, affix `GSO`)
-and compiles clean under CodeCop, UICop and AppSourceCop. Before submitting:
+and compiles clean under CodeCop, UICop and AppSourceCop.
 
-- [x] **Object ID range**: objects use GMSOFT's assigned AppSource range
-      **73030575–73031574** (objects occupy 73030575–73030596; the rest of
-      the range is headroom for future objects).
+Done:
+
+- [x] **Object ID range** — GMSOFT's assigned AppSource range
+      **73030575–73031574** (objects occupy 73030575–73030596; the rest is
+      headroom).
+- [x] **Namespaces** on every object — `GMSoft.InventoryPlanning`.
+- [x] **Manifest links** all resolve: product page, documentation, privacy
+      statement and licence. `contextSensitiveHelpUrl` points at the published
+      docs, and the five UI objects deep-link to their own articles via
+      `ContextSensitiveHelpPage`.
+- [x] **applicationInsightsConnectionString** — live resource in UK South;
+      GSO0001–GSO0003 report to it (AS0092).
+- [x] **logo/icon.png** — final asset.
+- [x] **Code signing** — Azure Artifact Signing, `gmsoft-public-trust` profile.
+      See [`build/README.md`](build/README.md).
+
+Outstanding:
+
 - [ ] **Register the `GSO` affix** with Microsoft (AppSourceISVs process).
-- [ ] **applicationInsightsConnectionString** in `app.json`: create an Azure
-      Application Insights resource and paste its connection string —
-      without it the GSO0001–GSO0003 telemetry events go nowhere (AS0092).
-- [ ] **logo/icon.png** is a generated placeholder — replace with your brand
-      asset (240×240).
-- [ ] Add **screenshots** to `app.json` and the Partner Center listing.
-- [ ] Note: apps in the 70M range cannot be sideloaded as per-tenant
-      extensions; cloud sandboxes install via AppSource or as a dev extension.
+- [ ] **Screenshots** — five, 1280×720. Shot list with captions in
+      [`docs/appsource-listing.md`](docs/appsource-listing.md).
+- [ ] **Extension telemetry disclosure** in the linked privacy statement —
+      text ready in [`docs/website/privacy-telemetry-section.html`](docs/website/privacy-telemetry-section.html).
+- [ ] Partner Center **Offer listing** — copy ready to paste in
+      [`docs/appsource-listing.md`](docs/appsource-listing.md).
+
+Note: apps in the 70M range cannot be sideloaded as per-tenant extensions;
+cloud sandboxes install via AppSource or as a dev extension.
 
 ## Repository layout
 
@@ -182,14 +198,27 @@ InventoryPlanning.Tests/      test app (Library Assert + Library - Inventory)
 
 ## Building
 
-```bash
-altool downloadsymbols --project ./InventoryPlanning
-altool build --project ./InventoryPlanning
-altool build --project ./InventoryPlanning.Tests
+Press **F5** in VS Code to build and publish to the sandbox, or compile from the
+command line with the AL extension's compiler:
+
+```powershell
+$alc = "$env:USERPROFILE\.vscode\extensions\ms-dynamics-smb.al-*\bin\win32\alc.exe"
+& $alc /project:.\InventoryPlanning /packagecachepath:.\InventoryPlanning\.alpackages /out:.\out.app
 ```
 
-Note: the test app's dependency GUIDs for Microsoft test libraries follow the
-standard published IDs; if `al_downloadsymbols` reports a mismatch for your
+To build **and sign** in one step:
+
+```powershell
+.\build\sign.ps1 -Build
+```
+
+Symbols live in each project's `.alpackages`; refresh them with **AL: Download
+Symbols** from the command palette. The test app also needs a current copy of
+the main app's `.app` in its own `.alpackages` — `sign.ps1 -Build` does not do
+that for you.
+
+Note: the test app's dependency GUIDs for the Microsoft test libraries follow
+the standard published IDs; if symbol download reports a mismatch for your
 localization, correct them from your environment's extension list.
 
 ## License

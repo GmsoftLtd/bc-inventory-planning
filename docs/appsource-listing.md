@@ -308,21 +308,30 @@ stored.
 - [x] Namespaces on every object
 - [x] Permission sets shipped: `GSO` (admin) and `GSO - User` (planner)
 
+**Also done since**
+
+- [x] Website pages published — product, documentation hub and eight articles,
+      support, free apps, Manufacturing Suite. All return 200.
+- [x] Manifest URLs point at them and are verified.
+- [x] Publishing entity settled: **GMSOFT Limited**, company 12275621.
+      `publisher`, the MIT copyright line and the linked privacy statement agree.
+- [x] `ContextSensitiveHelpPage` on all five UI objects, deep-linking tooltips
+      to their own articles.
+- [x] Telemetry rebuilt in a subscription that will not expire; new
+      instrumentation key in `app.json`.
+- [x] Code signing working — Azure Artifact Signing, `gmsoft-public-trust`.
+
 **Outstanding**
 
 - [ ] Register the `GSO` affix with Microsoft via the AppSourceISVs process
-- [ ] Publish the pages in [`website/`](website/) and update the URLs in
-      `app.json` — the current `contextSensitiveHelpUrl` returns 404, which
-      breaks every **Learn more** link in the app
-- [ ] Publish a separate support page with 3+ contact options and a stated
-      response time (`website/support.html`)
-- [ ] Extend the privacy statement to cover extension telemetry
-      (`website/privacy-telemetry-section.md`)
 - [ ] Capture the five screenshots and add them to the Partner Center listing
-- [ ] Confirm which legal entity publishes the offer, and make `publisher` in
-      `app.json`, the listing and the linked privacy statement agree
-- [ ] Optional: add `ContextSensitiveHelpPage` to the five UI objects to
-      deep-link tooltips to specific articles instead of the docs hub
+- [ ] Paste the telemetry section into the privacy statement at
+      gmsoft.co.uk/privacy-statement-uk/ (`website/privacy-telemetry-section.html`)
+- [ ] Fill in the Partner Center **Offer listing** from the copy above
+- [ ] Fix the Complianz controller details on gmsoftdynamics.com — the statements
+      there still name a different entity than the one publishing
+- [ ] Add cards for Inventory Planning and the free apps page to the `/apps/`
+      grid, which is Elementor-built and has to be edited there
 
 ---
 

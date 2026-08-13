@@ -8,6 +8,10 @@ using Microsoft.Inventory.Item;
 /// </summary>
 pageextension 73030575 "GSO Item Card Ext" extends "Item Card"
 {
+    // Applies only to the controls this extension adds, so the rest of the
+    // Item Card keeps pointing at Microsoft's help.
+    ContextSensitiveHelpPage = 'inventory-planning-item-fields';
+
     layout
     {
         addlast(Planning)

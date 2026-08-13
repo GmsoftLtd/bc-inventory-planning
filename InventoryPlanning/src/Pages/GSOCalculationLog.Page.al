@@ -12,6 +12,7 @@ page 73030576 "GSO Calculation Log"
     UsageCategory = History;
     Editable = false;
     SourceTableView = sorting("Entry No.") order(descending);
+    ContextSensitiveHelpPage = 'inventory-planning-log';
 
     layout
     {
