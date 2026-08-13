@@ -172,10 +172,10 @@ Done:
 - [x] **logo/icon.png** — final asset.
 - [x] **Code signing** — Azure Artifact Signing, `gmsoft-public-trust` profile.
       See [`build/README.md`](build/README.md).
+- [x] **`GSO` affix registered** with Microsoft.
 
-Outstanding:
+Outstanding — all listing work, nothing technical:
 
-- [ ] **Register the `GSO` affix** with Microsoft (AppSourceISVs process).
 - [ ] **Screenshots** — five, 1280×720. Shot list with captions in
       [`docs/appsource-listing.md`](docs/appsource-listing.md).
 - [ ] **Extension telemetry disclosure** in the linked privacy statement —

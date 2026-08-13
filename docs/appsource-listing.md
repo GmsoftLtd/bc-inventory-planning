@@ -321,9 +321,9 @@ stored.
       instrumentation key in `app.json`.
 - [x] Code signing working — Azure Artifact Signing, `gmsoft-public-trust`.
 
-**Outstanding**
+**Outstanding** — listing work only, nothing technical
 
-- [ ] Register the `GSO` affix with Microsoft via the AppSourceISVs process
+- [x] `GSO` affix registered with Microsoft
 - [ ] Capture the five screenshots and add them to the Partner Center listing
 - [ ] Paste the telemetry section into the privacy statement at
       gmsoft.co.uk/privacy-statement-uk/ (`website/privacy-telemetry-section.html`)
