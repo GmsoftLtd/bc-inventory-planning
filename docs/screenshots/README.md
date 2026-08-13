@@ -17,13 +17,27 @@ most visitors never scroll past it.
 
 ## The set
 
-| # | File | Shows | Caption |
+| # | File | Status | Caption |
 |---|---|---|---|
-| 01 | `01-planning-worksheet.png` | Planning Worksheet loaded, current vs proposed side by side | Review current versus proposed values for a filtered set of items, then apply only the lines you select. |
-| 02 | *pending* | Inventory Planning Setup, all five groups | One setup page for all four calculators — service level, costs, thresholds and write targets. |
-| 03 | *pending* | A populated calculation log entry | Every calculation records the statistics, lead time, costs and previous value behind it. |
-| 04 | *pending* | Item Card with the Inventory Planning actions open | Calculate per item, and exclude planner-maintained items from bulk runs. |
-| 05 | *pending* | A result message carrying a trend or SKU warning | The app flags when a result deserves review — trends, Stockkeeping Units and lumpy demand. |
+| 01 | `01-planning-worksheet.png` | **ready** | Review current versus proposed values for a filtered set of items, then apply only the lines you select. |
+| 02 | `02-setup.png` | **re-shoot** — General group scrolled off the top | One setup page for all four calculators — service level, costs, thresholds and write targets. |
+| 03 | `03-calculation-log.png` | **re-shoot** — every row reads Insufficient with zero statistics | Every calculation records the statistics, lead time, costs and previous value behind it. |
+| 04 | `04-item-card.png` | **ready** | Every calculator, per item, from the Item Card. |
+| 05 | `05-result-message.png` | **ready** | The app flags when a result deserves review — here, demand too intermittent for the method to be reliable. |
+
+### 02 — what to change
+
+Maximise the page (⤢ top right) so it does not open over the Role Center, press
+Ctrl+- until all six group headers fit, and scroll to the very top. General is
+the group that matters most to an evaluator and it is currently above the fold.
+The crop already removes the Role Center bleed and the Windows taskbar.
+
+### 03 — what to change
+
+Filter the log to `Result Code = OK`, or to a single item that produced values
+such as 1896-S. The current capture shows WRB-1001…1007, which have no demand at
+all, so every statistic column is zero and the notes read "Found 0 observations".
+The caption promises the opposite of what the image shows.
 
 Captions are also in [`../appsource-listing.md`](../appsource-listing.md). Keep
 the two in step.
