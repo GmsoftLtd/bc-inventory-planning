@@ -6,3 +6,7 @@
 launch.json
 rad.json
 .altestrunner/
+
+# signing toolchain - restored on demand by build/sign.ps1
+build/.tools/
+build/out/
