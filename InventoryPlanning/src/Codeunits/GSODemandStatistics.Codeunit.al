@@ -432,16 +432,36 @@ codeunit 73030585 "GSO Demand Statistics"
         exit(Advisory);
     end;
 
+    /// <summary>
+    /// Resets the cache when it is empty, older than the TTL, or was built for a
+    /// different window or demand definition.
+    ///
+    /// The tests are nested rather than combined with OR on purpose: AL does not
+    /// short-circuit boolean operators, so every operand of a combined condition
+    /// is evaluated. On the first call of a session CacheCreatedAt is still 0DT,
+    /// and subtracting an uninitialised DateTime raises "The date is not valid" —
+    /// which failed the first calculation every user ever ran.
+    /// </summary>
     local procedure EnsureCacheValid(WindowDays: Integer; IncludeConsumption: Boolean)
     begin
-        if (CacheCreatedAt = 0DT) or
-           (CurrentDateTime() - CacheCreatedAt > 5 * 60000) or
-           (CacheWindowDays <> WindowDays) or
-           (CacheIncludeConsumption <> IncludeConsumption)
-        then begin
-            ClearCache();
-            CacheWindowDays := WindowDays;
-            CacheIncludeConsumption := IncludeConsumption;
-        end;
+        if CacheCreatedAt <> 0DT then
+            if CurrentDateTime() - CacheCreatedAt <= CacheTtlMs() then
+                if CacheWindowDays = WindowDays then
+                    if CacheIncludeConsumption = IncludeConsumption then
+                        exit;
+
+        ClearCache();
+        CacheWindowDays := WindowDays;
+        CacheIncludeConsumption := IncludeConsumption;
+    end;
+
+    /// <summary>
+    /// Cache lifetime in milliseconds. Long enough that Run All and the planning
+    /// worksheet reuse one ILE scan per item, short enough that a posting made
+    /// moments ago is picked up by the next run.
+    /// </summary>
+    local procedure CacheTtlMs(): Integer
+    begin
+        exit(5 * 60000);
     end;
 }

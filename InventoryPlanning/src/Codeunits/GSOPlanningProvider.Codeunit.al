@@ -149,12 +149,24 @@ codeunit 73030592 "GSO Planning Provider"
         CacheCreatedAt := CurrentDateTime();
     end;
 
+    /// <summary>
+    /// Drops the per-run cache once it passes its TTL.
+    ///
+    /// Nested rather than combined with OR: AL does not short-circuit boolean
+    /// operators, so subtracting CacheCreatedAt would be evaluated even when it
+    /// is still 0DT on the first planning run of a session, raising "The date is
+    /// not valid".
+    /// </summary>
     local procedure EnsureCacheFresh()
     begin
         if CacheTTLMinutes = 0 then
             CacheTTLMinutes := 5;
-        if (CacheCreatedAt = 0DT) or (CurrentDateTime() - CacheCreatedAt > CacheTTLMinutes * 60000) then
-            ClearCache();
+
+        if CacheCreatedAt <> 0DT then
+            if CurrentDateTime() - CacheCreatedAt <= CacheTTLMinutes * 60000 then
+                exit;
+
+        ClearCache();
     end;
 
     local procedure RememberMiss(ItemNo: Code[20]): Boolean
