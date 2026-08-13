@@ -20,17 +20,21 @@ most visitors never scroll past it.
 | # | File | Status | Caption |
 |---|---|---|---|
 | 01 | `01-planning-worksheet.png` | **ready** | Review current versus proposed values for a filtered set of items, then apply only the lines you select. |
-| 02 | `02-setup.png` | **re-shoot** — General group scrolled off the top | One setup page for all four calculators — service level, costs, thresholds and write targets. |
+| 02 | `02-setup.png` | **ready** | One setup page for all four calculators — history window, service level, costs and write targets. |
 | 03 | `03-calculation-log.png` | **ready** | Every calculation records the statistics, lead time and previous value behind it. |
 | 04 | `04-item-card.png` | **ready** | Every calculator, per item, from the Item Card. |
 | 05 | `05-result-message.png` | **ready** | The app flags when a result deserves review — here, demand too intermittent for the method to be reliable. |
 
-### 02 — what to change
+### 02 — note
 
-Maximise the page (⤢ top right) so it does not open over the Role Center, press
-Ctrl+- until all six group headers fit, and scroll to the very top. General is
-the group that matters most to an evaluator and it is currently above the fold.
-The crop already removes the Role Center bleed and the Windows taskbar.
+Policy Advisor and Planning Engine Integration sit below the fold. That is the
+right trade: General, Safety Stock, Reorder Point and EOQ are what an evaluator
+reads, and squeezing all six in would have made the text too small.
+
+The values shown are the demo settings — 1095-day window, 3 minimum
+observations — not the shipped defaults of 365 and 20. That matches the
+"evaluating on demo data" note in the Partner Center getting started
+instructions, so the two are consistent.
 
 ### 03 — optional tidy
 
