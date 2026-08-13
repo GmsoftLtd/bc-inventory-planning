@@ -21,7 +21,7 @@ most visitors never scroll past it.
 |---|---|---|---|
 | 01 | `01-planning-worksheet.png` | **ready** | Review current versus proposed values for a filtered set of items, then apply only the lines you select. |
 | 02 | `02-setup.png` | **re-shoot** — General group scrolled off the top | One setup page for all four calculators — service level, costs, thresholds and write targets. |
-| 03 | `03-calculation-log.png` | **re-shoot** — every row reads Insufficient with zero statistics | Every calculation records the statistics, lead time, costs and previous value behind it. |
+| 03 | `03-calculation-log.png` | **ready** | Every calculation records the statistics, lead time and previous value behind it. |
 | 04 | `04-item-card.png` | **ready** | Every calculator, per item, from the Item Card. |
 | 05 | `05-result-message.png` | **ready** | The app flags when a result deserves review — here, demand too intermittent for the method to be reliable. |
 
@@ -32,12 +32,12 @@ Ctrl+- until all six group headers fit, and scroll to the very top. General is
 the group that matters most to an evaluator and it is currently above the fold.
 The crop already removes the Role Center bleed and the Windows taskbar.
 
-### 03 — what to change
+### 03 — optional tidy
 
-Filter the log to `Result Code = OK`, or to a single item that produced values
-such as 1896-S. The current capture shows WRB-1001…1007, which have no demand at
-all, so every statistic column is zero and the notes read "Found 0 observations".
-The caption promises the opposite of what the image shows.
+Re-captured with a `Avg. Daily Demand <> 0` filter so the statistics columns are
+populated. The Views pane is still open on the left, showing that filter. It is
+honest and costs about 200px of frame; closing it before a re-shoot would be
+slightly cleaner but is not worth another pass on its own.
 
 Captions are also in [`../appsource-listing.md`](../appsource-listing.md). Keep
 the two in step.
