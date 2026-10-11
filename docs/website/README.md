@@ -125,7 +125,7 @@ the placeholders and it satisfies the requirement.
 Update [`InventoryPlanning/app.json`](../../InventoryPlanning/app.json):
 
 ```json
-"privacyStatement": "https://gmsoftdynamics.com/privacy/",
+"privacyStatement": "https://gmsoft.co.uk/privacy-statement-uk/",
 "EULA": "https://github.com/GmsoftLtd/bc-inventory-planning/blob/main/LICENSE",
 "help": "https://gmsoftdynamics.com/apps/inventory-planning/docs/",
 "url": "https://gmsoftdynamics.com/apps/inventory-planning/",
