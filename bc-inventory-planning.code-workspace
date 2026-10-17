@@ -1,12 +1,16 @@
 {
     "folders": [
         {
-            "name": "Inventory Planning (app)",
-            "path": "InventoryPlanning"
+            "name": "Inventory Planning (App)",
+            "path": "app"
         },
         {
-            "name": "Inventory Planning (tests)",
-            "path": "InventoryPlanning.Tests"
+            "name": "Inventory Planning (Demo Data)",
+            "path": "demo"
+        },
+        {
+            "name": "Inventory Planning (Tests)",
+            "path": "test"
         },
         {
             "name": "repo (docs)",
@@ -14,11 +18,18 @@
         }
     ],
     "settings": {
+        "al.enableCodeAnalysis": true,
+        "al.incrementalBuild": true,
         "cSpell.enabled": false,
         "search.exclude": {
             "**/.alpackages": true,
             "**/.alcache": true,
             "**/.altestrunner": true
         }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-dynamics-smb.al"
+        ]
     }
 }

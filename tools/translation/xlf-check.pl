@@ -21,6 +21,7 @@ for my $file (@ARGV) {
     while ($x =~ m{<trans-unit id="([^"]+)"[^>]*>(.*?)</trans-unit>}gs) {
         my ($id, $body) = ($1, $2); $units++;
         my ($src) = $body =~ m{<source>(.*?)</source>}s;
+        next if !defined $src || $src eq '';   # an empty English source has nothing to translate
         my ($state, $tgt) = $body =~ m{<target state="([^"]*)">(.*?)</target>}s;
         if (!defined $tgt || $state eq 'needs-translation' || $tgt eq '') { $missing++; next }
         if ($tgt =~ m{\[NAB:|\bTODO\b|REVIEW\]}) { $broken++; print "  MARKER $id\n"; next }

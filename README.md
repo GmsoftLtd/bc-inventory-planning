@@ -171,17 +171,18 @@ Done:
       GSO0001–GSO0003 report to it (AS0092).
 - [x] **logo/icon.png** — final asset.
 - [x] **Code signing** — Azure Artifact Signing, `gmsoft-public-trust` profile.
-      See [`build/README.md`](build/README.md).
+      Signing runs from the shared script in `GMSOFT-ISV\90-Shared\scripts\signing` (private, not in this repo).
 - [x] **`GSO` affix registered** with Microsoft.
 
 Outstanding — all listing work, nothing technical:
 
 - [ ] **Screenshots** — five, 1280×720. Shot list with captions in
-      [`docs/appsource-listing.md`](docs/appsource-listing.md).
+      `appsource-listing.md` (listing material, kept outside this repository).
 - [ ] **Extension telemetry disclosure** in the linked privacy statement —
-      text ready in [`docs/website/privacy-telemetry-section.html`](docs/website/privacy-telemetry-section.html).
+      text ready in `privacy-telemetry-section.html` (website material, kept
+      outside this repository).
 - [ ] Partner Center **Offer listing** — copy ready to paste in
-      [`docs/appsource-listing.md`](docs/appsource-listing.md).
+      `appsource-listing.md` (listing material, kept outside this repository).
 
 Note: apps in the 70M range cannot be sideloaded as per-tenant extensions;
 cloud sandboxes install via AppSource or as a dev extension.
@@ -189,11 +190,14 @@ cloud sandboxes install via AppSource or as a dev extension.
 ## Repository layout
 
 ```
-InventoryPlanning/            the app
+app/            the app
   src/{Tables,TableExtensions,Pages,Codeunits,PageExtensions,PermissionSets,Enums}
   logo/icon.png               placeholder logo
   AppSourceCop.json           mandatory affix configuration
-InventoryPlanning.Tests/      test app (Library Assert + Library - Inventory)
+test/      test app (Library Assert + Library - Inventory)
+docs/
+  user-guide.md               end-user documentation
+  user-test-manual.md         manual acceptance-test script (UAT / regression)
 ```
 
 ## Building
@@ -203,13 +207,14 @@ command line with the AL extension's compiler:
 
 ```powershell
 $alc = "$env:USERPROFILE\.vscode\extensions\ms-dynamics-smb.al-*\bin\win32\alc.exe"
-& $alc /project:.\InventoryPlanning /packagecachepath:.\InventoryPlanning\.alpackages /out:.\out.app
+& $alc /project:.\app /packagecachepath:.\app\.alpackages /out:.\out.app
 ```
 
 To build **and sign** in one step:
 
 ```powershell
-.\build\sign.ps1 -Build
+# from GMSOFT-ISV\90-Shared\scripts\signing (private)
+.\sign.ps1 -App "<path to the Inventory Planning app folder>"
 ```
 
 Symbols live in each project's `.alpackages`; refresh them with **AL: Download
