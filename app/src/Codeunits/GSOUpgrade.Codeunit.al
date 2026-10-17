@@ -45,6 +45,17 @@ codeunit 73030595 "GSO Upgrade"
             UpgradeTag.SetUpgradeTag(GetMaxInvTrendTag());
     end;
 
+    /// <summary>
+    /// Lets the platform mark every step as done when a new company is created,
+    /// so the steps never run against a company that starts with InitValues.
+    /// </summary>
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", 'OnGetPerCompanyUpgradeTags', '', false, false)]
+    local procedure RegisterPerCompanyUpgradeTags(var PerCompanyUpgradeTags: List of [Code[250]])
+    begin
+        if not PerCompanyUpgradeTags.Contains(GetMaxInvTrendTag()) then
+            PerCompanyUpgradeTags.Add(GetMaxInvTrendTag());
+    end;
+
     local procedure GetMaxInvTrendTag(): Code[250]
     begin
         exit('GSO-UPG-MaxInvTrend-20260810');
