@@ -1,0 +1,1827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="it-IT" original="Inventory Planning">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 432900834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Calculation Log</source>
+          <target state="translated">Registro calcoli pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2681905906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Annual Demand</source>
+          <target state="translated">Domanda annua</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Annual Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 508884519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applied</source>
+          <target state="translated">Applicato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Applied - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 482287890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avg. Daily Demand</source>
+          <target state="translated">Domanda media giornaliera</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Avg Daily Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 4277238639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avg. Demand Interval (ADI)</source>
+          <target state="translated">Intervallo medio tra domande (ADI)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Avg Demand Interval (ADI) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2316251556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Date/Time</source>
+          <target state="translated">Data/ora calcolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Calculation DateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 772194043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Type</source>
+          <target state="translated">Tipo calcolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Calculation Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 162571681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand CV²</source>
+          <target state="translated">CV² domanda</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Demand CV Squared - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 1904292362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Observations</source>
+          <target state="translated">Osservazioni di domanda</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Demand Observations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2785693217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Pattern</source>
+          <target state="translated">Profilo di domanda</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Demand Pattern - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 3060945597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Std. Deviation</source>
+          <target state="translated">Deviazione standard domanda</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Demand Std Dev - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <target state="translated">Nr. movimento</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2619750096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding Cost</source>
+          <target state="translated">Costo di mantenimento</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Holding Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <target state="translated">Nr. articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 4122288609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time (Days)</source>
+          <target state="translated">Lead time (giorni)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Lead Time (Days) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 1226191712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time Source</source>
+          <target state="translated">Origine lead time</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Lead Time Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 1142282943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time Std. Deviation</source>
+          <target state="translated">Deviazione standard lead time</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Lead Time Std Dev - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2898143332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note</source>
+          <target state="translated">Nota</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 1321691815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordering Cost</source>
+          <target state="translated">Costo di ordinazione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Ordering Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2033857254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Previous Value</source>
+          <target state="translated">Valore precedente</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Previous Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2318591743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Raw Result</source>
+          <target state="translated">Risultato non rettificato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Raw Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 681395287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recommended Policy</source>
+          <target state="translated">Metodo raccomandato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Recommended Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 472338107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Result</source>
+          <target state="translated">Risultato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2893504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Result Code</source>
+          <target state="translated">Codice risultato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 1269799554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Level %</source>
+          <target state="translated">% livello di servizio</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Service Level % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <target state="translated">Costo unitario</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <target state="translated">ID utente</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 432900834 - Field 3650359382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Z-Score</source>
+          <target state="translated">Punteggio Z</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Calculation Log - Field Z Score - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Proposal</source>
+          <target state="translated">Proposta pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 4233181637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Maximum Inventory</source>
+          <target state="translated">Giacenza massima attuale</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Current Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 3414567291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Reordering Policy</source>
+          <target state="translated">Metodo di riordino attuale</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Current Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 3176444128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Reorder Point</source>
+          <target state="translated">Punto di riordino attuale</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Current Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 341230349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Reorder Quantity</source>
+          <target state="translated">Quantità di riordino attuale</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Current Reorder Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 2679405511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Safety Stock</source>
+          <target state="translated">Scorta di sicurezza attuale</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Current Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 2785693217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand Pattern</source>
+          <target state="translated">Profilo di domanda</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Demand Pattern - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="translated">Descrizione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 1361363641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ Result</source>
+          <target state="translated">Risultato EOQ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field EOQ Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <target state="translated">Nr. articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 2898143332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note</source>
+          <target state="translated">Nota</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 2649799797 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed EOQ</source>
+          <target state="translated">EOQ proposta</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Proposed EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 1935442638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed Maximum Inventory</source>
+          <target state="translated">Giacenza massima proposta</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Proposed Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 3483907111 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed Reorder Point</source>
+          <target state="translated">Punto di riordino proposto</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Proposed Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 4178540216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposed Safety Stock</source>
+          <target state="translated">Scorta di sicurezza proposta</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Proposed Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 681395287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recommended Policy</source>
+          <target state="translated">Metodo raccomandato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Recommended Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 806068139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Point Result</source>
+          <target state="translated">Risultato punto di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field ROP Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 90423963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected</source>
+          <target state="translated">Selezionato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field Selected - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1050566998 - Field 1373223232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Safety Stock Result</source>
+          <target state="translated">Risultato scorta di sicurezza</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Planning Proposal - Field SS Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Setup</source>
+          <target state="translated">Setup pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 3576601697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write EOQ to Item</source>
+          <target state="translated">Scrivi EOQ nell'articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Apply EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 929867162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write Maximum Inventory (ROP + EOQ) for Maximum Qty. Items</source>
+          <target state="translated">Scrivi giacenza massima (punto di riordino + EOQ) per articoli con Qtà massima</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Apply Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1696263963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write Reorder Point to Item</source>
+          <target state="translated">Scrivi punto di riordino nell'articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Apply Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2194643276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Write Safety Stock to Item</source>
+          <target state="translated">Scrivi scorta di sicurezza nell'articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Apply Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 545084853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Auto-Update Item Reordering Policy</source>
+          <target state="translated">Aggiorna automaticamente metodo di riordino articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Auto-Update Policy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1340177402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost Source</source>
+          <target state="translated">Origine costo unitario</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Cost Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 314481736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallback Lead Time (Days)</source>
+          <target state="translated">Lead time di riserva (giorni)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Default Lead Time (Days) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 3168170047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Service Level %</source>
+          <target state="translated">% livello di servizio predefinito</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Default Service Level % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 4099559675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Supply Values at Planning Time (Dynamic)</source>
+          <target state="translated">Fornisci valori al momento della pianificazione (dinamico)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Dynamic Provider Enabled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 3036267241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ Write Target</source>
+          <target state="translated">Destinazione scrittura EOQ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field EOQ Write Target - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1758183902 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Erratic CV-Squared Threshold</source>
+          <target state="translated">Soglia CV² domanda erratica</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Erratic CV2 Threshold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 658164308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demand History Window (Days)</source>
+          <target state="translated">Finestra storica domanda (giorni)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field History Window (Days) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2026703871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding Rate (fraction of unit cost/year)</source>
+          <target state="translated">Tasso di mantenimento (frazione del costo unitario/anno)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Holding Rate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 3413076906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Count Consumption as Demand</source>
+          <target state="translated">Considera il consumo come domanda</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Include Consumption Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2944416884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add Safety Stock to Reorder Point</source>
+          <target state="translated">Aggiungi scorta di sicurezza al punto di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Include Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2877734794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Calculation History</source>
+          <target state="translated">Annota i calcoli nel registro</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Log History - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2303263114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intermittent ADI Threshold</source>
+          <target state="translated">Soglia ADI domanda intermittente</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Lumpy ADI Threshold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1987516760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum EOQ (Months of Demand)</source>
+          <target state="translated">EOQ massima (mesi di domanda)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Max EOQ Months - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 3573055592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Min Demand Observations</source>
+          <target state="translated">Osservazioni di domanda minime</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Min Demand Observations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1321691815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordering Cost (S)</source>
+          <target state="translated">Costo di ordinazione (S)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Ordering Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2665507231 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Treat Shelf Life as Maximum Qty.</source>
+          <target state="translated">Tratta durata di conservazione come Qtà massima</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Perishable Means Max Qty. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <target state="translated">Chiave primaria</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1552810735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Round Up Results to Whole Units</source>
+          <target state="translated">Arrotonda per eccesso i risultati a unità intere</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Round Up Results - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 2546652520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Policy to Fixed Reorder Qty. when None</source>
+          <target state="translated">Imposta metodo Qtà riordino fissa se assente</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Set Policy When None - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 1589467346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Skip Make-to-Order Items</source>
+          <target state="translated">Ignora articoli di produzione su ordine</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Skip Make-to-Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 331901240 - Field 3584598915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trend Warning Threshold % (0 = off)</source>
+          <target state="translated">% soglia avviso di tendenza (0 = disattivato)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table GSO Setup - Field Trend Warning Threshold % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - NamedType 2181750929" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note: %1 stockkeeping unit(s) exist for this item; standard planning reads SKU values at those locations, not these item-card values.</source>
+          <target state="translated">Nota: per questo articolo esistono %1 SKU; la pianificazione standard legge i valori degli SKU in tali ubicazioni, non questi valori della scheda articolo.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of stockkeeping units</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - NamedType SKUNoteLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - NamedType 1031707219" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning: trailing %1-day demand runs %2%% below the full-window average — history may overstate future demand (phase-out?).</source>
+          <target state="translated">Avviso: la domanda degli ultimi %1 giorni è inferiore del %2%% alla media dell'intera finestra; lo storico potrebbe sovrastimare la domanda futura (articolo in dismissione?).</target>
+          <note from="Developer" annotates="general" priority="2">%1 = recent window days, %2 = deviation percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - NamedType TrendDownLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - NamedType 2976511010" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning: trailing %1-day demand runs %2%% above the full-window average — history-based values lag an upward trend.</source>
+          <target state="translated">Avviso: la domanda degli ultimi %1 giorni è superiore del %2%% alla media dell'intera finestra; i valori basati sullo storico sono in ritardo rispetto a una tendenza in crescita.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = recent window days, %2 = deviation percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - NamedType TrendUpLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - Method 1754870424 - NamedType 1224066885" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase receipt history</source>
+          <target state="translated">Storico carichi acquisti</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - Method ComputeLeadTime - NamedType PurchaseHistoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - Method 1754870424 - NamedType 3428281682" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Lead Time Calculation</source>
+          <target state="translated">Calcolo lead time articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - Method ComputeLeadTime - NamedType ItemLeadTimeLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - Method 1754870424 - NamedType 1221404638" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Lead Time Calculation (manufacturing)</source>
+          <target state="translated">Calcolo lead time articolo (produzione)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - Method ComputeLeadTime - NamedType ManufacturingLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - Method 1754870424 - NamedType 1211671992" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Lead Time Calculation (assembly)</source>
+          <target state="translated">Calcolo lead time articolo (assemblaggio)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - Method ComputeLeadTime - NamedType AssemblyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3207458723 - Method 1754870424 - NamedType 2151851155" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup fallback</source>
+          <target state="translated">Valore di riserva del setup</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Demand Statistics - Method ComputeLeadTime - NamedType SetupFallbackLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 668283511" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Raw EOQ %1 capped to %2 (%3 months of demand).</source>
+          <target state="translated">EOQ non rettificata %1 limitata a %2 (%3 mesi di domanda).</target>
+          <note from="Developer" annotates="general" priority="2">%1 = raw EOQ, %2 = capped EOQ, %3 = months cap</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType CapAppliedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <target state="translated">L'articolo è escluso dalla pianificazione scorte.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 3052465211" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Found %1 observations, need %2.</source>
+          <target state="translated">Trovate %1 osservazioni, ne sono necessarie %2.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = observations found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType InsufficientObsLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <target state="translated">L'articolo è bloccato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 404221584" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reduced to Maximum Order Quantity %1.</source>
+          <target state="translated">Ridotta alla quantità massima ordine %1.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = maximum order quantity</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType MaxOrderQtyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 2087848654" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Raised to Minimum Order Quantity %1.</source>
+          <target state="translated">Aumentata alla quantità minima ordine %1.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = minimum order quantity</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType MinOrderQtyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: an order quantity does not apply.</source>
+          <target state="translated">Non è un articolo di magazzino: la quantità ordine non è applicabile.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating EOQ...\#1######### / #2#########</source>
+          <target state="translated">Calcolo EOQ in corso...\#1######### / #2#########</target>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 3129907217" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Annual demand is zero or negative.</source>
+          <target state="translated">La domanda annua è zero o negativa.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ZeroDemandLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 898210847" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordering cost is zero in Setup.</source>
+          <target state="translated">Il costo di ordinazione nel setup è zero.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ZeroOrderingCostLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 3019020571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculated EOQ is zero after capping and rounding. Nothing was written.</source>
+          <target state="translated">La EOQ calcolata è zero dopo la limitazione e l'arrotondamento. Non è stato scritto nulla.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ZeroResultLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 2194820063" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit cost is zero. Cannot compute holding cost.</source>
+          <target state="translated">Il costo unitario è zero. Impossibile calcolare il costo di mantenimento.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ZeroUnitCostLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1280872558 - NamedType 858110245" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Configure the safety stock, reorder point, EOQ and policy advisor calculators: history window, service level, ordering cost, holding rate, and how results are applied.</source>
+          <target state="translated">Configurare i calcoli di scorta di sicurezza, punto di riordino, EOQ e del consulente metodi di riordino: finestra storica, livello di servizio, costo di ordinazione, tasso di mantenimento e modalità di applicazione dei risultati.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Install - NamedType SetupDescriptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1280872558 - NamedType 3802263609" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning</source>
+          <target state="translated">Pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Install - NamedType SetupShortTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1280872558 - NamedType 701938711" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Setup</source>
+          <target state="translated">Setup pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Install - NamedType SetupTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2691105617 - NamedType 1634871408" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Supplied at planning time: SS=%1, ROP=%2, RQ=%3.</source>
+          <target state="translated">Fornito al momento della pianificazione: SS=%1, ROP=%2, RQ=%3.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = safety stock, %2 = reorder point, %3 = reorder quantity (0 = not supplied)</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Planning Provider - NamedType DynamicSupplyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 776512038" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Erratic</source>
+          <target state="translated">Erratica</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType ErraticTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <target state="translated">L'articolo è escluso dalla pianificazione scorte.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 2735714560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand, no inventory cap. Fixed Reorder Qty. orders a fixed economic quantity (EOQ) at the reorder point. Set Reorder Point and Reorder Quantity.</source>
+          <target state="translated">Domanda %1, nessun limite di giacenza. Qtà riordino fissa ordina una quantità economica fissa (EOQ) al punto di riordino. Impostare Punto di riordino e Quantità di riordino.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType FixedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 4082552577" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only %1 day(s) with demand (minimum %2). Not enough sales history to classify the demand pattern.</source>
+          <target state="translated">Solo %1 giorni con domanda (minimo %2). Lo storico vendite non è sufficiente per classificare il profilo di domanda.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = demand days found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType InsufficientLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 2665664329" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intermittent</source>
+          <target state="translated">Intermittente</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType IntermittentTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <target state="translated">L'articolo è bloccato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 1121648" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item not found.</source>
+          <target state="translated">Articolo non trovato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType ItemNotFoundLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 164200945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand: stock turns over infrequently (ADI %2 &gt;= %3). Lot-for-Lot orders to each demand and holds no standing stock.</source>
+          <target state="translated">Domanda %1: le scorte ruotano raramente (ADI %2 &gt;= %3). Lotto-per-lotto ordina per ogni domanda e non mantiene scorte permanenti.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern, %2 = ADI, %3 = threshold</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType LumpyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 2888957319" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lumpy</source>
+          <target state="translated">Irregolare</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType LumpyTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 226457201" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand with a Maximum Inventory cap already set. Maximum Qty. refills up to that ceiling at the reorder point.</source>
+          <target state="translated">Domanda %1 con un limite di giacenza massima già impostato. Qtà massima ripristina fino a tale limite al punto di riordino.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType MaxInvLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 3238184624" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-order: keep Reordering Policy = Order so each supply pegs to one demand. Its components are make-to-stock and should be advised individually.</source>
+          <target state="translated">Produzione su ordine: mantenere Metodo di riordino = Ordine in modo che ogni approvvigionamento sia collegato a una sola domanda. I suoi componenti sono di produzione per magazzino e devono essere valutati singolarmente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType MTOLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: a reordering policy does not apply.</source>
+          <target state="translated">Non è un articolo di magazzino: il metodo di riordino non è applicabile.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 4277486991" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 demand with a shelf life set. Maximum Qty. caps standing stock so nothing expires. Set Reorder Point and Maximum Inventory.</source>
+          <target state="translated">Domanda %1 con una durata di conservazione impostata. Qtà massima limita le scorte permanenti in modo che nulla scada. Impostare Punto di riordino e Giacenza massima.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = pattern</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType PerishableLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Advising replenishment policy...\#1######### / #2#########</source>
+          <target state="translated">Consiglio sul metodo di riordino in corso...\#1######### / #2#########</target>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 1269321878" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Smooth</source>
+          <target state="translated">Regolare</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType SmoothTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4147089433 - NamedType 1808847724" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown</source>
+          <target state="translated">Sconosciuto</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Policy Advisor - NamedType UnknownTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <target state="translated">L'articolo è escluso dalla pianificazione scorte.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 2116224744" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ROP = (D %1/day x LT %2 d) + SS %3 = %4. Lead time from %5; n=%6 obs.</source>
+          <target state="translated">ROP = (D %1/giorno x LT %2 g) + SS %3 = %4. Lead time da %5; n=%6 oss.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = avg daily demand, %2 = lead time days, %3 = safety stock, %4 = reorder point, %5 = lead time source, %6 = observations</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType FormulaLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 184241153" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only %1 demand observations found (minimum %2). No reliable demand rate.</source>
+          <target state="translated">Trovate solo %1 osservazioni di domanda (minimo %2). Nessun tasso di domanda affidabile.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = observations found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType InsufficientDataLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <target state="translated">L'articolo è bloccato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 1974996647" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Capped at Maximum Inventory (%1): the uncapped reorder point %2 would make the Maximum Qty. parameter pair invalid.</source>
+          <target state="translated">Limitato alla giacenza massima (%1): il punto di riordino non limitato %2 renderebbe non valida la coppia di parametri di Qtà massima.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = maximum inventory, %2 = uncapped reorder point</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType MaxInvCapLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 3742739144" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-order item. Reorder point does not apply: supply is created per demand.</source>
+          <target state="translated">Articolo di produzione su ordine. Il punto di riordino non è applicabile: l'approvvigionamento viene creato per ogni domanda.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType MTOSkippedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 2246190550" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No lead time available: no receipt history, no Lead Time Calculation, and the setup fallback is 0.</source>
+          <target state="translated">Nessun lead time disponibile: nessuno storico carichi, nessun Calcolo lead time e il valore di riserva del setup è 0.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType NoLeadTimeLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: a reorder point does not apply.</source>
+          <target state="translated">Non è un articolo di magazzino: il punto di riordino non è applicabile.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating Reorder Point...\#1######### / #2#########</source>
+          <target state="translated">Calcolo punto di riordino in corso...\#1######### / #2#########</target>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 3376554930" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Covers expected demand during lead time (no safety stock buffer).</source>
+          <target state="translated">Copre la domanda prevista durante il lead time (senza margine di scorta di sicurezza).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType WithoutSSLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1151350914 - NamedType 3008349020" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Covers expected demand during lead time, on top of the safety stock buffer.</source>
+          <target state="translated">Copre la domanda prevista durante il lead time, in aggiunta al margine di scorta di sicurezza.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Reorder Point - NamedType WithSSLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1506535077 - NamedType 1879987899" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum Inventory = ROP %1 + EOQ %2 = %3. Order-up-to level for the Maximum Qty. policy.</source>
+          <target state="translated">Giacenza massima = ROP %1 + EOQ %2 = %3. Livello di ripristino per il metodo Qtà massima.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = reorder point, %2 = EOQ, %3 = maximum inventory</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Run All - NamedType MaxInvFormulaLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1506535077 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating planning parameters...\#1######### / #2#########</source>
+          <target state="translated">Calcolo parametri di pianificazione in corso...\#1######### / #2#########</target>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Run All - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 3712530721" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffer covers demand and lead-time variability at %1%% service level.</source>
+          <target state="translated">Il margine copre la variabilità della domanda e del lead time con un livello di servizio del %1%%.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = service level percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType BothVaryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 186580641" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffer covers demand variability over a stable lead time at %1%% service level.</source>
+          <target state="translated">Il margine copre la variabilità della domanda con un lead time stabile, con un livello di servizio del %1%%.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = service level percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType DemandVariesLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 804748028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is excluded from inventory planning.</source>
+          <target state="translated">L'articolo è escluso dalla pianificazione scorte.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType ExcludedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 184241153" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only %1 demand observations found (minimum %2).</source>
+          <target state="translated">Trovate solo %1 osservazioni di domanda (minimo %2).</target>
+          <note from="Developer" annotates="general" priority="2">%1 = observations found, %2 = minimum required</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType InsufficientDataLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 3372613361" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning: intermittent demand (ADI %1) — the Z-score method assumes roughly normal demand and may be unreliable here.</source>
+          <target state="translated">Avviso: domanda intermittente (ADI %1); il metodo del punteggio Z presuppone una domanda approssimativamente normale e qui potrebbe non essere affidabile.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = average demand interval</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType IntermittentWarnLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 407252945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item is blocked.</source>
+          <target state="translated">L'articolo è bloccato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType ItemBlockedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 1497909880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffer covers lead-time variability over stable demand at %1%% service level.</source>
+          <target state="translated">Il margine copre la variabilità del lead time con una domanda stabile, con un livello di servizio del %1%%.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = service level percent</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType LeadVariesLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 3742739144" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-order item. Safety stock does not apply: supply is created per demand.</source>
+          <target state="translated">Articolo di produzione su ordine. La scorta di sicurezza non è applicabile: l'approvvigionamento viene creato per ogni domanda.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType MTOSkippedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 2267599237" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No buffer needed: demand and lead time are perfectly stable over the history window.</source>
+          <target state="translated">Nessun margine necessario: domanda e lead time sono perfettamente stabili nella finestra storica.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType NoBufferLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 2246190550" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No lead time available: no receipt history, no Lead Time Calculation, and the setup fallback is 0.</source>
+          <target state="translated">Nessun lead time disponibile: nessuno storico carichi, nessun Calcolo lead time e il valore di riserva del setup è 0.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType NoLeadTimeLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 3482827127" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an inventory item: stock-level planning does not apply.</source>
+          <target state="translated">Non è un articolo di magazzino: la pianificazione del livello delle scorte non è applicabile.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType NotInventoryLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 3950098385" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculating Safety Stock...\#1######### / #2#########</source>
+          <target state="translated">Calcolo scorta di sicurezza in corso...\#1######### / #2#########</target>
+          <note from="Developer" annotates="general" priority="2">#1 = current item counter, #2 = total items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType ProgressLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1439516025 - NamedType 4161323925" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Z=%1; LT=%2 d (s=%3); D=%4/d (s=%5); n=%6 obs.</source>
+          <target state="translated">Z=%1; LT=%2 g (s=%3); D=%4/g (s=%5); n=%6 oss.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = Z-score, %2 = lead time days, %3 = lead time std dev, %4 = avg daily demand, %5 = demand std dev, %6 = observations</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO Safety Stock - NamedType StatsLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Calculation Log</source>
+          <target state="translated">Registro calcoli pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 508884519 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the result was written to the item.</source>
+          <target state="translated">Specifica se il risultato è stato scritto nell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Applied - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 482287890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the mean daily demand over the history window.</source>
+          <target state="translated">Specifica la domanda media giornaliera nella finestra storica.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Avg Daily Demand - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 2316251556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies when the calculation ran.</source>
+          <target state="translated">Specifica quando è stato eseguito il calcolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Calculation DateTime - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 772194043 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which calculator produced this entry.</source>
+          <target state="translated">Specifica quale calcolo ha prodotto questo movimento.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Calculation Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 1904292362 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of days with demand in the history window.</source>
+          <target state="translated">Specifica il numero di giorni con domanda nella finestra storica.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Demand Observations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 2785693217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the demand classification: Smooth, Erratic, Intermittent or Lumpy.</source>
+          <target state="translated">Specifica la classificazione della domanda: Regolare, Erratica, Intermittente o Irregolare.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Demand Pattern - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the sequential number of the log entry.</source>
+          <target state="translated">Specifica il numero progressivo del movimento del registro.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item the calculation ran for.</source>
+          <target state="translated">Specifica l'articolo per cui è stato eseguito il calcolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 4122288609 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the lead time used, in days.</source>
+          <target state="translated">Specifica il lead time utilizzato, in giorni.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Lead Time (Days) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 1226191712 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies where the lead time came from: receipt history, the item, or the setup fallback.</source>
+          <target state="translated">Specifica l'origine del lead time: storico carichi, articolo o valore di riserva del setup.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Lead Time Source - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 2898143332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the explanation of the result — the formula inputs, or why the item was skipped.</source>
+          <target state="translated">Specifica la spiegazione del risultato: i dati di input della formula o il motivo per cui l'articolo è stato ignorato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Note - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 2033857254 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value on the item before this calculation.</source>
+          <target state="translated">Specifica il valore presente nell'articolo prima di questo calcolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Previous Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 681395287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the recommended reordering policy (policy advice entries only).</source>
+          <target state="translated">Specifica il metodo di riordino raccomandato (solo movimenti di consiglio sul metodo).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Recommended Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 472338107 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated value.</source>
+          <target state="translated">Specifica il valore calcolato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Result - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 2893504 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the outcome: OK, or the reason the item was skipped.</source>
+          <target state="translated">Specifica l'esito: OK o il motivo per cui l'articolo è stato ignorato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 1269799554 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the service level used (safety stock entries only).</source>
+          <target state="translated">Specifica il livello di servizio utilizzato (solo movimenti di scorta di sicurezza).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control Service Level % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 432900834 - Control 2708250016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the user who ran the calculation.</source>
+          <target state="translated">Specifica l'utente che ha eseguito il calcolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Calculation Log - Control User ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Worksheet</source>
+          <target state="translated">Prospetto pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Method 568138502 - NamedType 39884288" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 of %2 line(s) change the reorder point by more than 25%.</source>
+          <target state="translated">%1 di %2 righe modificano il punto di riordino di oltre il 25%.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = lines with significant variance, %2 = total lines</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Method ShowVarianceSummary - NamedType VarianceMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 4233181637 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the maximum inventory currently on the item.</source>
+          <target state="translated">Specifica la giacenza massima attualmente impostata nell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Current Maximum Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 3414567291 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item's current reordering policy.</source>
+          <target state="translated">Specifica il metodo di riordino attuale dell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Current Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 3176444128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reorder point currently on the item.</source>
+          <target state="translated">Specifica il punto di riordino attualmente impostato nell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Current Reorder Point - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 341230349 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reorder quantity currently on the item.</source>
+          <target state="translated">Specifica la quantità di riordino attualmente impostata nell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Current Reorder Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 2679405511 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the safety stock currently on the item.</source>
+          <target state="translated">Specifica la scorta di sicurezza attualmente impostata nell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Current Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 2785693217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the demand classification: Smooth, Erratic, Intermittent or Lumpy.</source>
+          <target state="translated">Specifica la classificazione della domanda: Regolare, Erratica, Intermittente o Irregolare.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Demand Pattern - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item description.</source>
+          <target state="translated">Specifica la descrizione dell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 1361363641 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the EOQ calculation outcome.</source>
+          <target state="translated">Specifica l'esito del calcolo della EOQ.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control EOQ Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item number.</source>
+          <target state="translated">Specifica il numero dell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 2898143332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the advisor's reasoning for this item.</source>
+          <target state="translated">Specifica la motivazione del consulente per questo articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Note - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 2649799797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated economic order quantity proposal.</source>
+          <target state="translated">Specifica la proposta calcolata di quantità economica di ordine.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Proposed EOQ - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 1935442638 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the proposed order-up-to level (reorder point + EOQ) for items on the Maximum Qty. policy.</source>
+          <target state="translated">Specifica il livello di ripristino proposto (punto di riordino + EOQ) per gli articoli con metodo Qtà massima.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Proposed Maximum Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 3483907111 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated reorder point proposal.</source>
+          <target state="translated">Specifica la proposta calcolata di punto di riordino.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Proposed Reorder Point - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 4178540216 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated safety stock proposal.</source>
+          <target state="translated">Specifica la proposta calcolata di scorta di sicurezza.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Proposed Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 681395287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reordering policy the advisor recommends.</source>
+          <target state="translated">Specifica il metodo di riordino raccomandato dal consulente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Recommended Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 806068139 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the reorder point calculation outcome.</source>
+          <target state="translated">Specifica l'esito del calcolo del punto di riordino.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control ROP Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 90423963 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether this item is included when you choose Apply Selected.</source>
+          <target state="translated">Specifica se questo articolo viene incluso quando si sceglie Applica selezionati.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control Selected - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Control 1373223232 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the safety stock calculation outcome.</source>
+          <target state="translated">Specifica l'esito del calcolo della scorta di sicurezza.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Control SS Result Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 3673560479 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run the calculators with apply for every selected line. Values are recalculated, validated and logged — not copied from the preview.</source>
+          <target state="translated">Esegue i calcoli con applicazione per ogni riga selezionata. I valori vengono ricalcolati, convalidati e annotati nel registro, non copiati dall'anteprima.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action ApplySelected - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 3673560479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply Selected</source>
+          <target state="translated">Applica selezionati</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action ApplySelected - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 3673560479 - Method 1377591017 - NamedType 750120336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply calculated planning values to %1 selected item(s)?</source>
+          <target state="translated">Applicare i valori di pianificazione calcolati a %1 articoli selezionati?</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of selected items</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action ApplySelected - Method OnAction - NamedType ConfirmQst</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 3673560479 - Method 1377591017 - NamedType 2045047760" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 item(s) updated.</source>
+          <target state="translated">%1 articoli aggiornati.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items applied</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action ApplySelected - Method OnAction - NamedType AppliedMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 698062523 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deselect every loaded line.</source>
+          <target state="translated">Deseleziona tutte le righe caricate.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action ClearSelection - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 698062523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clear Selection</source>
+          <target state="translated">Cancella selezione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action ClearSelection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 3669109468 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Choose an item filter and compute a proposal preview for every matching inventory item. Nothing is written to items.</source>
+          <target state="translated">Consente di scegliere un filtro articoli e calcola un'anteprima della proposta per ogni articolo di magazzino corrispondente. Negli articoli non viene scritto nulla.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action LoadItems - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 3669109468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Load Items</source>
+          <target state="translated">Carica articoli</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action LoadItems - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 455269300 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the calculation log.</source>
+          <target state="translated">Apre il registro calcoli.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action OpenLog - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 455269300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Log</source>
+          <target state="translated">Registro calcoli</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action OpenLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 4007289061 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Inventory Planning Setup.</source>
+          <target state="translated">Apre il Setup pianificazione scorte.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action OpenSetup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 4007289061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <target state="translated">Setup</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action OpenSetup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 2223207931 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select every loaded line.</source>
+          <target state="translated">Seleziona tutte le righe caricate.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action SelectAll - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3498212716 - Action 2223207931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select All</source>
+          <target state="translated">Seleziona tutto</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Planning Worksheet - Action SelectAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Setup</source>
+          <target state="translated">Setup pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - NamedType 2290365638" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning: recalculate planning parameters</source>
+          <target state="translated">Pianificazione scorte: ricalcolo parametri di pianificazione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - NamedType JobQueueDescriptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1937357221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ</source>
+          <target state="translated">EOQ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3576601697 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied calculation writes the result to the configured EOQ target field.</source>
+          <target state="translated">Specifica se un calcolo applicato scrive il risultato nel campo di destinazione EOQ configurato.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Apply EOQ - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1340177402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which item cost field feeds the holding-cost calculation.</source>
+          <target state="translated">Specifica quale campo di costo dell'articolo alimenta il calcolo del costo di mantenimento.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Cost Source - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3036267241 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which item field an applied EOQ is written to: Reorder Quantity or Order Multiple.</source>
+          <target state="translated">Specifica in quale campo dell'articolo viene scritta una EOQ applicata: Quantità di riordino o Molteplicità ordine.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control EOQ Write Target - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2026703871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the annual holding cost as a fraction of unit cost. 0.25 means holding one unit for a year costs 25% of its unit cost.</source>
+          <target state="translated">Specifica il costo di mantenimento annuo come frazione del costo unitario. 0,25 significa che mantenere un'unità per un anno costa il 25% del suo costo unitario.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Holding Rate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1987516760 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a cap on the calculated EOQ, expressed as months of demand, to stop erratic history producing an extreme order quantity.</source>
+          <target state="translated">Specifica un limite per la EOQ calcolata, espresso in mesi di domanda, per evitare che uno storico erratico produca una quantità ordine estrema.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Max EOQ Months - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1321691815 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the fixed cost of placing one order (S in the Wilson formula) in local currency.</source>
+          <target state="translated">Specifica il costo fisso di emissione di un ordine (S nella formula di Wilson) in valuta locale.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Ordering Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target state="translated">Generale</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 314481736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the fallback lead time in days, used when an item has no receipt history and no Lead Time Calculation.</source>
+          <target state="translated">Specifica il lead time di riserva in giorni, utilizzato quando un articolo non ha storico carichi né Calcolo lead time.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Default Lead Time (Days) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 658164308 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of calendar days of demand history, ending on the work date, that every calculator analyses.</source>
+          <target state="translated">Specifica il numero di giorni di calendario di storico della domanda, fino alla data di lavoro, analizzati da ogni calcolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control History Window (Days) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3413076906 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether production and assembly consumption count as demand alongside sales. Enable this in manufacturing companies so purchased components are planned from their real usage.</source>
+          <target state="translated">Specifica se il consumo di produzione e di assemblaggio viene considerato domanda insieme alle vendite. Attivare questa opzione nelle società di produzione in modo che i componenti acquistati vengano pianificati in base all'utilizzo effettivo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Include Consumption Demand - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2877734794 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether every calculation attempt, including skips and dynamic planning-time supplies, is written to the calculation log.</source>
+          <target state="translated">Specifica se ogni tentativo di calcolo, inclusi gli articoli ignorati e i valori forniti dinamicamente al momento della pianificazione, viene scritto nel registro calcoli.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Log History - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3573055592 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the minimum number of days with demand required before a calculation is trusted. Items below this are skipped rather than given an unreliable number.</source>
+          <target state="translated">Specifica il numero minimo di giorni con domanda necessario perché un calcolo sia considerato attendibile. Gli articoli al di sotto di questa soglia vengono ignorati anziché ricevere un valore non affidabile.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Min Demand Observations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1552810735 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether calculated quantities are rounded up to whole units.</source>
+          <target state="translated">Specifica se le quantità calcolate vengono arrotondate per eccesso a unità intere.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Round Up Results - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1589467346 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether make-to-order items (Make-to-Order manufacturing policy or Order reordering policy) are skipped. Their supply pegs to demand, so stock-level parameters do not apply.</source>
+          <target state="translated">Specifica se gli articoli di produzione su ordine (criterio di produzione Prod. su ordine o metodo di riordino Ordine) vengono ignorati. Il loro approvvigionamento è collegato alla domanda, quindi i parametri del livello delle scorte non sono applicabili.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Skip Make-to-Order - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3584598915 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the deviation between recent demand and the full-window average above which calculations carry a trend warning in their notes, because history-based values lag ramps and phase-outs. 0 disables the warning.</source>
+          <target state="translated">Specifica lo scostamento tra la domanda recente e la media dell'intera finestra oltre il quale i calcoli riportano un avviso di tendenza nelle note, perché i valori basati sullo storico sono in ritardo rispetto ad aumenti e dismissioni. 0 disattiva l'avviso.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Trend Warning Threshold % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2782249122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Planning Engine Integration</source>
+          <target state="translated">Integrazione con il motore di pianificazione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Integration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 4099559675 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether calculated values are supplied directly to the planning engine at planning time via the Planning-Get Parameters events, instead of relying on values stored on the item. Items with a Stockkeeping Unit or that cannot be calculated fall back to their stored values.</source>
+          <target state="translated">Specifica se i valori calcolati vengono forniti direttamente al motore di pianificazione al momento della pianificazione tramite gli eventi di Planning-Get Parameters, anziché basarsi sui valori memorizzati nell'articolo. Gli articoli con uno SKU o che non è possibile calcolare utilizzano i valori memorizzati.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Dynamic Provider Enabled - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2120414752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Policy Advisor</source>
+          <target state="translated">Consulente metodi di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control PolicyAdvisor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 545084853 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied advice run writes the recommended Reordering Policy to the item. Off by default; recommendations are logged either way.</source>
+          <target state="translated">Specifica se un consiglio applicato scrive nell'articolo il Metodo di riordino raccomandato. Disattivato per impostazione predefinita; le raccomandazioni vengono comunque annotate nel registro.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Auto-Update Policy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1758183902 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the squared coefficient of variation above which demand sizes count as erratic or lumpy (Syntetos-Boylan default 0.49).</source>
+          <target state="translated">Specifica il quadrato del coefficiente di variazione oltre il quale le quantità domandate sono considerate erratiche o irregolari (valore predefinito Syntetos-Boylan 0,49).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Erratic CV2 Threshold - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2303263114 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Average Demand Interval above which demand counts as intermittent or lumpy (Syntetos-Boylan default 1.32).</source>
+          <target state="translated">Specifica l'intervallo medio tra domande oltre il quale la domanda è considerata intermittente o irregolare (valore predefinito Syntetos-Boylan 1,32).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Lumpy ADI Threshold - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2665507231 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether items with an Expiration Calculation are steered to the Maximum Qty. policy so standing stock is capped.</source>
+          <target state="translated">Specifica se gli articoli con un Calcolo scadenza vengono indirizzati al metodo Qtà massima in modo da limitare le scorte permanenti.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Perishable Means Max Qty. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 26218711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Point</source>
+          <target state="translated">Punto di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control ReorderPoint - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 929867162 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether a Run All writes Maximum Inventory (reorder point + EOQ, the order-up-to level) for items on the Maximum Qty. policy, completing the min/max parameter pair.</source>
+          <target state="translated">Specifica se un calcolo completo scrive la Giacenza massima (punto di riordino + EOQ, il livello di ripristino) per gli articoli con metodo Qtà massima, completando la coppia di parametri min/max.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Apply Maximum Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 1696263963 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied calculation writes the result to the item's Reorder Point field.</source>
+          <target state="translated">Specifica se un calcolo applicato scrive il risultato nel campo Punto di riordino dell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Apply Reorder Point - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2944416884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the safety stock quantity is added on top of demand-during-lead-time when calculating the reorder point.</source>
+          <target state="translated">Specifica se la quantità scorta di sicurezza viene aggiunta alla domanda durante il lead time nel calcolo del punto di riordino.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Include Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2546652520 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the Reordering Policy is set to Fixed Reorder Qty. when a value is applied to an item that has no policy. In a Run All, this is suppressed when the policy advisor recommends a different policy.</source>
+          <target state="translated">Specifica se il Metodo di riordino viene impostato su Qtà riordino fissa quando un valore viene applicato a un articolo senza metodo. In un calcolo completo questa impostazione non viene applicata quando il consulente metodi di riordino raccomanda un metodo diverso.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Set Policy When None - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3977797248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Safety Stock</source>
+          <target state="translated">Scorta di sicurezza</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control SafetyStock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 2194643276 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether an applied calculation writes the result to the item's Safety Stock Quantity field.</source>
+          <target state="translated">Specifica se un calcolo applicato scrive il risultato nel campo Quantità scorta di sicurezza dell'articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Apply Safety Stock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Control 3168170047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the target cycle service level used to derive the Z-score. 95% means accepting a stockout on roughly one replenishment cycle in twenty. Items can override this individually on the item card.</source>
+          <target state="translated">Specifica il livello di servizio di ciclo obiettivo utilizzato per ricavare il punteggio Z. 95% significa accettare una rottura di stock in circa un ciclo di riapprovvigionamento su venti. Gli articoli possono ignorare questo valore singolarmente nella scheda articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Control Default Service Level % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 2296796142 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This free app calculates at item level. Learn about per-location (SKU) planning, ABC service levels and the exception workbench in the GMSoft manufacturing suite.</source>
+          <target state="translated">Questa app gratuita esegue i calcoli a livello di articolo. Informazioni sulla pianificazione per ubicazione (SKU), sui livelli di servizio ABC e sul banco di lavoro eccezioni nella suite di produzione GMSoft.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action GMSoftSuite - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 2296796142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>About SKU-Level Planning</source>
+          <target state="translated">Informazioni sulla pianificazione a livello di SKU</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action GMSoftSuite - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 3994974970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create a recurring Job Queue Entry that runs all calculators nightly. The entry is created on hold so you can review the schedule before setting it to Ready.</source>
+          <target state="translated">Crea un movimento coda processi ricorrente che esegue tutti i calcoli ogni notte. Il movimento viene creato in attesa, in modo da poter verificare la pianificazione prima di impostarlo su Pronto.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action CreateJobQueueEntry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 3994974970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Job Queue Entry</source>
+          <target state="translated">Crea movimento coda processi</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action CreateJobQueueEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 455269300 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the calculation log.</source>
+          <target state="translated">Apre il registro calcoli.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action OpenLog - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 455269300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Log</source>
+          <target state="translated">Registro calcoli</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action OpenLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 3746883742 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the planning worksheet to preview and selectively apply calculated values.</source>
+          <target state="translated">Apre il prospetto pianificazione per visualizzare in anteprima e applicare selettivamente i valori calcolati.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action OpenWorksheet - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 331901240 - Action 3746883742 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Planning Worksheet</source>
+          <target state="translated">Prospetto pianificazione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page GSO Setup - Action OpenWorksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2680382170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Inventory Planning</source>
+          <target state="translated">Pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOPlanning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 43168785 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Classify this item's demand pattern and recommend a reordering policy. Writes the policy only if auto-update is enabled in setup.</source>
+          <target state="translated">Classifica il profilo di domanda di questo articolo e raccomanda un metodo di riordino. Scrive il metodo solo se l'aggiornamento automatico è attivato nel setup.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOAdvisePolicy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 43168785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Advise Reordering Policy</source>
+          <target state="translated">Consiglia metodo di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOAdvisePolicy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 43168785 - Method 1377591017 - NamedType 3664906983" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 275358717">
+          <source>Recommended policy: %1 (%2 demand). %3</source>
+          <target state="translated">Metodo raccomandato: %1 (domanda %2). %3</target>
+          <note from="Developer" annotates="general" priority="2">%1 = recommended policy, %2 = demand pattern, %3 = reasoning</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOAdvisePolicy - Method OnAction - NamedType AdviceMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2431483580 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate the economic order quantity via the Wilson formula and apply it to the configured target field (subject to setup).</source>
+          <target state="translated">Calcola la quantità economica di ordine con la formula di Wilson e la applica al campo di destinazione configurato (in base al setup).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOEOQ - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2431483580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate EOQ</source>
+          <target state="translated">Calcola EOQ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOEOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2431483580 - Method 1377591017 - NamedType 1007908279" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 275358717">
+          <source>EOQ: %1.</source>
+          <target state="translated">EOQ: %1.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = calculated quantity</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOEOQ - Method OnAction - NamedType OkMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2431483580 - Method 1377591017 - NamedType 4032607691" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 275358717">
+          <source>EOQ not calculated: %1.</source>
+          <target state="translated">EOQ non calcolata: %1.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = result code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOEOQ - Method OnAction - NamedType SkippedMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 3311128394 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate the reorder point from demand during lead time plus safety stock, and apply it (subject to setup).</source>
+          <target state="translated">Calcola il punto di riordino dalla domanda durante il lead time più la scorta di sicurezza e lo applica (in base al setup).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOReorderPoint - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 3311128394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate Reorder Point</source>
+          <target state="translated">Calcola punto di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOReorderPoint - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 3311128394 - Method 1377591017 - NamedType 1000503204" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 275358717">
+          <source>Reorder point: %1. %2</source>
+          <target state="translated">Punto di riordino: %1. %2</target>
+          <note from="Developer" annotates="general" priority="2">%1 = calculated value, %2 = explanation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOReorderPoint - Method OnAction - NamedType ResultMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 46775965 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Run policy advice, safety stock, reorder point and EOQ for this item in dependency order, and apply the results (subject to setup).</source>
+          <target state="translated">Esegue per questo articolo il consiglio sul metodo, la scorta di sicurezza, il punto di riordino e la EOQ nell'ordine delle dipendenze e applica i risultati (in base al setup).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSORunAll - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 46775965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate All Planning Values</source>
+          <target state="translated">Calcola tutti i valori di pianificazione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSORunAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 46775965 - Method 1377591017 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 275358717">
+          <source>Planning values calculated. See the calculation log for details.</source>
+          <target state="translated">Valori di pianificazione calcolati. Per i dettagli, vedere il registro calcoli.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSORunAll - Method OnAction - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2666810329 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate safety stock from demand and lead-time variability and apply it (subject to setup).</source>
+          <target state="translated">Calcola la scorta di sicurezza dalla variabilità della domanda e del lead time e la applica (in base al setup).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOSafetyStock - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2666810329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate Safety Stock</source>
+          <target state="translated">Calcola scorta di sicurezza</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOSafetyStock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 2666810329 - Method 1377591017 - NamedType 1000503204" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 275358717">
+          <source>Safety stock: %1. %2</source>
+          <target state="translated">Scorta di sicurezza: %1. %2</target>
+          <note from="Developer" annotates="general" priority="2">%1 = calculated value, %2 = explanation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOSafetyStock - Method OnAction - NamedType ResultMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 766617662 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Open the calculation log filtered to this item.</source>
+          <target state="translated">Apre il registro calcoli filtrato per questo articolo.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOViewLog - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Action 766617662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculation Log</source>
+          <target state="translated">Registro calcoli</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Action GSOViewLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Control 1503299250 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies whether this item is skipped by all Inventory Planning calculators, so manually maintained planning values are never overwritten.</source>
+          <target state="translated">Specifica se questo articolo viene ignorato da tutti i calcoli di Pianificazione scorte, in modo che i valori di pianificazione gestiti manualmente non vengano mai sovrascritti.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Control GSO Exclude From Planning - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 275358717 - Control 2219390807 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies a service level for this item's safety stock calculation, overriding the default in Inventory Planning Setup. 0 means use the default.</source>
+          <target state="translated">Specifica un livello di servizio per il calcolo della scorta di sicurezza di questo articolo, che sostituisce il valore predefinito del Setup pianificazione scorte. 0 indica di utilizzare il valore predefinito.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item Card Ext - Control GSO Service Level % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 2680382170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Inventory Planning</source>
+          <target state="translated">Pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSOPlanning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 432231433 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Classify demand and log a policy recommendation for the selected rows, or for every inventory item in the current filter when no multi-selection is made. Policies are written only if auto-update is enabled in setup.</source>
+          <target state="translated">Classifica la domanda e annota nel registro una raccomandazione sul metodo per le righe selezionate oppure, se non è stata effettuata una selezione multipla, per ogni articolo di magazzino nel filtro corrente. I metodi vengono scritti solo se l'aggiornamento automatico è attivato nel setup.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSOAdviseBulk - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 432231433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Advise Policy (Selected/Filtered Items)</source>
+          <target state="translated">Consiglia metodo (articoli selezionati/filtrati)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSOAdviseBulk - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 432231433 - Method 1377591017 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1960582583">
+          <source>%1 item(s) advised. See the calculation log for recommendations.</source>
+          <target state="translated">Consiglio fornito per %1 articoli. Per le raccomandazioni, vedere il registro calcoli.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items processed</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSOAdviseBulk - Method OnAction - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 238193341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Run policy advice, safety stock, reorder point and EOQ for the selected rows, or for every inventory item in the current filter when no multi-selection is made, and apply the results (subject to setup).</source>
+          <target state="translated">Esegue il consiglio sul metodo, la scorta di sicurezza, il punto di riordino e la EOQ per le righe selezionate oppure, se non è stata effettuata una selezione multipla, per ogni articolo di magazzino nel filtro corrente, e applica i risultati (in base al setup).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSORunAllBulk - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 238193341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Calculate All (Selected/Filtered Items)</source>
+          <target state="translated">Calcola tutto (articoli selezionati/filtrati)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSORunAllBulk - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 238193341 - Method 1377591017 - NamedType 750120336" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1960582583">
+          <source>Calculate and apply planning values for %1 item(s)?</source>
+          <target state="translated">Calcolare e applicare i valori di pianificazione per %1 articoli?</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items in scope</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSORunAllBulk - Method OnAction - NamedType ConfirmQst</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 238193341 - Method 1377591017 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1960582583">
+          <source>%1 item(s) processed. See the calculation log for details.</source>
+          <target state="translated">%1 articoli elaborati. Per i dettagli, vedere il registro calcoli.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of items processed</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSORunAllBulk - Method OnAction - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 2835142447 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Open the planning worksheet to preview and selectively apply calculated values for a set of items.</source>
+          <target state="translated">Apre il prospetto pianificazione per visualizzare in anteprima e applicare selettivamente i valori calcolati per un insieme di articoli.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSOWorksheet - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 2835142447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Planning Worksheet</source>
+          <target state="translated">Prospetto pianificazione</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action GSOWorksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1960582583 - Action 1586345120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Inventory Planning</source>
+          <target state="translated">Pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GSO Item List Ext - Action Category_GSO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2593780857 - Field 1503299250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Exclude from Inventory Planning</source>
+          <target state="translated">Escludi da Pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GSO Item Ext - Field GSO Exclude From Planning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2593780857 - Field 2219390807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Planning Service Level % (0 = default)</source>
+          <target state="translated">% livello di servizio pianificazione (0 = predefinito)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GSO Item Ext - Field GSO Service Level % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Calculation Type</source>
+          <target state="translated">Tipo calcolo pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - EnumValue 4277369802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dynamic Supply</source>
+          <target state="translated">Fornitura dinamica</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - EnumValue Dynamic Supply - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - EnumValue 1937357221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EOQ</source>
+          <target state="translated">EOQ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - EnumValue EOQ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - EnumValue 1356249118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum Inventory</source>
+          <target state="translated">Giacenza massima</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - EnumValue Maximum Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - EnumValue 1166850056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Policy Advice</source>
+          <target state="translated">Consiglio metodo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - EnumValue Policy Advice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - EnumValue 3345871191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Point</source>
+          <target state="translated">Punto di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - EnumValue Reorder Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2859081150 - EnumValue 2152328616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Safety Stock</source>
+          <target state="translated">Scorta di sicurezza</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Calculation Type - EnumValue Safety Stock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1846543935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Cost Source</source>
+          <target state="translated">Origine costo pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Cost Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1846543935 - EnumValue 2885544704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Direct Cost</source>
+          <target state="translated">Ultimo costo diretto</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Cost Source - EnumValue Last Direct Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1846543935 - EnumValue 2838254244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Standard Cost</source>
+          <target state="translated">Costo standard</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Cost Source - EnumValue Standard Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1846543935 - EnumValue 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <target state="translated">Costo unitario</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Cost Source - EnumValue Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3184024936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning EOQ Write Target</source>
+          <target state="translated">Destinazione scrittura EOQ pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO EOQ Write Target - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3184024936 - EnumValue 3674469202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Multiple</source>
+          <target state="translated">Molteplicità ordine</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO EOQ Write Target - EnumValue Order Multiple - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3184024936 - EnumValue 1141850366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reorder Quantity</source>
+          <target state="translated">Quantità di riordino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO EOQ Write Target - EnumValue Reorder Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061526238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Policy Recommendation</source>
+          <target state="translated">Raccomandazione metodo pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Policy Recommendation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061526238 - EnumValue 3944631703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fixed Reorder Qty.</source>
+          <target state="translated">Qtà riordino fissa</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Policy Recommendation - EnumValue Fixed Reorder Qty. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061526238 - EnumValue 1206275391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insufficient Data</source>
+          <target state="translated">Dati insufficienti</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Policy Recommendation - EnumValue Insufficient Data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061526238 - EnumValue 140935925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot-for-Lot</source>
+          <target state="translated">Lotto-per-lotto</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Policy Recommendation - EnumValue Lot-for-Lot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061526238 - EnumValue 2173882422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum Qty.</source>
+          <target state="translated">Qtà massima</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Policy Recommendation - EnumValue Maximum Qty. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061526238 - EnumValue 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <target state="translated">Ordine</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Policy Recommendation - EnumValue Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning Result Code</source>
+          <target state="translated">Codice risultato pianificazione scorte</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 3429287649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cap Applied</source>
+          <target state="translated">Limite applicato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Cap Applied - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 2248886284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="translated">Errore</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Error - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 963147798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excluded by Item Setting</source>
+          <target state="translated">Escluso da impostazione articolo</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Excluded - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 2073639854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insufficient Demand Data</source>
+          <target state="translated">Dati di domanda insufficienti</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Insufficient Demand Data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 4278434639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Blocked</source>
+          <target state="translated">Articolo bloccato</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Item Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 799054929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make-to-Order Skipped</source>
+          <target state="translated">Produzione su ordine ignorata</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Make-to-Order Skipped - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 3883276324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Lead Time Data</source>
+          <target state="translated">Nessun dato di lead time</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue No Lead Time Data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 2200678191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not an Inventory Item</source>
+          <target state="translated">Non è un articolo di magazzino</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Not an Inventory Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 2079045816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <target state="translated">OK</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue OK - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 2226277383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Demand</source>
+          <target state="translated">Domanda zero</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Zero Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 3105158753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Ordering Cost</source>
+          <target state="translated">Costo di ordinazione zero</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Zero Ordering Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 3027107253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Result</source>
+          <target state="translated">Risultato zero</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Zero Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 1520781489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Unit Cost</source>
+          <target state="translated">Costo unitario zero</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Zero Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 2756813717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning - Admin</source>
+          <target state="translated">Pianificazione scorte - Amministratore</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet GSO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 3211364689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Planning - User</source>
+          <target state="translated">Pianificazione scorte - Utente</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet GSO - User - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

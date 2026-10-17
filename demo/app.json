@@ -1,0 +1,24 @@
+{
+  "id": "171e8ba7-e71a-4e2f-af2f-8710ccb3bc39",
+  "name": "Inventory Planning Demo Data",
+  "publisher": "GMSOFT Limited",
+  "version": "1.29.1.0",
+  "brief": "Demo Data for Inventory Planning",
+  "dependencies": [
+    {
+      "id": "16b338f4-22c0-4426-8d1b-946290d76d30",
+      "name": "Inventory Planning",
+      "publisher": "GMSOFT Limited",
+      "version": "1.29.1.0"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 60000,
+      "to": 69999
+    }
+  ],
+  "platform": "29.0.0.0",
+  "application": "29.0.0.0",
+  "runtime": "18.0"
+}

@@ -526,6 +526,8 @@ environment's Application Insights resource if you have configured one.
 
 - **Source and issues:** https://github.com/GmsoftLtd/bc-inventory-planning
 - **Methodology write-ups:** https://insidebusinesscentral.com/
+- **Acceptance testing:** [User Test Manual](user-test-manual.md) — a manual test
+  script for regression, validation and customer UAT
 - **Licence:** MIT
 
 This app calculates at item level. Per-location (SKU) planning, ABC-driven
