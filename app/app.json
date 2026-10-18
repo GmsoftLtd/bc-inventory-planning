@@ -10,6 +10,15 @@
   "help": "https://gmsoftdynamics.com/apps/inventory-planning/docs/",
   "url": "https://gmsoftdynamics.com/apps/inventory-planning/",
   "contextSensitiveHelpUrl": "https://gmsoftdynamics.com/apps/inventory-planning/docs/",
+  "supportedLocales": [
+    "en-US",
+    "en-GB",
+    "de-DE",
+    "el-GR",
+    "es-ES",
+    "fr-FR",
+    "it-IT"
+  ],
   "logo": "logo/icon.png",
   "dependencies": [],
   "screenshots": [],

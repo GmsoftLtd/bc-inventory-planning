@@ -44,12 +44,14 @@ pageextension 73030576 "GSO Item List Ext" extends "Item List"
                         ConfirmQst: Label 'Calculate and apply planning values for %1 item(s)?', Comment = '%1 = number of items in scope';
                         DoneMsg: Label '%1 item(s) processed. See the calculation log for details.', Comment = '%1 = number of items processed';
                         Processed: Integer;
+                        InScope: Integer;
                     begin
                         GetScope(Item);
-                        if not Confirm(ConfirmQst, false, Item.Count()) then
+                        InScope := Item.Count();
+                        if not Confirm(ConfirmQst, false, InScope) then
                             exit;
                         Processed := RunAll.RunBulk(Item, true);
-                        Telemetry.LogBulkRun('ALL', Processed);
+                        Telemetry.LogBulkRun('ALL', InScope, Processed);
                         Message(DoneMsg, Processed);
                     end;
                 }
@@ -67,10 +69,12 @@ pageextension 73030576 "GSO Item List Ext" extends "Item List"
                         Telemetry: Codeunit "GSO Telemetry";
                         DoneMsg: Label '%1 item(s) advised. See the calculation log for recommendations.', Comment = '%1 = number of items processed';
                         Processed: Integer;
+                        InScope: Integer;
                     begin
                         GetScope(Item);
+                        InScope := Item.Count();
                         Processed := PolicyAdvisor.AdviseBulk(Item, true);
-                        Telemetry.LogBulkRun('ADVISOR', Processed);
+                        Telemetry.LogBulkRun('ADVISOR', InScope, Processed);
                         Message(DoneMsg, Processed);
                     end;
                 }

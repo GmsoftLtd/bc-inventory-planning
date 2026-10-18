@@ -23,7 +23,10 @@ codeunit 73030594 "GSO Install"
     var
         Setup: Record "GSO Setup";
         GSOUpgrade: Codeunit "GSO Upgrade";
+        Telemetry: Codeunit "GSO Telemetry";
     begin
+        if not Setup.Get() then
+            Telemetry.LogSetupCreated();
         Setup.GetSetup();
         GSOUpgrade.RegisterFreshInstallTags();
         AddLogToAllowedRetentionTables();

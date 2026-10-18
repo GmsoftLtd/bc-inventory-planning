@@ -23,7 +23,9 @@ codeunit 73030593 "GSO Job Queue"
         Telemetry: Codeunit "GSO Telemetry";
         Param: Text;
         Processed: Integer;
+        StartTime: DateTime;
     begin
+        StartTime := CurrentDateTime();
         Param := UpperCase(DelChr(Rec."Parameter String", '<>', ' '));
 
         case Param of
@@ -39,6 +41,6 @@ codeunit 73030593 "GSO Job Queue"
                 Processed := RunAll.RunBulk(Item, true);
         end;
 
-        Telemetry.LogScheduledRun(Param, Processed);
+        Telemetry.LogScheduledRun(Param, Processed, CurrentDateTime() - StartTime);
     end;
 }

@@ -181,6 +181,7 @@ page 73030577 "GSO Planning Worksheet"
                 var
                     TempProposal: Record "GSO Planning Proposal" temporary;
                     RunAll: Codeunit "GSO Run All";
+                    Telemetry: Codeunit "GSO Telemetry";
                     ConfirmQst: Label 'Apply calculated planning values to %1 selected item(s)?', Comment = '%1 = number of selected items';
                     AppliedMsg: Label '%1 item(s) updated.', Comment = '%1 = number of items applied';
                     SelectedCount: Integer;
@@ -195,6 +196,7 @@ page 73030577 "GSO Planning Worksheet"
                     if not Confirm(ConfirmQst, false, SelectedCount) then
                         exit;
                     AppliedCount := RunAll.ApplySelected(TempProposal);
+                    Telemetry.LogWorksheetApplied(SelectedCount, AppliedCount);
                     RefreshCurrentValues(TempProposal);
                     CurrPage.Update(false);
                     Message(AppliedMsg, AppliedCount);
