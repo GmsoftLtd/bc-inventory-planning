@@ -252,9 +252,24 @@ page 73030575 "GSO Setup"
 
     var
         JobQueueDescriptionLbl: Label 'Inventory Planning: recalculate planning parameters';
+        SetupChanged: Boolean;
 
     trigger OnOpenPage()
     begin
         Rec.GetSetup();
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        SetupChanged := true;
+        exit(true);
+    end;
+
+    trigger OnClosePage()
+    var
+        Telemetry: Codeunit "GSO Telemetry";
+    begin
+        if SetupChanged then
+            Telemetry.LogSetupChanged(Rec);
     end;
 }

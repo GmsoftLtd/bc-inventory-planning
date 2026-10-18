@@ -168,7 +168,8 @@ Done:
       docs, and the five UI objects deep-link to their own articles via
       `ContextSensitiveHelpPage`.
 - [x] **applicationInsightsConnectionString** — live resource in UK South;
-      GSO0001–GSO0003 report to it (AS0092).
+      events INVPL-0001 to INVPL-0050 report to it (AS0092). The GSO0001–GSO0003
+      IDs of 1.0.0.0 are retired.
 - [x] **logo/icon.png** — final asset.
 - [x] **Code signing** — Azure Artifact Signing, `gmsoft-public-trust` profile.
       Signing runs from the shared script in `GMSOFT-ISV\90-Shared\scripts\signing` (private, not in this repo).
