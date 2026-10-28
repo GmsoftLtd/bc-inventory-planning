@@ -8,7 +8,7 @@ using System.Utilities;
 /// conversion via the Acklam inverse-normal-CDF approximation, accurate to
 /// ~1.15e-9 across the whole range — no bucket table, no flooring.
 /// </summary>
-codeunit 73030586 "GSO Math"
+codeunit 73030581 "GSO Math"
 {
     var
         Math: Codeunit Math;

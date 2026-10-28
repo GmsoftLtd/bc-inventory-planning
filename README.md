@@ -160,8 +160,8 @@ and compiles clean under CodeCop, UICop and AppSourceCop.
 Done:
 
 - [x] **Object ID range** — GMSOFT's assigned AppSource range
-      **73030575–73031574** (objects occupy 73030575–73030596; the rest is
-      headroom).
+      **73030575–73030604** (objects occupy 73030575–73030591; the rest is
+      headroom; narrowed on 28 Oct 2026 so it no longer covers Production Entry).
 - [x] **Namespaces** on every object — `GMSoft.InventoryPlanning`.
 - [x] **Manifest links** all resolve: product page, documentation, privacy
       statement and licence. `contextSensitiveHelpUrl` points at the published

@@ -7,7 +7,7 @@ using System.TestLibraries.Utilities;
 /// Pure-math tests: no data setup required, catch regressions in the
 /// numeric core every other calculator depends on.
 /// </summary>
-codeunit 50600 "GSO Math Tests"
+codeunit 50200 "GSO Math Tests"
 {
     Subtype = Test;
 

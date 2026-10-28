@@ -8,7 +8,7 @@ using Microsoft.Inventory.Item;
 /// the Maximum Qty. policy.
 /// Port of the standalone BC Reorder Point Calculator onto the shared engine.
 /// </summary>
-codeunit 73030588 "GSO Reorder Point"
+codeunit 73030583 "GSO Reorder Point"
 {
     Permissions = tabledata Item = rm,
                   tabledata "GSO Setup" = ri,

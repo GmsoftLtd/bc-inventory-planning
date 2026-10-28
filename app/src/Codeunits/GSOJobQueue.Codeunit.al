@@ -8,7 +8,7 @@ using System.Threading;
 /// the Job Queue Entry selects what runs: SAFETYSTOCK, REORDERPOINT, EOQ,
 /// ADVISOR, or ALL (default when empty). Results are applied and logged.
 /// </summary>
-codeunit 73030593 "GSO Job Queue"
+codeunit 73030588 "GSO Job Queue"
 {
     TableNo = "Job Queue Entry";
 

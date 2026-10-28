@@ -15,7 +15,7 @@ using Microsoft.Inventory.Posting;
 /// then one sale per demand day) and is deterministic: the same seed per item
 /// gives the same numbers every time. Items that already exist are skipped.
 /// </summary>
-codeunit 60000 "GSO Demo Data"
+codeunit 60200 "GSO Demo Data"
 {
     var
         SourceItem: Record Item;

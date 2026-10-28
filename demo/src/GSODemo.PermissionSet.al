@@ -4,7 +4,7 @@ namespace GMSoft.InventoryPlanning.Demo;
 /// Runs the demo data action. The user also needs rights to create items and
 /// post item journals, as in any demo or sandbox company.
 /// </summary>
-permissionset 60000 "GSO Demo"
+permissionset 60200 "GSO Demo"
 {
     Assignable = true;
     Caption = 'Inventory Planning Demo Data';
