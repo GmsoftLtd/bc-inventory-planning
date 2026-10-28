@@ -28,7 +28,7 @@ codeunit 73030595 "GSO Upgrade"
             if Setup."Trend Warning Threshold %" = 0 then
                 Setup."Trend Warning Threshold %" := 30;
             Setup."Apply Maximum Inventory" := true;
-            Setup.Modify();
+            Setup.Modify(false);
         end;
         UpgradeTag.SetUpgradeTag(GetMaxInvTrendTag());
     end;
@@ -49,7 +49,7 @@ codeunit 73030595 "GSO Upgrade"
     /// Lets the platform mark every step as done when a new company is created,
     /// so the steps never run against a company that starts with InitValues.
     /// </summary>
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", 'OnGetPerCompanyUpgradeTags', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", OnGetPerCompanyUpgradeTags, '', false, false)]
     local procedure RegisterPerCompanyUpgradeTags(var PerCompanyUpgradeTags: List of [Code[250]])
     begin
         if not PerCompanyUpgradeTags.Contains(GetMaxInvTrendTag()) then
@@ -60,7 +60,7 @@ codeunit 73030595 "GSO Upgrade"
     /// No per-database steps yet. New ones add their tag here so a fresh
     /// database marks them as done. New tags use GSO-INVPL-Step-version.
     /// </summary>
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", 'OnGetPerDatabaseUpgradeTags', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", OnGetPerDatabaseUpgradeTags, '', false, false)]
     local procedure RegisterPerDatabaseUpgradeTags(var PerDatabaseUpgradeTags: List of [Code[250]])
     begin
     end;

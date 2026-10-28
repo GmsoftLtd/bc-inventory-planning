@@ -90,11 +90,7 @@ codeunit 73030591 "GSO Run All"
         NewMax: Decimal;
         PreviousMax: Decimal;
     begin
-        if not Setup."Apply Maximum Inventory" then
-            exit(false);
-        if not (ROPCode in [ROPCode::OK, ROPCode::"Cap Applied"]) then
-            exit(false);
-        if (not EOQOk) or (EOQQty <= 0) or (ROPValue <= 0) then
+        if not CanApplyMaxInventory(ROPValue, ROPCode, EOQOk, EOQQty) then
             exit(false);
         if not Item.Get(ItemNo) then
             exit(false);
@@ -110,6 +106,27 @@ codeunit 73030591 "GSO Run All"
         Item.Modify(true);
         LogMaxInventory(ItemNo, ROPValue, EOQQty, NewMax, PreviousMax);
         exit(true);
+    end;
+
+    /// <summary>
+    /// True when setup allows writing Maximum Inventory and both the reorder
+    /// point and the EOQ are usable.
+    /// </summary>
+    local procedure CanApplyMaxInventory(ROPValue: Decimal; ROPCode: Enum "GSO Result Code"; EOQOk: Boolean; EOQQty: Decimal): Boolean
+    begin
+        if not Setup."Apply Maximum Inventory" then
+            exit(false);
+        if not IsUsableResult(ROPCode) then
+            exit(false);
+        exit(EOQOk and (EOQQty > 0) and (ROPValue > 0));
+    end;
+
+    /// <summary>
+    /// True for result codes whose value can be used: OK or Cap Applied.
+    /// </summary>
+    local procedure IsUsableResult(ResultCode: Enum "GSO Result Code"): Boolean
+    begin
+        exit(ResultCode in [ResultCode::OK, ResultCode::"Cap Applied"]);
     end;
 
     local procedure LogMaxInventory(ItemNo: Code[20]; ROPValue: Decimal; EOQQty: Decimal; NewMax: Decimal; PreviousMax: Decimal)
@@ -161,23 +178,18 @@ codeunit 73030591 "GSO Run All"
         if Total = 0 then
             exit(0);
 
-        if GuiAllowed() then begin
-            ProgressDialog.Open(ProgressLbl);
-            ProgressDialog.Update(2, Format(Total));
-        end;
+        OpenProgress(ProgressDialog, Total);
 
         if Item.FindSet() then
             repeat
                 Done += 1;
-                if GuiAllowed() then
-                    ProgressDialog.Update(1, Format(Done));
+                UpdateProgress(ProgressDialog, Done);
                 RunForItem(Item."No.", Apply);
                 if Done mod 100 = 0 then
                     Commit();
             until Item.Next() = 0;
 
-        if GuiAllowed() then
-            ProgressDialog.Close();
+        CloseProgress(ProgressDialog);
         exit(Done);
     end;
 
@@ -204,7 +216,7 @@ codeunit 73030591 "GSO Run All"
         Done: Integer;
     begin
         Proposal.Reset();
-        Proposal.DeleteAll();
+        Proposal.DeleteAll(false);
 
         Item.CopyFilters(ItemFilter);
         Item.SetRange(Type, Item.Type::Inventory);
@@ -214,25 +226,14 @@ codeunit 73030591 "GSO Run All"
         if Total = 0 then
             exit;
 
-        if GuiAllowed() then begin
-            ProgressDialog.Open(ProgressLbl);
-            ProgressDialog.Update(2, Format(Total));
-        end;
+        OpenProgress(ProgressDialog, Total);
 
         if Item.FindSet() then
             repeat
                 Done += 1;
-                if GuiAllowed() then
-                    ProgressDialog.Update(1, Format(Done));
+                UpdateProgress(ProgressDialog, Done);
 
-                Proposal.Init();
-                Proposal."Item No." := Item."No.";
-                Proposal.Description := Item.Description;
-                Proposal."Current Safety Stock" := Item."Safety Stock Quantity";
-                Proposal."Current Reorder Point" := Item."Reorder Point";
-                Proposal."Current Reorder Quantity" := Item."Reorder Quantity";
-                Proposal."Current Maximum Inventory" := Item."Maximum Inventory";
-                Proposal."Current Policy" := CopyStr(Format(Item."Reordering Policy"), 1, MaxStrLen(Proposal."Current Policy"));
+                InitProposal(Proposal, Item);
 
                 Proposal."Recommended Policy" := PolicyAdvisor.AdvisePreview(Item."No.", Pattern, Note);
                 Proposal."Demand Pattern" := Pattern;
@@ -248,22 +249,59 @@ codeunit 73030591 "GSO Run All"
                     Proposal."Proposed EOQ" := EOQQty;
                 Proposal."EOQ Result Code" := EOQCode;
 
-                // Order-up-to preview for items on (or advised toward) Maximum Qty.
-                if ((Item."Reordering Policy" = Item."Reordering Policy"::"Maximum Qty.") or
-                    (Proposal."Recommended Policy" = Proposal."Recommended Policy"::"Maximum Qty.")) and
-                   (ROPCode in [ROPCode::OK, ROPCode::"Cap Applied"]) and
-                   (EOQCode in [EOQCode::OK, EOQCode::"Cap Applied"]) and
-                   (Proposal."Proposed EOQ" > 0)
-                then
-                    Proposal."Proposed Maximum Inventory" := Proposal."Proposed Reorder Point" + Proposal."Proposed EOQ";
+                SetMaximumInventoryPreview(Proposal, Item);
 
-                Proposal.Selected :=
-                    (SSCode in [SSCode::OK, SSCode::"Cap Applied"]) or
-                    (ROPCode in [ROPCode::OK, ROPCode::"Cap Applied"]) or
-                    (EOQCode in [EOQCode::OK, EOQCode::"Cap Applied"]);
-                Proposal.Insert();
+                Proposal.Selected := IsUsableResult(SSCode) or IsUsableResult(ROPCode) or IsUsableResult(EOQCode);
+                Proposal.Insert(false);
             until Item.Next() = 0;
 
+        CloseProgress(ProgressDialog);
+    end;
+
+    local procedure InitProposal(var Proposal: Record "GSO Planning Proposal"; Item: Record Item)
+    begin
+        Proposal.Init();
+        Proposal."Item No." := Item."No.";
+        Proposal.Description := Item.Description;
+        Proposal."Current Safety Stock" := Item."Safety Stock Quantity";
+        Proposal."Current Reorder Point" := Item."Reorder Point";
+        Proposal."Current Reorder Quantity" := Item."Reorder Quantity";
+        Proposal."Current Maximum Inventory" := Item."Maximum Inventory";
+        Proposal."Current Policy" := CopyStr(Format(Item."Reordering Policy"), 1, MaxStrLen(Proposal."Current Policy"));
+    end;
+
+    /// <summary>
+    /// Order-up-to preview (ROP + EOQ) for items on, or advised toward, the
+    /// Maximum Qty. policy when both components are usable.
+    /// </summary>
+    local procedure SetMaximumInventoryPreview(var Proposal: Record "GSO Planning Proposal"; Item: Record Item)
+    begin
+        if (Item."Reordering Policy" <> Item."Reordering Policy"::"Maximum Qty.") and
+           (Proposal."Recommended Policy" <> Proposal."Recommended Policy"::"Maximum Qty.")
+        then
+            exit;
+        if not (IsUsableResult(Proposal."ROP Result Code") and IsUsableResult(Proposal."EOQ Result Code")) then
+            exit;
+        if Proposal."Proposed EOQ" > 0 then
+            Proposal."Proposed Maximum Inventory" := Proposal."Proposed Reorder Point" + Proposal."Proposed EOQ";
+    end;
+
+    local procedure OpenProgress(var ProgressDialog: Dialog; Total: Integer)
+    begin
+        if not GuiAllowed() then
+            exit;
+        ProgressDialog.Open(ProgressLbl);
+        ProgressDialog.Update(2, Format(Total));
+    end;
+
+    local procedure UpdateProgress(var ProgressDialog: Dialog; Done: Integer)
+    begin
+        if GuiAllowed() then
+            ProgressDialog.Update(1, Format(Done));
+    end;
+
+    local procedure CloseProgress(var ProgressDialog: Dialog)
+    begin
         if GuiAllowed() then
             ProgressDialog.Close();
     end;

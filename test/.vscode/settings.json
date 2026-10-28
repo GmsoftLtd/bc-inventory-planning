@@ -1,7 +1,10 @@
 {
     "al.enableCodeAnalysis": true,
     "al.codeAnalyzers": [
-        "${CodeCop}"
+        "${CodeCop}",
+        "${UICop}",
+        "${analyzerFolder}ALCops.Common.dll",
+        "${analyzerFolder}ALCops.LinterCop.dll"
     ],
     "al.packageCachePath": ".alpackages"
 }

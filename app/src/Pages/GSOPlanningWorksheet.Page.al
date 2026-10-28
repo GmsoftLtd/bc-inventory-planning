@@ -29,108 +29,90 @@ page 73030577 "GSO Planning Worksheet"
             {
                 field(Selected; Rec.Selected)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether this item is included when you choose Apply Selected.';
                 }
                 field("Item No."; Rec."Item No.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the item number.';
                 }
                 field(Description; Rec.Description)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the item description.';
                 }
                 field("Demand Pattern"; Rec."Demand Pattern")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the demand classification: Smooth, Erratic, Intermittent or Lumpy.';
                 }
                 field("Current Policy"; Rec."Current Policy")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the item''s current reordering policy.';
                 }
                 field("Recommended Policy"; Rec."Recommended Policy")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the reordering policy the advisor recommends.';
                 }
                 field("Current Safety Stock"; Rec."Current Safety Stock")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the safety stock currently on the item.';
                 }
                 field("Proposed Safety Stock"; Rec."Proposed Safety Stock")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the calculated safety stock proposal.';
                 }
                 field("Current Reorder Point"; Rec."Current Reorder Point")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the reorder point currently on the item.';
                 }
                 field("Proposed Reorder Point"; Rec."Proposed Reorder Point")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the calculated reorder point proposal.';
                 }
                 field("Current Reorder Quantity"; Rec."Current Reorder Quantity")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the reorder quantity currently on the item.';
                 }
                 field("Proposed EOQ"; Rec."Proposed EOQ")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the calculated economic order quantity proposal.';
                 }
                 field("Current Maximum Inventory"; Rec."Current Maximum Inventory")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the maximum inventory currently on the item.';
                 }
                 field("Proposed Maximum Inventory"; Rec."Proposed Maximum Inventory")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the proposed order-up-to level (reorder point + EOQ) for items on the Maximum Qty. policy.';
                 }
                 field("SS Result Code"; Rec."SS Result Code")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the safety stock calculation outcome.';
                 }
                 field("ROP Result Code"; Rec."ROP Result Code")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the reorder point calculation outcome.';
                 }
                 field("EOQ Result Code"; Rec."EOQ Result Code")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the EOQ calculation outcome.';
                 }
                 field(Note; Rec.Note)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the advisor''s reasoning for this item.';
                 }
@@ -263,7 +245,7 @@ page 73030577 "GSO Planning Worksheet"
         if TempProposal.FindSet() then
             repeat
                 TempProposal.Selected := NewValue;
-                TempProposal.Modify();
+                TempProposal.Modify(false);
             until TempProposal.Next() = 0;
         CurrPage.Update(false);
     end;
@@ -288,7 +270,7 @@ page 73030577 "GSO Planning Worksheet"
                 TempProposal."Current Policy" := CopyStr(Format(Item."Reordering Policy"), 1, MaxStrLen(TempProposal."Current Policy"));
             end;
             TempProposal.Selected := false;
-            TempProposal.Modify();
+            TempProposal.Modify(false);
         end;
     end;
 

@@ -130,7 +130,7 @@ codeunit 73030596 "GSO Telemetry"
     /// Logs a failed scheduled run. Only the error code is sent; the error text
     /// can name items or other customer data, so it stays in the Job Queue log.
     /// </summary>
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Queue Error Handler", 'OnAfterLogError', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Queue Error Handler", OnAfterLogError, '', false, false)]
     local procedure LogScheduledRunFailed(var JobQueueEntry: Record "Job Queue Entry"; var JobQueueLogEntry: Record "Job Queue Log Entry")
     var
         Dimensions: Dictionary of [Text, Text];

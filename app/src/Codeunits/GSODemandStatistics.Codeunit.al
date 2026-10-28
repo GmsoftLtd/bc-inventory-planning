@@ -73,22 +73,14 @@ codeunit 73030585 "GSO Demand Statistics"
     procedure ComputeDemandStats(ItemNo: Code[20]; WindowDays: Integer; var AvgDemand: Decimal; var StdDev: Decimal; var Observations: Integer; var ADI: Decimal; var CV2: Decimal)
     var
         Setup: Record "GSO Setup";
-        ItemLedgerEntry: Record "Item Ledger Entry";
         GSOMath: Codeunit "GSO Math";
         DailyDemand: Dictionary of [Date, Decimal];
         WindowStart: Date;
-        RecentStart: Date;
         SumRecentQty: Decimal;
         CalendarDays: Integer;
         SellingDays: Integer;
         SumQty: Decimal;
         SumSqQty: Decimal;
-        Mean: Decimal;
-        Variance: Decimal;
-        MeanSize: Decimal;
-        SumSqDiff: Decimal;
-        Qty: Decimal;
-        DemandDate: Date;
     begin
         AvgDemand := 0;
         StdDev := 0;
@@ -99,85 +91,28 @@ codeunit 73030585 "GSO Demand Statistics"
         Setup.GetSetup();
         EnsureCacheValid(WindowDays, Setup."Include Consumption Demand");
 
-        if CachedAvg.ContainsKey(ItemNo) then begin
-            AvgDemand := CachedAvg.Get(ItemNo);
-            StdDev := CachedStdDev.Get(ItemNo);
-            Observations := CachedObs.Get(ItemNo);
-            ADI := CachedADI.Get(ItemNo);
-            CV2 := CachedCV2.Get(ItemNo);
+        if TryGetCachedDemandStats(ItemNo, AvgDemand, StdDev, Observations, ADI, CV2) then
             exit;
-        end;
 
         WindowStart := CalcDate(StrSubstNo(BackDaysFormulaLbl, WindowDays), WorkDate());
         CalendarDays := WorkDate() - WindowStart + 1;
         if CalendarDays <= 0 then
             exit;
 
-        ItemLedgerEntry.SetCurrentKey("Item No.", "Posting Date");
-        ItemLedgerEntry.SetRange("Item No.", ItemNo);
-        ItemLedgerEntry.SetRange("Posting Date", WindowStart, WorkDate());
-        if Setup."Include Consumption Demand" then
-            ItemLedgerEntry.SetFilter("Entry Type", '%1|%2|%3',
-                ItemLedgerEntry."Entry Type"::Sale,
-                ItemLedgerEntry."Entry Type"::Consumption,
-                ItemLedgerEntry."Entry Type"::"Assembly Consumption")
-        else
-            ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Sale);
-        ItemLedgerEntry.SetLoadFields("Posting Date", Quantity);
-        if ItemLedgerEntry.FindSet() then
-            repeat
-                // Outbound entries post negative; flip so demand is positive.
-                // Returns/reversals post positive and flip to negative, netting
-                // against the same day's demand instead of being ignored.
-                Qty := -ItemLedgerEntry.Quantity;
-                if DailyDemand.ContainsKey(ItemLedgerEntry."Posting Date") then
-                    DailyDemand.Set(ItemLedgerEntry."Posting Date", DailyDemand.Get(ItemLedgerEntry."Posting Date") + Qty)
-                else
-                    DailyDemand.Add(ItemLedgerEntry."Posting Date", Qty);
-            until ItemLedgerEntry.Next() = 0;
-
-        // A day whose net demand is zero or negative (returns exceeded sales)
-        // is a zero-demand calendar day, not a selling day. The trailing
-        // sub-window feeds the trend diagnostic.
-        RecentStart := WorkDate() - RecentWindowDays(WindowDays) + 1;
-        foreach DemandDate in DailyDemand.Keys() do begin
-            Qty := DailyDemand.Get(DemandDate);
-            if Qty > 0 then begin
-                SellingDays += 1;
-                SumQty += Qty;
-                SumSqQty += Qty * Qty;
-                if DemandDate >= RecentStart then
-                    SumRecentQty += Qty;
-            end;
-        end;
+        CollectDailyDemand(ItemNo, WindowStart, Setup."Include Consumption Demand", DailyDemand);
+        SummariseDailyDemand(DailyDemand, WorkDate() - RecentWindowDays(WindowDays) + 1, SellingDays, SumQty, SumSqQty, SumRecentQty);
 
         if SellingDays > 0 then begin
             Observations := SellingDays;
 
             // Daily mean/variance over all calendar days (zero days count).
-            Mean := SumQty / CalendarDays;
-            if CalendarDays > 1 then
-                Variance := (SumSqQty - CalendarDays * Mean * Mean) / (CalendarDays - 1)
-            else
-                Variance := 0;
-            if Variance < 0 then
-                Variance := 0;
-            AvgDemand := Mean;
-            StdDev := GSOMath.Sqrt(Variance);
+            AvgDemand := SumQty / CalendarDays;
+            StdDev := GSOMath.Sqrt(SampleVariance(SumSqQty, AvgDemand, CalendarDays));
 
             // ADI: mean calendar days between demand days.
             ADI := CalendarDays / SellingDays;
 
-            // CV²: variability of demand sizes on the days demand occurs.
-            MeanSize := SumQty / SellingDays;
-            if MeanSize > 0 then begin
-                foreach DemandDate in DailyDemand.Keys() do begin
-                    Qty := DailyDemand.Get(DemandDate);
-                    if Qty > 0 then
-                        SumSqDiff += Power(Qty - MeanSize, 2);
-                end;
-                CV2 := (SumSqDiff / SellingDays) / Power(MeanSize, 2);
-            end;
+            CV2 := DemandSizeCV2(DailyDemand, SellingDays, SumQty);
         end;
 
         CachedAvg.Set(ItemNo, AvgDemand);
@@ -219,24 +154,14 @@ codeunit 73030585 "GSO Demand Statistics"
                     if LeadTimeDays > 0 then
                         LeadTimeSource := PurchaseHistoryLbl
                     else begin
-                        LeadTimeDays := DaysFromDateFormula(Item."Lead Time Calculation");
                         LeadTimeStdDev := 0;
-                        if LeadTimeDays > 0 then
-                            LeadTimeSource := ItemLeadTimeLbl;
+                        ItemFormulaLeadTime(Item, ItemLeadTimeLbl, LeadTimeDays, LeadTimeSource);
                     end;
                 end;
             Item."Replenishment System"::"Prod. Order":
-                begin
-                    LeadTimeDays := DaysFromDateFormula(Item."Lead Time Calculation");
-                    if LeadTimeDays > 0 then
-                        LeadTimeSource := ManufacturingLbl;
-                end;
+                ItemFormulaLeadTime(Item, ManufacturingLbl, LeadTimeDays, LeadTimeSource);
             Item."Replenishment System"::Assembly:
-                begin
-                    LeadTimeDays := DaysFromDateFormula(Item."Lead Time Calculation");
-                    if LeadTimeDays > 0 then
-                        LeadTimeSource := AssemblyLbl;
-                end;
+                ItemFormulaLeadTime(Item, AssemblyLbl, LeadTimeDays, LeadTimeSource);
         end;
 
         if LeadTimeDays <= 0 then begin
@@ -259,8 +184,6 @@ codeunit 73030585 "GSO Demand Statistics"
         SumSqLT: Decimal;
         n: Integer;
         LTDays: Decimal;
-        Mean: Decimal;
-        Variance: Decimal;
     begin
         AvgLeadTime := 0;
         StdDev := 0;
@@ -277,27 +200,16 @@ codeunit 73030585 "GSO Demand Statistics"
         PurchRcptLine.SetLoadFields("Order Date", "Posting Date");
         if PurchRcptLine.FindSet() then
             repeat
-                if (PurchRcptLine."Order Date" <> 0D) and (PurchRcptLine."Posting Date" <> 0D) then begin
-                    LTDays := PurchRcptLine."Posting Date" - PurchRcptLine."Order Date";
-                    if LTDays >= 0 then begin
-                        SumLT += LTDays;
-                        SumSqLT += LTDays * LTDays;
-                        n += 1;
-                    end;
+                if TryGetReceiptLeadTime(PurchRcptLine, LTDays) then begin
+                    SumLT += LTDays;
+                    SumSqLT += LTDays * LTDays;
+                    n += 1;
                 end;
             until PurchRcptLine.Next() = 0;
 
         if n > 0 then begin
-            Mean := SumLT / n;
-            if n > 1 then
-                Variance := (SumSqLT - n * Mean * Mean) / (n - 1)
-            else
-                Variance := 0;
-            if Variance < 0 then
-                Variance := 0;
-
-            AvgLeadTime := Mean;
-            StdDev := GSOMath.Sqrt(Variance);
+            AvgLeadTime := SumLT / n;
+            StdDev := GSOMath.Sqrt(SampleVariance(SumSqLT, AvgLeadTime, n));
         end;
 
         CachedLTAvg.Set(ItemNo, AvgLeadTime);
@@ -430,6 +342,137 @@ codeunit 73030585 "GSO Demand Statistics"
         if SKUCount > 0 then
             Advisory += ' ' + StrSubstNo(SKUNoteLbl, SKUCount);
         exit(Advisory);
+    end;
+
+    /// <summary>
+    /// Returns the item's cached demand statistics, when the cache holds them.
+    /// </summary>
+    local procedure TryGetCachedDemandStats(ItemNo: Code[20]; var AvgDemand: Decimal; var StdDev: Decimal; var Observations: Integer; var ADI: Decimal; var CV2: Decimal): Boolean
+    begin
+        if not CachedAvg.ContainsKey(ItemNo) then
+            exit(false);
+        AvgDemand := CachedAvg.Get(ItemNo);
+        StdDev := CachedStdDev.Get(ItemNo);
+        Observations := CachedObs.Get(ItemNo);
+        ADI := CachedADI.Get(ItemNo);
+        CV2 := CachedCV2.Get(ItemNo);
+        exit(true);
+    end;
+
+    /// <summary>
+    /// Nets the item's demand entries in the window into one quantity per
+    /// posting date.
+    /// </summary>
+    local procedure CollectDailyDemand(ItemNo: Code[20]; WindowStart: Date; IncludeConsumption: Boolean; var DailyDemand: Dictionary of [Date, Decimal])
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        Qty: Decimal;
+    begin
+        ItemLedgerEntry.SetCurrentKey("Item No.", "Posting Date");
+        ItemLedgerEntry.SetRange("Item No.", ItemNo);
+        ItemLedgerEntry.SetRange("Posting Date", WindowStart, WorkDate());
+        if IncludeConsumption then
+            ItemLedgerEntry.SetFilter("Entry Type", '%1|%2|%3',
+                ItemLedgerEntry."Entry Type"::Sale,
+                ItemLedgerEntry."Entry Type"::Consumption,
+                ItemLedgerEntry."Entry Type"::"Assembly Consumption")
+        else
+            ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Sale);
+        ItemLedgerEntry.SetLoadFields("Posting Date", Quantity);
+        if ItemLedgerEntry.FindSet() then
+            repeat
+                // Outbound entries post negative; flip so demand is positive.
+                // Returns/reversals post positive and flip to negative, netting
+                // against the same day's demand instead of being ignored.
+                Qty := -ItemLedgerEntry.Quantity;
+                if DailyDemand.ContainsKey(ItemLedgerEntry."Posting Date") then
+                    DailyDemand.Set(ItemLedgerEntry."Posting Date", DailyDemand.Get(ItemLedgerEntry."Posting Date") + Qty)
+                else
+                    DailyDemand.Add(ItemLedgerEntry."Posting Date", Qty);
+            until ItemLedgerEntry.Next() = 0;
+    end;
+
+    /// <summary>
+    /// Counts the selling days and sums their quantities. A day whose net
+    /// demand is zero or negative (returns exceeded sales) is a zero-demand
+    /// calendar day, not a selling day. Days from RecentStart on also feed
+    /// the trend diagnostic.
+    /// </summary>
+    local procedure SummariseDailyDemand(DailyDemand: Dictionary of [Date, Decimal]; RecentStart: Date; var SellingDays: Integer; var SumQty: Decimal; var SumSqQty: Decimal; var SumRecentQty: Decimal)
+    var
+        DemandDate: Date;
+        Qty: Decimal;
+    begin
+        foreach DemandDate in DailyDemand.Keys() do begin
+            Qty := DailyDemand.Get(DemandDate);
+            if Qty > 0 then begin
+                SellingDays += 1;
+                SumQty += Qty;
+                SumSqQty += Qty * Qty;
+                if DemandDate >= RecentStart then
+                    SumRecentQty += Qty;
+            end;
+        end;
+    end;
+
+    /// <summary>
+    /// CV²: variability of demand sizes on the days demand occurs.
+    /// </summary>
+    local procedure DemandSizeCV2(DailyDemand: Dictionary of [Date, Decimal]; SellingDays: Integer; SumQty: Decimal): Decimal
+    var
+        DemandDate: Date;
+        MeanSize: Decimal;
+        SumSqDiff: Decimal;
+        Qty: Decimal;
+    begin
+        MeanSize := SumQty / SellingDays;
+        if MeanSize <= 0 then
+            exit(0);
+        foreach DemandDate in DailyDemand.Keys() do begin
+            Qty := DailyDemand.Get(DemandDate);
+            if Qty > 0 then
+                SumSqDiff += Power(Qty - MeanSize, 2);
+        end;
+        exit((SumSqDiff / SellingDays) / Power(MeanSize, 2));
+    end;
+
+    /// <summary>
+    /// Sample variance (n-1) from a sum of squares and the mean; 0 for a
+    /// single sample, never negative.
+    /// </summary>
+    local procedure SampleVariance(SumSq: Decimal; Mean: Decimal; n: Integer): Decimal
+    var
+        Variance: Decimal;
+    begin
+        if n <= 1 then
+            exit(0);
+        Variance := (SumSq - n * Mean * Mean) / (n - 1);
+        if Variance < 0 then
+            exit(0);
+        exit(Variance);
+    end;
+
+    /// <summary>
+    /// Order-to-receipt days of a posted receipt line; false when a date is
+    /// missing or the receipt predates the order.
+    /// </summary>
+    local procedure TryGetReceiptLeadTime(PurchRcptLine: Record "Purch. Rcpt. Line"; var LTDays: Decimal): Boolean
+    begin
+        if (PurchRcptLine."Order Date" = 0D) or (PurchRcptLine."Posting Date" = 0D) then
+            exit(false);
+        LTDays := PurchRcptLine."Posting Date" - PurchRcptLine."Order Date";
+        exit(LTDays >= 0);
+    end;
+
+    /// <summary>
+    /// Lead time from the item's Lead Time Calculation, with Source set when
+    /// the formula yields a positive number of days.
+    /// </summary>
+    local procedure ItemFormulaLeadTime(Item: Record Item; Source: Text[50]; var LeadTimeDays: Decimal; var LeadTimeSource: Text[50])
+    begin
+        LeadTimeDays := DaysFromDateFormula(Item."Lead Time Calculation");
+        if LeadTimeDays > 0 then
+            LeadTimeSource := Source;
     end;
 
     /// <summary>

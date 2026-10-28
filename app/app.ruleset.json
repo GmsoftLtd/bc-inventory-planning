@@ -1,0 +1,11 @@
+{
+    "name": "GMSOFT Rules",
+    "description": "Code analysis rules for the production application.",
+    "rules": [
+        {
+            "id": "LC0092",
+            "action": "None",
+            "justification": "Released field and permission set names (\"Service Level %\", \"GSO - User\") are kept: renaming them breaks upgrades, user permission assignments and dependent apps."
+        }
+    ]
+}

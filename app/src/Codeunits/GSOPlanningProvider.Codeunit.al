@@ -48,7 +48,7 @@ codeunit 73030592 "GSO Planning Provider"
         CacheTTLMinutes: Integer;
         DynamicSupplyLbl: Label 'Supplied at planning time: SS=%1, ROP=%2, RQ=%3.', Comment = '%1 = safety stock, %2 = reorder point, %3 = reorder quantity (0 = not supplied)';
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Planning-Get Parameters", 'OnAtSKUOnAfterCopyFromItem', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Planning-Get Parameters", OnAtSKUOnAfterCopyFromItem, '', false, false)]
     local procedure SupplyCalculatedParametersOnAtSKU(var GlobalSKU: Record "Stockkeeping Unit"; var Item: Record Item; ItemNo: Code[20]; VariantCode: Code[10]; LocationCode: Code[10])
     var
         StockkeepingUnit: Record "Stockkeeping Unit";
@@ -80,14 +80,10 @@ codeunit 73030592 "GSO Planning Provider"
         Item: Record Item;
         SafetyStockCalc: Codeunit "GSO Safety Stock";
         ReorderPointCalc: Codeunit "GSO Reorder Point";
-        EOQCalc: Codeunit "GSO EOQ";
-        DemandStats: Codeunit "GSO Demand Statistics";
         Telemetry: Codeunit "GSO Telemetry";
         SSCode: Enum "GSO Result Code";
         ROPCode: Enum "GSO Result Code";
-        EOQCode: Enum "GSO Result Code";
         Note: Text[250];
-        EOQQty: Decimal;
     begin
         Setup.GetSetup();
         if not Setup."Dynamic Provider Enabled" then
@@ -97,20 +93,10 @@ codeunit 73030592 "GSO Planning Provider"
 
         if CachedMiss.Contains(ItemNo) then
             exit(false);
-        if CachedSS.ContainsKey(ItemNo) then begin
-            SafetyStock := CachedSS.Get(ItemNo);
-            ReorderPoint := CachedROP.Get(ItemNo);
-            ReorderQty := CachedRQ.Get(ItemNo);
+        if TryGetCachedValues(ItemNo, SafetyStock, ReorderPoint, ReorderQty) then
             exit(true);
-        end;
 
-        if not Item.Get(ItemNo) then
-            exit(RememberMiss(ItemNo));
-        if Item.Blocked or (Item.Type <> Item.Type::Inventory) then
-            exit(RememberMiss(ItemNo));
-        if Item."GSO Exclude From Planning" then
-            exit(RememberMiss(ItemNo));
-        if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then
+        if not GetPlannableItem(Setup, ItemNo, Item) then
             exit(RememberMiss(ItemNo));
 
         SafetyStock := SafetyStockCalc.CalculatePreview(ItemNo, SSCode, Note);
@@ -121,11 +107,7 @@ codeunit 73030592 "GSO Planning Provider"
         if not (ROPCode in [ROPCode::OK, ROPCode::"Cap Applied"]) then
             exit(RememberMiss(ItemNo));
 
-        // EOQ is optional: only meaningful when it writes Reorder Quantity.
-        ReorderQty := 0;
-        if Setup."EOQ Write Target" = Setup."EOQ Write Target"::"Reorder Quantity" then
-            if EOQCalc.CalculatePreview(Item, EOQCode, EOQQty) then
-                ReorderQty := EOQQty;
+        ReorderQty := GetReorderQty(Setup, Item);
 
         CachedSS.Set(ItemNo, SafetyStock);
         CachedROP.Set(ItemNo, ReorderPoint);
@@ -167,6 +149,51 @@ codeunit 73030592 "GSO Planning Provider"
                 exit;
 
         ClearCache();
+    end;
+
+    local procedure TryGetCachedValues(ItemNo: Code[20]; var SafetyStock: Decimal; var ReorderPoint: Decimal; var ReorderQty: Decimal): Boolean
+    begin
+        if not CachedSS.ContainsKey(ItemNo) then
+            exit(false);
+        SafetyStock := CachedSS.Get(ItemNo);
+        ReorderPoint := CachedROP.Get(ItemNo);
+        ReorderQty := CachedRQ.Get(ItemNo);
+        exit(true);
+    end;
+
+    /// <summary>
+    /// Gets the item when it exists and planning values can be supplied for
+    /// it: an unblocked inventory item, not excluded, and not make-to-order
+    /// when setup skips those.
+    /// </summary>
+    local procedure GetPlannableItem(Setup: Record "GSO Setup"; ItemNo: Code[20]; var Item: Record Item): Boolean
+    var
+        DemandStats: Codeunit "GSO Demand Statistics";
+    begin
+        if not Item.Get(ItemNo) then
+            exit(false);
+        if Item.Blocked or (Item.Type <> Item.Type::Inventory) or Item."GSO Exclude From Planning" then
+            exit(false);
+        if Setup."Skip Make-to-Order" then
+            exit(not DemandStats.IsMakeToOrder(Item));
+        exit(true);
+    end;
+
+    /// <summary>
+    /// EOQ as the reorder quantity, or 0. EOQ is optional: only meaningful
+    /// when it writes Reorder Quantity.
+    /// </summary>
+    local procedure GetReorderQty(Setup: Record "GSO Setup"; var Item: Record Item): Decimal
+    var
+        EOQCalc: Codeunit "GSO EOQ";
+        EOQCode: Enum "GSO Result Code";
+        EOQQty: Decimal;
+    begin
+        if Setup."EOQ Write Target" <> Setup."EOQ Write Target"::"Reorder Quantity" then
+            exit(0);
+        if EOQCalc.CalculatePreview(Item, EOQCode, EOQQty) then
+            exit(EOQQty);
+        exit(0);
     end;
 
     local procedure RememberMiss(ItemNo: Code[20]): Boolean

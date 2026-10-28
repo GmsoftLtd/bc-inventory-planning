@@ -35,7 +35,7 @@ codeunit 50601 "GSO Calculator Tests"
         Setup."Apply Maximum Inventory" := true;
         Setup."Trend Warning Threshold %" := 30;
         Setup."Include Consumption Demand" := false;
-        Setup.Modify();
+        Setup.Modify(false);
     end;
 
     local procedure CreateItemWithSalesHistory(var Item: Record Item; DemandDays: Integer; QtyPerDay: Decimal)
@@ -47,6 +47,7 @@ codeunit 50601 "GSO Calculator Tests"
     var
         ItemJournalLine: Record "Item Journal Line";
         i: Integer;
+        DaysAgoFormulaTok: Label '<-%1D>', Locked = true;
     begin
         LibraryInventory.CreateItem(Item);
 
@@ -61,7 +62,7 @@ codeunit 50601 "GSO Calculator Tests"
             LibraryInventory.CreateItemJournalLineInItemTemplate(
                 ItemJournalLine, Item."No.", '', '', QtyPerDay);
             ItemJournalLine.Validate("Entry Type", ItemJournalLine."Entry Type"::Sale);
-            ItemJournalLine.Validate("Posting Date", CalcDate(StrSubstNo('<-%1D>', i), WorkDate()));
+            ItemJournalLine.Validate("Posting Date", CalcDate(StrSubstNo(DaysAgoFormulaTok, i), WorkDate()));
             ItemJournalLine.Validate(Quantity, QtyPerDay);
             ItemJournalLine.Modify(true);
             LibraryInventory.PostItemJournalLine(ItemJournalLine."Journal Template Name", ItemJournalLine."Journal Batch Name");
@@ -106,9 +107,9 @@ codeunit 50601 "GSO Calculator Tests"
         SafetyStockCalc: Codeunit "GSO Safety Stock";
         DemandStats: Codeunit "GSO Demand Statistics";
         GSOMath: Codeunit "GSO Math";
+        LeadTimeFormula: DateFormula;
         ResultCode: Enum "GSO Result Code";
         Note: Text[250];
-        LeadTimeFormula: DateFormula;
         AvgDemand: Decimal;
         StdDev: Decimal;
         Observations: Integer;
@@ -190,7 +191,7 @@ codeunit 50601 "GSO Calculator Tests"
         Item.Get(Item."No.");
         Item."Safety Stock Quantity" := 42; // planner-maintained value
         Item."GSO Exclude From Planning" := true;
-        Item.Modify();
+        Item.Modify(false);
 
         Result := SafetyStockCalc.CalculateForItem(Item."No.", 95, true, ResultCode, Note);
 
@@ -273,7 +274,7 @@ codeunit 50601 "GSO Calculator Tests"
         CreateItemWithSalesHistory(Item, 20, 8);
         Item.Get(Item."No.");
         Item."Maximum Inventory" := 5; // far below demand-during-lead-time
-        Item.Modify();
+        Item.Modify(false);
         ClearStatsCache();
 
         Result := ReorderPointCalc.CalculateForItem(Item."No.", true, 0, ResultCode, Note);
@@ -303,13 +304,13 @@ codeunit 50601 "GSO Calculator Tests"
         Setup.GetSetup();
         SavedOrderingCost := Setup."Ordering Cost";
         Setup."Ordering Cost" := 0;
-        Setup.Modify();
+        Setup.Modify(false);
 
         Assert.IsFalse(EOQCalc.Calculate(Item, true, ResultCode, AppliedQty), 'Zero ordering cost must fail');
         Assert.AreEqual(ResultCode::"Zero Ordering Cost", ResultCode, 'Result code must say why');
 
         Setup."Ordering Cost" := SavedOrderingCost;
-        Setup.Modify();
+        Setup.Modify(false);
     end;
 
     [Test]
@@ -331,7 +332,7 @@ codeunit 50601 "GSO Calculator Tests"
         Setup."Ordering Cost" := 50;
         Setup."Holding Rate" := 0.25;
         Setup."Max EOQ Months" := 24; // effectively uncapped for this test
-        Setup.Modify();
+        Setup.Modify(false);
         ClearStatsCache();
 
         Assert.IsTrue(EOQCalc.Calculate(Item, false, ResultCode, AppliedQty), 'EOQ must calculate');
@@ -360,7 +361,7 @@ codeunit 50601 "GSO Calculator Tests"
         Setup."Holding Rate" := 0.25;
         Setup."Max EOQ Months" := 6;
         Setup."Round Up Results" := true;
-        Setup.Modify();
+        Setup.Modify(false);
         ClearStatsCache();
 
         if EOQCalc.Calculate(Item, true, ResultCode, AppliedQty) then
@@ -391,7 +392,7 @@ codeunit 50601 "GSO Calculator Tests"
         Setup."Ordering Cost" := 50;
         Setup."Holding Rate" := 0.25;
         Setup."Max EOQ Months" := 24;
-        Setup.Modify();
+        Setup.Modify(false);
         ClearStatsCache();
 
         Assert.IsTrue(EOQCalc.Calculate(Item, false, ResultCode, AppliedQty), 'EOQ must calculate');
@@ -417,7 +418,7 @@ codeunit 50601 "GSO Calculator Tests"
         Setup."Ordering Cost" := 50;
         Setup."Holding Rate" := 0.25;
         Setup."Max EOQ Months" := 24;
-        Setup.Modify();
+        Setup.Modify(false);
         ClearStatsCache();
 
         RunAll.RunForItem(Item."No.", true);
@@ -495,7 +496,7 @@ codeunit 50601 "GSO Calculator Tests"
         CreateItemWithSalesHistory(Item, 30, 10);
         Setup.GetSetup();
         Setup."Dynamic Provider Enabled" := false;
-        Setup.Modify();
+        Setup.Modify(false);
 
         Assert.IsFalse(Provider.TryGetPlanningValues(Item."No.", SS, ROP, RQ), 'Provider must fail closed when disabled');
     end;
@@ -517,7 +518,7 @@ codeunit 50601 "GSO Calculator Tests"
         CreateItemWithSalesHistory(Item, 30, 10);
         Setup.GetSetup();
         Setup."Dynamic Provider Enabled" := true;
-        Setup.Modify();
+        Setup.Modify(false);
         Provider.ClearCache();
         ClearStatsCache();
 
@@ -529,7 +530,7 @@ codeunit 50601 "GSO Calculator Tests"
         Assert.AreEqual(ROP, ROP2, 'Cached reorder point must match computed one');
 
         Setup."Dynamic Provider Enabled" := false;
-        Setup.Modify();
+        Setup.Modify(false);
     end;
 
     [Test]
@@ -546,15 +547,15 @@ codeunit 50601 "GSO Calculator Tests"
         CreateItemWithSalesHistory(Item, 30, 10);
         Item.Get(Item."No.");
         Item."GSO Exclude From Planning" := true;
-        Item.Modify();
+        Item.Modify(false);
         Setup.GetSetup();
         Setup."Dynamic Provider Enabled" := true;
-        Setup.Modify();
+        Setup.Modify(false);
         Provider.ClearCache();
 
         Assert.IsFalse(Provider.TryGetPlanningValues(Item."No.", SS, ROP, RQ), 'Excluded items must fail open so stored values stand');
 
         Setup."Dynamic Provider Enabled" := false;
-        Setup.Modify();
+        Setup.Modify(false);
     end;
 }
