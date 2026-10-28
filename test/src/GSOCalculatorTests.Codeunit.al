@@ -10,7 +10,7 @@ using System.TestLibraries.Utilities;
 /// are created through the standard test libraries; each test posts a known
 /// pattern of sales and asserts the calculator's behaviour and guard rails.
 /// </summary>
-codeunit 50601 "GSO Calculator Tests"
+codeunit 50201 "GSO Calculator Tests"
 {
     Subtype = Test;
     TestPermissions = Disabled;

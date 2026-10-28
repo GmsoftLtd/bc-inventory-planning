@@ -9,7 +9,7 @@ using System.Environment.Configuration;
 /// unbounded — admins choose the retention period), and lists the setup page
 /// under Manual Setup so administrators can find it.
 /// </summary>
-codeunit 73030594 "GSO Install"
+codeunit 73030589 "GSO Install"
 {
     Subtype = Install;
     Permissions = tabledata "GSO Setup" = ri;

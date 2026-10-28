@@ -2,7 +2,7 @@
   "id": "16b338f4-22c0-4426-8d1b-946290d76d30",
   "name": "Inventory Planning",
   "publisher": "GMSOFT Limited",
-  "version": "1.29.1.0",
+  "version": "1.29.2.0",
   "brief": "Safety stock, reorder point, EOQ and replenishment policy advice from actual demand history.",
   "description": "Consolidates the four free GMSoft planning calculators into one app. Computes safety stock (Z-score method), reorder point, EOQ (Wilson formula) and a recommended reordering policy from Item Ledger Entry history, writes them to the standard planning fields, and can optionally supply them dynamically at planning time via the Planning-Get Parameters integration events.",
   "privacyStatement": "https://gmsoft.co.uk/privacy-statement-uk/",
@@ -28,7 +28,7 @@
   "idRanges": [
     {
       "from": 73030575,
-      "to": 73031574
+      "to": 73030604
     }
   ],
   "resourceExposurePolicy": {

@@ -2,7 +2,7 @@
   "id": "372ec610-8920-4fd0-9532-82a542268c45",
   "name": "Inventory Planning Tests",
   "publisher": "GMSOFT Limited",
-  "version": "1.29.1.0",
+  "version": "1.29.2.0",
   "brief": "Tests for the Inventory Planning app.",
   "description": "Test suite for the consolidated Inventory Planning app: math helpers, demand statistics, and the four calculators.",
   "privacyStatement": "https://insidebusinesscentral.com/privacy/",
@@ -15,7 +15,7 @@
       "id": "16b338f4-22c0-4426-8d1b-946290d76d30",
       "name": "Inventory Planning",
       "publisher": "GMSOFT Limited",
-      "version": "1.29.1.0"
+      "version": "1.29.2.0"
     },
     {
       "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
@@ -40,8 +40,8 @@
   "application": "29.0.0.0",
   "idRanges": [
     {
-      "from": 50600,
-      "to": 50649
+      "from": 50200,
+      "to": 50299
     }
   ],
   "resourceExposurePolicy": {

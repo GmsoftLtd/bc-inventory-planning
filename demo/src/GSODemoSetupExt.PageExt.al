@@ -6,7 +6,7 @@ using Microsoft.Inventory.Item;
 /// <summary>
 /// Adds a Create Demo Data action to the Inventory Planning setup card.
 /// </summary>
-pageextension 60000 "GSO Demo Setup Ext" extends "GSO Setup"
+pageextension 60200 "GSO Demo Setup Ext" extends "GSO Setup"
 {
     actions
     {

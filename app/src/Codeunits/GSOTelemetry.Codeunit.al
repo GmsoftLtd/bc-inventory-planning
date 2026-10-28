@@ -14,7 +14,7 @@ using System.Threading;
 /// Publisher-scope telemetry requires applicationInsightsConnectionString to
 /// be set in app.json.
 /// </summary>
-codeunit 73030596 "GSO Telemetry"
+codeunit 73030591 "GSO Telemetry"
 {
     var
         SetupCreatedMsg: Label 'Inventory Planning setup created on install', Locked = true;

@@ -10,7 +10,7 @@ using Microsoft.Inventory.Item;
 /// items are recommended Order and never auto-flipped.
 /// Port of the standalone BC Replenishment Policy Advisor onto the shared engine.
 /// </summary>
-codeunit 73030590 "GSO Policy Advisor"
+codeunit 73030585 "GSO Policy Advisor"
 {
     Permissions = tabledata Item = rm,
                   tabledata "GSO Setup" = ri,
