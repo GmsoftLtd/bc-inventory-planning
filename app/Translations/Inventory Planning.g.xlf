@@ -458,6 +458,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ZeroDemandLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3754884908 - NamedType 507202943" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding rate is zero in Setup. Cannot compute holding cost.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GSO EOQ - NamedType ZeroHoldingRateLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3754884908 - NamedType 898210847" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ordering cost is zero in Setup.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1492,6 +1497,11 @@
           <source>Zero Demand</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Zero Demand - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3501665129 - EnumValue 2207472249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zero Holding Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GSO Result Code - EnumValue Zero Holding Rate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3501665129 - EnumValue 3105158753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Zero Ordering Cost</source>

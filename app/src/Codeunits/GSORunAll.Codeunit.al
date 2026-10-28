@@ -64,19 +64,30 @@ codeunit 73030586 "GSO Run All"
             SSOverride := SafetyStock
         else
             SSOverride := -1;
-        ROPValue := ReorderPointCalc.CalculateForItem(ItemNo, Apply, SSOverride, AllowPolicyDefault, ROPCode, Note);
         Item.Get(ItemNo); // refresh after possible writes
         EOQOk := EOQCalc.Calculate(Item, Apply, AllowPolicyDefault, EOQCode, EOQQty);
 
+        // EOQ runs before the reorder point so the run knows whether it will
+        // rewrite Maximum Inventory as ROP + EOQ. If so, capping the ROP at
+        // the old Maximum Inventory would carry an obsolete ceiling forward.
+        ReorderPointCalc.SetIgnoreMaxInventoryCap(WillRewriteMaxInventory(Item, Apply, EOQOk, EOQQty));
+        ROPValue := ReorderPointCalc.CalculateForItem(ItemNo, Apply, SSOverride, AllowPolicyDefault, ROPCode, Note);
+
         if Apply then
-            if TryApplyMaxInventory(ItemNo, ROPValue, ROPCode, EOQOk, EOQQty) then
-                if ROPCode = ROPCode::"Cap Applied" then begin
-                    // The ROP had been capped at the OLD Maximum Inventory,
-                    // which this run just raised. One cheap (cached) recalc
-                    // lands the pair consistent within a single run.
-                    ROPValue := ReorderPointCalc.CalculateForItem(ItemNo, Apply, SSOverride, AllowPolicyDefault, ROPCode, Note);
-                    TryApplyMaxInventory(ItemNo, ROPValue, ROPCode, EOQOk, EOQQty);
-                end;
+            TryApplyMaxInventory(ItemNo, ROPValue, ROPCode, EOQOk, EOQQty);
+    end;
+
+    /// <summary>
+    /// True when this run will write Maximum Inventory: applying, setup allows
+    /// it, the item is on the Maximum Qty. policy and the EOQ is usable.
+    /// </summary>
+    local procedure WillRewriteMaxInventory(Item: Record Item; Apply: Boolean; EOQOk: Boolean; EOQQty: Decimal): Boolean
+    begin
+        if not (Apply and Setup."Apply Maximum Inventory") then
+            exit(false);
+        if Item."Reordering Policy" <> Item."Reordering Policy"::"Maximum Qty." then
+            exit(false);
+        exit(EOQOk and (EOQQty > 0));
     end;
 
     /// <summary>
@@ -215,6 +226,7 @@ codeunit 73030586 "GSO Run All"
         Total: Integer;
         Done: Integer;
     begin
+        EnsureSetup();
         Proposal.Reset();
         Proposal.DeleteAll(false);
 
@@ -242,12 +254,15 @@ codeunit 73030586 "GSO Run All"
                 Proposal."Proposed Safety Stock" := SafetyStockCalc.CalculatePreview(Item."No.", SSCode, DummyNote);
                 Proposal."SS Result Code" := SSCode;
 
-                Proposal."Proposed Reorder Point" := ReorderPointCalc.CalculatePreview(Item."No.", ROPCode, DummyNote);
-                Proposal."ROP Result Code" := ROPCode;
-
                 if EOQCalc.CalculatePreview(Item, EOQCode, EOQQty) then
                     Proposal."Proposed EOQ" := EOQQty;
                 Proposal."EOQ Result Code" := EOQCode;
+
+                // Same order and inputs as RunForItem, so the preview shows
+                // what applying the proposal writes.
+                ReorderPointCalc.SetIgnoreMaxInventoryCap(PreviewRewritesMaxInventory(Proposal, Item));
+                Proposal."Proposed Reorder Point" := ReorderPointCalc.CalculatePreview(Item."No.", SafetyStockOverride(Proposal), ROPCode, DummyNote);
+                Proposal."ROP Result Code" := ROPCode;
 
                 SetMaximumInventoryPreview(Proposal, Item);
 
@@ -268,6 +283,33 @@ codeunit 73030586 "GSO Run All"
         Proposal."Current Reorder Quantity" := Item."Reorder Quantity";
         Proposal."Current Maximum Inventory" := Item."Maximum Inventory";
         Proposal."Current Policy" := CopyStr(Format(Item."Reordering Policy"), 1, MaxStrLen(Proposal."Current Policy"));
+    end;
+
+    /// <summary>
+    /// The proposed safety stock when it calculated, so the proposed reorder
+    /// point includes it; otherwise -1 for the item's stored value.
+    /// </summary>
+    local procedure SafetyStockOverride(Proposal: Record "GSO Planning Proposal"): Decimal
+    begin
+        if Proposal."SS Result Code" = Proposal."SS Result Code"::OK then
+            exit(Proposal."Proposed Safety Stock");
+        exit(-1);
+    end;
+
+    /// <summary>
+    /// True when the preview proposes a new Maximum Inventory (see
+    /// SetMaximumInventoryPreview) that setup allows applying, so the
+    /// proposed reorder point must not be capped at the current one.
+    /// </summary>
+    local procedure PreviewRewritesMaxInventory(Proposal: Record "GSO Planning Proposal"; Item: Record Item): Boolean
+    begin
+        if not Setup."Apply Maximum Inventory" then
+            exit(false);
+        if (Item."Reordering Policy" <> Item."Reordering Policy"::"Maximum Qty.") and
+           (Proposal."Recommended Policy" <> Proposal."Recommended Policy"::"Maximum Qty.")
+        then
+            exit(false);
+        exit(IsUsableResult(Proposal."EOQ Result Code") and (Proposal."Proposed EOQ" > 0));
     end;
 
     /// <summary>

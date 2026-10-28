@@ -57,6 +57,10 @@ enum 73030576 "GSO Result Code"
     {
         Caption = 'Zero Result';
     }
+    value(12; "Zero Holding Rate")
+    {
+        Caption = 'Zero Holding Rate';
+    }
     value(99; Error)
     {
         Caption = 'Error';

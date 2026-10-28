@@ -25,6 +25,7 @@ codeunit 73030584 "GSO EOQ"
         InsufficientObsLbl: Label 'Found %1 observations, need %2.', Comment = '%1 = observations found, %2 = minimum required';
         ZeroDemandLbl: Label 'Annual demand is zero or negative.';
         ZeroUnitCostLbl: Label 'Unit cost is zero. Cannot compute holding cost.';
+        ZeroHoldingRateLbl: Label 'Holding rate is zero in Setup. Cannot compute holding cost.';
         ZeroOrderingCostLbl: Label 'Ordering cost is zero in Setup.';
         ZeroResultLbl: Label 'Calculated EOQ is zero after capping and rounding. Nothing was written.';
         CapAppliedLbl: Label 'Raw EOQ %1 capped to %2 (%3 months of demand).', Comment = '%1 = raw EOQ, %2 = capped EOQ, %3 = months cap';
@@ -169,6 +170,11 @@ codeunit 73030584 "GSO EOQ"
             exit(false);
         end;
         HoldingCost := UnitCost * Setup."Holding Rate";
+        if HoldingCost <= 0 then begin
+            ResultCode := ResultCode::"Zero Holding Rate";
+            LogResult(Item."No.", ObsCount, AnnualDemand, UnitCost, 0, Setup."Ordering Cost", 0, 0, 0, false, DoLog, ResultCode, ZeroHoldingRateLbl);
+            exit(false);
+        end;
 
         OrderingCost := Setup."Ordering Cost";
         if OrderingCost <= 0 then begin
