@@ -18,6 +18,7 @@ codeunit 73030583 "GSO Reorder Point"
         Setup: Record "GSO Setup";
         DemandStats: Codeunit "GSO Demand Statistics";
         SetupLoaded: Boolean;
+        IgnoreMaxInventoryCap: Boolean;
         ItemBlockedLbl: Label 'Item is blocked.';
         NotInventoryLbl: Label 'Not an inventory item: a reorder point does not apply.';
         ExcludedLbl: Label 'Item is excluded from inventory planning.';
@@ -56,6 +57,26 @@ codeunit 73030583 "GSO Reorder Point"
     procedure CalculatePreview(ItemNo: Code[20]; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
     begin
         exit(RunCalc(ItemNo, false, false, -1, true, ResultCode, Note));
+    end;
+
+    /// <summary>
+    /// Preview with a safety stock to use instead of the item's stored value,
+    /// so a reorder point previewed next to a freshly calculated safety stock
+    /// includes that safety stock. Pass less than 0 to use the stored value.
+    /// </summary>
+    procedure CalculatePreview(ItemNo: Code[20]; SafetyStockOverride: Decimal; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
+    begin
+        exit(RunCalc(ItemNo, false, false, SafetyStockOverride, true, ResultCode, Note));
+    end;
+
+    /// <summary>
+    /// Skips the cap at the item's Maximum Inventory. Run All sets this when
+    /// the same run rewrites Maximum Inventory as reorder point + EOQ: capping
+    /// at the old value would only carry an obsolete ceiling forward.
+    /// </summary>
+    procedure SetIgnoreMaxInventoryCap(NewIgnoreMaxInventoryCap: Boolean)
+    begin
+        IgnoreMaxInventoryCap := NewIgnoreMaxInventoryCap;
     end;
 
     local procedure RunCalc(ItemNo: Code[20]; Apply: Boolean; DoLog: Boolean; SafetyStockOverride: Decimal; AllowPolicyDefault: Boolean; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Decimal
@@ -179,6 +200,8 @@ codeunit 73030583 "GSO Reorder Point"
     var
         UncappedROP: Decimal;
     begin
+        if IgnoreMaxInventoryCap then
+            exit('');
         if (Item."Maximum Inventory" <= 0) or (ReorderPoint <= Item."Maximum Inventory") then
             exit('');
         UncappedROP := ReorderPoint;

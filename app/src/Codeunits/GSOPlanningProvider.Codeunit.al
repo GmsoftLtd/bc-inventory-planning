@@ -20,7 +20,9 @@ using Microsoft.Inventory.Planning;
 ///   values batch mode would have written there.
 /// - SingleInstance with a per-run cache: the event fires once per planned
 ///   item/SKU, and a cold ILE aggregation per call would make a large planning
-///   run crawl. The cache invalidates after 5 minutes.
+///   run crawl. The cache invalidates after 5 minutes; eligibility (blocked,
+///   excluded, make-to-order) is rechecked on every call, before the cache.
+/// - The supplied reorder point is built on the safety stock supplied with it.
 /// - Fails open: if the item can't be calculated (insufficient data, blocked,
 ///   excluded, make-to-order), the stored values are left untouched.
 /// - Never touches order modifiers (Minimum/Maximum Order Qty, Order Multiple):
@@ -93,17 +95,20 @@ codeunit 73030587 "GSO Planning Provider"
 
         if CachedMiss.Contains(ItemNo) then
             exit(false);
-        if TryGetCachedValues(ItemNo, SafetyStock, ReorderPoint, ReorderQty) then
-            exit(true);
-
+        // Checked before the cache so blocking, excluding or switching an
+        // item to make-to-order takes effect at once, not after the TTL.
         if not GetPlannableItem(Setup, ItemNo, Item) then
             exit(RememberMiss(ItemNo));
+        if TryGetCachedValues(ItemNo, SafetyStock, ReorderPoint, ReorderQty) then
+            exit(true);
 
         SafetyStock := SafetyStockCalc.CalculatePreview(ItemNo, SSCode, Note);
         if not (SSCode in [SSCode::OK, SSCode::"Cap Applied"]) then
             exit(RememberMiss(ItemNo));
 
-        ReorderPoint := ReorderPointCalc.CalculatePreview(ItemNo, ROPCode, Note);
+        // The supplied reorder point must sit on top of the safety stock
+        // supplied with it, not the item's stored one.
+        ReorderPoint := ReorderPointCalc.CalculatePreview(ItemNo, SafetyStock, ROPCode, Note);
         if not (ROPCode in [ROPCode::OK, ROPCode::"Cap Applied"]) then
             exit(RememberMiss(ItemNo));
 

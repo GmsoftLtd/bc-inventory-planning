@@ -314,6 +314,32 @@ codeunit 50201 "GSO Calculator Tests"
     end;
 
     [Test]
+    procedure EOQ_ZeroHoldingRate_SkipsWithResultCode()
+    var
+        Item: Record Item;
+        Setup: Record "GSO Setup";
+        EOQCalc: Codeunit "GSO EOQ";
+        ResultCode: Enum "GSO Result Code";
+        AppliedQty: Decimal;
+    begin
+        Initialize();
+        CreateItemWithSalesHistory(Item, 10, 5);
+        Item.Get(Item."No.");
+        Item.Validate("Last Direct Cost", 10);
+        Item.Modify(true);
+
+        Setup.GetSetup();
+        Setup."Ordering Cost" := 50;
+        Setup."Holding Rate" := 0;
+        Setup.Modify(false);
+        ClearStatsCache();
+
+        // Used to divide by zero and stop the whole run.
+        Assert.IsFalse(EOQCalc.Calculate(Item, true, ResultCode, AppliedQty), 'Zero holding rate must fail without an error');
+        Assert.AreEqual(ResultCode::"Zero Holding Rate", ResultCode, 'Result code must say why');
+    end;
+
+    [Test]
     procedure EOQ_WithCostAndDemand_ProducesWilsonQuantity()
     var
         Item: Record Item;
@@ -433,6 +459,50 @@ codeunit 50201 "GSO Calculator Tests"
     end;
 
     [Test]
+    procedure RunAll_StaleMaximumInventory_NotCarriedIntoReorderPoint()
+    var
+        Item: Record Item;
+        Setup: Record "GSO Setup";
+        RunAll: Codeunit "GSO Run All";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        LeadTimeFormula: DateFormula;
+        ResultCode: Enum "GSO Result Code";
+        Note: Text[250];
+        UncappedROP: Decimal;
+    begin
+        Initialize();
+        // Long lead time and a short EOQ cap: the reorder point (~260) is far
+        // above old Maximum Inventory + EOQ (1 + ~51). The old one-shot
+        // recalculation ended at ROP 52 / maximum 103.
+        CreateItemWithSalesHistory(Item, 30, 10);
+        Item.Get(Item."No.");
+        Evaluate(LeadTimeFormula, '<60D>');
+        Item.Validate("Lead Time Calculation", LeadTimeFormula);
+        Item.Validate("Last Direct Cost", 20);
+        Item.Validate("Reordering Policy", Item."Reordering Policy"::"Maximum Qty.");
+        Item.Modify(true);
+        Item."Maximum Inventory" := 1;
+        Item.Modify(false);
+
+        Setup.GetSetup();
+        Setup."Ordering Cost" := 50;
+        Setup."Holding Rate" := 0.25;
+        Setup."Max EOQ Months" := 0.5;
+        Setup.Modify(false);
+        ClearStatsCache();
+
+        RunAll.RunForItem(Item."No.", true);
+
+        Item.Get(Item."No.");
+        UncappedROP := ReorderPointCalc.CalculatePreview(Item."No.", ResultCode, Note);
+        Assert.AreEqual(ResultCode::OK, ResultCode, 'With the new maximum the reorder point must not need a cap');
+        Assert.AreEqual(UncappedROP, Item."Reorder Point", 'The reorder point must not be capped at the old Maximum Inventory');
+        Assert.AreEqual(
+            Item."Reorder Point" + Item."Reorder Quantity", Item."Maximum Inventory",
+            'Maximum Inventory must be the uncapped reorder point + EOQ');
+    end;
+
+    [Test]
     procedure DemandStats_RecentOnlyDemand_TrendsUp()
     var
         Item: Record Item;
@@ -460,6 +530,32 @@ codeunit 50201 "GSO Calculator Tests"
         ClearStatsCache();
 
         Assert.IsTrue(DemandStats.ComputeTrendPct(Item."No.", 90) < -50, 'Demand that stopped must report a strong downward trend');
+    end;
+
+    [Test]
+    procedure DemandStats_Window_CoversExactlyConfiguredDays()
+    var
+        InsideItem: Record Item;
+        OutsideItem: Record Item;
+        DemandStats: Codeunit "GSO Demand Statistics";
+        AvgDemand: Decimal;
+        StdDev: Decimal;
+        Observations: Integer;
+        ADI: Decimal;
+        CV2: Decimal;
+    begin
+        Initialize();
+        // A 90-day window ending on the work date starts 89 days back.
+        CreateItemWithSalesHistoryOffset(InsideItem, 1, 10, 89);
+        CreateItemWithSalesHistoryOffset(OutsideItem, 1, 10, 90);
+        ClearStatsCache();
+
+        DemandStats.ComputeDemandStats(InsideItem."No.", 90, AvgDemand, StdDev, Observations, ADI, CV2);
+        Assert.AreEqual(1, Observations, 'A sale 89 days back is inside a 90-day window');
+        Assert.AreEqual(90, ADI, 'One demand day in a 90-day window gives ADI 90');
+
+        DemandStats.ComputeDemandStats(OutsideItem."No.", 90, AvgDemand, StdDev, Observations, ADI, CV2);
+        Assert.AreEqual(0, Observations, 'A sale 90 days back is outside a 90-day window');
     end;
 
     [Test]
@@ -528,6 +624,71 @@ codeunit 50201 "GSO Calculator Tests"
         // Second call must serve identical values (from cache).
         Assert.IsTrue(Provider.TryGetPlanningValues(Item."No.", SS2, ROP2, RQ2), 'Cached call must succeed');
         Assert.AreEqual(ROP, ROP2, 'Cached reorder point must match computed one');
+
+        Setup."Dynamic Provider Enabled" := false;
+        Setup.Modify(false);
+    end;
+
+    [Test]
+    procedure PlanningProvider_ReorderPoint_IncludesSuppliedSafetyStock()
+    var
+        Item: Record Item;
+        Setup: Record "GSO Setup";
+        Provider: Codeunit "GSO Planning Provider";
+        ReorderPointCalc: Codeunit "GSO Reorder Point";
+        ResultCode: Enum "GSO Result Code";
+        Note: Text[250];
+        SS: Decimal;
+        ROP: Decimal;
+        RQ: Decimal;
+        ROPOnStoredSS: Decimal;
+    begin
+        Initialize();
+        CreateItemWithSalesHistory(Item, 30, 10); // stored safety stock stays 0
+        Setup.GetSetup();
+        Setup."Dynamic Provider Enabled" := true;
+        Setup."Include Safety Stock" := true;
+        Setup.Modify(false);
+        Provider.ClearCache();
+        ClearStatsCache();
+
+        Assert.IsTrue(Provider.TryGetPlanningValues(Item."No.", SS, ROP, RQ), 'Provider must serve values for a calculable item');
+        ROPOnStoredSS := ReorderPointCalc.CalculatePreview(Item."No.", ResultCode, Note);
+
+        Assert.IsTrue(SS > 0, 'Variable demand must give a positive safety stock');
+        // Round Up Results is on and SS is whole, so the sum is exact.
+        Assert.AreEqual(ROPOnStoredSS + SS, ROP, 'The supplied reorder point must include the supplied safety stock, not the stored 0');
+
+        Setup."Dynamic Provider Enabled" := false;
+        Setup.Modify(false);
+    end;
+
+    [Test]
+    procedure PlanningProvider_ItemExcludedAfterCaching_StopsServing()
+    var
+        Item: Record Item;
+        Setup: Record "GSO Setup";
+        Provider: Codeunit "GSO Planning Provider";
+        SS: Decimal;
+        ROP: Decimal;
+        RQ: Decimal;
+    begin
+        Initialize();
+        CreateItemWithSalesHistory(Item, 30, 10);
+        Setup.GetSetup();
+        Setup."Dynamic Provider Enabled" := true;
+        Setup.Modify(false);
+        Provider.ClearCache();
+        ClearStatsCache();
+
+        Assert.IsTrue(Provider.TryGetPlanningValues(Item."No.", SS, ROP, RQ), 'Provider must serve values for a calculable item');
+
+        Item.Get(Item."No.");
+        Item."GSO Exclude From Planning" := true;
+        Item.Modify(false);
+
+        // No ClearCache: the exclusion must count at once, not after the TTL.
+        Assert.IsFalse(Provider.TryGetPlanningValues(Item."No.", SS, ROP, RQ), 'An item excluded after caching must fail open');
 
         Setup."Dynamic Provider Enabled" := false;
         Setup.Modify(false);

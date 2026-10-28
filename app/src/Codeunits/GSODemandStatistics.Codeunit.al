@@ -94,10 +94,12 @@ codeunit 73030580 "GSO Demand Statistics"
         if TryGetCachedDemandStats(ItemNo, AvgDemand, StdDev, Observations, ADI, CV2) then
             exit;
 
-        WindowStart := CalcDate(StrSubstNo(BackDaysFormulaLbl, WindowDays), WorkDate());
-        CalendarDays := WorkDate() - WindowStart + 1;
-        if CalendarDays <= 0 then
+        if WindowDays <= 0 then
             exit;
+        // Inclusive window of exactly WindowDays calendar days ending on the
+        // work date.
+        WindowStart := CalcDate(StrSubstNo(BackDaysFormulaLbl, WindowDays - 1), WorkDate());
+        CalendarDays := WorkDate() - WindowStart + 1;
 
         CollectDailyDemand(ItemNo, WindowStart, Setup."Include Consumption Demand", DailyDemand);
         SummariseDailyDemand(DailyDemand, WorkDate() - RecentWindowDays(WindowDays) + 1, SellingDays, SumQty, SumSqQty, SumRecentQty);
