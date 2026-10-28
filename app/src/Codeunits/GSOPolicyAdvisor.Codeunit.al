@@ -73,30 +73,7 @@ codeunit 73030590 "GSO Policy Advisor"
             exit(Recommendation::"Insufficient Data");
         end;
 
-        if Item.Type <> Item.Type::Inventory then begin
-            Recommendation := Recommendation::"Insufficient Data";
-            Note := NotInventoryLbl;
-            LogAdvice(Item, 0, 0, 0, 0, 0, Pattern, Recommendation, false, DoLog, Note);
-            exit(Recommendation);
-        end;
-
-        if Item.Blocked then begin
-            Recommendation := Recommendation::"Insufficient Data";
-            Note := ItemBlockedLbl;
-            LogAdvice(Item, 0, 0, 0, 0, 0, Pattern, Recommendation, false, DoLog, Note);
-            exit(Recommendation);
-        end;
-
-        if Item."GSO Exclude From Planning" then begin
-            Recommendation := Recommendation::"Insufficient Data";
-            Note := ExcludedLbl;
-            LogAdvice(Item, 0, 0, 0, 0, 0, Pattern, Recommendation, false, DoLog, Note);
-            exit(Recommendation);
-        end;
-
-        if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then begin
-            Recommendation := Recommendation::Order;
-            Note := MTOLbl;
+        if not CheckEligible(Item, Recommendation, Note) then begin
             LogAdvice(Item, 0, 0, 0, 0, 0, Pattern, Recommendation, false, DoLog, Note);
             exit(Recommendation);
         end;
@@ -114,31 +91,57 @@ codeunit 73030590 "GSO Policy Advisor"
         Pattern := ClassifyPattern(ADI, CV2);
         Recommendation := Recommend(Item, ADI, Pattern, Note);
 
-        // Apply only the three make-to-stock policies; never auto-flip to Order.
-        if Apply and Setup."Auto-Update Policy" then
-            case Recommendation of
-                Recommendation::"Fixed Reorder Qty.":
-                    begin
-                        Item.Validate("Reordering Policy", Item."Reordering Policy"::"Fixed Reorder Qty.");
-                        Item.Modify(true);
-                        Applied := true;
-                    end;
-                Recommendation::"Maximum Qty.":
-                    begin
-                        Item.Validate("Reordering Policy", Item."Reordering Policy"::"Maximum Qty.");
-                        Item.Modify(true);
-                        Applied := true;
-                    end;
-                Recommendation::"Lot-for-Lot":
-                    begin
-                        Item.Validate("Reordering Policy", Item."Reordering Policy"::"Lot-for-Lot");
-                        Item.Modify(true);
-                        Applied := true;
-                    end;
-            end;
+        Applied := ApplyPolicy(Item, Recommendation, Apply);
 
         LogAdvice(Item, AvgDemand, Observations, ADI, CV2, StdDev, Pattern, Recommendation, Applied, DoLog, Note);
         exit(Recommendation);
+    end;
+
+    /// <summary>
+    /// False, with the recommendation and note set, when the item gets no
+    /// demand-based advice.
+    /// </summary>
+    local procedure CheckEligible(Item: Record Item; var Recommendation: Enum "GSO Policy Recommendation"; var Note: Text[250]): Boolean
+    begin
+        Recommendation := Recommendation::"Insufficient Data";
+        case true of
+            Item.Type <> Item.Type::Inventory:
+                Note := NotInventoryLbl;
+            Item.Blocked:
+                Note := ItemBlockedLbl;
+            Item."GSO Exclude From Planning":
+                Note := ExcludedLbl;
+            Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item):
+                begin
+                    Recommendation := Recommendation::Order;
+                    Note := MTOLbl;
+                end;
+            else
+                exit(true);
+        end;
+        exit(false);
+    end;
+
+    /// <summary>
+    /// Writes the recommended policy to the item when setup allows it. Applies
+    /// only the three make-to-stock policies; never auto-flips to Order.
+    /// </summary>
+    local procedure ApplyPolicy(var Item: Record Item; Recommendation: Enum "GSO Policy Recommendation"; Apply: Boolean): Boolean
+    begin
+        if not (Apply and Setup."Auto-Update Policy") then
+            exit(false);
+        case Recommendation of
+            Recommendation::"Fixed Reorder Qty.":
+                Item.Validate("Reordering Policy", Item."Reordering Policy"::"Fixed Reorder Qty.");
+            Recommendation::"Maximum Qty.":
+                Item.Validate("Reordering Policy", Item."Reordering Policy"::"Maximum Qty.");
+            Recommendation::"Lot-for-Lot":
+                Item.Validate("Reordering Policy", Item."Reordering Policy"::"Lot-for-Lot");
+            else
+                exit(false);
+        end;
+        Item.Modify(true);
+        exit(true);
     end;
 
     /// <summary>
@@ -163,24 +166,39 @@ codeunit 73030590 "GSO Policy Advisor"
         if Total = 0 then
             exit(0);
 
-        if GuiAllowed() then begin
-            ProgressDialog.Open(ProgressLbl);
-            ProgressDialog.Update(2, Format(Total));
-        end;
+        OpenProgress(ProgressDialog, Total);
 
         if Item.FindSet() then
             repeat
                 Done += 1;
-                if GuiAllowed() then
-                    ProgressDialog.Update(1, Format(Done));
+                UpdateProgress(ProgressDialog, Done);
                 AdviseForItem(Item."No.", Apply, Pattern, Note);
                 if Done mod 100 = 0 then
                     Commit();
             until Item.Next() = 0;
 
+        CloseProgress(ProgressDialog);
+        exit(Done);
+    end;
+
+    local procedure OpenProgress(var ProgressDialog: Dialog; Total: Integer)
+    begin
+        if not GuiAllowed() then
+            exit;
+        ProgressDialog.Open(ProgressLbl);
+        ProgressDialog.Update(2, Format(Total));
+    end;
+
+    local procedure UpdateProgress(var ProgressDialog: Dialog; Done: Integer)
+    begin
+        if GuiAllowed() then
+            ProgressDialog.Update(1, Format(Done));
+    end;
+
+    local procedure CloseProgress(var ProgressDialog: Dialog)
+    begin
         if GuiAllowed() then
             ProgressDialog.Close();
-        exit(Done);
     end;
 
     local procedure ClassifyPattern(ADI: Decimal; CV2: Decimal): Text[30]

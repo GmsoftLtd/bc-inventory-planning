@@ -38,7 +38,7 @@ codeunit 73030594 "GSO Install"
     /// database. Also invoked by the platform's refresh event so the
     /// registration survives upgrades.
     /// </summary>
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Reten. Pol. Allowed Tables", 'OnRefreshAllowedTables', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Reten. Pol. Allowed Tables", OnRefreshAllowedTables, '', false, false)]
     local procedure OnRefreshAllowedRetentionTables()
     begin
         AddLogToAllowedRetentionTables();
@@ -52,7 +52,7 @@ codeunit 73030594 "GSO Install"
         RetenPolAllowedTables.AddAllowedTable(Database::"GSO Calculation Log", LogEntry.FieldNo("Calculation DateTime"));
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Guided Experience", 'OnRegisterManualSetup', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Guided Experience", OnRegisterManualSetup, '', false, false)]
     local procedure OnRegisterManualSetup(var Sender: Codeunit "Guided Experience")
     begin
         Sender.InsertManualSetup(

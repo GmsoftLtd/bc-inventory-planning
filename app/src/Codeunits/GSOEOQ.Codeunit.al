@@ -75,24 +75,78 @@ codeunit 73030589 "GSO EOQ"
         EnsureSetup();
         AppliedQty := 0;
 
-        if Item.Type <> Item.Type::Inventory then begin
-            ResultCode := ResultCode::"Not an Inventory Item";
-            LogResult(Item."No.", 0, 0, 0, 0, 0, 0, 0, 0, false, DoLog, ResultCode, NotInventoryLbl);
+        if not CheckEligible(Item, ResultCode, Notes) then begin
+            LogResult(Item."No.", 0, 0, 0, 0, 0, 0, 0, 0, false, DoLog, ResultCode, Notes);
             exit(false);
         end;
 
-        if Item.Blocked then begin
-            ResultCode := ResultCode::"Item Blocked";
-            LogResult(Item."No.", 0, 0, 0, 0, 0, 0, 0, 0, false, DoLog, ResultCode, ItemBlockedLbl);
+        if not CheckInputs(Item, DoLog, ObsCount, AnnualDemand, UnitCost, HoldingCost, OrderingCost, ResultCode) then
+            exit(false);
+
+        RawEOQ := GSOMath.Sqrt((2 * AnnualDemand * OrderingCost) / HoldingCost);
+
+        ResultCode := ResultCode::OK;
+        CappedEOQ := CapAndRound(RawEOQ, AnnualDemand, ResultCode, Notes);
+
+        if Setup."EOQ Write Target" = Setup."EOQ Write Target"::"Reorder Quantity" then
+            CappedEOQ := ApplyOrderModifiers(Item, CappedEOQ, ResultCode, Notes);
+
+        if CappedEOQ <= 0 then begin
+            ResultCode := ResultCode::"Zero Result";
+            LogResult(Item."No.", ObsCount, AnnualDemand, UnitCost, HoldingCost, OrderingCost, RawEOQ, 0, 0, false, DoLog, ResultCode, ZeroResultLbl);
             exit(false);
         end;
 
-        if Item."GSO Exclude From Planning" then begin
-            ResultCode := ResultCode::Excluded;
-            LogResult(Item."No.", 0, 0, 0, 0, 0, 0, 0, 0, false, DoLog, ResultCode, ExcludedLbl);
-            exit(false);
+        AppliedQty := CappedEOQ;
+
+        if Apply and Setup."Apply EOQ" then begin
+            ApplyToItem(Item, CappedEOQ, AllowPolicyDefault, PreviousValue);
+            Applied := true;
         end;
 
+        Notes := CopyStr(
+            Notes + DemandStats.BuildAdvisoryText(Item."No.", Setup."History Window (Days)", Setup."Trend Warning Threshold %"),
+            1, MaxStrLen(Notes));
+        LogResult(Item."No.", ObsCount, AnnualDemand, UnitCost, HoldingCost, OrderingCost, RawEOQ, CappedEOQ, PreviousValue, Applied, DoLog, ResultCode, Notes);
+        exit(true);
+    end;
+
+    /// <summary>
+    /// False, with the result code and note set, when an order quantity does
+    /// not apply to the item.
+    /// </summary>
+    local procedure CheckEligible(Item: Record Item; var ResultCode: Enum "GSO Result Code"; var Notes: Text[250]): Boolean
+    begin
+        case true of
+            Item.Type <> Item.Type::Inventory:
+                begin
+                    ResultCode := ResultCode::"Not an Inventory Item";
+                    Notes := NotInventoryLbl;
+                end;
+            Item.Blocked:
+                begin
+                    ResultCode := ResultCode::"Item Blocked";
+                    Notes := ItemBlockedLbl;
+                end;
+            Item."GSO Exclude From Planning":
+                begin
+                    ResultCode := ResultCode::Excluded;
+                    Notes := ExcludedLbl;
+                end;
+            else
+                exit(true);
+        end;
+        exit(false);
+    end;
+
+    /// <summary>
+    /// Annual demand and costs for the formula. Logs and returns false when
+    /// any of them is missing or zero.
+    /// </summary>
+    local procedure CheckInputs(Item: Record Item; DoLog: Boolean; var ObsCount: Integer; var AnnualDemand: Decimal; var UnitCost: Decimal; var HoldingCost: Decimal; var OrderingCost: Decimal; var ResultCode: Enum "GSO Result Code"): Boolean
+    var
+        Notes: Text[250];
+    begin
         GetAnnualDemand(Item."No.", AnnualDemand, ObsCount);
 
         if ObsCount < Setup."Min Demand Observations" then begin
@@ -122,43 +176,27 @@ codeunit 73030589 "GSO EOQ"
             LogResult(Item."No.", ObsCount, AnnualDemand, UnitCost, HoldingCost, 0, 0, 0, 0, false, DoLog, ResultCode, ZeroOrderingCostLbl);
             exit(false);
         end;
+        exit(true);
+    end;
 
-        RawEOQ := GSOMath.Sqrt((2 * AnnualDemand * OrderingCost) / HoldingCost);
-
-        CappedEOQ := RawEOQ;
-        ResultCode := ResultCode::OK;
-        if (Setup."Max EOQ Months" > 0) and (CappedEOQ > (AnnualDemand * Setup."Max EOQ Months" / 12)) then begin
-            CappedEOQ := AnnualDemand * Setup."Max EOQ Months" / 12;
+    /// <summary>
+    /// Caps the raw EOQ at Max EOQ Months of demand (0 = no cap), then rounds
+    /// it up to whole units or to five decimals per setup.
+    /// </summary>
+    local procedure CapAndRound(RawEOQ: Decimal; AnnualDemand: Decimal; var ResultCode: Enum "GSO Result Code"; var Notes: Text[250]): Decimal
+    var
+        EOQ: Decimal;
+    begin
+        EOQ := RawEOQ;
+        if (Setup."Max EOQ Months" > 0) and (EOQ > (AnnualDemand * Setup."Max EOQ Months" / 12)) then begin
+            EOQ := AnnualDemand * Setup."Max EOQ Months" / 12;
             ResultCode := ResultCode::"Cap Applied";
-            Notes := CopyStr(StrSubstNo(CapAppliedLbl, Format(RawEOQ, 0, 9), Format(Round(CappedEOQ, 0.00001), 0, 9), Setup."Max EOQ Months"), 1, MaxStrLen(Notes));
+            Notes := CopyStr(StrSubstNo(CapAppliedLbl, Format(RawEOQ, 0, 9), Format(Round(EOQ, 0.00001), 0, 9), Setup."Max EOQ Months"), 1, MaxStrLen(Notes));
         end;
 
         if Setup."Round Up Results" then
-            CappedEOQ := Round(CappedEOQ, 1, '>')
-        else
-            CappedEOQ := Round(CappedEOQ, 0.00001);
-
-        if Setup."EOQ Write Target" = Setup."EOQ Write Target"::"Reorder Quantity" then
-            CappedEOQ := ApplyOrderModifiers(Item, CappedEOQ, ResultCode, Notes);
-
-        if CappedEOQ <= 0 then begin
-            ResultCode := ResultCode::"Zero Result";
-            LogResult(Item."No.", ObsCount, AnnualDemand, UnitCost, HoldingCost, OrderingCost, RawEOQ, 0, 0, false, DoLog, ResultCode, ZeroResultLbl);
-            exit(false);
-        end;
-
-        AppliedQty := CappedEOQ;
-
-        if Apply and Setup."Apply EOQ" then begin
-            ApplyToItem(Item, CappedEOQ, AllowPolicyDefault, PreviousValue);
-            Applied := true;
-        end;
-
-        Notes := CopyStr(
-            Notes + DemandStats.BuildAdvisoryText(Item."No.", Setup."History Window (Days)", Setup."Trend Warning Threshold %"),
-            1, MaxStrLen(Notes));
-        LogResult(Item."No.", ObsCount, AnnualDemand, UnitCost, HoldingCost, OrderingCost, RawEOQ, CappedEOQ, PreviousValue, Applied, DoLog, ResultCode, Notes);
-        exit(true);
+            exit(Round(EOQ, 1, '>'));
+        exit(Round(EOQ, 0.00001));
     end;
 
     /// <summary>
@@ -183,24 +221,39 @@ codeunit 73030589 "GSO EOQ"
         if Total = 0 then
             exit(0);
 
-        if GuiAllowed() then begin
-            ProgressDialog.Open(ProgressLbl);
-            ProgressDialog.Update(2, Format(Total));
-        end;
+        OpenProgress(ProgressDialog, Total);
 
         if Item.FindSet() then
             repeat
                 Done += 1;
-                if GuiAllowed() then
-                    ProgressDialog.Update(1, Format(Done));
+                UpdateProgress(ProgressDialog, Done);
                 Calculate(Item, Apply, ResultCode, AppliedQty);
                 if Done mod 100 = 0 then
                     Commit();
             until Item.Next() = 0;
 
+        CloseProgress(ProgressDialog);
+        exit(Done);
+    end;
+
+    local procedure OpenProgress(var ProgressDialog: Dialog; Total: Integer)
+    begin
+        if not GuiAllowed() then
+            exit;
+        ProgressDialog.Open(ProgressLbl);
+        ProgressDialog.Update(2, Format(Total));
+    end;
+
+    local procedure UpdateProgress(var ProgressDialog: Dialog; Done: Integer)
+    begin
+        if GuiAllowed() then
+            ProgressDialog.Update(1, Format(Done));
+    end;
+
+    local procedure CloseProgress(var ProgressDialog: Dialog)
+    begin
         if GuiAllowed() then
             ProgressDialog.Close();
-        exit(Done);
     end;
 
     /// <summary>

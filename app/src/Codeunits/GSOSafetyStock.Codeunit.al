@@ -58,7 +58,6 @@ codeunit 73030587 "GSO Safety Stock"
         DemandStdDev: Decimal;
         Observations: Integer;
         ADI: Decimal;
-        CV2: Decimal;
         AvgLeadTime: Decimal;
         LeadTimeStdDev: Decimal;
         LeadTimeSource: Text[50];
@@ -72,52 +71,14 @@ codeunit 73030587 "GSO Safety Stock"
         if not Item.Get(ItemNo) then
             exit(0);
 
-        if (ServiceLevelPct <= 0) or (ServiceLevelPct > 100) then
-            if Item."GSO Service Level %" > 0 then
-                ServiceLevelPct := Item."GSO Service Level %"
-            else
-                ServiceLevelPct := Setup."Default Service Level %";
+        ServiceLevelPct := ResolveServiceLevel(Item, ServiceLevelPct);
 
-        if Item.Type <> Item.Type::Inventory then begin
-            ResultCode := ResultCode::"Not an Inventory Item";
-            Note := NotInventoryLbl;
+        if not CheckEligible(Item, ResultCode, Note) then begin
             LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
             exit(0);
         end;
 
-        if Item.Blocked then begin
-            ResultCode := ResultCode::"Item Blocked";
-            Note := ItemBlockedLbl;
-            LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        if Item."GSO Exclude From Planning" then begin
-            ResultCode := ResultCode::Excluded;
-            Note := ExcludedLbl;
-            LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then begin
-            ResultCode := ResultCode::"Make-to-Order Skipped";
-            Note := MTOSkippedLbl;
-            LogResult(Item, ServiceLevelPct, 0, 0, 0, 0, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        DemandStats.ComputeDemandStats(ItemNo, Setup."History Window (Days)", AvgDemand, DemandStdDev, Observations, ADI, CV2);
-        if Observations < Setup."Min Demand Observations" then begin
-            ResultCode := ResultCode::"Insufficient Demand Data";
-            Note := CopyStr(StrSubstNo(InsufficientDataLbl, Observations, Setup."Min Demand Observations"), 1, MaxStrLen(Note));
-            LogResult(Item, ServiceLevelPct, 0, AvgDemand, DemandStdDev, Observations, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        DemandStats.ComputeLeadTime(Item, Setup."Default Lead Time (Days)", AvgLeadTime, LeadTimeStdDev, LeadTimeSource);
-        if AvgLeadTime <= 0 then begin
-            ResultCode := ResultCode::"No Lead Time Data";
-            Note := NoLeadTimeLbl;
+        if not GetDemandAndLeadTime(Item, AvgDemand, DemandStdDev, Observations, ADI, AvgLeadTime, LeadTimeStdDev, LeadTimeSource, ResultCode, Note) then begin
             LogResult(Item, ServiceLevelPct, 0, AvgDemand, DemandStdDev, Observations, 0, 0, '', 0, Item."Safety Stock Quantity", false, DoLog, ResultCode, Note);
             exit(0);
         end;
@@ -131,11 +92,7 @@ codeunit 73030587 "GSO Safety Stock"
             SafetyStock := Round(SafetyStock, 1, '>');
 
         PreviousSS := Item."Safety Stock Quantity";
-        if Apply and Setup."Apply Safety Stock" then begin
-            Item.Validate("Safety Stock Quantity", SafetyStock);
-            Item.Modify(true);
-            Applied := true;
-        end;
+        Applied := ApplyToItem(Item, SafetyStock, Apply);
 
         ResultCode := ResultCode::OK;
         Note := CopyStr(
@@ -149,6 +106,76 @@ codeunit 73030587 "GSO Safety Stock"
 
         LogResult(Item, ServiceLevelPct, ZScore, AvgDemand, DemandStdDev, Observations, AvgLeadTime, LeadTimeStdDev, LeadTimeSource, SafetyStock, PreviousSS, Applied, DoLog, ResultCode, Note);
         exit(SafetyStock);
+    end;
+
+    /// <summary>
+    /// Service level priority: explicit parameter > item-level override > setup default.
+    /// </summary>
+    local procedure ResolveServiceLevel(Item: Record Item; ServiceLevelPct: Decimal): Decimal
+    begin
+        if (ServiceLevelPct > 0) and (ServiceLevelPct <= 100) then
+            exit(ServiceLevelPct);
+        if Item."GSO Service Level %" > 0 then
+            exit(Item."GSO Service Level %");
+        exit(Setup."Default Service Level %");
+    end;
+
+    /// <summary>
+    /// False, with the result code and note set, when safety stock does not
+    /// apply to the item.
+    /// </summary>
+    local procedure CheckEligible(Item: Record Item; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Boolean
+    begin
+        case true of
+            Item.Type <> Item.Type::Inventory:
+                SetResult(ResultCode::"Not an Inventory Item", NotInventoryLbl, ResultCode, Note);
+            Item.Blocked:
+                SetResult(ResultCode::"Item Blocked", ItemBlockedLbl, ResultCode, Note);
+            Item."GSO Exclude From Planning":
+                SetResult(ResultCode::Excluded, ExcludedLbl, ResultCode, Note);
+            Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item):
+                SetResult(ResultCode::"Make-to-Order Skipped", MTOSkippedLbl, ResultCode, Note);
+            else
+                exit(true);
+        end;
+        exit(false);
+    end;
+
+    /// <summary>
+    /// Demand statistics and lead time for the item; false, with the result
+    /// code and note set, when either is missing.
+    /// </summary>
+    local procedure GetDemandAndLeadTime(Item: Record Item; var AvgDemand: Decimal; var DemandStdDev: Decimal; var Observations: Integer; var ADI: Decimal; var AvgLeadTime: Decimal; var LeadTimeStdDev: Decimal; var LeadTimeSource: Text[50]; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Boolean
+    var
+        CV2: Decimal;
+    begin
+        DemandStats.ComputeDemandStats(Item."No.", Setup."History Window (Days)", AvgDemand, DemandStdDev, Observations, ADI, CV2);
+        if Observations < Setup."Min Demand Observations" then begin
+            SetResult(ResultCode::"Insufficient Demand Data", StrSubstNo(InsufficientDataLbl, Observations, Setup."Min Demand Observations"), ResultCode, Note);
+            exit(false);
+        end;
+
+        DemandStats.ComputeLeadTime(Item, Setup."Default Lead Time (Days)", AvgLeadTime, LeadTimeStdDev, LeadTimeSource);
+        if AvgLeadTime <= 0 then begin
+            SetResult(ResultCode::"No Lead Time Data", NoLeadTimeLbl, ResultCode, Note);
+            exit(false);
+        end;
+        exit(true);
+    end;
+
+    local procedure ApplyToItem(var Item: Record Item; SafetyStock: Decimal; Apply: Boolean): Boolean
+    begin
+        if not (Apply and Setup."Apply Safety Stock") then
+            exit(false);
+        Item.Validate("Safety Stock Quantity", SafetyStock);
+        Item.Modify(true);
+        exit(true);
+    end;
+
+    local procedure SetResult(NewResultCode: Enum "GSO Result Code"; NewNote: Text; var ResultCode: Enum "GSO Result Code"; var Note: Text[250])
+    begin
+        ResultCode := NewResultCode;
+        Note := CopyStr(NewNote, 1, MaxStrLen(Note));
     end;
 
     /// <summary>
@@ -173,24 +200,39 @@ codeunit 73030587 "GSO Safety Stock"
         if Total = 0 then
             exit(0);
 
-        if GuiAllowed() then begin
-            ProgressDialog.Open(ProgressLbl);
-            ProgressDialog.Update(2, Format(Total));
-        end;
+        OpenProgress(ProgressDialog, Total);
 
         if Item.FindSet() then
             repeat
                 Done += 1;
-                if GuiAllowed() then
-                    ProgressDialog.Update(1, Format(Done));
+                UpdateProgress(ProgressDialog, Done);
                 CalculateForItem(Item."No.", ServiceLevelPct, Apply, ResultCode, Note);
                 if Done mod 100 = 0 then
                     Commit();
             until Item.Next() = 0;
 
+        CloseProgress(ProgressDialog);
+        exit(Done);
+    end;
+
+    local procedure OpenProgress(var ProgressDialog: Dialog; Total: Integer)
+    begin
+        if not GuiAllowed() then
+            exit;
+        ProgressDialog.Open(ProgressLbl);
+        ProgressDialog.Update(2, Format(Total));
+    end;
+
+    local procedure UpdateProgress(var ProgressDialog: Dialog; Done: Integer)
+    begin
+        if GuiAllowed() then
+            ProgressDialog.Update(1, Format(Done));
+    end;
+
+    local procedure CloseProgress(var ProgressDialog: Dialog)
+    begin
         if GuiAllowed() then
             ProgressDialog.Close();
-        exit(Done);
     end;
 
     local procedure BuildReason(SafetyStock: Decimal; ServiceLevelPct: Decimal; DemandStdDev: Decimal; LeadTimeStdDev: Decimal; ADI: Decimal): Text

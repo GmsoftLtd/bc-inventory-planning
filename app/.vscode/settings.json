@@ -3,7 +3,10 @@
     "al.codeAnalyzers": [
         "${CodeCop}",
         "${UICop}",
-        "${AppSourceCop}"
+        "${AppSourceCop}",
+        "${analyzerFolder}ALCops.Common.dll",
+        "${analyzerFolder}ALCops.LinterCop.dll"
     ],
-    "al.packageCachePath": ".alpackages"
+    "al.packageCachePath": ".alpackages",
+    "al.ruleSetPath": "app.ruleset.json"
 }

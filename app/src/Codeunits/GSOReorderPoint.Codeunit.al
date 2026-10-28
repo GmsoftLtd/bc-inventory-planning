@@ -62,16 +62,11 @@ codeunit 73030588 "GSO Reorder Point"
     var
         Item: Record Item;
         AvgDemand: Decimal;
-        DemandStdDev: Decimal;
         Observations: Integer;
-        ADI: Decimal;
-        CV2: Decimal;
         LeadTimeDays: Decimal;
-        LeadTimeStdDev: Decimal;
         LeadTimeSource: Text[50];
         SafetyStock: Decimal;
         ReorderPoint: Decimal;
-        UncappedROP: Decimal;
         PreviousRP: Decimal;
         Applied: Boolean;
         CapNote: Text;
@@ -81,78 +76,27 @@ codeunit 73030588 "GSO Reorder Point"
         if not Item.Get(ItemNo) then
             exit(0);
 
-        if Item.Type <> Item.Type::Inventory then begin
-            ResultCode := ResultCode::"Not an Inventory Item";
-            Note := NotInventoryLbl;
+        if not CheckEligible(Item, ResultCode, Note) then begin
             LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
             exit(0);
         end;
 
-        if Item.Blocked then begin
-            ResultCode := ResultCode::"Item Blocked";
-            Note := ItemBlockedLbl;
-            LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        if Item."GSO Exclude From Planning" then begin
-            ResultCode := ResultCode::Excluded;
-            Note := ExcludedLbl;
-            LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        if Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item) then begin
-            ResultCode := ResultCode::"Make-to-Order Skipped";
-            Note := MTOSkippedLbl;
-            LogResult(Item, 0, 0, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        DemandStats.ComputeDemandStats(ItemNo, Setup."History Window (Days)", AvgDemand, DemandStdDev, Observations, ADI, CV2);
-        if Observations < Setup."Min Demand Observations" then begin
-            ResultCode := ResultCode::"Insufficient Demand Data";
-            Note := CopyStr(StrSubstNo(InsufficientDataLbl, Observations, Setup."Min Demand Observations"), 1, MaxStrLen(Note));
+        if not GetDemandAndLeadTime(Item, AvgDemand, Observations, LeadTimeDays, LeadTimeSource, ResultCode, Note) then begin
             LogResult(Item, AvgDemand, Observations, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
             exit(0);
         end;
 
-        DemandStats.ComputeLeadTime(Item, Setup."Default Lead Time (Days)", LeadTimeDays, LeadTimeStdDev, LeadTimeSource);
-        if LeadTimeDays <= 0 then begin
-            ResultCode := ResultCode::"No Lead Time Data";
-            Note := NoLeadTimeLbl;
-            LogResult(Item, AvgDemand, Observations, 0, '', 0, 0, Item."Reorder Point", false, DoLog, ResultCode, Note);
-            exit(0);
-        end;
-
-        if Setup."Include Safety Stock" then begin
-            if SafetyStockOverride >= 0 then
-                SafetyStock := SafetyStockOverride
-            else
-                SafetyStock := Item."Safety Stock Quantity";
-        end else
-            SafetyStock := 0;
+        SafetyStock := ResolveSafetyStock(Item, SafetyStockOverride);
 
         ReorderPoint := (AvgDemand * LeadTimeDays) + SafetyStock;
         if Setup."Round Up Results" then
             ReorderPoint := Round(ReorderPoint, 1, '>');
 
         ResultCode := ResultCode::OK;
-        if (Item."Maximum Inventory" > 0) and (ReorderPoint > Item."Maximum Inventory") then begin
-            UncappedROP := ReorderPoint;
-            ReorderPoint := Item."Maximum Inventory";
-            ResultCode := ResultCode::"Cap Applied";
-            CapNote := ' ' + StrSubstNo(MaxInvCapLbl, Format(Item."Maximum Inventory", 0, 9), Format(UncappedROP, 0, 9));
-        end;
+        CapNote := CapAtMaximumInventory(Item, ReorderPoint, ResultCode);
 
         PreviousRP := Item."Reorder Point";
-        if Apply and Setup."Apply Reorder Point" then begin
-            Item.Validate("Reorder Point", ReorderPoint);
-            if AllowPolicyDefault and Setup."Set Policy When None" and (Item."Reordering Policy" = Item."Reordering Policy"::" ") then
-                Item.Validate("Reordering Policy", Item."Reordering Policy"::"Fixed Reorder Qty.");
-            Item.Modify(true);
-            Applied := true;
-        end;
+        Applied := ApplyToItem(Item, ReorderPoint, Apply, AllowPolicyDefault);
 
         Note := CopyStr(
             BuildReason(SafetyStock) + ' ' +
@@ -165,6 +109,99 @@ codeunit 73030588 "GSO Reorder Point"
 
         LogResult(Item, AvgDemand, Observations, LeadTimeDays, LeadTimeSource, SafetyStock, ReorderPoint, PreviousRP, Applied, DoLog, ResultCode, Note);
         exit(ReorderPoint);
+    end;
+
+    /// <summary>
+    /// False, with the result code and note set, when a reorder point does
+    /// not apply to the item.
+    /// </summary>
+    local procedure CheckEligible(Item: Record Item; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Boolean
+    begin
+        case true of
+            Item.Type <> Item.Type::Inventory:
+                SetResult(ResultCode::"Not an Inventory Item", NotInventoryLbl, ResultCode, Note);
+            Item.Blocked:
+                SetResult(ResultCode::"Item Blocked", ItemBlockedLbl, ResultCode, Note);
+            Item."GSO Exclude From Planning":
+                SetResult(ResultCode::Excluded, ExcludedLbl, ResultCode, Note);
+            Setup."Skip Make-to-Order" and DemandStats.IsMakeToOrder(Item):
+                SetResult(ResultCode::"Make-to-Order Skipped", MTOSkippedLbl, ResultCode, Note);
+            else
+                exit(true);
+        end;
+        exit(false);
+    end;
+
+    /// <summary>
+    /// Average demand and lead time for the item; false, with the result code
+    /// and note set, when either is missing.
+    /// </summary>
+    local procedure GetDemandAndLeadTime(Item: Record Item; var AvgDemand: Decimal; var Observations: Integer; var LeadTimeDays: Decimal; var LeadTimeSource: Text[50]; var ResultCode: Enum "GSO Result Code"; var Note: Text[250]): Boolean
+    var
+        DemandStdDev: Decimal;
+        ADI: Decimal;
+        CV2: Decimal;
+        LeadTimeStdDev: Decimal;
+    begin
+        DemandStats.ComputeDemandStats(Item."No.", Setup."History Window (Days)", AvgDemand, DemandStdDev, Observations, ADI, CV2);
+        if Observations < Setup."Min Demand Observations" then begin
+            SetResult(ResultCode::"Insufficient Demand Data", StrSubstNo(InsufficientDataLbl, Observations, Setup."Min Demand Observations"), ResultCode, Note);
+            exit(false);
+        end;
+
+        DemandStats.ComputeLeadTime(Item, Setup."Default Lead Time (Days)", LeadTimeDays, LeadTimeStdDev, LeadTimeSource);
+        if LeadTimeDays <= 0 then begin
+            SetResult(ResultCode::"No Lead Time Data", NoLeadTimeLbl, ResultCode, Note);
+            exit(false);
+        end;
+        exit(true);
+    end;
+
+    /// <summary>
+    /// Safety stock added on top of lead-time demand: the override when one is
+    /// passed (0 or more), otherwise the item's stored value; 0 when setup
+    /// excludes safety stock.
+    /// </summary>
+    local procedure ResolveSafetyStock(Item: Record Item; SafetyStockOverride: Decimal): Decimal
+    begin
+        if not Setup."Include Safety Stock" then
+            exit(0);
+        if SafetyStockOverride >= 0 then
+            exit(SafetyStockOverride);
+        exit(Item."Safety Stock Quantity");
+    end;
+
+    /// <summary>
+    /// Caps the reorder point at Maximum Inventory when one is set and the
+    /// reorder point exceeds it; returns the note text for the cap.
+    /// </summary>
+    local procedure CapAtMaximumInventory(Item: Record Item; var ReorderPoint: Decimal; var ResultCode: Enum "GSO Result Code"): Text
+    var
+        UncappedROP: Decimal;
+    begin
+        if (Item."Maximum Inventory" <= 0) or (ReorderPoint <= Item."Maximum Inventory") then
+            exit('');
+        UncappedROP := ReorderPoint;
+        ReorderPoint := Item."Maximum Inventory";
+        ResultCode := ResultCode::"Cap Applied";
+        exit(' ' + StrSubstNo(MaxInvCapLbl, Format(Item."Maximum Inventory", 0, 9), Format(UncappedROP, 0, 9)));
+    end;
+
+    local procedure ApplyToItem(var Item: Record Item; ReorderPoint: Decimal; Apply: Boolean; AllowPolicyDefault: Boolean): Boolean
+    begin
+        if not (Apply and Setup."Apply Reorder Point") then
+            exit(false);
+        Item.Validate("Reorder Point", ReorderPoint);
+        if AllowPolicyDefault and Setup."Set Policy When None" and (Item."Reordering Policy" = Item."Reordering Policy"::" ") then
+            Item.Validate("Reordering Policy", Item."Reordering Policy"::"Fixed Reorder Qty.");
+        Item.Modify(true);
+        exit(true);
+    end;
+
+    local procedure SetResult(NewResultCode: Enum "GSO Result Code"; NewNote: Text; var ResultCode: Enum "GSO Result Code"; var Note: Text[250])
+    begin
+        ResultCode := NewResultCode;
+        Note := CopyStr(NewNote, 1, MaxStrLen(Note));
     end;
 
     /// <summary>
@@ -189,24 +226,39 @@ codeunit 73030588 "GSO Reorder Point"
         if Total = 0 then
             exit(0);
 
-        if GuiAllowed() then begin
-            ProgressDialog.Open(ProgressLbl);
-            ProgressDialog.Update(2, Format(Total));
-        end;
+        OpenProgress(ProgressDialog, Total);
 
         if Item.FindSet() then
             repeat
                 Done += 1;
-                if GuiAllowed() then
-                    ProgressDialog.Update(1, Format(Done));
+                UpdateProgress(ProgressDialog, Done);
                 CalculateForItem(Item."No.", Apply, -1, ResultCode, Note);
                 if Done mod 100 = 0 then
                     Commit();
             until Item.Next() = 0;
 
+        CloseProgress(ProgressDialog);
+        exit(Done);
+    end;
+
+    local procedure OpenProgress(var ProgressDialog: Dialog; Total: Integer)
+    begin
+        if not GuiAllowed() then
+            exit;
+        ProgressDialog.Open(ProgressLbl);
+        ProgressDialog.Update(2, Format(Total));
+    end;
+
+    local procedure UpdateProgress(var ProgressDialog: Dialog; Done: Integer)
+    begin
+        if GuiAllowed() then
+            ProgressDialog.Update(1, Format(Done));
+    end;
+
+    local procedure CloseProgress(var ProgressDialog: Dialog)
+    begin
         if GuiAllowed() then
             ProgressDialog.Close();
-        exit(Done);
     end;
 
     local procedure BuildReason(SafetyStock: Decimal): Text
