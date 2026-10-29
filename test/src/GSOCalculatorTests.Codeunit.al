@@ -562,13 +562,20 @@ codeunit 50201 "GSO Calculator Tests"
     procedure PolicyAdvisor_SmoothDemand_RecommendsFixedReorderQty()
     var
         Item: Record Item;
+        Setup: Record "GSO Setup";
         PolicyAdvisor: Codeunit "GSO Policy Advisor";
         Recommendation: Enum "GSO Policy Recommendation";
         Pattern: Text[30];
         Note: Text[250];
     begin
         Initialize();
-        // Daily identical demand = ADI 1.0 (smooth), CV2 0 → Fixed Reorder Qty.
+        // Daily identical demand = ADI ~1.0 (smooth), CV2 0 → Fixed Reorder Qty.
+        // Sales on days 1-30 back; a 30-day window (work date to 29 days
+        // back) holds 29 of them: ADI 30/29. The 90-day default would hold
+        // 30 sales in 90 days, ADI 3 — intermittent, not daily.
+        Setup.GetSetup();
+        Setup."History Window (Days)" := 30;
+        Setup.Modify(false);
         CreateItemWithSalesHistory(Item, 30, 10);
         ClearStatsCache();
 
