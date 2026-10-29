@@ -20,8 +20,10 @@ using Microsoft.Inventory.Planning;
 ///   values batch mode would have written there.
 /// - SingleInstance with a per-run cache: the event fires once per planned
 ///   item/SKU, and a cold ILE aggregation per call would make a large planning
-///   run crawl. The cache invalidates after 5 minutes; eligibility (blocked,
-///   excluded, make-to-order) is rechecked on every call, before the cache.
+///   run crawl. The cache invalidates after 5 minutes or when the setup is
+///   saved, and an item's entry when the item is modified; eligibility
+///   (blocked, excluded, make-to-order) is rechecked on every call, before
+///   the cache.
 /// - The supplied reorder point is built on the safety stock supplied with it.
 /// - Fails open: if the item can't be calculated (insufficient data, blocked,
 ///   excluded, make-to-order), the stored values are left untouched.
@@ -46,7 +48,9 @@ codeunit 73030587 "GSO Planning Provider"
         CachedROP: Dictionary of [Code[20], Decimal];
         CachedRQ: Dictionary of [Code[20], Decimal];
         CachedMiss: List of [Code[20]];
+        CachedItemStamp: Dictionary of [Code[20], DateTime];
         CacheCreatedAt: DateTime;
+        CacheSetupStamp: DateTime;
         CacheTTLMinutes: Integer;
         DynamicSupplyLbl: Label 'Supplied at planning time: SS=%1, ROP=%2, RQ=%3.', Comment = '%1 = safety stock, %2 = reorder point, %3 = reorder quantity (0 = not supplied)';
 
@@ -91,14 +95,15 @@ codeunit 73030587 "GSO Planning Provider"
         if not Setup."Dynamic Provider Enabled" then
             exit(false);
 
-        EnsureCacheFresh();
+        EnsureCacheFresh(Setup);
 
-        if CachedMiss.Contains(ItemNo) then
-            exit(false);
         // Checked before the cache so blocking, excluding or switching an
         // item to make-to-order takes effect at once, not after the TTL.
         if not GetPlannableItem(Setup, ItemNo, Item) then
             exit(RememberMiss(ItemNo));
+        ForgetIfItemChanged(Item);
+        if CachedMiss.Contains(ItemNo) then
+            exit(false);
         if TryGetCachedValues(ItemNo, SafetyStock, ReorderPoint, ReorderQty) then
             exit(true);
 
@@ -133,27 +138,52 @@ codeunit 73030587 "GSO Planning Provider"
         Clear(CachedROP);
         Clear(CachedRQ);
         Clear(CachedMiss);
+        Clear(CachedItemStamp);
         CacheCreatedAt := CurrentDateTime();
     end;
 
     /// <summary>
-    /// Drops the per-run cache once it passes its TTL.
+    /// Drops the per-run cache once it passes its TTL or the setup has been
+    /// saved since it was built, so a changed setting (EOQ target, service
+    /// level, history window...) is used by the next planning run.
     ///
     /// Nested rather than combined with OR: AL does not short-circuit boolean
     /// operators, so subtracting CacheCreatedAt would be evaluated even when it
     /// is still 0DT on the first planning run of a session, raising "The date is
     /// not valid".
     /// </summary>
-    local procedure EnsureCacheFresh()
+    local procedure EnsureCacheFresh(Setup: Record "GSO Setup")
     begin
         if CacheTTLMinutes = 0 then
             CacheTTLMinutes := 5;
 
         if CacheCreatedAt <> 0DT then
             if CurrentDateTime() - CacheCreatedAt <= CacheTTLMinutes * 60000 then
-                exit;
+                if CacheSetupStamp = Setup.SystemModifiedAt then
+                    exit;
 
         ClearCache();
+        CacheSetupStamp := Setup.SystemModifiedAt;
+    end;
+
+    /// <summary>
+    /// Drops the item's cached values and remembered miss when the item has
+    /// been modified since they were cached, so a changed service level, cost
+    /// or policy on the item is used at once.
+    /// </summary>
+    local procedure ForgetIfItemChanged(Item: Record Item)
+    var
+        Stamp: DateTime;
+    begin
+        if CachedItemStamp.Get(Item."No.", Stamp) then
+            if Stamp = Item.SystemModifiedAt then
+                exit;
+
+        CachedSS.Remove(Item."No.");
+        CachedROP.Remove(Item."No.");
+        CachedRQ.Remove(Item."No.");
+        CachedMiss.Remove(Item."No.");
+        CachedItemStamp.Set(Item."No.", Item.SystemModifiedAt);
     end;
 
     local procedure TryGetCachedValues(ItemNo: Code[20]; var SafetyStock: Decimal; var ReorderPoint: Decimal; var ReorderQty: Decimal): Boolean

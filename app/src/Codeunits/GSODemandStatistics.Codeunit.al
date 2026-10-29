@@ -16,8 +16,8 @@ using Microsoft.Purchases.History;
 /// SingleInstance with a short-TTL per-item cache: "Run All" and the planning
 /// worksheet ask for the same item's statistics up to four times (safety
 /// stock, reorder point, EOQ, advisor); the cache turns that into one ILE
-/// scan per item. The cache invalidates after 5 minutes, when the window
-/// changes, or via ClearCache.
+/// scan per item. The cache invalidates after 5 minutes, when the work date
+/// or window changes, or via ClearCache.
 ///
 /// Conventions:
 /// - Demand is netted per day: sales minus same-day returns. A day whose net
@@ -31,7 +31,8 @@ using Microsoft.Purchases.History;
 /// - CV² is the squared coefficient of variation of the per-day demand SIZES.
 /// - Windows are anchored to WorkDate(), which equals today in production but
 ///   follows the demo date in evaluation companies, so trials see results.
-/// - Purchase lead time averages receipts from the trailing two years: enough
+/// - Purchase lead time averages receipts from the two years up to the work
+///   date: enough
 ///   samples for stability without scanning unbounded history.
 /// </summary>
 codeunit 73030580 "GSO Demand Statistics"
@@ -52,6 +53,7 @@ codeunit 73030580 "GSO Demand Statistics"
         CachedLTStd: Dictionary of [Code[20], Decimal];
         CacheWindowDays: Integer;
         CacheIncludeConsumption: Boolean;
+        CacheWorkDate: Date;
         CacheCreatedAt: DateTime;
         BackDaysFormulaLbl: Label '<-%1D>', Locked = true, Comment = '%1 = number of days; language-independent date formula';
         TrendUpLbl: Label 'Warning: trailing %1-day demand runs %2%% above the full-window average — history-based values lag an upward trend.', Comment = '%1 = recent window days, %2 = deviation percent';
@@ -175,7 +177,8 @@ codeunit 73030580 "GSO Demand Statistics"
 
     /// <summary>
     /// Mean and standard deviation of order-to-receipt days over posted
-    /// purchase receipt lines for the item from the trailing two years.
+    /// purchase receipt lines for the item from the two years up to the work
+    /// date.
     /// Cached per item alongside the demand statistics.
     /// </summary>
     procedure ComputePurchaseLeadTime(ItemNo: Code[20]; var AvgLeadTime: Decimal; var StdDev: Decimal)
@@ -190,6 +193,8 @@ codeunit 73030580 "GSO Demand Statistics"
         AvgLeadTime := 0;
         StdDev := 0;
 
+        if CacheWorkDate <> WorkDate() then
+            ClearCache();
         if CachedLTAvg.ContainsKey(ItemNo) then begin
             AvgLeadTime := CachedLTAvg.Get(ItemNo);
             StdDev := CachedLTStd.Get(ItemNo);
@@ -198,7 +203,9 @@ codeunit 73030580 "GSO Demand Statistics"
 
         PurchRcptLine.SetRange("No.", ItemNo);
         PurchRcptLine.SetRange(Type, PurchRcptLine.Type::Item);
-        PurchRcptLine.SetFilter("Posting Date", '>=%1', CalcDate('<-2Y>', WorkDate()));
+        // Ends on the work date like the demand window, so a back-dated run
+        // never sees receipts from its own future.
+        PurchRcptLine.SetRange("Posting Date", CalcDate('<-2Y>', WorkDate()), WorkDate());
         PurchRcptLine.SetLoadFields("Order Date", "Posting Date");
         if PurchRcptLine.FindSet() then
             repeat
@@ -262,6 +269,7 @@ codeunit 73030580 "GSO Demand Statistics"
         Clear(CachedLTAvg);
         Clear(CachedLTStd);
         CacheCreatedAt := CurrentDateTime();
+        CacheWorkDate := WorkDate();
     end;
 
     /// <summary>
@@ -479,7 +487,7 @@ codeunit 73030580 "GSO Demand Statistics"
 
     /// <summary>
     /// Resets the cache when it is empty, older than the TTL, or was built for a
-    /// different window or demand definition.
+    /// different work date, window or demand definition.
     ///
     /// The tests are nested rather than combined with OR on purpose: AL does not
     /// short-circuit boolean operators, so every operand of a combined condition
@@ -491,9 +499,10 @@ codeunit 73030580 "GSO Demand Statistics"
     begin
         if CacheCreatedAt <> 0DT then
             if CurrentDateTime() - CacheCreatedAt <= CacheTtlMs() then
-                if CacheWindowDays = WindowDays then
-                    if CacheIncludeConsumption = IncludeConsumption then
-                        exit;
+                if CacheWorkDate = WorkDate() then
+                    if CacheWindowDays = WindowDays then
+                        if CacheIncludeConsumption = IncludeConsumption then
+                            exit;
 
         ClearCache();
         CacheWindowDays := WindowDays;

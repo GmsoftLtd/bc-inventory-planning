@@ -305,27 +305,38 @@ codeunit 73030586 "GSO Run All"
     begin
         if not Setup."Apply Maximum Inventory" then
             exit(false);
-        if (Item."Reordering Policy" <> Item."Reordering Policy"::"Maximum Qty.") and
-           (Proposal."Recommended Policy" <> Proposal."Recommended Policy"::"Maximum Qty.")
-        then
+        if not PreviewEndsOnMaximumQty(Proposal, Item) then
             exit(false);
         exit(IsUsableResult(Proposal."EOQ Result Code") and (Proposal."Proposed EOQ" > 0));
     end;
 
     /// <summary>
-    /// Order-up-to preview (ROP + EOQ) for items on, or advised toward, the
-    /// Maximum Qty. policy when both components are usable.
+    /// Order-up-to preview (ROP + EOQ) for items that applying leaves on the
+    /// Maximum Qty. policy, under the same conditions as TryApplyMaxInventory.
     /// </summary>
     local procedure SetMaximumInventoryPreview(var Proposal: Record "GSO Planning Proposal"; Item: Record Item)
     begin
-        if (Item."Reordering Policy" <> Item."Reordering Policy"::"Maximum Qty.") and
-           (Proposal."Recommended Policy" <> Proposal."Recommended Policy"::"Maximum Qty.")
-        then
+        if not PreviewEndsOnMaximumQty(Proposal, Item) then
             exit;
-        if not (IsUsableResult(Proposal."ROP Result Code") and IsUsableResult(Proposal."EOQ Result Code")) then
-            exit;
-        if Proposal."Proposed EOQ" > 0 then
+        if CanApplyMaxInventory(Proposal."Proposed Reorder Point", Proposal."ROP Result Code", IsUsableResult(Proposal."EOQ Result Code"), Proposal."Proposed EOQ") then
             Proposal."Proposed Maximum Inventory" := Proposal."Proposed Reorder Point" + Proposal."Proposed EOQ";
+    end;
+
+    /// <summary>
+    /// True when applying the proposal leaves the item on the Maximum Qty.
+    /// policy: the advisor writes its recommendation only when Auto-Update
+    /// Policy is on (and never writes Order or Insufficient Data), so
+    /// otherwise the item keeps its current policy.
+    /// </summary>
+    local procedure PreviewEndsOnMaximumQty(Proposal: Record "GSO Planning Proposal"; Item: Record Item): Boolean
+    begin
+        if Setup."Auto-Update Policy" and
+           (Proposal."Recommended Policy" in [Proposal."Recommended Policy"::"Fixed Reorder Qty.",
+                                             Proposal."Recommended Policy"::"Maximum Qty.",
+                                             Proposal."Recommended Policy"::"Lot-for-Lot"])
+        then
+            exit(Proposal."Recommended Policy" = Proposal."Recommended Policy"::"Maximum Qty.");
+        exit(Item."Reordering Policy" = Item."Reordering Policy"::"Maximum Qty.");
     end;
 
     local procedure OpenProgress(var ProgressDialog: Dialog; Total: Integer)
