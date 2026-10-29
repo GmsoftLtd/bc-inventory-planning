@@ -22,36 +22,53 @@ codeunit 73030590 "GSO Upgrade"
 
     local procedure UpgradeMaxInvTrendDefaults()
     var
-        Setup: Record "GSO Setup";
         UpgradeTag: Codeunit "Upgrade Tag";
     begin
         if UpgradeTag.HasUpgradeTag(GetMaxInvTrendTag()) then
             exit;
-        if Setup.Get() then begin
-            if Setup."Trend Warning Threshold %" = 0 then
-                Setup."Trend Warning Threshold %" := 30;
-            Setup."Apply Maximum Inventory" := true;
-            Setup.Modify(false);
-        end;
+        ApplyMaxInvTrendDefaults();
         UpgradeTag.SetUpgradeTag(GetMaxInvTrendTag());
+    end;
+
+    /// <summary>
+    /// The work of the MaxInvTrend step, without its tag check, so tests can
+    /// run it.
+    /// </summary>
+    internal procedure ApplyMaxInvTrendDefaults()
+    var
+        Setup: Record "GSO Setup";
+    begin
+        if not Setup.Get() then
+            exit;
+        if Setup."Trend Warning Threshold %" = 0 then
+            Setup."Trend Warning Threshold %" := 30;
+        Setup."Apply Maximum Inventory" := true;
+        Setup.Modify(false);
+    end;
+
+    local procedure UpgradeJobQueueCodeunitId()
+    var
+        UpgradeTag: Codeunit "Upgrade Tag";
+    begin
+        if UpgradeTag.HasUpgradeTag(GetJobQueueCodeunitIdTag()) then
+            exit;
+        MoveJobQueueEntriesToNewCodeunitId();
+        UpgradeTag.SetUpgradeTag(GetJobQueueCodeunitIdTag());
     end;
 
     /// <summary>
     /// Version 1.29.2.0 renumbered the codeunits. Job Queue Entries created by
     /// the setup page still run the GSO Job Queue codeunit's old ID, which no
-    /// longer exists; point them at the new one.
+    /// longer exists; point them at the new one. No tag check, so tests can
+    /// run it.
     /// </summary>
-    local procedure UpgradeJobQueueCodeunitId()
+    internal procedure MoveJobQueueEntriesToNewCodeunitId()
     var
         JobQueueEntry: Record "Job Queue Entry";
-        UpgradeTag: Codeunit "Upgrade Tag";
     begin
-        if UpgradeTag.HasUpgradeTag(GetJobQueueCodeunitIdTag()) then
-            exit;
         JobQueueEntry.SetRange("Object Type to Run", JobQueueEntry."Object Type to Run"::Codeunit);
         JobQueueEntry.SetRange("Object ID to Run", OldJobQueueCodeunitId());
         JobQueueEntry.ModifyAll("Object ID to Run", Codeunit::"GSO Job Queue", false);
-        UpgradeTag.SetUpgradeTag(GetJobQueueCodeunitIdTag());
     end;
 
     /// <summary>

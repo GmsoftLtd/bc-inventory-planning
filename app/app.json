@@ -31,6 +31,13 @@
       "to": 73030604
     }
   ],
+  "internalsVisibleTo": [
+    {
+      "id": "372ec610-8920-4fd0-9532-82a542268c45",
+      "name": "Inventory Planning Tests",
+      "publisher": "GMSOFT Limited"
+    }
+  ],
   "resourceExposurePolicy": {
     "allowDebugging": true,
     "allowDownloadingSource": true,
