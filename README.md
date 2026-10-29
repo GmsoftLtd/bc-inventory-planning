@@ -1,5 +1,7 @@
 # Inventory Planning for Business Central
 
+**Product page and documentation:** https://gmsoftdynamics.com/apps/free/inventory-planning/ | **All GMSOFT apps for Business Central:** https://gmsoftdynamics.com/apps/compare/
+
 One free app consolidating the four standalone GMSoft planning calculators —
 [Safety Stock](https://github.com/GmsoftLtd/bc-safety-stock),
 [Reorder Point](https://github.com/GmsoftLtd/bc-reorder-point),
